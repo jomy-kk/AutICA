@@ -21,8 +21,9 @@ t0 = -0.2; % seconds
 n_channels = 8;
 n_train_epochs = 1600;
 
-subject = 15;
-session = 2;
+subject = 8; 
+session = 7;
+ica_algorithm = 'picard';
 
 % Initialize EEGLAB session
 [ALLEEG EEG CURRENTSET ALLCOM] = eeglab;
@@ -117,7 +118,7 @@ test_p300_indices = fscanf(fileID, '%i');
 test_p300_indices = test_p300_indices + n_train_epochs; % shift indices of test set
 p300_indices = vertcat(train_p300_indices, test_p300_indices); % concatenate train and test indices
 
-% Filter not-P300 trials
+% Filter p300 trials
 [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 5,'retrieve',4,'study',0); 
 EEG = eeg_checkset( EEG );
 EEG = pop_select( EEG, 'trial', p300_indices);
@@ -135,12 +136,28 @@ figure; pop_erpimage(EEG,1, [6],[[]],'Pz',10,1,{},[],'' ,'yerplabel','\muV','erp
 saveas(gcf, strcat(subject_session_results_path, 'beforeICA_p300-only_ERP_Pz.png'));
 close(gcf)
 
+% Plot ERP image of all channels
+figure;
+pop_timtopo(EEG, [200  550], [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " (p300-only)"));
+saveas(gcf, strcat(subject_session_results_path, 'beforeICA_all_channels_ERP_p300-only.png'));
+close(gcf)
+
+
 %% Doing ICA: full set
 
 % FastICA approach
 [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 6,'retrieve',4,'study',0); 
 EEG = eeg_checkset( EEG );
-EEG = pop_runica(EEG, 'icatype', 'picard');
+timer = tic();
+EEG = pop_runica(EEG, 'icatype', ica_algorithm);
+time_elapsed = toc(timer);
+disp("This ICA algorithm toke " + time_elapsed + " seconds")
+[ALLEEG EEG] = eeg_store(ALLEEG, EEG, CURRENTSET);
+
+% Save weights
+EEG = eeg_checkset( EEG );
+file_name = convertStringsToChars(dataset_name + "-" + ica_algorithm + ".set");
+EEG = pop_saveset( EEG, 'filename', file_name,'filepath', convertStringsToChars(subject_session_data_path));
 [ALLEEG EEG] = eeg_store(ALLEEG, EEG, CURRENTSET);
 
 % Obraining dipoles estimation of ICs
@@ -150,17 +167,33 @@ EEG = eeg_checkset( EEG );
 %EEG = pop_multifit(EEG, [1:8] ,'threshold',100,'plotopt',{'normlen','on'});
 %[ALLEEG EEG] = eeg_store(ALLEEG, EEG, CURRENTSET);
 
+% overwrite results path to be algortihm-specific
+subject_session_results_path = strcat(subject_session_results_path, '/', ica_algorithm, '/');
+if ~exist(subject_session_results_path, 'dir')
+       mkdir(subject_session_results_path)
+ end
+
 % Plot components scalp maps
 pop_topoplot(EEG, 0, [1:8] , convertStringsToChars(dataset_name),[3 3] ,0,'electrodes','on');
 saveas(gcf, strcat(subject_session_results_path, 'ICA_components.png'));
 close(gcf)
 
 % Plot ERP envelope
-pop_envtopo(EEG, [0  996] ,'limcontrib',[0 996],'compsplot',[7],'title', convertStringsToChars("Largest ERP components of " + dataset_name), 'electrodes','off');
+pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name), 'electrodes','off');
 saveas(gcf, strcat(subject_session_results_path, 'ICs_ERP_evelope.png'));
 close(gcf)
 
+% Plot ERP envelope (p300 only)
+EEG = pop_select( EEG, 'trial', p300_indices);
+%[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 7,'setname', strcat(dataset_name, "-" + ica_algorithm + '-p300-only'),'gui','off'); 
+EEG = eeg_checkset( EEG );
+pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[8],'title', convertStringsToChars("All ERP components of " + dataset_name + " (p300 only)"), 'electrodes','off');
+saveas(gcf, strcat(subject_session_results_path, 'ICs_ERP_evelope_p300-only.png'));
+close(gcf)
+
 % Classify ICs
+[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 6,'retrieve',4,'study',0); 
+EEG = eeg_checkset( EEG );
 EEG = pop_iclabel(EEG, 'default');
 [ALLEEG EEG] = eeg_store(ALLEEG, EEG, CURRENTSET);
 
@@ -168,21 +201,21 @@ EEG = pop_iclabel(EEG, 'default');
 % according to:
 % -> % of not-brain related activity
 % -> keep the ones that most contribute to the largest ERP (in envelope)
-pop_viewprops(EEG, 0, 1:8, 'freqrange', [2 70])
+pop_viewprops(EEG, 0, 1:8, {'freqrange',[2 60] })
 to_remove = input("Component indices to remove (array []): ");
 
 % Remove components
 EEG = pop_subcomp( EEG, to_remove, 0);
 
 % Save dataset
-file_path = convertStringsToChars(subject_session_data_path + dataset_name + " pruned with FastICA.set");
-[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 4,'setname', dataset_name + " pruned with FastICA",'savenew', file_path,'gui','off'); 
+file_path = convertStringsToChars(subject_session_data_path + dataset_name + "-" + ica_algorithm + "-pruned-" + num2str(to_remove) + ".set");
+[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 4,'setname', dataset_name + "-" + ica_algorithm + "-pruned-" + num2str(to_remove), 'savenew', file_path,'gui','off'); 
 
 
 %% After ICA: p300-only subset
 
 EEG = pop_select( EEG, 'trial', p300_indices);
-[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 7,'setname', strcat(dataset_name, ' pruned with FastICA p300-only'),'gui','off'); 
+[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 7,'setname', strcat(dataset_name, "-" + ica_algorithm + '-p300-only'),'gui','off'); 
 
 % Plot Component propreties panel
 for i = 1:(8-length(to_remove))
@@ -192,19 +225,19 @@ for i = 1:(8-length(to_remove))
 end
 
 % Plot ERP envelope
-pop_envtopo(EEG, [0  996] ,'limcontrib',[0 996],'compsplot',[7],'title', convertStringsToChars("Largest ERP components of " + dataset_name + " pruned with FastICA p300-only"),'electrodes','off');
+pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"),'electrodes','off');
 saveas(gcf, strcat(subject_session_results_path, 'afterICA_ICs_ERP_evelope_p300-only.png'));
 close(gcf)
 
 % Plot ERP image of all channels
 figure;
-pop_timtopo(EEG, [0  996], [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " pruned with FastICA p300-only"));
+pop_timtopo(EEG, [200  550], [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"));
 saveas(gcf, strcat(subject_session_results_path, 'afterICA_all_channels_ERP_p300-only.png'));
 close(gcf)
 
 % ERP image of channel Cz
 figure; pop_erpimage(EEG,1, [2],[[]],'Cz',10,1,{},[],'' ,'yerplabel','\muV','erp','on','cbar','on','topo', { [2] EEG.chanlocs EEG.chaninfo } );
-saveas(gcf, strcat(subject_session_results_path, 'afterICA_p300-only_ERP_Pz.png'));
+saveas(gcf, strcat(subject_session_results_path, 'afterICA_p300-only_ERP_Cz.png'));
 close(gcf)
 
 % ERP image of channel Pz
