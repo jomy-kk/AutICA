@@ -21,7 +21,7 @@ t0 = -0.2; % seconds
 n_channels = 8;
 n_train_epochs = 1600;
 
-subject = 8; 
+subject = 12; 
 session = 7;
 ica_algorithm = 'picard';
 
@@ -138,7 +138,7 @@ close(gcf)
 
 % Plot ERP image of all channels
 figure;
-pop_timtopo(EEG, [200  550], [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " (p300-only)"));
+pop_timtopo(EEG, [200  500] , [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " (p300-only)"));
 saveas(gcf, strcat(subject_session_results_path, 'beforeICA_all_channels_ERP_p300-only.png'));
 close(gcf)
 
@@ -179,7 +179,7 @@ saveas(gcf, strcat(subject_session_results_path, 'ICA_components.png'));
 close(gcf)
 
 % Plot ERP envelope
-pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name), 'electrodes','off');
+pop_envtopo(EEG, [100  900] ,'limcontrib',[200 500],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name), 'electrodes','off');
 saveas(gcf, strcat(subject_session_results_path, 'ICs_ERP_evelope.png'));
 close(gcf)
 
@@ -187,7 +187,7 @@ close(gcf)
 EEG = pop_select( EEG, 'trial', p300_indices);
 %[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 7,'setname', strcat(dataset_name, "-" + ica_algorithm + '-p300-only'),'gui','off'); 
 EEG = eeg_checkset( EEG );
-pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[8],'title', convertStringsToChars("All ERP components of " + dataset_name + " (p300 only)"), 'electrodes','off');
+pop_envtopo(EEG, [100  900] ,'limcontrib',[200 500],'compsplot',[8],'title', convertStringsToChars("All ERP components of " + dataset_name + " (p300 only)"), 'electrodes','off');
 saveas(gcf, strcat(subject_session_results_path, 'ICs_ERP_evelope_p300-only.png'));
 close(gcf)
 
@@ -225,13 +225,13 @@ for i = 1:(8-length(to_remove))
 end
 
 % Plot ERP envelope
-pop_envtopo(EEG, [200  550] ,'limcontrib',[200 550],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"),'electrodes','off');
+pop_envtopo(EEG, [100 900] ,'limcontrib',[200 500],'compsplot',[3],'title', convertStringsToChars("Largest ERP components of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"),'electrodes','off');
 saveas(gcf, strcat(subject_session_results_path, 'afterICA_ICs_ERP_evelope_p300-only.png'));
 close(gcf)
 
 % Plot ERP image of all channels
 figure;
-pop_timtopo(EEG, [200  550], [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"));
+pop_timtopo(EEG, [200 500] , [NaN], convertStringsToChars("ERP data and scalp maps of " + dataset_name + " pruned with " + ica_algorithm + " (p300-only)"));
 saveas(gcf, strcat(subject_session_results_path, 'afterICA_all_channels_ERP_p300-only.png'));
 close(gcf)
 
