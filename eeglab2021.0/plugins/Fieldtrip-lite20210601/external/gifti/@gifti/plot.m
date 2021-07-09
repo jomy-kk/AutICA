@@ -1,10 +1,10 @@
 function varargout = plot(varargin)
-% plot method for GIfTI objects
+% p300 method for GIfTI objects
 %__________________________________________________________________________
 % Copyright (C) 2008 Wellcome Trust Centre for Neuroimaging
 
 % Guillaume Flandin
-% $Id: plot.m 5888 2014-02-19 19:54:12Z guillaume $
+% $Id: p300.m 5888 2014-02-19 19:54:12Z guillaume $
 
 % if ishandle(varargin{1})
 %     h = figure(varargin{1});

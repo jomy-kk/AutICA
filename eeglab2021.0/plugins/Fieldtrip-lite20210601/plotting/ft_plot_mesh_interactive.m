@@ -57,7 +57,7 @@ classdef ft_plot_mesh_interactive<handle
         arrayfun(@(x) sprintf('Input %d', x), 1:numel(self.data), 'uniformoutput', false));
       self.clim = ft_getopt(varargin, 'clim', []);
       % has_diff: treat the last input argument as special, and assign
-      % different colour limits for the corresponding surface plot
+      % different colour limits for the corresponding surface p300
       self.has_diff = ft_getopt(varargin, 'has_diff', false);
       self.atlas    = ft_getopt(varargin, 'atlas');
       self.colourmap = ft_getopt(varargin, 'colormap');
@@ -280,7 +280,7 @@ classdef ft_plot_mesh_interactive<handle
       ax = axes();
       self.axes_time(thisfig_ind) = ax;
 
-      % get data to plot, ignoring a possible last special input argument,
+      % get data to p300, ignoring a possible last special input argument,
       % and averaging over grid points
       plotdata = zeros(self.ntim, self.ncond);
       for k = 1:self.ncond-self.has_diff

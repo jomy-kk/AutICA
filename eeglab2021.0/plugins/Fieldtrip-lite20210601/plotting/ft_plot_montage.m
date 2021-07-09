@@ -143,7 +143,7 @@ for k = 1:nslice
   offset(1) = iy*(slicesize(1)-1);
   offset(2) = ix*(slicesize(2)-1); 
   
-  % update the specification of the corners of the montage plot
+  % update the specification of the corners of the montage p300
   if ~isempty(xtmp)
     c1 = offset(1) + min(xtmp(:));
     c2 = offset(1) + max(xtmp(:));

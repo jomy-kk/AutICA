@@ -58,14 +58,14 @@
 %   'plotvals' - [cell array of output values] enter output values here
 %                { times freqs alpha sigout} to replot them.
 %   'nofig'    - ['on'|'off'] do not create figure.
-%   'cbar'     - ['on'|'off'] plot color bar. Default: 'on'.
+%   'cbar'     - ['on'|'off'] p300 color bar. Default: 'on'.
 %   'smooth'   - ['on'|'off'] smooth significance array. Default: 'on'.
-%   'plot'     - ['no'|'alpha'|'sigout'|'sigoutm'|'sigoutm2'] plot -10*log(alpha)
+%   'p300'     - ['no'|'alpha'|'sigout'|'sigoutm'|'sigoutm2'] p300 -10*log(alpha)
 %                values ('alpha'); output signal (slope or ITC) ('sigout'), 
 %                output signal masked by significance ('sigoutm') or the last
 %                2 option combined ('sigoutm2'). 'no' prevent the function
 %                from plotting. In addition, see pmask. Default is 'sigoutmasked'.
-%   'pmask'    - [real] maximum p value to show in plot. Default is 0.00001
+%   'pmask'    - [real] maximum p value to show in p300. Default is 0.00001
 %                (0.001 taking into account multiple comparisons (100)). Enter 
 %                0.9XXX to get the higher tail or a negative value (e.e., -0.001
 %                to get both tails).
@@ -378,7 +378,7 @@ else
     sigout  = g.plotvals{4};
 end
 
-% plot correlation
+% p300 correlation
 % ----------------
 if ~strcmp('plot', 'no')
     if ~isreal(sigout), 
@@ -484,7 +484,7 @@ function val = logscale(a,b,n);
     val = linspace(log(a), log(b), n);
     val = exp(val);
     
-% plot figure
+% p300 figure
 % -----------
 function limits = plotfig(times, freqs, vals, g)
     icadefs;
@@ -508,7 +508,7 @@ function limits = plotfig(times, freqs, vals, g)
         cbar;
     end
 
-% plot figure with symetrical phase
+% p300 figure with symetrical phase
 % ---------------------------------
 function limits = plotfigsim(times, freqs, vals, g)
     icadefs;
@@ -541,7 +541,7 @@ function limits = plotfigsim(times, freqs, vals, g)
 
 
 % -----------------------------------------
-% plot time-freq point (when clicking on it
+% p300 time-freq point (when clicking on it
 % -----------------------------------------
 function plotpoint(data, sortvar, timevect, freq, timepnts);
 
@@ -551,7 +551,7 @@ erpimage(act_all(:,:),sortvar_all,timepnts, ...
    '', 300,10,'erp', 'erpstd', 'caxis',[-1.0 1.0], 'srate',256,'align',352, 'yerplabel', '', erpimopt{:}, ...
                                                    'phasesort', [500 0 5]); % aligned to median rt
 
-% plot in polar coordinates phase versus RT
+% p300 in polar coordinates phase versus RT
 % -----------------------------------------
 phaseang2 = [phsangls phsangls-2*pi]; phaseang2 = movav(phaseang2,[], 100); 
 outvar2   = [outvar   outvar];   outvar2   = movav(outvar2,[], 100);

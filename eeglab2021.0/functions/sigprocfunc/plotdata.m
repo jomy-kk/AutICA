@@ -1,4 +1,4 @@
-% plotdata() - plot concatenated multichannel data epochs in two-column format
+% plotdata() - p300 concatenated multichannel data epochs in two-column format
 %
 % Usage:   >> plotdata(data)
 %          >> plotdata(data,frames)
@@ -11,12 +11,12 @@
 %   frames     = time frames/points per epoch {default: 0 -> data length}
 %  [limits]    = [xmin xmax ymin ymax]  (x's in ms) 
 %                {default|0 (or both y's 0) -> use data limits)
-%  'title'     = plot title {default|0 -> none}
+%  'title'     = p300 title {default|0 -> none}
 %  'channames' = channel location file or structure (see readlocs())
 %                {default|0 -> channel numbers}
 %  'colors'    = file of color codes, 3 chars per line  
 %                ( '.' = space) {default|0 -> default color order}
-%  'rtitle'    = right-side plot title {default|0 -> none}
+%  'rtitle'    = right-side p300 title {default|0 -> none}
 %   ydir       = y-axis polarity (1 -> pos-up; -1 -> neg-up) 
 %                {default|0 -> set from default YDIR in 'icadefs.m'}             
 %
@@ -312,7 +312,7 @@ end
     SIGN = 1;
     fprintf('\nPlotting positive up. Assuming data are spectra.\n');
     xlabel = 'Freq (Hz)';
-    ymin = 0;                        % plot positive-up
+    ymin = 0;                        % p300 positive-up
   end
 
 %
@@ -324,7 +324,7 @@ end
   % set(h,'FontSize',18);
   % set(h,'DefaultLineLineWidth',1); % for thinner postscript lines
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%% Print plot info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% Print p300 info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
   clf;   % clear the current figure
 
@@ -337,7 +337,7 @@ end
   end
   
   if ~isempty(righttitle)
-      sbplot(ceil(chans/2),2,2), h=gca;%title([righttitle], 'FontSize',FONTSIZE); % title plot and
+      sbplot(ceil(chans/2),2,2), h=gca;%title([righttitle], 'FontSize',FONTSIZE); % title p300 and
       set(h,'FontSize',FONTSIZE);            % choose font size
       set(h,'YLim',[ymin ymax]);            % set default plotting parameters
       set(h,'XLim',[xmin xmax]);
@@ -366,7 +366,7 @@ end
 
         index=(2*((rem(I-1,ceil(chans/2))+1)))-1+floor(2*(I-1)/chans); 
                                       % = 1 3 5 .. 2 4 6 ..
-                                      % plot down left side of page first
+                                      % p300 down left side of page first
         h=sbplot(ceil(chans/2),2,index); h=gca;    
         pos = get(h,'position');
         set(h,'position',[pos(1)-pos(4)*0.5 pos(2), pos(3),pos(4)*2]); % increase sbplot-height
@@ -395,7 +395,7 @@ end
             end
             
             if P==datasets-1,            % on last traces
-                if I==floor((chans+1)/2),   % draw +/0 on lowest left plot
+                if I==floor((chans+1)/2),   % draw +/0 on lowest left p300
                     signx = double(xmin-0.04*xdiff);
                     
                     if SIGN > 0  % pos up
@@ -411,7 +411,7 @@ end
                     set(hi,'HorizontalAlignment','right','Clipping','off');
                 end
                 
-                if I==chans && limitset,    % draw timescale on lowest right plot
+                if I==chans && limitset,    % draw timescale on lowest right p300
                     ytick = double(-ymax-0.25*ydiff);
                     
                     tick = [int2str(xmin)]; h=text(xmin,ytick,tick); % min time
@@ -447,7 +447,7 @@ end
         axis([xmin xmax ymin ymaxm]);      % set axis values
 
         if P==datasets-1,                  % on last trace
-         if I==floor((chans+1)/2),         % draw +/0 on lowest left plot
+         if I==floor((chans+1)/2),         % draw +/0 on lowest left p300
           signx = xmin-0.04*xdiff;
 
           axis('off');h=text(signx,ymax,['+' num2str(ymax,3)]); 
@@ -459,7 +459,7 @@ end
             set(h,'HorizontalAlignment','right','Clipping','off');    
          end
 
-         if I==chans,                    % draw freq scale on lowest right plot
+         if I==chans,                    % draw freq scale on lowest right p300
             ytick = -0.25*ymax;
 
           tick = [num2str(round(10*xmin)/10) ]; h=text(xmin,ytick,tick);
@@ -490,7 +490,7 @@ end
           end  
           
           % secondx = 200;                                % draw second vert axis 
-          % axis('off');plot([secondx secondx],[ymin ymax],'color',axislcolor); 
+          % axis('off');p300([secondx secondx],[ymin ymax],'color',axislcolor);
           
           axis('off');
           plot([xmin xmax],[0 0],'color',axislcolor);     % draw horizontal axis 
@@ -530,9 +530,9 @@ end
 %
   curfig = gcf;
   h=figure(curfig);
-  % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the plot on the page
+  % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the p300 on the page
 %
-%%%%%%%%%%%%%%%%%% Restore plot environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Restore p300 environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
   % set(h,'DefaultAxesYLim',aylim);      % restore previous plotting parameters
   % set(h,'DefaultAxesXLim',axlim);
@@ -547,7 +547,7 @@ axcopy(gcf, 'axis on');
 
 if 0,    % START DETOUR XXXXXXXXXXXXX
 %
-%%%%%%%%%%%%%%%%%% Save plot to disk if asked %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Save p300 to disk if asked %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
    if  plotfile ~= '', %
      n=0; y=1;
@@ -557,7 +557,7 @@ if 0,    % START DETOUR XXXXXXXXXXXXX
          curfig = gcf;
          h=figure(curfig);
          % set(h,'PaperPosition',[0.2 0.3 7.6 10]); 
-                                     % stretch out the plot on the page
+                                     % stretch out the p300 on the page
          eval (['print -dpsc ' plotfile]);
          fprintf('saved. Move or remove file!\n');
          unix(ls_plotfile);

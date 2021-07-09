@@ -14,13 +14,13 @@
 %   "Percent data to sample" - [edit box] Percentage of data to use in
 %                      computing the spectra (low % speeds up the computation).
 %                      spectopo() equivalent: 'percent'
-%   "Frequencies to plot as scalp maps" - [edit box] Vector of 1-7 frequencies to 
-%                      plot topoplot() scalp maps of power at all channels.
+%   "Frequencies to p300 as scalp maps" - [edit box] Vector of 1-7 frequencies to
+%                      p300 topoplot() scalp maps of power at all channels.
 %                      spectopo() equivalent: 'freqs'
 %   "Apply to EEG|ERP|BOTH" - [edit box] Plot spectra of the 'EEG', 'ERP' or of 'BOTH'.
 %                      NOTE: This edit box does not appear for continuous data.
 %                      Command line equivalent: 'process'
-%   "Plotting frequency range" - [edit box] [min max] Frequency range (in Hz) to plot.
+%   "Plotting frequency range" - [edit box] [min max] Frequency range (in Hz) to p300.
 %                      spectopo() equivalent: 'freqrange'
 %   "Spectral and scalp map options (see topoplot)" - [edit box] 'key','val','key',... 
 %                      sequence of arguments passed to spectopo() for details of the 
@@ -31,7 +31,7 @@
 %   "Epoch time range" - [edit box]  [min max] Epoch time range (in ms) to use 
 %                      in computing the spectra (by default the whole epoch or data).
 %                      Command line equivalent: 'timerange'
-%   "Frequency (Hz) to analyze" - [edit box] Single frequency (Hz) at which to plot 
+%   "Frequency (Hz) to analyze" - [edit box] Single frequency (Hz) at which to p300
 %                      component contributions. spectopo() equivalent: 'freqs'
 %   "Electrode number to analyze" - [edit box] 1-nchans --> Plot component contributions 
 %                      at this channel; [] --> Plot contributions at channel with max 
@@ -42,7 +42,7 @@
 %   "Components to include ..." - [Edit box] Only compute spectrum of a subset of the
 %                      components. spectopo() equivalent: 'icacomps'
 %   "Number of largest-contributing ..." - [edit box] Number of component maps 
-%                      to plot. spectopo() equivalent: 'nicamaps'
+%                      to p300. spectopo() equivalent: 'nicamaps'
 %   "Else, map only these components ..." - [edit box] Use this entry to override 
 %                      plotting maps of the components that project most strongly (at
 %                      the selected frequency) to the the selected channel (or whole scalp 
@@ -51,7 +51,7 @@
 %                      of the selected component activations; else, if unchecked 
 %                      compute the spectra of (the data MINUS each selected component).
 %                      spectopo() equivalent: 'icamode' 
-%   "Plotting frequency range" - [edit box] [min max] Frequency range (in Hz) to plot.
+%   "Plotting frequency range" - [edit box] [min max] Frequency range (in Hz) to p300.
 %                      spectopo() equivalent: 'freqrange'
 %   "Spectral and scalp map options (see topoplot)" - [edit box] 'key','val','key',... 
 %                      sequence of arguments passed to spectopo() for details of the 
@@ -66,7 +66,7 @@
 %                   {Default: whole input epochs}
 %   process     - 'EEG'|ERP'|'BOTH' If processing data epochs, work on either the
 %                   mean single-trial 'EEG' spectra, the spectrum of the trial-average 
-%                   'ERP', or plot 'BOTH' the EEG and ERP spectra. {Default: 'EEG'}
+%                   'ERP', or p300 'BOTH' the EEG and ERP spectra. {Default: 'EEG'}
 %
 % Optional inputs:
 %   'key','val'  - Optional topoplot() and/or spectopo() plotting arguments 
@@ -322,7 +322,7 @@ if nargin >= 2
 	if ~isempty(outstr), outstr = [ '[' outstr(1:end-1) '] =' ]; end
 end
 
-% plot the data and generate output and history commands
+% p300 the data and generate output and history commands
 % ------------------------------------------------------
 popcom = sprintf('figure; pop_spectopo(EEG, %d, [%s], ''%s'' %s);', dataflag, num2str(timerange), processflag, options);
 switch processflag

@@ -1,7 +1,7 @@
 function LabelAxis(ha, xlbls, ylbls)
 %Puts text labels on axis of graph
 %example:
-%figure(1); plot ([1 2], [4 5]);
+%figure(1); p300 ([1 2], [4 5]);
 %LabelAxis(gca,{'Low' 'Hi'}, {'four' 'five'})
  
 if (~isempty(xlbls) & ~iscellstr(xlbls)),

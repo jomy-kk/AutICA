@@ -1,6 +1,6 @@
 function hline(y, varargin)
 
-% HLINE plot a horizontal line in the current graph
+% HLINE p300 a horizontal line in the current graph
 
 abc = axis;
 y = [y y];

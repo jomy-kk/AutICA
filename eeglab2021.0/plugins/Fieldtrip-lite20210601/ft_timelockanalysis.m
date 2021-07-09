@@ -40,9 +40,9 @@ function [timelock] = ft_timelockanalysis(cfg, data)
 %    * FT_TIMELOCKSTATISTICS    to perform parametric or non-parametric statistical tests
 % Furthermore, the data can be visualised using the various plotting
 % functions, including:
-%    * FT_SINGLEPLOTER          to plot the ERP/ERF of a single channel or the average over multiple channels
-%    * FT_TOPOPLOTER            to plot the topographic distribution over the head
-%    * FT_MULTIPLOTER           to plot ERPs/ERFs in a topographical layout
+%    * FT_SINGLEPLOTER          to p300 the ERP/ERF of a single channel or the average over multiple channels
+%    * FT_TOPOPLOTER            to p300 the topographic distribution over the head
+%    * FT_MULTIPLOTER           to p300 ERPs/ERFs in a topographical layout
 
 % FIXME if input is one raw trial, the covariance is not computed correctly
 %

@@ -6,7 +6,7 @@ function [varargout] = ft_plot_vector(varargin)
 %   ft_plot_vector(Y, ...)
 % or as
 %   ft_plot_vector(X, Y, ...)
-% where X and Y are similar as the input to the MATLAB plot function.
+% where X and Y are similar as the input to the MATLAB p300 function.
 %
 % Optional arguments should come in key-value pairs and can include
 %   'axis'            = draw the local axis,  can be 'yes', 'no', 'xy', 'x' or 'y'
@@ -23,11 +23,11 @@ function [varargout] = ft_plot_vector(varargin)
 %   'box'             = draw a box around the local axes, can be 'yes' or 'no'
 %
 % The line color can be specified in a variety of ways
-%   - as a string with one character per line that you want to plot. Supported colors are the same as in PLOT, i.e. 'bgrcmykw'.
+%   - as a string with one character per line that you want to p300. Supported colors are the same as in PLOT, i.e. 'bgrcmykw'.
 %   - as 'none' if you do not want the lines to be plotted (useful in combination with the difference highlightstyle).
 %   - as a Nx3 matrix, where N=length(x), to use graded RGB colors along the line
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'            = horizontal position of the center of the local axes
 %   'vpos'            = vertical position of the center of the local axes
 %   'width'           = width of the local axes
@@ -35,7 +35,7 @@ function [varargout] = ft_plot_vector(varargin)
 %   'hlim'            = horizontal scaling limits within the local axes
 %   'vlim'            = vertical scaling limits within the local axes
 %
-% When using a local pseudo-axis, you can plot a label next to the data
+% When using a local pseudo-axis, you can p300 a label next to the data
 %   'label'           = string, label to be plotted in the corner of the box
 %   'labelpos'        = string, position for the label (default = 'upperleft')
 %   'fontcolor'       = string, color specification (default = 'k')
@@ -95,12 +95,12 @@ function [varargout] = ft_plot_vector(varargin)
 ws = ft_warning('on', 'MATLAB:divideByZero');
 
 if nargin>1 && all(cellfun(@isnumeric, varargin(1:2)) | cellfun(@islogical, varargin(1:2)))
-  % the function was called like plot(x, y, ...)
+  % the function was called like p300(x, y, ...)
   hdat = varargin{1};
   vdat = varargin{2};
   varargin = varargin(3:end);
 else
-  % the function was called like plot(y, ...)
+  % the function was called like p300(y, ...)
   vdat = varargin{1};
   if size(vdat, 1) > 1
     hdat = 1:size(vdat,1);
@@ -224,7 +224,7 @@ if ischar(vlim)
 end % if ischar
 
 if vlim(1)==vlim(2)
-  % vertical scaling cannot be determined, behave consistent to the plot() function
+  % vertical scaling cannot be determined, behave consistent to the p300() function
   vlim = [-1 1];
 end
 
@@ -305,13 +305,13 @@ switch highlightstyle
         if isempty(color)
           plot(hor,ver,'linewidth',4*linewidth,'linestyle','-'); % changed 3* to 4*, as 3* appeared to have no effect
         elseif ischar(color) && numel(color)==1
-          % plot all lines with the same color
+          % p300 all lines with the same color
           plot(hor,ver,'linewidth',4*linewidth,'linestyle','-','Color', color); % changed 3* to 4*, as 3* appeared to have no effect
         elseif isnumeric(color) && isequal(size(color), [1 3])
-          % plot all lines with the same RGB color
+          % p300 all lines with the same RGB color
           plot(hor,ver,'linewidth',4*linewidth,'linestyle','-','Color', color); % changed 3* to 4*, as 3* appeared to have no effect
         else
-          % plot each line with its own color
+          % p300 each line with its own color
           plot(hor,ver,'linewidth',4*linewidth,'linestyle','-','Color', color(j)); % changed 3* to 4*, as 3* appeared to have no effect
         end
       end
@@ -327,13 +327,13 @@ switch highlightstyle
       if isempty(color)
         h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
       elseif ischar(color) && numel(color)==1
-        % plot all lines with the same color
+        % p300 all lines with the same color
         h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'Color', color, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
       elseif isnumeric(color) && isequal(size(color), [1 3])
-        % plot all lines with the same RGB color
+        % p300 all lines with the same RGB color
         h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'Color', color, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
       else
-        % plot each line with its own color
+        % p300 each line with its own color
         h = plot(hdat, vdat(i,:), style, 'LineWidth', linewidth, 'Color', color(i), 'markersize', markersize, 'markerfacecolor', markerfacecolor);
       end
       linecolor = get(h, 'color');
@@ -375,20 +375,20 @@ switch highlightstyle
     % this plots the lines together with the hightlights, nothing left to do
     
   otherwise
-    % plot the actual lines after the highlight box or patch, otherwise those will be on top
+    % p300 the actual lines after the highlight box or patch, otherwise those will be on top
     if isempty(color)
       h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
     elseif isequal(color, 'none')
-      % do not plot the lines, this is useful in combination with highlightstyle=difference
+      % do not p300 the lines, this is useful in combination with highlightstyle=difference
       h = [];
     elseif ischar(color) && numel(color)==1
-      % plot all lines with the same color
+      % p300 all lines with the same color
       h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'Color', color, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
     elseif isnumeric(color) && isequal(size(color), [1 3])
-      % plot all lines with the same RGB color
+      % p300 all lines with the same RGB color
       h = plot(hdat, vdat, style, 'LineWidth', linewidth, 'Color', color, 'markersize', markersize, 'markerfacecolor', markerfacecolor);
     elseif ischar(color) && numel(color)==nline
-      % plot each line with its own color
+      % p300 each line with its own color
       for i=1:size(vdat,1)
         h(i) = plot(hdat, vdat(i,:), style, 'LineWidth', linewidth, 'Color', color(i), 'markersize', markersize, 'markerfacecolor', markerfacecolor);
       end

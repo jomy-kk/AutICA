@@ -139,7 +139,7 @@ function [chanlistout1, chanlistout2, thirdout, outfourth] = pop_chancoresp(chan
         end
     end
     
-    % plot
+    % p300
     % ----
     if strcmpi(g.gui, 'off')
         chanlistout1 = g.chanlist1;

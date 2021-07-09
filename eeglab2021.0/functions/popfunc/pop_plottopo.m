@@ -1,4 +1,4 @@
-% pop_plottopo() - plot one or more concatenated multichannel data epochs 
+% pop_plottopo() - p300 one or more concatenated multichannel data epochs
 %                  in a topographic array format using plottopo()
 % Usage:
 %   >> pop_plottopo( EEG ); % pop-up
@@ -9,9 +9,9 @@
 %
 % Inputs:
 %   EEG          - input dataset
-%   channels     - indices of channels to plot
-%   title        - plot title. Default is none.
-%   singletrials - [0|1], 0 plot average, 1 plot individual
+%   channels     - indices of channels to p300
+%   title        - p300 title. Default is none.
+%   singletrials - [0|1], 0 p300 average, 1 p300 individual
 %                  single trials. Default is 0.
 %   others...    - additional plottopo arguments {'axsize', 'color', 'ydir'
 %                  'vert'} (see >> help plottopo)

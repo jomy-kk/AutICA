@@ -28,7 +28,7 @@
 %   % assuming ERP have been computed for the currently selected design
 %   data = std_readcustom(STUDY, ALLEEG, 'daterp', 'datafield', 'chan1');
 %   data = cellfun(@(x)x', siftdata, 'uniformoutput', false); % transpose data
-%   std_plotcurve([1:size(data{1})], data); % plot data
+%   std_plotcurve([1:size(data{1})], data); % p300 data
 %
 % Authors: Arnaud Delorme, SCCN, INC, UCSD, 2013-
 

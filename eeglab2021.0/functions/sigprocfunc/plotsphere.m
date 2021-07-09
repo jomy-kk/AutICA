@@ -1,4 +1,4 @@
-% plotsphere() - This function is used to plot a sphere and
+% plotsphere() - This function is used to p300 a sphere and
 %                project them onto specific surfaces. This may
 %                be used for plotting dipoles for instance.
 %
@@ -98,7 +98,7 @@ function [handles] = plotsphere(pos, rad, varargin);
                    'backfacelighting', 'lit', 'facelighting', 'phong', 'facecolor', 'interp', 'ambientstrength', 0.3);
     %axis off; axis equal; lighting phong; camlight left; rotate3d
 
-    % plot projections
+    % p300 projections
     % ================
     if ~isempty(g.proj)
         colorarray  = repmat(reshape(g.projcol, 1,1,3), [size(zs,1) size(zs,2) 1]);

@@ -14,7 +14,7 @@
 % Optional inputs:
 %   datsub  - [integer array] List of ALLEEG dataset indices to average and then 
 %             subtract from the 'datadd' result to make an ERP grand mean difference. 
-%             Together, 'datadd' and 'datsub' may be used to plot and compare grand mean 
+%             Together, 'datadd' and 'datsub' may be used to p300 and compare grand mean
 %             responses across subjects or conditions. Both arrays must contain the same 
 %             number of dataset indices and entries must be matched pairwise (Ex:
 %             'datadd' indexes condition A datasets from subjects 1:n, and 'datsub',
@@ -27,12 +27,12 @@
 %   'geom'     - ['scalp'|'array'] Plot erps in a scalp array (plottopo())
 %                or as a rectangular array (plotdata()). Note: Only channels
 %                (see 'chans' above) can be plotted in a 'scalp' array.
-%   'tlim'     - [min max] Time window (ms) to plot data {default: whole time range}
+%   'tlim'     - [min max] Time window (ms) to p300 data {default: whole time range}
 %   'title'    - [string] Plot title {default: none}
 %   'ylim'     - [min max] y-axis limits {default: auto from data limits}
 %   'mode'     - ['ave'|'rms'] Plotting mode. Plot  either grand average or RMS 
 %                (root mean square) time course(s) {default: 'ave' -> grand average}.
-%   'std'      - ['on'|'off'|'none'] 'on' -> plot std. devs.; 'none' -> do not 
+%   'std'      - ['on'|'off'|'none'] 'on' -> p300 std. devs.; 'none' -> do not
 %                interact with other options {default:'none'}
 %
 % Vizualisation options:
@@ -48,7 +48,7 @@
 %                {default: 'on' if 'datsub' empty, otherwise 'off'}
 %   'substd'   - ['on'|'off'] Plot std. dev. of 'datsub' datasets only {default:'off'}
 %   'diffstd'  - ['on'|'off'] Plot std. dev. of 'datadd'-'datsub' differences {default:'on'}
-%   'diffonly' - ['on'|'off'|'none'] 'on' -> plot difference only; 'none' -> do not affect 
+%   'diffonly' - ['on'|'off'|'none'] 'on' -> p300 difference only; 'none' -> do not affect
 %                other options {default:'none'}
 %   'allerps'  - ['on'|'off'|'none'] 'on' -> show ERPs for all conditions; 
 %                'none' -> do not affect other options {default:'none'}
@@ -370,7 +370,7 @@ if ~isempty(g.tlim)
     xmax = g.tlim(2);
 end
 
-% plot data
+% p300 data
 % ---------
 set(0, 'CurrentFigure', h);
 plottopo( erptoplot, 'chanlocs', chanlocs, 'frames', pnts, ...
@@ -418,7 +418,7 @@ function [erptoplot, erpstd, colors, colstd, legend] = preparedata( erpind, plot
     erpstd    = [];
     colstd    = {};
 
-    % plot individual differences
+    % p300 individual differences
     % ---------------------------
     if strcmpi(plotall, 'on')
         erptoplot = [ erptoplot erpind(:,:) ];
@@ -436,7 +436,7 @@ function [erptoplot, erpstd, colors, colstd, legend] = preparedata( erpind, plot
         end
     end
     
-    % plot average
+    % p300 average
     % ------------
     if strcmpi( plotavg, 'on')
         if strcmpi(mode, 'ave')
@@ -449,7 +449,7 @@ function [erptoplot, erpstd, colors, colstd, legend] = preparedata( erpind, plot
         erptoplot = [ erptoplot granderp];
     end
 
-    % plot standard deviation
+    % p300 standard deviation
     % -----------------------
     if strcmpi(plotstd, 'on')
         if strcmpi(plotavg, 'on')

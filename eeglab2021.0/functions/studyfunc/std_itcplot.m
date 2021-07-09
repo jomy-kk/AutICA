@@ -1,4 +1,4 @@
-% std_itcplot() - Commandline function to plot cluster ITCs. Either displays mean cluster 
+% std_itcplot() - Commandline function to p300 cluster ITCs. Either displays mean cluster
 %                 ITCs, or else all cluster component ITCs, plus the mean cluster ITC, in 
 %                 one figure per cluster and condition. ITCs can be visualized only if 
 %                 component ITCs were calculated and saved in the STUDY EEG datasets.

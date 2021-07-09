@@ -1,4 +1,4 @@
-% pop_headplot() - plot one or more spherically-splined EEG field maps 
+% pop_headplot() - p300 one or more spherically-splined EEG field maps
 %                  using a semi-realistic 3-D head model. Requires a
 %                  spline file, which is created first if not found.
 %                  This may take some time, but does not need to be 
@@ -16,7 +16,7 @@
 %
 % Required Inputs to bypass input GUI
 %   latencies/components  - If channels, array of epoch mean latencies (in ms),
-%                Else, for components, array of component indices to plot.
+%                Else, for components, array of component indices to p300.
 %
 % Optional inputs:
 %   title      - Plot title
@@ -91,7 +91,7 @@ if nargin < 3 % Open GUI input window
         if ~isempty(EEG.splinefile) && exist(EEG.splinefile, 'file')
             splfile = dir(EEG.splinefile);
             byteperelec = splfile.bytes/EEG.nbchan;
-            if byteperelec/EEG.nbchan < 625, % old head plot file
+            if byteperelec/EEG.nbchan < 625, % old head p300 file
                 EEG.splinefile = [];
                 disp('Warning: Wrong montage or old-version spline file version detected and removed; new spline file required');
             end
@@ -101,7 +101,7 @@ if nargin < 3 % Open GUI input window
     % show the file be recomputed
     % ---------------------------
     compute_file = 0;
-    if typeplot == 1 % ********** data plot
+    if typeplot == 1 % ********** data p300
         fieldname    = 'splinefile';        
         if isempty(EEG.splinefile) && exist(EEG.splinefile, 'file')          
             if length(EEG.icachansind) == EEG.nbchan && ~isempty(EEG.icasplinefile)
@@ -112,7 +112,7 @@ if nargin < 3 % Open GUI input window
         else
             compute_file = 1;
         end
-    else % ************* Component plot       
+    else % ************* Component p300
         fieldname    = 'icasplinefile';
         if isempty(EEG.icasplinefile) && exist(EEG.icasplinefile, 'file')
             if length(EEG.icachansind) == EEG.nbchan && ~isempty(EEG.splinefile)
@@ -262,7 +262,7 @@ if nargin < 3 % Open GUI input window
 	        { 'style' 'text' 'string' 'Other headplot options (See >> help headplot):' } ...
 	        { 'style' 'edit' 'string' '' }  { } };
         
-    % plot GUI and protect parameters
+    % p300 GUI and protect parameters
     % -------------------------------
     geom = { [1] [1.3 1.6 0.5 0.5 ] [1.3 1.6 0.5 0.5 ] [1.3 1.6 0.6 0.4 ] [1.3 1.6 0.6 0.4 ] [1.3 1.6 0.6 0.4 ] ...
              [1] [1] [1.5 1 0.5] [1.5 1  0.5] [1.5 1  0.5] [1.5 1 0.5] };
@@ -351,14 +351,14 @@ end
 
 % search for existing file if necessary
 % -------------------------------------
-if typeplot == 1 % ********** data plot
+if typeplot == 1 % ********** data p300
     fieldname    = 'splinefile';        
     if isempty(EEG.splinefile)            
         if length(EEG.icachansind) == EEG.nbchan && ~isempty(EEG.icasplinefile)
             EEG.splinefile = EEG.icasplinefile;
         end
     end
-else % ************* Component plot       
+else % ************* Component p300
     fieldname    = 'icasplinefile';
     if isempty(EEG.icasplinefile)
         if length(EEG.icachansind) == EEG.nbchan && ~isempty(EEG.splinefile)
@@ -398,7 +398,7 @@ end;
 
 fprintf('Plotting...\n');
 
-% determine the scale for plot of different times (same scales)
+% determine the scale for p300 of different times (same scales)
 % -------------------------------------------------------------
 if typeplot
 	SIGTMP = reshape(EEG.data, EEG.nbchan, EEG.pnts, EEG.trials);
@@ -417,7 +417,7 @@ else
     maplimits = [-1 1];
 end
 	
-% plot the graphs
+% p300 the graphs
 % ---------------
 counter = 1;
 disp('IMPORTANT NOTICE: electrodes are projected to the head surface so their location');

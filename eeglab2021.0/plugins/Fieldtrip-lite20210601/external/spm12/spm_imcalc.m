@@ -178,7 +178,7 @@ end
 n = numel(Vi);
 Y = zeros(Vo.dim(1:3));
 
-%-Start progress plot
+%-Start progress p300
 %--------------------------------------------------------------------------
 spm_progress_bar('Init',Vo.dim(3),f,'planes completed');
 

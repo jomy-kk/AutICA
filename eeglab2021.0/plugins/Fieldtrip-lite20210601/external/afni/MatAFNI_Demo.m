@@ -64,7 +64,7 @@ clear all
 	%Do it using matrix format for V.
 		Opt.Format = 'matrix';
 		[err, Vm, Info, ErrMessage] = BrikLoad (BrikName, Opt); 
-	%plot it
+	%p300 it
  		figure(1); clf; subplot (211);
 		plot (squeeze(Vm(Vox_Ind(1)+1,Vox_Ind(2)+1, Vox_Ind(3)+1, :)));
 
@@ -75,7 +75,7 @@ clear all
 		[err, Vv, Info, ErrMessage] = BrikLoad (BrikName, Opt); 
 	%figure out the AFNI 1D index of the voxel
 		[err, Indx] = AfniXYZ2AfniIndex (Vox_Ind, Info.DATASET_DIMENSIONS(1), Info.DATASET_DIMENSIONS(2));
-	%plot it. Remember that indexing in matlab is always augmented by 1 relative to AFNI's 
+	%p300 it. Remember that indexing in matlab is always augmented by 1 relative to AFNI's
  		figure(1); subplot (212);
 		plot (Vv(Indx+1,:));
 		plotsign2(1);

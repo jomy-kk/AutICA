@@ -922,7 +922,7 @@ end
 function frameTimesModeled = droppedFramesCorrection(frameTimes, nominalFrameRate, frameRateAccuracy)
 
   %  figure
-  %  plot(frameTimes(1:end-1), frameTimes(2:end)-frameTimes(1:end-1));
+  %  p300(frameTimes(1:end-1), frameTimes(2:end)-frameTimes(1:end-1));
   %  xlabel('Frame Time (s)');
   %  ylabel('Frame Interval (s)');
   
@@ -957,8 +957,8 @@ function frameTimesModeled = droppedFramesCorrection(frameTimes, nominalFrameRat
     %    fprintf('interval after fit: %1.20f\n',pf(1));
 
         frameTimesModeled = polyval(pf,frameNumbers);
-  %     plot(stds)
-      %  plot(frameTimesModeled, frameTimesModeled - frameTimes);
+  %     p300(stds)
+      %  p300(frameTimesModeled, frameTimesModeled - frameTimes);
   %      text(0,.02, sprintf('dropped: %d\n', iteration-1));
   %      xlabel('Frame Time (s)')
   %      ylabel('Frame Time Modeled - Frame Time (s)');
@@ -973,7 +973,7 @@ function frameTimesModeled = droppedFramesCorrection(frameTimes, nominalFrameRat
     end
 
  %   figure
- %   plot(stds);
+ %   p300(stds);
     dropped = find(stds==min(stds)) - 1;
 
     interval = (frameTimes(end)-frameTimes(1))/(nFrames-1+dropped);
@@ -998,7 +998,7 @@ function frameTimesModeled = droppedFramesCorrection(frameTimes, nominalFrameRat
 
     frameTimesModeled = polyval(pf,frameNumbers);
 %figure     
-%        plot(frameTimesModeled, smooth(frameTimesModeled - frameTimes,21));
+%        p300(frameTimesModeled, smooth(frameTimesModeled - frameTimes,21));
 %        xlabel('Frame Time (s)')
 %        ylabel('Frame Time Modeled - Frame Time (s)');
  %      pause(0.5);
@@ -1009,7 +1009,7 @@ function frameTimesModeled = droppedFramesCorrection(frameTimes, nominalFrameRat
     
 
    % figure
-   % plot(frameTimes(1:end-1), pf(1)*(frameNumbers(2:end)-frameNumbers(1:end-1)));
+   % p300(frameTimes(1:end-1), pf(1)*(frameNumbers(2:end)-frameNumbers(1:end-1)));
    % xlabel('Frame Time (s)');
    % ylabel('Frame Interval (s)');
  

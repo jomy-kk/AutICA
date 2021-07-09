@@ -1,10 +1,10 @@
 function data = spm_chi2_plot(action,arg1,arg2,arg3)
-% Display a plot showing convergence of an optimization routine.
+% Display a p300 showing convergence of an optimization routine.
 % FORMAT spm_chi2_plot('Init',title,xlabel,ylabel)
-% Initialises the plot in the 'Interactive' window.
+% Initialises the p300 in the 'Interactive' window.
 %
 % FORMAT spm_chi2_plot('Set',value)
-% Updates the plot.
+% Updates the p300.
 %
 % FORMAT spm_chi2_plot('Clear')
 % Clears the 'Interactive' window.

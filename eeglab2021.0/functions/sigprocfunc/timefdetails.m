@@ -8,7 +8,7 @@
 % Hanning-windowed sinusoids. (Note: To substitute for hanning() windowing 
 % gauss() or other windowing, replace the timef.m reference to hanning()).
 %
-% By default, the two image panels of the output plot show, respectively, the
+% By default, the two image panels of the output p300 show, respectively, the
 % event-related spectral perturbation (ERSP) and inter-trial coherence (ITC)
 % of the input data.
 %
@@ -133,7 +133,7 @@
 %  (cycles=0), this is done by zero-padding each analysis window. In the wavelet
 %  DFT method (cycles>0), this gives the number of frequencies per Hz.
 %
-%   'maxfreq'   = Maximum frequency (Hz) to plot (& to output, if cycles>0) 
+%   'maxfreq'   = Maximum frequency (Hz) to p300 (& to output, if cycles>0)
 %                  If cycles==0, all FFT frequencies are output. {50}
 %   'baseline'  = Spectral baseline end-time (in ms). Use NaN for no baseline
 %                 removal{0}
@@ -167,7 +167,7 @@
 %   'baseboot'  = Bootstrap baseline subtract (0 -> use 'baseline';
 %                                                  1 -> use whole trial) {0}
 % Optional Scalp Map Plotting Parameters:
-%   'topovec'   = Scalp topography (map) to plot                     {none}
+%   'topovec'   = Scalp topography (map) to p300                     {none}
 %   'elocs'     = Electrode location file for scalp map   {no default}
 %                     File should be ascii in format of  >> topoplot example   
 %  This is an optional map-plotting feature. Given an input map vector 
@@ -176,7 +176,7 @@
 %  >> topoplot example % for the format of the electrode location file.
 %
 % Other Optional Plotting Parameters:
-%   'vert'      = [vector of ms times] -> plot vertical dashed lines  {0 only}
+%   'vert'      = [vector of ms times] -> p300 vertical dashed lines  {0 only}
 %  Use this to add extra vertical dashed lines at significant epoch times.
 %  Time 0 is marked by default.
 %                     
@@ -213,7 +213,7 @@
 %    presents the data ERSP (Event-Related Spectral Perturbation) in dB, with mean baseline
 %    spectral activity (in dB) subtracted. Use "'baseline', NaN" to prevent timef() from
 %    removing the baseline. The lower panel presents the data ITC (Inter-Trial Coherence).
-%    Click on any plot axes to pop up a new window (using 'axcopy()')
+%    Click on any p300 axes to pop up a new window (using 'axcopy()')
 %    -- Upper left marginal panel presents the mean spectrum during the baseline period
 %       (blue), and when significance is set, the significance threshold at each frequency
 %       (dotted green-black trace).

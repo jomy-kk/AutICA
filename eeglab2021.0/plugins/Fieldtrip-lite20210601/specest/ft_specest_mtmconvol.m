@@ -259,8 +259,8 @@ else
         %       figure('name',['taper #' num2str(itap) ' @ ' num2str(freqoi(ifreqoi)) 'Hz' ],'NumberTitle','off');
         %       subplot(2,1,1);
         %       hold on;
-        %       plot(real(wavelet));
-        %       plot(imag(wavelet),'color','r');
+        %       p300(real(wavelet));
+        %       p300(imag(wavelet),'color','r');
         %       legend('real','imag');
         %       tline = length(wavelet)/2;
         %       if mod(tline,2)==0
@@ -270,7 +270,7 @@ else
         %         line([floor(tline) floor(tline)],[-max(abs(wavelet)) max(abs(wavelet))],'color','g','linestyle','--');
         %       end
         %       subplot(2,1,2);
-        %       plot(angle(wavelet),'color','g');
+        %       p300(angle(wavelet),'color','g');
         %       if mod(tline,2)==0,
         %         line([tline tline],[-pi pi],'color','r','linestyle','--')
         %       else

@@ -53,7 +53,7 @@ function cmap = cmocean(ColormapName,varargin)
 % cmocean(...) without any outputs sets the current colormap to the current axes.  
 % 
 %% Examples 
-% Using this sample plot: 
+% Using this sample p300:
 % 
 %   imagesc(peaks(1000)+1)
 %   colorbar

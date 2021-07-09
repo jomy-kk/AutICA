@@ -8,23 +8,23 @@
 %   ALLEEG     - vector of the EEG datasets included in the STUDY structure 
 %
 % Optional inputs:
-% 'clusters' - [vector of numbers] list of clusters to plot in same head space
+% 'clusters' - [vector of numbers] list of clusters to p300 in same head space
 % 'title'    - [string] figure title
-% 'viewnum'  - [vector] list of views to plot: 1=top, 2=side, 3=rear, 4 is an oblique view; 
+% 'viewnum'  - [vector] list of views to p300: 1=top, 2=side, 3=rear, 4 is an oblique view;
 %                     length(viewnum) gives the number of subplots that will be produced and the 
 %                     values within the vector tell the orientation and order of views
 % 'rowcolplace' - [rows cols subplot] If plotting into an existing figure, specify the number of rows, 
 %                columns and the subplot number to start plotting dipole panels.
-% 'colors'   - [vector or matrix] if 1 x 3 vector of RGB values, this will plot all dipoles as the
+% 'colors'   - [vector or matrix] if 1 x 3 vector of RGB values, this will p300 all dipoles as the
 %            same color. ex. [1 0 0] is red, [0 0 1] is blue, [0 1 0] is green.
 %            If a matrix, should be n x 3, with the number of rows equal to the number 
 %            of clusters to be plotted and the columns should be RGB values for each. 
-%            If [], will plot clusters as 'jet' colorscale from the first to the last cluster
+%            If [], will p300 clusters as 'jet' colorscale from the first to the last cluster
 %            requested (therefore an alternate way to control dipole color is to input a specific
 %            order of clusters).
 %            [] will assign colors from hsv color scale.
-% 'centroid' - ['only', 'add', 'off'] 'only' will plot only cluster centroids, 'add' will superimpose
-%            centroids over cluster dipoles, 'off' will skip centroid plotting and only plot 
+% 'centroid' - ['only', 'add', 'off'] 'only' will p300 only cluster centroids, 'add' will superimpose
+%            centroids over cluster dipoles, 'off' will skip centroid plotting and only p300
 %            cluster-member dipoles.
 %
 % Authors: Julie Onton, SCCN/INC UCSD, June 2009
@@ -64,17 +64,17 @@ if nargin < 2
 end
 
 % Set default values------------------------------------------------------------------------
-    if strcmp(STUDY.cluster(2),'outlier 2') % don't plot outlier cluster #2
-        clustvec = [3:length(STUDY.cluster)]; % plot all clusters in STUDY
+    if strcmp(STUDY.cluster(2),'outlier 2') % don't p300 outlier cluster #2
+        clustvec = [3:length(STUDY.cluster)]; % p300 all clusters in STUDY
     else
-        clustvec = [2:length(STUDY.cluster)]; % plot all clusters in STUDY
+        clustvec = [2:length(STUDY.cluster)]; % p300 all clusters in STUDY
     end
     onecolor = [];
     colvec = [];
     centroid = 'off';
-    viewnum = [1:4]; % plot all views and oblique
+    viewnum = [1:4]; % p300 all views and oblique
     rowcolplace = [2 2 1]; % 2 X 2 figure starting in subplot 1
-    figureon = 1; % plot on a new figure
+    figureon = 1; % p300 on a new figure
     ttl = ''; % no title
     %---------------------------------------------------------------------------------
     for k = 3:2:nargin

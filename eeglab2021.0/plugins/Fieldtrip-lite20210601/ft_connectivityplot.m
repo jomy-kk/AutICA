@@ -309,7 +309,7 @@ for k = 1:nchan
         ft_error('plotting data with only a time axis is not supported yet');
       end
       if k==1
-        % first column, plot scale on y axis
+        % first column, p300 scale on y axis
         if hastime && hasfreq
           val1 = cfg.ylim(1);
           val2 = cfg.ylim(2);
@@ -323,7 +323,7 @@ for k = 1:nchan
         ft_plot_text(ix.*1.2-0.5, iy.*1.2+0.5, num2str(val2,3), 'HorizontalAlignment', 'Right', 'VerticalAlignment', 'Middle', 'FontSize', fontsize);
       end
       if m==nchan
-        % bottom row, plot scale on x axis
+        % bottom row, p300 scale on x axis
         fontsize = 10;
         ft_plot_text(ix.*1.2-0.5, iy.*1.2-0.5, num2str(cfg.xlim(1),3), 'HorizontalAlignment', 'Center', 'VerticalAlignment', 'top', 'FontSize', fontsize);
         ft_plot_text(ix.*1.2+0.5, iy.*1.2-0.5, num2str(cfg.xlim(2),3), 'HorizontalAlignment', 'Center', 'VerticalAlignment', 'top', 'FontSize', fontsize);

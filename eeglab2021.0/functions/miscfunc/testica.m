@@ -2,7 +2,7 @@
 %             Use the input variables to estimate the (best) decomposition accuracy
 %             for a given data set size.
 % Usage:
-%        >> testica(channels,frames);  % No return variable -> plot results
+%        >> testica(channels,frames);  % No return variable -> p300 results
 %        >> [testresult] = testica(channels,frames,sources,exppow,shape);
 %                          % Return variable -> return results with no plots
 % Inputs:
@@ -49,10 +49,10 @@
 % 4-03-97 shortened name to testica() -sm
 % 4-14-97 changed call to runica() to use new variable order -sm
 % 4-16-97 prints max and min abs corr -sm
-% 7-10-97 changed to newrunica(), added surf() plot -sm
+% 7-10-97 changed to newrunica(), added surf() p300 -sm
 % 7-30-97 altered runica() call to fit version 3.0 -sm
 % 3-02-00 replaced idit() call with call to Benjamin Blankertz' eyeLike() -sm
-% 3-08-00 added kurt and exppow plots, changed defaults, added plot labels -sm
+% 3-08-00 added kurt and exppow plots, changed defaults, added p300 labels -sm
 % 01-25-02 reformated help & license, added links -ad 
 
 function [testresult] = testica(channels,frames,sources,exppow,shape)
@@ -244,7 +244,7 @@ end
 if ~plotflag, return; end
 figure('Position',pos+2*off);
 set(gcf,'Color',BACKCOLOR);
-surf(testresult);  % plot the resulting ~identity matrix
+surf(testresult);  % p300 the resulting ~identity matrix
 st=title('Results: Test of ICA Separation');
 set(st,'fontsize',14)
 sxl=xlabel('Source Out');

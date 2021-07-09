@@ -77,7 +77,7 @@
 %                      (before channel rejection)
 %   EEG.chaninfo     - structure containing additional channel info
 %   EEG.ref          - type of channel reference ('common'|'averef'|+/-int]
-%   EEG.splinefile   - location of the spline file used by headplot() to plot
+%   EEG.splinefile   - location of the spline file used by headplot() to p300
 %                      data scalp maps in 3-D
 %
 % The event and epoch sub-structures:
@@ -100,7 +100,7 @@
 %                     Note: [] here means that 'compute_ica' option has been set
 %                     to 0 under 'File > Memory options' In this case,
 %                     component activations are computed only as needed.
-%   EEG.icasplinefile - location of the spline file used by headplot() to plot
+%   EEG.icasplinefile - location of the spline file used by headplot() to p300
 %                     component scalp maps in 3-D
 %   EEG.chaninfo.icachansind  - indices of channels used in the ICA decomposition
 %   EEG.dipfit      - array of structures containing component map dipole models

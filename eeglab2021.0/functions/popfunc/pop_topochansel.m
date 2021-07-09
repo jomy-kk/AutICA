@@ -106,17 +106,17 @@ end
 
 function [selx,sely,indexnr]=lasso(x,y)
 
-% lasso -  enables the selection/encircling of (clusters of) events in a scatter plot by hand
+% lasso -  enables the selection/encircling of (clusters of) events in a scatter p300 by hand
 %          using the mouse
 %
 % Input:    x,y                 - a set of points in 2 column vectors.
 % Output:   selx,sely,indexnr   - a set of selected points in 3 column vectors
 %
-% Note:   After the scatter plot is given, selection by mouse is started after any key press.
+% Note:   After the scatter p300 is given, selection by mouse is started after any key press.
 %         This is done to be able to ZOOM or CHANGE AXES etc. in the representation before selection
 %         by mouse.
 %         Encircling is done by pressing subsequently the LEFT button mouse at the requested positions
-%         in a scatter plot.
+%         in a scatter p300.
 %         Closing the loop is done by a RIGHT button press.
 %
 % T.Rutten V2.0/9/2003

@@ -41,7 +41,7 @@ if (angle > pi) || (angle < 0)
     inv_pseudo_Z = inv_pseudo_Z*10^4;
 else
 %    hold on
-%    plot(angle*180/pi, inv_pseudo_Z,'b*')
+%    p300(angle*180/pi, inv_pseudo_Z,'b*')
 %    drawnow    
 end  
 

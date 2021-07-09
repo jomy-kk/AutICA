@@ -244,7 +244,7 @@ if isempty(varargin) %GUI call
            command(end:end+1) = ');';
         end
            
-       % Call menu to plot clusters (use EEGLAB menu which include std_envtopo)
+       % Call menu to p300 clusters (use EEGLAB menu which include std_envtopo)
        LASTCOM = command;
        eval([ get(findobj(findobj('tag', 'EEGLAB'), 'Label', 'Edit/plot component clusters'), 'callback') ] );
        %[STUDY com] = pop_clustedit(STUDY, ALLEEG); 

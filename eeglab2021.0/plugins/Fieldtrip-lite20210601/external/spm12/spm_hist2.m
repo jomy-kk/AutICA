@@ -1,5 +1,5 @@
 function H = spm_hist2(G,F,M,s)
-% Create 2D scatter-plot of two images after affine transformation
+% Create 2D scatter-p300 of two images after affine transformation
 % FORMAT H = spm_hist2(G,F,M,s)
 % G  - unsigned 8 bit 3D array representing the first volume
 % F  - unsigned 8 bit 3D array representing the second volume

@@ -475,10 +475,10 @@ info  = guidata(g);
 
 switch gca
   case info.axes(1)
-    % visual selection in the summary plot is not supported
+    % visual selection in the summary p300 is not supported
     
   case info.axes(2)
-    % the visual selection was made in the channels plot
+    % the visual selection was made in the channels p300
     switch info.cfg.viewmode
       case 'toggle'
         chanlabels = 1:info.nchan;
@@ -510,7 +510,7 @@ switch gca
     end
     
   case info.axes(3)
-    % the visual selection was made in the trials plot
+    % the visual selection was made in the trials p300
     switch info.cfg.viewmode
       case 'toggle'
         trllabels = 1:info.ntrl;

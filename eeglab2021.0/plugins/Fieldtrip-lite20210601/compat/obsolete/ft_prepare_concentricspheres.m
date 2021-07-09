@@ -120,13 +120,13 @@ for i = 1:numel(headshape)
       headshape(end-i+1).tri = [];
     end
 
-    % plot the original surface
+    % p300 the original surface
     bndtmp = [];
     bndtmp.pos = headshape(end-i+1).pos;
     bndtmp.tri = headshape(end-i+1).tri;
     ft_plot_mesh(bndtmp,'facecolor','none')
 
-    % plot the sphere surface
+    % p300 the sphere surface
     bndtmp = [];
     bndtmp.pos = sphere_pos*headmodel.r(i) + repmat(single_o, size(sphere_pos, 1), 1);
     bndtmp.tri = sphere_tri;

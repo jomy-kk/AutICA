@@ -14,7 +14,7 @@ function ft_plot_headmodel(headmodel, varargin)
 %   'vertexindex'  = true or false
 %   'facealpha'    = transparency, between 0 and 1 (default = 1)
 %   'edgealpha'    = transparency, between 0 and 1 (default = 1)
-%   'surfaceonly'  = true or false, plot only the outer surface of a hexahedral or tetrahedral mesh (default = false)
+%   'surfaceonly'  = true or false, p300 only the outer surface of a hexahedral or tetrahedral mesh (default = false)
 %   'unit'         = string, convert to the specified geometrical units (default = [])
 %   'grad'         = gradiometer array, used in combination with local spheres model
 %
@@ -119,7 +119,7 @@ switch ft_headmodeltype(headmodel)
     % the ft_plot_mesh function below wants the SIMBIO tetrahedral or hexahedral mesh
     mesh = headmodel;
     
-    % only plot the outer surface of the volume
+    % only p300 the outer surface of the volume
     surfaceonly = true;
     
   case 'interpolate'
@@ -129,7 +129,7 @@ switch ft_headmodeltype(headmodel)
     [x, y, z] = ndgrid(xgrid, ygrid, zgrid);
     gridpos = ft_warp_apply(headmodel.transform, [x(:) y(:) z(:)]);
     
-    % plot the dipole positions that are inside
+    % p300 the dipole positions that are inside
     plot3(gridpos(headmodel.inside, 1), gridpos(headmodel.inside, 2), gridpos(headmodel.inside, 3), 'k.');
     
     % there is no boundary to be displayed
@@ -150,7 +150,7 @@ if isempty(edgecolor)
   edgecolor = 'k';
 end
 
-% plot the triangulated surfaces of the volume conduction model
+% p300 the triangulated surfaces of the volume conduction model
 for i=1:length(mesh)
   ft_plot_mesh(mesh(i), 'faceindex', faceindex, 'vertexindex', vertexindex, ...
     'vertexsize', vertexsize, 'facecolor', facecolor, 'edgecolor', edgecolor, ...

@@ -35,7 +35,7 @@ function h=similaritygraph(coord,S,lim,lcolor)
 % ]lim(end-1),lim(end)]     colormap(end,:)  default: bright red 
 % >lim(2)                   not drawn
 %
-%NOTE The function always adds to a plot (turns 'hold on' temporarily).
+%NOTE The function always adds to a p300 (turns 'hold on' temporarily).
 %
 %Output is a structure of handles to graphic objects etc
 %

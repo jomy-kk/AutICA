@@ -597,7 +597,7 @@ classdef pop_limoresults < handle
                 flagdataval = 0 ;
             end
                 
-            % Getting the plot type
+            % Getting the p300 type
             plottypeval   = get(obj.gui_h.popupmenu_plottype,'Value');
             if plottypeval == 3
                 chanindxval = get( obj.gui_h.listbox_elect2plot,'Value')-1;

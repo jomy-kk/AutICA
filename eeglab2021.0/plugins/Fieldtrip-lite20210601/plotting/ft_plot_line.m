@@ -12,7 +12,7 @@ function h = ft_plot_line(X, Y, varargin)
 %   'linewidth'       =
 %   'tag'             = string, the name assigned to the object. All tags with the same name can be deleted in a figure, without deleting other parts of the figure.
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'            = horizontal position of the center of the local axes
 %   'vpos'            = vertical position of the center of the local axes
 %   'width'           = width of the local axes

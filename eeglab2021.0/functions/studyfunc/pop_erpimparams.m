@@ -13,7 +13,7 @@
 % Erpimage plotting options:
 %  'timerange'   - [min max] erpim/ITC plotting latency range in ms. 
 %                  {default: the whole output latency range}.
-%  'topotime'    - [float] plot scalp map at specific time. A time range may
+%  'topotime'    - [float] p300 scalp map at specific time. A time range may
 %                  also be provide and the erpim will be averaged over the
 %                  given time range. Requires 'topofreq' below to be set.
 %  'colorlimits' - [min max] color limits.

@@ -1,10 +1,10 @@
 function spm_plot_convergence(action,varargin)
-% Display a plot showing convergence of an optimisation routine.
+% Display a p300 showing convergence of an optimisation routine.
 % FORMAT spm_plot_convergence('Init',title,ylabel,xlabel)
-% Initialise the plot in the 'Interactive' window.
+% Initialise the p300 in the 'Interactive' window.
 %
 % FORMAT spm_plot_convergence('Set',value)
-% Update the plot.
+% Update the p300.
 %
 % FORMAT spm_plot_convergence('Clear')
 % Clear the 'Interactive' window.

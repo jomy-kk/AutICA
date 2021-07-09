@@ -1,28 +1,28 @@
-% pop_dipplot() - plot dipoles.
+% pop_dipplot() - p300 dipoles.
 %
 % Usage:
 %   >> pop_dipplot( EEG ); % pop up interactive window
 %   >> pop_dipplot( EEG, comps, 'key1', 'val1', 'key2', 'val2', ...);
 %
 % Graphic interface:
-%   "Components" - [edit box] enter component number to plot. By
+%   "Components" - [edit box] enter component number to p300. By
 %                all the localized components are plotted. Command
 %                line equivalent: components.
 %   "Background image" - [edit box] MRI background image. This image 
 %               has to be normalized to the MNI brain using SPM2 for
 %               instance. Dipplot() command line equivalent: 'image'.
-%   "Summary mode" - [Checkbox] when checked, plot the 3 views of the
+%   "Summary mode" - [Checkbox] when checked, p300 the 3 views of the
 %                head model and dipole locations. Dipplot() equivalent 
 %               is 'summary' and 'num'.
-%   "Plot edges" - [Checkbox] plot edges at the intersection between
+%   "Plot edges" - [Checkbox] p300 edges at the intersection between
 %               MRI slices. Diplot() equivalent is 'drawedges'.
-%   "Plot closest MRI slide" - [Checkbox] plot closest MRI slice to
+%   "Plot closest MRI slide" - [Checkbox] p300 closest MRI slice to
 %               dipoles although not using the 'tight' view mode.
 %               Dipplot() equivalent is 'cornermri' and 'axistight'.
-%   "Plot dipole's 2-D projections" - [Checkbox] plot a dimed dipole
+%   "Plot dipole's 2-D projections" - [Checkbox] p300 a dimed dipole
 %               projection on each 2-D MRI slice. Dipplot() equivalent 
 %               is 'projimg'.
-%   "Plot projection lines" - [Checkbox] plot lines originating from
+%   "Plot projection lines" - [Checkbox] p300 lines originating from
 %               dipoles and perpendicular to each 2-D MRI slice. 
 %               Dipplot() equivalent is 'projline'.
 %   "Make all dipole point out" - [Checkbox] make all dipole point 
@@ -35,7 +35,7 @@
 %
 % Inputs:
 %   EEG   - Input dataset
-%   comps - [integer array] plot component indices. If empty
+%   comps - [integer array] p300 component indices. If empty
 %           all the localized components are plotted.
 %
 % Optional inputs:
@@ -162,7 +162,7 @@ if strcmpi(typedip, 'besa')
 else 
     if ~isfield(EEG, 'dipfit'), error('No DIPFIT dipole information in dataset');end
 
-    % components to plot
+    % components to p300
     % ------------------
     if ~isempty(comps)
         if ~isfield(EEG.dipfit.model, 'component')

@@ -16,9 +16,9 @@
 %                   other fields  : used for graphic interface.
 %
 % Optional input:
-%  'rvrange'  - [min max] or [max] Only plot dipoles with residual variace
-%               within the given range. Default: plot all dipoles.
-%  'summary'  - ['on'|'off'|'3d'] Build a summary plot with three views (top,
+%  'rvrange'  - [min max] or [max] Only p300 dipoles with residual variace
+%               within the given range. Default: p300 all dipoles.
+%  'summary'  - ['on'|'off'|'3d'] Build a summary p300 with three views (top,
 %               back, side). {default: 'off'}
 %  'mri'      - Matlab file containing an MRI volume and a 4-D transformation
 %               matrix to go from voxel space to electrode space:
@@ -38,13 +38,13 @@
 %               superior-inferior). Use 'coregist' to coregister electrodes
 %               with the MRI. {default: 'mri'}
 %  'verbose' - ['on'|'off'] comment on operations on command line {default: 'on'}.
-%  'plot'    - ['on'|'off'] only return outputs                  {default: 'off'}.
+%  'p300'    - ['on'|'off'] only return outputs                  {default: 'off'}.
 %
 % Plotting options:
 %  'color'    - [cell array of color strings or (1,3) color arrays]. For
 %               exemple { 'b' 'g' [1 0 0] } gives blue, green and red.
 %               Dipole colors will rotate through the given colors if
-%               the number given is less than the number of dipoles to plot.
+%               the number given is less than the number of dipoles to p300.
 %               A single number will be used as color index in the jet colormap.
 %  'view'     - 3-D viewing angle in cartesian coords.,
 %               [0 0 1] gives a sagittal view, [0 -1 0] a view from the rear;
@@ -52,7 +52,7 @@
 %  'mesh'     - ['on'|'off'] Display spherical mesh. {Default is 'on'}
 %  'meshdata' - [cell array|'file_name'] Mesh data in a cell array { 'vertices'
 %               data 'faces' data } or a boundary element model filename (the
-%               function will plot the 3rd mesh in the 'bnd' sub-structure).
+%               function will p300 the 3rd mesh in the 'bnd' sub-structure).
 %  'axistight' - ['on'|'off'] For MRI only, display the closest MRI
 %               slide. {Default is 'off'}
 %  'gui'      - ['on'|'off'] Display controls. {Default is 'on'} If gui 'off',
@@ -68,7 +68,7 @@
 %               in making 3-D plots {Default 'off'}
 %  'projlines' - ['on'|'off'|boolean_array] Plot lines connecting dipole with 2-D
 %                projection. This input can also be a boolean array with dimension
-%                equal to the number of dipoles to plot. [0] no projection
+%                equal to the number of dipoles to p300. [0] no projection
 %                lines plotted. [1] ploting projection lines.
 %                Color is dashed black for BESA head and dashed black for the
 %                MNI brain {Default 'off'}
@@ -82,18 +82,18 @@
 %  'dipolelength' - Length of the dipole bar(s) {Default: 1}
 %  'pointout' - ['on'|'off'] Point the dipoles outward. {Default: 'off'}
 %  'sphere'   - [float] radius of sphere corresponding to the skin. Default is 1.
-%  'spheres'  - ['on'|'off'] {default: 'off'} plot dipole markers as 3-D spheres.
+%  'spheres'  - ['on'|'off'] {default: 'off'} p300 dipole markers as 3-D spheres.
 %               Does not yet interact with gui buttons, produces non-gui mode.
 %  'spheresize' - [real>0] size of spheres (if 'on'). {default: 5}
 %  'normlen'  - ['on'|'off'] Normalize length of all dipoles. {Default: 'off'}
 %  'dipnames' - [cell array] cell array of string with a name for each dipole (or
 %               pair of dipole).
-%  'holdon'   - ['on'|'off'] create a new dipplot figure or plot dipoles within an
+%  'holdon'   - ['on'|'off'] create a new dipplot figure or p300 dipoles within an
 %               an existing figure. Default is 'off'.
 %  'camera'   - ['auto'|'set'] camera position. 'auto' is the default and
 %               an option using camera zoom. 'set' is a fixed view that
 %               does not depend on the content being plotted.
-%  'density'  - ['on'|'off'] plot dipole density instead of dipoles. {Default:
+%  'density'  - ['on'|'off'] p300 dipole density instead of dipoles. {Default:
 %               'off'}
 %
 % Outputs:
@@ -120,23 +120,23 @@
 %  sources(2).momxyz = [43 -38 -16]; % orientation for the second dipole
 %  sources(2).rv     = 0.027;          % residual variance for the second dipole
 %
-%  % plot of the two dipoles (first in green, second in blue)
+%  % p300 of the two dipoles (first in green, second in blue)
 %  dipplot( sources, 'color', { 'g' 'b' });
 %
-%  % To make a stereographic plot
+%  % To make a stereographic p300
 %  figure( 'position', [153 553 1067 421];
 %  subplot(1,3,1); dipplot( sources, 'view', [43 10], 'gui', 'off');
 %  subplot(1,3,3); dipplot( sources, 'view', [37 10], 'gui', 'off');
 %
-%  % To make a summary plot
+%  % To make a summary p300
 %  dipplot( sources, 'summary', 'on', 'num', 'on');
 %
 % See also: eeglab(), dipfit()
 
 % old options
 % -----------
-%  'std'      - [cell array] plot standard deviation of dipoles. i.e.
-%               { [1:6] [7:12] } plot two elipsoids that best fit all the dipoles
+%  'std'      - [cell array] p300 standard deviation of dipoles. i.e.
+%               { [1:6] [7:12] } p300 two elipsoids that best fit all the dipoles
 %               from 1 to 6 and 7 to 12 with radius 1 standard deviation.
 %               { { [1:6] 2 'linewidth' 2 } [7:12] } do the same but now the
 %               first elipsoid is 2 standard-dev and the lines are thicker.
@@ -195,7 +195,7 @@ if isfield(sources,'dip')
     if length(sources.dip) == 1
         varargin{end+1} = 'dipmodel';
         varargin{end+1} = 'regional';
-        %regional fit: single location, timevarying moment, plot minrv moment
+        %regional fit: single location, timevarying moment, p300 minrv moment
         nDip = size(sources.dip.pos,1);
         for i = 1:nDip
             [~,iminrv] = min(sources.dip.rv);
@@ -553,7 +553,7 @@ elseif strcmpi(g.summary, '3d')
     return;
 end
 
-% plot head graph in 3D
+% p300 head graph in 3D
 % ---------------------
 if strcmp(g.gui, 'on')
     fig = figure('visible', g.plot);
@@ -584,7 +584,7 @@ if strcmpi(g.holdon, 'off')
     axis off;
 end
 
-% plot sphere mesh and nose
+% p300 sphere mesh and nose
 % -------------------------
 if strcmpi(g.holdon, 'off')
     if isempty(g.meshdata)
@@ -718,10 +718,10 @@ for index = 1:length(sources)
         [xx,   yy,   zz]   = transform(x,   y,   z,   dat.sph2spm); % nothing happens for BEM
         [xxo1, yyo1, zzo1] = transform(xo1, yo1, zo1, dat.sph2spm); % because dat.sph2spm = []
         
-        if ~strcmpi(g.spheres,'on') % plot dipole direction lines
+        if ~strcmpi(g.spheres,'on') % p300 dipole direction lines
             h1 = line( [xx xxo1]', [yy yyo1]', [zz zzo1]');
             
-        elseif g.dipolelength>0 % plot dipole direction cylinders with end cap patch
+        elseif g.dipolelength>0 % p300 dipole direction cylinders with end cap patch
             
             [xc, yc, zc] = cylinder( 2, 10);
             [xs, ys, zs] = sphere(10);
@@ -777,7 +777,7 @@ for index = 1:length(sources)
             dipstruct.rv   = sprintf('%3.2f', sources(index).rv*100);
             dipstruct.name = g.dipnames{index};
         end
-        if ~strcmpi(g.spheres,'on') % plot disk markers
+        if ~strcmpi(g.spheres,'on') % p300 disk markers
             set(h1,'userdata',dipstruct,'tag',tag,'color','k','linewidth',g.dipolesize(index)/7.5);
             if strcmp(BACKCOLOR, 'k'), set(h1, 'color', g.color{index}); end
         end
@@ -786,7 +786,7 @@ for index = 1:length(sources)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%% draw sphere or disk marker %%%%%%%%%%%%%%%%%%%%%%%%%
         %
         hold on;
-        if strcmpi(g.spheres,'on') % plot spheres
+        if strcmpi(g.spheres,'on') % p300 spheres
             if strcmpi(g.projimg, 'on')
                 if strcmpi(g.verbose, 'on')
                     disp('Warning: projections cannot be plotted for 3-D sphere');
@@ -801,7 +801,7 @@ for index = 1:length(sources)
             end
             h = plotsphere([xx yy zz], g.dipolesize(index)/6, 'color', g.color{index});
             set(h(1), 'userdata', dipstruct, 'tag', tag);
-        else % plot dipole markers
+        else % p300 dipole markers
             h = plot3(xx,  yy,  zz);
             set(h, 'userdata', dipstruct, 'tag', tag, ...
                 'marker', '.', 'markersize', g.dipolesize(index), 'color', g.color{index});
@@ -1127,7 +1127,7 @@ a = kron(U(:,1),xc); b = kron(U(:,2),yc); c = kron(U(:,3),zc);
 data = a+b+c;  n = size(data,2);
 x = data(1:n,:)+M(1); y = data(n+1:2*n,:)+M(2); z = data(2*n+1:end,:)+M(3);
 
-% now plot the rotated ellipse
+% now p300 the rotated ellipse
 c = ones(size(z));
 sc = mesh(x,y,z);
 alpha(0.5)
@@ -1271,7 +1271,7 @@ end
 plotimgs( dat,min(max([indx indy indz],1),size(dat.imgs)), dat.transform);
 %end
 
-% plot images (transmat is the uniform matrix MRI coords -> elec coords)
+% p300 images (transmat is the uniform matrix MRI coords -> elec coords)
 % ----------------------------------------------------------------------
 function plotimgs(dat, mricoord, transmat)
 

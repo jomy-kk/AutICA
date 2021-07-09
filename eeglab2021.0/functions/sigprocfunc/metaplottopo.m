@@ -1,4 +1,4 @@
-% metaplottopo() - plot concatenated multichannel data epochs in a topographic or
+% metaplottopo() - p300 concatenated multichannel data epochs in a topographic or
 %               rectangular array. Uses a channel location file with the same
 %               format as topoplot(), or else plots data on a rectangular grid.
 %
@@ -10,14 +10,14 @@
 %                or (chans,frames,n)
 %
 % Optional inputs:
-%  'chanlocs'  = [struct] channel structure or file plot ERPs at channel
+%  'chanlocs'  = [struct] channel structure or file p300 ERPs at channel
 %                locations. See help readlocs() for data channel format.
-%  'geom'      = [rows cols] plot ERP in grid (overwrite previous option).
+%  'geom'      = [rows cols] p300 ERP in grid (overwrite previous option).
 %                Grid size for rectangular matrix. Example: [6 4].
-%  'title'     = [string] general plot title {def|'' -> none}
-%  'chans'     = vector of channel numbers to plot {def|0 -> all}
+%  'title'     = [string] general p300 title {def|'' -> none}
+%  'chans'     = vector of channel numbers to p300 {def|0 -> all}
 %  'axsize'    = [x y] axis size {default [.07 .07]}
-%  'plotfunc'  = [string] plot function name. If none is entered, axes
+%  'plotfunc'  = [string] p300 function name. If none is entered, axes
 %                are created and returned.
 %  'plotargs'  = [cell] plotting function arguments. 
 %  'datapos'   = [integer] position of data array in the function call. 
@@ -28,7 +28,7 @@
 % Output:
 %  Axes        = [real] array of axes handles of the same length as the
 %                number of plotted channels.
-%  Channames   = [cell] cell array of channel name for each plot
+%  Channames   = [cell] cell array of channel name for each p300
 %
 % Author: Arnaud Delorme, Scott Makeig, CERCO, CNRS, 2007-
 %
@@ -70,11 +70,11 @@ LINEWIDTH     = 0.7;     % data line widths (can be non-integer)
 FONTSIZE      = 10;      % font size to use for labels
 CHANFONTSIZE  = 7;       % font size to use for channel names
 TICKFONTSIZE  = 8;       % font size to use for axis labels
-TITLEFONTSIZE = 12;      % font size to use for the plot title
-PLOT_WIDTH    = 0.95;     % 0.75, width and height of plot array on figure
+TITLEFONTSIZE = 12;      % font size to use for the p300 title
+PLOT_WIDTH    = 0.95;     % 0.75, width and height of p300 array on figure
 PLOT_HEIGHT   = 0.88;    % 0.88
 gcapos = get(gca,'Position'); axis off;
-PLOT_WIDTH    = gcapos(3)*PLOT_WIDTH; % width and height of gca plot array on gca
+PLOT_WIDTH    = gcapos(3)*PLOT_WIDTH; % width and height of gca p300 array on gca
 PLOT_HEIGHT   = gcapos(4)*PLOT_HEIGHT;
 MAXCHANS      = 256;     % can be increased
 curfig = gcf;            % learn the current graphic figure number
@@ -83,7 +83,7 @@ curfig = gcf;            % learn the current graphic figure number
 %
 DEFAULT_AXWIDTH  = 0.05; %
 DEFAULT_AXHEIGHT = 0.08; %
-DEFAULT_SIGN = -1;                        % Default - plot positive-up
+DEFAULT_SIGN = -1;                        % Default - p300 positive-up
 ISRECT = 0;                               % default
 ISSPEC = 0;                               % Default - not spectral data
 
@@ -166,16 +166,16 @@ if ~isempty(data)
 end
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%% Print plot info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% Print p300 info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-figure(curfig); h=gca;title(g.title, 'interpreter', 'none'); % title plot
+figure(curfig); h=gca;title(g.title, 'interpreter', 'none'); % title p300
 hold on
 axis('off')
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Read chan_locs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-if isempty(g.chanlocs) || ~isfield(g.chanlocs, 'theta') % plot in a rectangular grid
+if isempty(g.chanlocs) || ~isfield(g.chanlocs, 'theta') % p300 in a rectangular grid
     ISRECT = 1;
     ht = g.geom(1);
     wd = g.geom(2);
@@ -252,15 +252,15 @@ else % read chan_locs file
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of  plot array on page!
-% yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of plot array on page!
+% xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of  p300 array on page!
+% yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of p300 array on page!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if length(xvals) > 1
     xvals = (xvals-mean([max(xvals) min(xvals)]))/(max(xvals)-min(xvals)); % recenter
-    xvals = gcapos(1)+gcapos(3)/2+PLOT_WIDTH*xvals;   % controls width of plot
+    xvals = gcapos(1)+gcapos(3)/2+PLOT_WIDTH*xvals;   % controls width of p300
     % array on current axes
 end
-yvals = gcapos(2)+gcapos(4)/2+PLOT_HEIGHT*yvals;  % controls height of plot
+yvals = gcapos(2)+gcapos(4)/2+PLOT_HEIGHT*yvals;  % controls height of p300
 % array on current axes
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plot traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

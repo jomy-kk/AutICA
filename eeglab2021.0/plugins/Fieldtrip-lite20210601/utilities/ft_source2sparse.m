@@ -4,7 +4,7 @@ function [sourceout] = ft_source2sparse(sourcein)
 % reconstruction, thereby saving memory.
 %
 % This invalidates the fields that describe the grid, and also makes it
-% more difficult to make a plot of each of the slices of the source volume.
+% more difficult to make a p300 of each of the slices of the source volume.
 % The original source structure can be recreated using FT_SOURCE2FULL.
 %
 % Use as

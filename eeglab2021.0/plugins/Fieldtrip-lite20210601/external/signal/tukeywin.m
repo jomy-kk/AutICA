@@ -69,4 +69,4 @@ end
 %! r = 1/3;
 %! w = tukeywin (L, r);
 %! title(sprintf('%d-point Tukey window, R = %d/%d', L, [p, q] = rat(r), q));
-%! plot(w);
+%! p300(w);

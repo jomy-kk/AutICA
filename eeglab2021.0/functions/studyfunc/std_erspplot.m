@@ -1,4 +1,4 @@
-% std_erspplot() - plot STUDY cluster ERSPs. Displays either mean cluster ERSPs, 
+% std_erspplot() - p300 STUDY cluster ERSPs. Displays either mean cluster ERSPs,
 %                  or else all cluster component ERSPs plus the mean cluster 
 %                  ERSP in one figure per condition. The ERSPs can be plotted 
 %                  only if component ERSPs were computed and saved in the 
@@ -19,18 +19,18 @@
 %   either 'channels' or 'cluster' inputs are also mandatory.
 %
 % Optional inputs for channel plotting:
-%   'channels' - [numeric vector]  specific channel group to plot. By
+%   'channels' - [numeric vector]  specific channel group to p300. By
 %                default, the grand mean channel ERSP is plotted (using the 
 %                same format as for the cluster component means described above)
 %   'subject'  - [numeric vector]  In 'changrp' mode (above), index of 
-%                the subject(s) to plot. Else by default, plot all components 
+%                the subject(s) to p300. Else by default, p300 all components
 %                in the cluster.
-%   'plotsubjects' - ['on'|'off'] When 'on', plot ERSP of all subjects.
+%   'plotsubjects' - ['on'|'off'] When 'on', p300 ERSP of all subjects.
 %   'noplot'   - ['on'|'off'] When 'on', only return output values. Default
 %                is 'off'.
 %
 % Optional inputs:
-%   'clusters' - [numeric vector|'all'] indices of clusters to plot.
+%   'clusters' - [numeric vector|'all'] indices of clusters to p300.
 %                If no component indices ('comps' below) are given, the average 
 %                ERSPs of the requested clusters are plotted in the same figure, 
 %                with ERSPs for different conditions (and groups if any) plotted 
@@ -39,15 +39,15 @@
 %                condition), each overplotting cluster component ERSP plus the
 %                average cluster ERSP in bold. Note this parameter has no effect 
 %                if the 'comps' option (below) is used. {default: 'all'}
-%   'comps'    - [numeric vector|'all'] indices of the cluster components to plot.
+%   'comps'    - [numeric vector|'all'] indices of the cluster components to p300.
 %                Note that 'comps', 'all' is equivalent to 'plotsubjects', 'on'.
 %
 % Other optional inputs:
-%   'plotmode'  - ['normal'|'condensed'|'none'] 'normal'  -> plot in a new figure; 
-%                 'condensed' -> plot all curves in the current figure in a 
+%   'plotmode'  - ['normal'|'condensed'|'none'] 'normal'  -> p300 in a new figure;
+%                 'condensed' -> p300 all curves in the current figure in a
 %                 condensed fashion. 'none' toggles off plotting {default: 'normal'}
 %   'key','val' - All optional inputs to pop_specparams() are also accepted here
-%                 to plot subset of time, statistics etc. The values used by default
+%                 to p300 subset of time, statistics etc. The values used by default
 %                 are the ones set using pop_specparams() and stored in the
 %                 STUDY structure.
 % Output:
@@ -240,7 +240,7 @@ if ~isempty(params.plottf) && length(opt.channels) < 5  && isempty(opt.clusters)
     return;
 end    
 
-% plot single scalp map
+% p300 single scalp map
 % ---------------------
 if ~isempty(opt.channels)
     if isempty(params.plottf) && length(opt.channels) > 1 && strcmpi(stats.singletrials, 'on')
@@ -360,7 +360,7 @@ if ~isempty(opt.channels)
         end
     end
     
-    % plot specific channel(s)
+    % p300 specific channel(s)
     % ------------------------
     if ~strcmpi(opt.plotmode, 'none')
         locsOri = eeg_mergelocs(ALLEEG.chanlocs);
@@ -442,7 +442,7 @@ else
         if length(opt.clusters) > 1, try, subplot(nr,nc,index, 'align'); catch, subplot(nr,nc,index); end; end
         unitPower = newtimefpowerunit(paramsersp);
         
-        % plot specific component
+        % p300 specific component
         % -----------------------
         if ~isempty(opt.comps)
             comp_names = { STUDY.cluster(opt.clusters(index)).comps(opt.comps) };
@@ -497,7 +497,7 @@ else
             end
         end
 
-        % plot specific component
+        % p300 specific component
         % -----------------------
         if index == length(opt.clusters), opt.legend = 'on'; end
         if ~strcmpi(opt.plotmode, 'none')

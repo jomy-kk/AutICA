@@ -1,5 +1,5 @@
 % imagesctc() - DEPRECATED. never completed or documented.
-% imagesctc() - imagesc in true color. Can help plot different
+% imagesctc() - imagesc in true color. Can help p300 different
 %               colormap on the same window.
 %
 % Usage: same as imagesctc

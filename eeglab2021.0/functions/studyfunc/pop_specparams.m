@@ -10,14 +10,14 @@
 %   'topofreq'   - [real] Plot Spectrum scalp maps at one specific freq. (Hz).
 %                  A frequency range [min max] may also be defined (the 
 %                  spectrum is then averaged over the interval) {default: []}
-%   'freqrange'  - [min max] spectral frequency range (in Hz) to plot. 
+%   'freqrange'  - [min max] spectral frequency range (in Hz) to p300.
 %                  {default: whole frequency range} .
 %   'ylim'       - [mindB maxdB] spectral plotting limits in dB 
 %                  {default: from data}
-%   'plotgroups' - ['together'|'apart'] 'together' -> plot subject groups 
+%   'plotgroups' - ['together'|'apart'] 'together' -> p300 subject groups
 %                  on the same figure in different colors, else ('apart') on 
 %                  different figures {default: 'apart'}
-%   'plotconditions' - ['together'|'apart'] 'together' -> plot conditions 
+%   'plotconditions' - ['together'|'apart'] 'together' -> p300 conditions
 %                  on the same figure in different colors, else ('apart') 
 %                  on different figures. Note: keywords 'plotgroups' and 
 %                  'plotconditions' cannot both be set to 'together'. 

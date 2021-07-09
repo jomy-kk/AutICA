@@ -2,7 +2,7 @@ function [lags,use_ascend,E] = perform_extraction(points_ordered,options)
 
 % PERFORM_EXTRACTION   Run lag extraction
 %
-%   Run lag extraction on a reordered raster plot (2D Image)
+%   Run lag extraction on a reordered raster p300 (2D Image)
 %
 %   SYNTAX
 %       [LAGS,USE_ASCEND,E] = PERFORM_EXTRACTION(POINTS_ORDERED,OPTIONS)

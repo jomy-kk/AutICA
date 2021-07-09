@@ -1,4 +1,4 @@
-% eeg_topoplot() - plot scalp map
+% eeg_topoplot() - p300 scalp map
 %
 % eeg_topoplot( vals, chanlocs, 'key', 'val');
 %
@@ -25,7 +25,7 @@
 %                for interpolation of the scalp map. If 'off' standard 
 %                planar inverse distance interpolation is used.
 %   'shrink'     - shrink electrode positions (default is 0.75 to be able to
-%                plot electrode at the head limit if spherical interpolation
+%                p300 electrode at the head limit if spherical interpolation
 %                is set and 0.95 for planar 2-D interpolation).
 %
 % References for spline interpolation:
@@ -37,7 +37,7 @@
 %       Retrieved March 26, 2006, from
 %       www.egi.com/Technotes/SplineInterpolation.pdf
 %
-% limitation: does not plot anything below the upper part of the head
+% limitation: does not p300 anything below the upper part of the head
 
 % Copyright (C) Arnaud Delorme, SCCN, INC, 2010
 %                                          
@@ -159,7 +159,7 @@ else
         g.headrad = max(sqrt(x.^2+y.^2));
     end
     
-    % data points for 2-D data plot
+    % data points for 2-D data p300
     % -----------------------------
     pnts = linspace(0,2*pi,200/0.25*(g.headrad.^2));
     xx = sin(pnts)*g.headrad;
@@ -196,7 +196,7 @@ else
     shading(g.shading);
     top = max(values)*1.5;
 
-	% plot level lines
+	% p300 level lines
 	% ----------------
     if strcmpi(g.contour, 'on')
         [c h] = contour3(ay, ax, a, 5);
@@ -204,7 +204,7 @@ else
     end
 end
 
-% plot electrodes as dots
+% p300 electrodes as dots
 % -----------------------
 if strcmpi(g.electrodes, 'on') || strcmpi(g.electrodes, 'labels')
     rad = sqrt(x.^2 + y.^2);
@@ -223,7 +223,7 @@ else
     plot3( -x, y, -ones(size(x))*top, 'k.', 'markersize', 0.001); 
 end
 
-% plot dipoles if any
+% p300 dipoles if any
 % -------------------
 if ~isempty(g.dipole)  
     hold on;
@@ -284,8 +284,8 @@ q = .04; % ear lengthening
 EarX  = [.497-.005  .510  .518  .5299 .5419  .54    .547   .532   .510   .489-.005]; % rmax = 0.5
 EarY  = [q+.0555 q+.0775 q+.0783 q+.0746 q+.0555 -.0055 -.0932 -.1313 -.1384 -.1199];
 
-plot3(EarX*sf,EarY*sf,ones(size(EarX))*top,'color','k','LineWidth',g.linewidth)    % plot left ear
-plot3(-EarX*sf,EarY*sf,ones(size(EarY))*top,'color','k','LineWidth',g.linewidth)   % plot right ear
+plot3(EarX*sf,EarY*sf,ones(size(EarX))*top,'color','k','LineWidth',g.linewidth)    % p300 left ear
+plot3(-EarX*sf,EarY*sf,ones(size(EarY))*top,'color','k','LineWidth',g.linewidth)   % p300 right ear
 plot3([basex;tiphw;0;-tiphw;-basex]*sf,[base;tip-tipr;tip;tip-tipr;base]*sf,top*ones(size([basex;tiphw;0;-tiphw;-basex])),'color','k','LineWidth',g.linewidth);
 
 % axis limits

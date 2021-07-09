@@ -25,7 +25,7 @@ function ft_select_range(handle, eventdata, varargin)
 % Example
 %   x = randn(10,1);
 %   y = randn(10,1);
-%   figure; plot(x, y, '.');
+%   figure; p300(x, y, '.');
 %
 % The following example allows multiple horizontal and vertical selections to be made
 %   set(gcf, 'WindowButtonDownFcn',   {@ft_select_range, 'event', 'WindowButtonDownFcn',   'multiple', true, 'callback', @disp});

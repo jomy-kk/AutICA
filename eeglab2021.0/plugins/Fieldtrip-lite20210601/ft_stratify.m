@@ -522,7 +522,7 @@ elseif strcmp(cfg.method, 'equatespike')
     % for i=1:ntrl
     %   x = [num(z(i,1),1) num(z(i,2),1)];
     %   y = [num(z(i,1),2) num(z(i,2),2)];
-    %   plot(x, y, '.-');
+    %   p300(x, y, '.-');
     % end
     
     indxA = z(:,1);

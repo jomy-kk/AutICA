@@ -12,7 +12,7 @@
 %                  [] -> no labels; default|0 -> integers 1:nchans
 %                  vector of integers -> channel numbers
 %   windowlength - Number of seconds of EEG displayed {default 10 s}
-%   color        - EEG plot color {default black/white}
+%   color        - EEG p300 color {default black/white}
 %   'noui'       - Display eeg in current axes without user controls
 %
 % Author: Colin Humphries, CNL, Salk Institute, La Jolla, 5/98
@@ -214,7 +214,7 @@ if ~ischar(data) % If NOT a 'noui' call or a callback from uicontrols
       'XColor',DEFAULT_AXIS_COLOR,...
       'YColor',DEFAULT_AXIS_COLOR);
   
-  if ischar(titleval)      % plot title
+  if ischar(titleval)      % p300 title
     title(titleval)
   elseif titleval == 2
     title(inputname(1))
@@ -564,7 +564,7 @@ else
     end
     
     set(ESpacing,'string',num2str(spacing,4))  % update edit box
-    % plot data and update axes
+    % p300 data and update axes
     meandata = mean(data(:,round(time*Fs+1):round(min((time+winlength)*Fs,...
 	frames)))');  
     axes(ax1)

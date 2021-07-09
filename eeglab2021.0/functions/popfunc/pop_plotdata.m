@@ -1,18 +1,18 @@
 % pop_plotdata() - Plot average of EEG channels or independent components in
-%                  a rectangular array. Else, (over)plot single trials.
+%                  a rectangular array. Else, (over)p300 single trials.
 % Usage:
 %   >> avg = pop_plotdata(EEG, typeplot, indices, trials, title, singletrials, ydir, ylimits);
 %
 % Inputs:
 %   EEG        - Input dataset 
-%   typeplot   - Type data to plot (1=channels, 0=components) {Default:1}
-%   indices    - Array of channels (or component) indices to plot 
+%   typeplot   - Type data to p300 (1=channels, 0=components) {Default:1}
+%   indices    - Array of channels (or component) indices to p300
 %                     {Default: all}
 %   trials     - Array of trial indices. sum specific trials in the average 
 %                     {Default: all}
 %   title      - Plot title. {Default: []}.
 %   singletrials - [0|1], Plot average or overplot single trials 
-%                      0 plot average, 1 plot single trials {Default: 0}
+%                      0 p300 average, 1 p300 single trials {Default: 0}
 %   ydir       - [1|-1] y-axis polarity (pos-up = 1; neg-up = -1) 
 %                {def command line-> pos-up; def GUI-> neg-up}
 %   ylimits    - [ymin ymax] plotting limits {default [0 0] -> data range}
@@ -77,7 +77,7 @@ if exist('plottitle') ~= 1
 end
 
 if nargin <3
-	if typeplot % plot signal channels
+	if typeplot % p300 signal channels
 		result = inputdlg2({  'Channel number(s):'  ...
                                       'Plot title:'  ...
                                       'Vertical limits ([0 0]-> data range):' ...
@@ -85,7 +85,7 @@ if nargin <3
                                   'Channel ERPs in rect. array -- pop_plotdata()', 1, ...
                                    {['1:' int2str(EEG.nbchan)] [fastif(isempty(EEG.setname), '',[EEG.setname ' ERP'])] ['0 0'] }, ...
                                    'pop_plotdata' );
-	else % plot components
+	else % p300 components
 		result = inputdlg2({  'Component number(s):' ...
                                       'Plot title:' ...
                                       'Vertical limits ([0 0]-> data range):' ...
@@ -148,7 +148,7 @@ else
 end
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%% make the plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% make the p300 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 sigtmp = reshape( sigtmp, size(sigtmp,1),  size(sigtmp,2)*size(sigtmp,3));
 ymin = ylimits(1);

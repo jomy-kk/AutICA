@@ -188,7 +188,7 @@ end
 Iint2d = Iint2d + Iint2d';
 
 figure
-% plot interaction information
+% p300 interaction information
 subplot(1,2,1)
 imagesc(inttime,inttime,Iint2d)
 colormap parula
@@ -199,7 +199,7 @@ axis square
 xlabel('Time (ms)')
 ylabel('Time (ms)')
 title('Interaction information (bits)')
-% plot redundancy only for more detailed view
+% p300 redundancy only for more detailed view
 subplot(1,2,2)
 red2d = -Iint2d;
 imagesc(inttime,inttime,red2d);

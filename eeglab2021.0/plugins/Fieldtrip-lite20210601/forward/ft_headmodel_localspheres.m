@@ -109,7 +109,7 @@ if istrue(feedback)
   drawnow
 end
 
-% plot all channels and headshape points
+% p300 all channels and headshape points
 if istrue(feedback)
   cla
   ft_plot_sens(grad);

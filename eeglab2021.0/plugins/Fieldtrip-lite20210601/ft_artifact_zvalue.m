@@ -997,10 +997,10 @@ str = sprintf('trial %3d of %d, channel %s', trlop, size(trl,1), hdr.label{chani
 fprintf('showing %s\n', str);
 
 %-----------------------------
-% plot summary in left subplot
+% p300 summary in left subplot
 subplot(opt.h1); hold on;
 
-% plot as a blue line only once
+% p300 as a blue line only once
 if isempty(get(opt.h1, 'children'))
   for k = 1:opt.numtrl
     xval = opt.trl(k,1):opt.trl(k,2);
@@ -1016,7 +1016,7 @@ if isempty(get(opt.h1, 'children'))
 end
 h1children = get(opt.h1, 'children');
 
-% plot trial box
+% p300 trial box
 boxhandle = findall(h1children, 'displayname', 'highlight');
 if isempty(boxhandle)
   % draw it
@@ -1039,7 +1039,7 @@ else
   set(boxhandle,  'YData', yval);
 end
 
-% plot as red lines the suprathreshold data points
+% p300 as red lines the suprathreshold data points
 thrhandle = findall(h1children, 'displayname', 'reddata');
 if isempty(thrhandle)
   % they have to be drawn
@@ -1083,7 +1083,7 @@ else
   selpad = sel;
 end
 
-% plot data of most aberrant channel in upper subplot
+% p300 data of most aberrant channel in upper subplot
 subplot(opt.h2); hold on
 if isempty(get(opt.h2, 'children'))
   % do the plotting
@@ -1121,7 +1121,7 @@ else
   xlim([xval(1) xval(end)]);
 end
 
-% plot z-values in lower subplot
+% p300 z-values in lower subplot
 subplot(opt.h3); hold on;
 if isempty(get(opt.h3, 'children'))
   % do the plotting

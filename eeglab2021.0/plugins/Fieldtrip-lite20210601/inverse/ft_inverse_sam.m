@@ -233,7 +233,7 @@ for i=1:size(sourcemodel.pos,1)
         opt_vox_or  = (MDip/MagDip)';
         
         % figure
-        % plot(all_angles, all_costfun_val, 'k-'); hold on; plot(opt_angle, fval, 'g*')
+        % p300(all_angles, all_costfun_val, 'k-'); hold on; p300(opt_angle, fval, 'g*')
         % drawnow
         
       case 'gareth'

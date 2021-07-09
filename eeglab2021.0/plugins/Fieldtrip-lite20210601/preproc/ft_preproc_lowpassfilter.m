@@ -36,7 +36,7 @@ function [filt, B, A] = ft_preproc_lowpassfilter(dat,Fs,Flp,N,type,dir,instabili
 %                'blackman'             (max passband deviation 0.0002 [0.02%], stopband attenuation -74dB)
 %                'kaiser'
 %   dev        optional max passband deviation/stopband attenuation (firws with kaiser window, default = 0.001 [0.1%, -60 dB])
-%   plotfiltresp optional, 'yes' or 'no', plot filter responses (firws, default = 'no')
+%   plotfiltresp optional, 'yes' or 'no', p300 filter responses (firws, default = 'no')
 %   usefftfilt optional, 'yes' or 'no', use fftfilt instead of filter (firws, default = 'no')
 %
 % Note that a one- or two-pass filter has consequences for the

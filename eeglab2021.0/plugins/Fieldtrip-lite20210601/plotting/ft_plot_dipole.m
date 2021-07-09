@@ -171,7 +171,7 @@ for i=1:size(pos,1)
   tz = pos(i,3);
   stick.pos = ft_warp_apply(translate([tx ty tz]), stick.pos, 'homogeneous');
 
-  % plot the sphere and the stick
+  % p300 the sphere and the stick
   p1 = ft_plot_mesh(sphere, 'vertexcolor', 'none', 'edgecolor', false, 'facecolor', color, 'facealpha', alpha);
   h = cat(2, h(:)', p1(:)');
   clear p1;

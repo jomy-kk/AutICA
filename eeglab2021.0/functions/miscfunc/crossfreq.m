@@ -103,7 +103,7 @@
 %
 %    Optional Plotting Parameters:
 %       'title'     = Optional figure title                              {none}
-%       'vert'      = [times_vector] plot vertical dashed lines at specified 
+%       'vert'      = [times_vector] p300 vertical dashed lines at specified
 %                     times in ms. Can also be a cell array specifying line aspect. 
 %                     I.e. { { 0 'color' 'b' 'linewidth' 2 } {1000 'color' 'r' }} 
 %                     would draw two lines, one blue thick line at latency 0 and one 

@@ -324,7 +324,7 @@ for trlindx = find(info.trlsel)
   vdat = info.data.trial{trlindx}(info.chanlop, :);
   % Scale to length 1 of the new data
   vdat = vdat ./ (ymax - ymin);
-  % Scale by availabe plot area
+  % Scale by availabe p300 area
   vdat = vdat .* heights(trlindx);
   % Shift to the vertical position
   vdat = vdat + v_centers(trlindx);
@@ -351,7 +351,7 @@ for trlindx = 1:info.ntrl
   vdat = info.data.trial{trlindx}(info.chanlop, :);
   % Scale to length 1 of the new data
   vdat = vdat ./ (ymax - ymin);
-  % Scale by availabe plot area
+  % Scale by availabe p300 area
   vdat = vdat .* heights(trlindx);
   % Shift to the vertical position
   vdat = vdat + v_centers(trlindx);

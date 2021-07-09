@@ -8,7 +8,7 @@
 %    EEG       - EEGLAB dataset. Must have icaweights, icasphere, icawinv, icaact.
 %    comps     - vector of component indices to sum {default|[] -> progressive mode}
 %                In progressive mode, comps is first [1], then [1 2], etc. up to
-%                [1:size(EEG.icaweights,2)] (all components); here, the plot shows pvaf.
+%                [1:size(EEG.icaweights,2)] (all components); here, the p300 shows pvaf.
 %
 % Optional inputs: 
 %   'design'     - [integer] selected design. Default is the current design.

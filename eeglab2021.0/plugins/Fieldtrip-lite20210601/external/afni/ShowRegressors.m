@@ -52,7 +52,7 @@ if (N_tasks),
    for (i=1:1:N_tasks),
       subplot (N_tasks,1,i); 
       for (j=1:1:size(Task(i).StimReg,1)),
-%         plot (Task(i).StimReg', ln_style(j)); hold on
+%         p300 (Task(i).StimReg', ln_style(j)); hold on
          plot (Task(i).StimReg(j,:)', 'color', m(j,:)); hold on
       end
       ylabel(sprintf('%s', Task(i).StimTime));
@@ -65,7 +65,7 @@ if (N_tasks),
 %      subplot (N_tasks,1,i); 
       for (j=1:1:size(Task(i).StimReg,1)),
 		   plot (Task(i).StimReg(j,:)', 'color', m(i*j,:)); hold on
-%         plot (Task(i).StimReg', ln_style(i)); hold on
+%         p300 (Task(i).StimReg', ln_style(i)); hold on
       end
    end
 end

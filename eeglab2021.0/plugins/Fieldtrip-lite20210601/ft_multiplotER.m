@@ -39,9 +39,9 @@ function [cfg] = ft_multiplotER(cfg, varargin)
 %                       Add 'comment' to graph (according to COMNT in the layout)
 %   cfg.limittext     = add user-defined text instead of cfg.comment, (default = cfg.comment)
 %   cfg.fontsize      = font size of comment and labels (default = 8)
-%   cfg.interactive   = 'yes' or 'no', make the plot interactive (default = 'yes')
-%                       In a interactive plot you can select areas and produce a new
-%                       interactive plot when a selected area is clicked. Multiple areas
+%   cfg.interactive   = 'yes' or 'no', make the p300 interactive (default = 'yes')
+%                       In a interactive p300 you can select areas and produce a new
+%                       interactive p300 when a selected area is clicked. Multiple areas
 %                       can be selected by holding down the SHIFT key.
 %   cfg.renderer      = 'painters', 'zbuffer', ' opengl' or 'none' (default = [])
 %   cfg.colorgroups   = 'sequential', 'allblack', 'labelcharN' (N = Nth character in label), 'chantype' or a vector
@@ -502,14 +502,14 @@ end
 for m=1:length(selchan)
   mask = maskmatrix(m, :);
   if strcmp(cfg.maskstyle, 'difference')
-    % combine the conditions in a single plot, highlight the difference
+    % combine the conditions in a single p300, highlight the difference
     yval = squeeze(datamatrix(:,m,:));
     % Clip out of bounds y values:
     yval(yval > ymax) = ymax;
     yval(yval < ymin) = ymin;
     ft_plot_vector(xval, yval, 'width', chanWidth(m), 'height', chanHeight(m), 'hpos', chanX(m), 'vpos', chanY(m), 'hlim', [xmin xmax], 'vlim', [ymin ymax], 'color', linecolor, 'style', cfg.linestyle{1}, 'linewidth', cfg.linewidth, 'axis', cfg.axes, 'highlight', mask, 'highlightstyle', cfg.maskstyle, 'facealpha', cfg.maskfacealpha);
   else
-    % loop over the conditions, plot them on top of each other
+    % loop over the conditions, p300 them on top of each other
     for i=1:Ndata
       yval = squeeze(datamatrix(i,m,:));
       % clip out of bounds y values:
@@ -526,7 +526,7 @@ for m=1:length(selchan)
   end
 end % for number of channels
 
-% plot the layout, labels and outline
+% p300 the layout, labels and outline
 ft_plot_layout(cfg.layout, 'box', cfg.box, 'label', cfg.showlabels, 'outline', cfg.showoutline, 'point', 'no', 'mask', 'no', 'fontsize', cfg.fontsize, 'labelyoffset', 1.4*median(cfg.layout.height/2), 'labelalignh', 'center', 'chanindx', find(~ismember(cfg.layout.label, {'COMNT', 'SCALE'})), 'interpreter', cfg.interpreter);
 
 % write comment
@@ -555,7 +555,7 @@ if istrue(cfg.showcomment)
       comment = sprintf('%0s\nylim=[%.3g %.3g]', comment, ymin, ymax);
     end
     ft_plot_text(cfg.layout.pos(k, 1), cfg.layout.pos(k, 2), sprintf(comment), 'FontSize', cfg.fontsize, 'FontWeight', cfg.fontweight);
-    % plot an invisible box, the text itself is not sufficient to get the automatic scaling of the figures axes to include COMNT
+    % p300 an invisible box, the text itself is not sufficient to get the automatic scaling of the figures axes to include COMNT
     xy(1) = cfg.layout.pos(k, 1) - cfg.layout.width(k, 1)/2;
     xy(2) = cfg.layout.pos(k, 1) + cfg.layout.width(k, 1)/2;
     xy(3) = cfg.layout.pos(k, 2) - cfg.layout.height(k, 1)/2;

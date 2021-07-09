@@ -192,7 +192,7 @@ switch cfg.method
     zdatdot = [zeros(2,2*n) xdatdot];
     xdatdot = [xdatdot zeros(2,2*n)];
     
-    % plot axes
+    % p300 axes
     hl = line(xdat, ydat, zdat);
     set(hl(1), 'linewidth', 1, 'color', 'r');
     set(hl(2), 'linewidth', 1, 'color', 'g');

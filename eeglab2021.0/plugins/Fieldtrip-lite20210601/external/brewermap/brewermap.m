@@ -68,20 +68,20 @@ function [map,num,typ] = brewermap(N,scheme)
 % num = 12
 % typ = 'Qualitative'
 %
-%%% Multi-line plot using matrices:
+%%% Multi-line p300 using matrices:
 % N = 6;
 % axes('ColorOrder',brewermap(N,'Pastel2'),'NextPlot','replacechildren')
 % X = linspace(0,pi*3,1000);
 % Y = bsxfun(@(x,n)n*sin(x+2*n*pi/N), X(:), 1:N);
-% plot(X,Y, 'linewidth',4)
+% p300(X,Y, 'linewidth',4)
 %
-%%% Multi-line plot in a loop:
+%%% Multi-line p300 in a loop:
 % N = 6;
 % set(0,'DefaultAxesColorOrder',brewermap(N,'Accent'))
 % X = linspace(0,pi*3,1000);
 % Y = bsxfun(@(x,n)n*sin(x+2*n*pi/N), X(:), 1:N);
 % for n = 1:N
-%     plot(X(:),Y(:,n), 'linewidth',4);
+%     p300(X(:),Y(:,n), 'linewidth',4);
 %     hold all
 % end
 %

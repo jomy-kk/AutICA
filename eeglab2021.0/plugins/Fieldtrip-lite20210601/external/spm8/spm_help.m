@@ -242,7 +242,7 @@ WS     = [S(3)/600 S(4)/865 S(3)/600 S(4)/865];  %-Window scaling factors
 %FS    = spm('FontSizes');            %-Scaled font sizes
 PF     = spm_platform('fonts');       %-Font names (for this platform)
 SPMver = spm('Ver');                  %-SPM version
-O      = [170 050 000 000].*WS;       %-Offset for MenuWin plot
+O      = [170 050 000 000].*WS;       %-Offset for MenuWin p300
 
 %-Button to emulate window title bar, frames to emulate window
 %-----------------------------------------------------------------------

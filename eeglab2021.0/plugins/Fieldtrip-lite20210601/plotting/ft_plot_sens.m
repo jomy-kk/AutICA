@@ -18,19 +18,19 @@ function hs = ft_plot_sens(sens, varargin)
 %   'fontweight'      =
 %
 % The following options apply to MEG magnetometers and/or gradiometers
-%   'coil'            = true/false, plot each individual coil (default = false)
-%   'orientation'     = true/false, plot a line for the orientation of each coil (default = false)
+%   'coil'            = true/false, p300 each individual coil (default = false)
+%   'orientation'     = true/false, p300 a line for the orientation of each coil (default = false)
 %   'coilshape'       = 'point', 'circle', 'square', 'sphere', or 'disc' (default is automatic)
 %   'coilsize'        = diameter or edge length of the coils (default is automatic)
 % The following options apply to EEG electrodes
-%   'elec'            = true/false, plot each individual electrode (default = false)
-%   'orientation'     = true/false, plot a line for the orientation of each electrode (default = false)
+%   'elec'            = true/false, p300 each individual electrode (default = false)
+%   'orientation'     = true/false, p300 a line for the orientation of each electrode (default = false)
 %   'elecshape'       = 'point', 'circle', 'square', 'sphere', or 'disc' (default is automatic)
 %   'elecsize'        = diameter of the electrodes (default is automatic)
 %   'headshape'       = headshape, required for elecshape 'disc'
 % The following options apply to NIRS optodes
-%   'opto'            = true/false, plot each individual optode (default = false)
-%   'orientation'     = true/false, plot a line for the orientation of each optode (default = false)
+%   'opto'            = true/false, p300 each individual optode (default = false)
+%   'orientation'     = true/false, p300 a line for the orientation of each optode (default = false)
 %   'optoshape'       = 'point', 'circle', 'square', 'sphere', or 'disc' (default is automatic)
 %   'optosize'        = diameter of the optodes (default is automatic)
 %
@@ -612,7 +612,7 @@ if isempty(mesh.poly)
   mesh = rmfield(mesh, 'poly');
 end
 
-% plot all polygons together
+% p300 all polygons together
 ft_plot_mesh(mesh, varargin{:});
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

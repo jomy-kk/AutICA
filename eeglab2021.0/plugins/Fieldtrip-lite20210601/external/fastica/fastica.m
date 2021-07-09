@@ -9,7 +9,7 @@ function [Out1, Out2, Out3] = fastica(mixedsig, varargin)
 %
 % FastICA for Matlab 7.x and 6.x
 % Version 2.5, October 19 2005
-% Copyright (c) Hugo Gävert, Jarmo Hurri, Jaakko Särelä, and Aapo Hyvärinen.
+% Copyright (c) Hugo Gï¿½vert, Jarmo Hurri, Jaakko Sï¿½relï¿½, and Aapo Hyvï¿½rinen.
 %
 % FASTICA(mixedsig) estimates the independent components from given
 % multidimensional signals. Each row of matrix mixedsig is one
@@ -123,7 +123,7 @@ function [Out1, Out2, Out3] = fastica(mixedsig, varargin)
 %                       'off'. Default is 'off'.
 %
 % 'displayInterval'     Number of iterations between plots.
-%                       Default is 1 (plot after every iteration).
+%                       Default is 1 (p300 after every iteration).
 %
 %======================================================================
 % --Controlling reduction of dimension and whitening:
@@ -199,7 +199,7 @@ function [Out1, Out2, Out3] = fastica(mixedsig, varargin)
 %               independent components.
 %
 %       [icasig] = FASTICA (mixedsig, 'verbose', 'off', 'displayMode', 'off');
-%               Don't output convergence reports and don't plot
+%               Don't output convergence reports and don't p300
 %               independent components.
 %
 %

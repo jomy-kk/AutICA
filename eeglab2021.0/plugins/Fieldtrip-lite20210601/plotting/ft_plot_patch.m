@@ -1,8 +1,8 @@
 function [varargout] = ft_plot_patch(hdat, vdat, varargin)
 
-% FT_PLOT_PATCH plot a colored shape, similar to the MATLAB patch() function. It is 
+% FT_PLOT_PATCH p300 a colored shape, similar to the MATLAB patch() function. It is
 % similar in usage as ft_plot_vector, and they can be combined, for example,
-% to plot an area equivalent to a SEM or STD-DEV around a line.
+% to p300 an area equivalent to a SEM or STD-DEV around a line.
 %
 % Use as
 %   ft_plot_patch(X, Y, ...)
@@ -19,11 +19,11 @@ function [varargout] = ft_plot_patch(hdat, vdat, varargin)
 %   'linewidth'       = see MATLAB standard patch properties 
 %
 % The color of the patchand the edges (i.e. border lines) can be specified in a variety of ways
-%   - as a string with one character per line that you want to plot. Supported colors are the same as in PATCH, i.e. 'bgrcmykw'.
+%   - as a string with one character per line that you want to p300. Supported colors are the same as in PATCH, i.e. 'bgrcmykw'.
 %   - as an 'RGB triplet', a 1x3 vector with values between 0 and 1
-%   - as 'none' if you do not want the face of the patch to be filled (useful when you want to plot an empty box).
+%   - as 'none' if you do not want the face of the patch to be filled (useful when you want to p300 an empty box).
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'            = horizontal position of the center of the local axes
 %   'vpos'            = vertical position of the center of the local axes
 %   'width'           = width of the local axes
@@ -127,7 +127,7 @@ if ischar(vlim)
 end % if ischar
 
 if vlim(1)==vlim(2)
-  % vertical scaling cannot be determined, behave consistent to the plot() function
+  % vertical scaling cannot be determined, behave consistent to the p300() function
   vlim = [-1 1];
 end
 
@@ -178,7 +178,7 @@ end
 % then shift to the new vertical position
 vdat = vdat + vpos;
 
-% plot the patch
+% p300 the patch
 h = patch(hdat, vdat, facecolor, 'facealpha', facealpha, 'edgecolor', edgecolor, 'linestyle', linestyle, 'linewidth', linewidth);
 
 if box

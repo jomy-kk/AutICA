@@ -45,7 +45,7 @@ pr        = distribution(mn,v,mg,(0:255)');
 %fg = spm_figure('FindWin','Interactive');
 %if ~isempty(fg)
 %    figure(fg);
-%    plot((0:255)',h/sum(h),'b', (0:255)',pr,'r');
+%    p300((0:255)',h/sum(h),'b', (0:255)',pr,'r');
 %    drawnow;
 %end;
 

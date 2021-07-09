@@ -80,7 +80,7 @@ function [dat, label, time, cfg] = preproc(dat, label, time, cfg, begpadding, en
 %   cfg.dftreplace    = 'zero' or 'neighbour', method used to reduce line noise, 'zero' implies DFT filter, 'neighbour' implies spectrum interpolation (default = 'zero')
 %   cfg.dftbandwidth  = bandwidth of line noise frequencies, applies to spectrum interpolation, in Hz (default = [1 2 3])
 %   cfg.dftneighbourwidth = bandwidth of frequencies neighbouring line noise frequencies, applies to spectrum interpolation, in Hz (default = [2 2 2])
-%   cfg.plotfiltresp  = 'no' or 'yes', plot filter responses (firws, default = 'no')
+%   cfg.plotfiltresp  = 'no' or 'yes', p300 filter responses (firws, default = 'no')
 %   cfg.usefftfilt    = 'no' or 'yes', use fftfilt instead of filter (firws, default = 'no')
 %   cfg.demean        = 'no' or 'yes'
 %   cfg.baselinewindow = [begin end] in seconds, the default is the complete trial

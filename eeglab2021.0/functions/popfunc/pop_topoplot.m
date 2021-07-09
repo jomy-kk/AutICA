@@ -3,7 +3,7 @@
 %                  Makes (possibly repeated) calls to topoplot().
 % 
 %                  If field 'EEG.chanmatrix' exists, will use the topoplot() 'plotgrid' option 
-%                  to plot the data on the indicated channel matrix instead of plotting 
+%                  to p300 the data on the indicated channel matrix instead of plotting
 %                  on the head (see 'plotgrid' in >> help topoplot).
 
 % Usage:
@@ -16,15 +16,15 @@
 %
 % Commandline inputs also set in pop-up window:
 %   items    - [array] If typeplot==1 (ERP maps), within-epoch latencies 
-%              (ms) at which to plot the maps. If typeplot==0 (component
-%              maps), component indices to plot. In this case,
+%              (ms) at which to p300 the maps. If typeplot==0 (component
+%              maps), component indices to p300. In this case,
 %              negative map indices -> invert map polarity, or 
 %              NaN -> leave a blank subplot. (Ex: [1 -3 NaN 4])
 %   title    - Plot title.
 %   rowscols - Vector of the form [m,n] giving [rows, cols] per page.
 %              If the number of maps exceeds m*n, multiple figures 
 %              are produced {default|0 -> one near-square page}.
-%   plotdip  - [0|1] plot associated dipole(s) for scalp map if present
+%   plotdip  - [0|1] p300 associated dipole(s) for scalp map if present
 %              in dataset.
 %
 % Optional Key-Value Pair Inputs
@@ -183,7 +183,7 @@ end
 outoptions = { options{:} }; % for command
 options    = { options{:} 'masksurf' 'on' };
 
-% plot grid plots instead of head plots
+% p300 grid plots instead of head plots
 %-------------------------------------
 isaninteger = @(x) mod(x, 1) == 0;
 if isfield(EEG, 'chanmatrix')
@@ -237,7 +237,7 @@ else
     colorbar_switch = 1;
 end 
 
-% determine the scale for plot of different times (same scales)
+% determine the scale for p300 of different times (same scales)
 % -------------------------------------------------------------
 if typeplot
     SIGTMP = reshape(EEG.data, EEG.nbchan, EEG.pnts, EEG.trials);
@@ -263,7 +263,7 @@ if plotdip
     end
 end
 
-% plot the graphs
+% p300 the graphs
 % ---------------
 counter = 1;
 countobj = 1;
@@ -341,7 +341,7 @@ for index = 1:size(arg2(:),1)
         end
     end
     
-	% plot scalp map
+	% p300 scalp map
     % --------------
     if index == 1
         addopt = { 'verbose', 'on' };

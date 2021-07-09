@@ -6,7 +6,7 @@
 %   ALLEEG      - array of datasets
 %   datasetlist - list of datasets
 %   chansubset  - vector of channel subset
-%   title       - plot title
+%   title       - p300 title
 %
 % Author: Arnaud Delorme, CNL / Salk Institute, 2001
 %

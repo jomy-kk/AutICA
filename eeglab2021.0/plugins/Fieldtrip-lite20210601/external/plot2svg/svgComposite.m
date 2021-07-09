@@ -4,7 +4,7 @@ function svgComposite(s, source1, source2, operator, result, k)
 %
 % svgComposite(s, source1, source2, operator, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   source1 : Any previous defined filter result string, 'SourceGraphic',
 %             or 'SourceAlpha'.
 %   source2 : Any previous defined filter result string, 'SourceGraphic',

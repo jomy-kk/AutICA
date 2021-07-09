@@ -192,7 +192,7 @@ end
 % provide initial feedback
 
 if feedback
-  % plot the initial singular values
+  % p300 the initial singular values
   figure
   semilogy(1:m, s, 'o-');
   hold on
@@ -244,11 +244,11 @@ end
 if feedback
   abc = axis;
   if ~isempty(tolerance) && tolerance>0
-    % plot a horizontal line indicating the tolerance
+    % p300 a horizontal line indicating the tolerance
     plot(abc([1 2]), tolerance.*[1 1], 'g');
   end
   if ~isempty(kappa) && kappa<m
-    % plot a vertical line indicating kappa truncation
+    % p300 a vertical line indicating kappa truncation
     plot(kappa.*[1 1], abc([3 4]), 'r');
   end
   axis(abc);

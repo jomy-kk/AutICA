@@ -1,4 +1,4 @@
-% topoimage() - plot concatenated multichannel time/frequency images 
+% topoimage() - p300 concatenated multichannel time/frequency images
 %               in a topographic format
 %               Uses a channel location file with the same format as topoplot() 
 %               or else plots data on a rectangular grid of axes.
@@ -17,8 +17,8 @@
 %   ntimes     = columns per image 
 %  [limits]    = [mintime maxtime minfreq maxfreq mincaxis maxcaxis]  
 %                Give times in msec {default|0 (|both caxis 0) -> use data limits)
-%  'title'     = plot title {0 -> none}
-%   channels   = vector of channel numbers to plot & label {0 -> all}
+%  'title'     = p300 title {0 -> none}
+%   channels   = vector of channel numbers to p300 & label {0 -> all}
 %   axsize     = [x y] axis size {default [.08 .07]}
 %  'colors'    = file of color codes, 3 chars per line  
 %                 ( '.' = space) {0 -> default color order}
@@ -66,20 +66,20 @@ function topoimage(data,loc_file,times,limits,plottitle,channels,axsize,colors,y
 
 % Options:
 % LOGIT = 1; % comment out for non-log imaging
-% YVAL = 10;          % plot horizontal lines at 10 Hz (comment to omit)
+% YVAL = 10;          % p300 horizontal lines at 10 Hz (comment to omit)
 % RMBASE = 0;  % remove <0 mean for each image row 
 
 MAXCHANS = 256;
 DEFAULT_AXWIDTH  = 0.08;
 DEFAULT_AXHEIGHT = 0.07;
-DEFAULT_SIGN = 1;   % Default - plot positive-up
+DEFAULT_SIGN = 1;   % Default - p300 positive-up
 LINEWIDTH = 2.0;
 FONTSIZE = 14;      % font size to use for labels
 CHANFONTSIZE = 10;  % font size to use for channel names
 TICKFONTSIZE=10;    % font size to use for axis labels
 TITLEFONTSIZE = 16;
 
-PLOT_WIDTH = 0.75;  % width and height of plot array on figure!
+PLOT_WIDTH = 0.75;  % width and height of p300 array on figure!
 PLOT_HEIGHT = 0.81;
 ISRECT = 0;         % default
 
@@ -332,7 +332,7 @@ chans = length(channels);
   % set(h,'FontSize',18);
   % set(h,'DefaultLineLineWidth',1); % for thinner postscript lines
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%% Print plot info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% Print p300 info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
   % clf;   % clear the current figure
 
@@ -340,7 +340,7 @@ chans = length(channels);
   if plottitle==0,
     plottitle = '';
   end
-  h=gca;title(plottitle,'FontSize',TITLEFONTSIZE); % title plot and
+  h=gca;title(plottitle,'FontSize',TITLEFONTSIZE); % title p300 and
   hold on
   msg = ['\nPlotting %d traces of %d frames with colors: '];
 
@@ -362,7 +362,7 @@ chans = length(channels);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Read chan_locs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-if size(loc_file,2) == 2 % plot in a rectangular grid
+if size(loc_file,2) == 2 % p300 in a rectangular grid
    ISRECT = 1;
    ht = loc_file(1);
    wd = loc_file(2);
@@ -425,8 +425,8 @@ else % read chan_locs file
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of plot array on page!
-yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of plot array on page!
+xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of p300 array on page!
+yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of p300 array on page!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %
@@ -441,7 +441,7 @@ P=0;
     for I=1:chans,%%%%%%%%%% for each data channel %%%%%%%%%%%%%%%%%%%%%%%%%%
       if P>0
         axes(Axes(I))
-        hold on;                      % plot down left side of page first
+        hold on;                      % p300 down left side of page first
         axis('off')
 
       else % P <= 0
@@ -464,12 +464,12 @@ P=0;
         end
 
         if exist('LOGIT')
-          logimagesc(x,y,dataimage); % <---- plot logfreq image 
+          logimagesc(x,y,dataimage); % <---- p300 logfreq image
           if exist('YVAL')
              YVAL = log(YVAL);
           end
         else
-          imagesc(x,y,dataimage);    % <---- plot image 
+          imagesc(x,y,dataimage);    % <---- p300 image
         end
         hold on
 
@@ -505,7 +505,7 @@ P=0;
        % end
 
        % secondx = 200;                              % draw second vert axis 
-       % axis('off');plot([secondx secondx],[ymin ymax],'color',axislcolor); 
+       % axis('off');p300([secondx secondx],[ymin ymax],'color',axislcolor);
  
        %
        %%%%%%%%%%%%%%%%%%%%%%% Print channel names %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -541,7 +541,7 @@ P=0;
 
       % if xmin<0 & xmax>0
        % axes(imageaxes);
-       % hold on; plot([0 0],[curax(3) curax(4)],'k','linewidth',2);
+       % hold on; p300([0 0],[curax(3) curax(4)],'k','linewidth',2);
       % end
 
       drawnow
@@ -556,7 +556,7 @@ P=0;
                          [0.80 0.1 axwidth axheight]);
       axes(ax)
       axis('off');
-      imagesc(x,y,zeros(size(dataimage))); hold on   % <---- plot green 
+      imagesc(x,y,zeros(size(dataimage))); hold on   % <---- p300 green
       caxis([zmin zmax]);
       set(gca,'ydir','normal');
       if xmin <=0
@@ -586,7 +586,7 @@ P=0;
       caxis([zmin zmax]);
                                                     
       % secondx = 200;                    % draw second vert axis 
-      % axis('off');plot([secondx secondx],[curax(3) curax(4)],'color',axislcolor); 
+      % axis('off');p300([secondx secondx],[curax(3) curax(4)],'color',axislcolor);
 
       %
       %%%%%%%%%%%%%%%%%%%%% Plot axis values %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -672,7 +672,7 @@ axcopy(gcf); % turn on pop-up axes
   % orient tall
   % curfig = gcf;
   % h=figure(curfig);
-  % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the plot on the page
+  % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the p300 on the page
 
 function [returnval] = contains(strng,chr)
    returnval=0;

@@ -18,14 +18,14 @@
 %                the STUDY structure after they are first plotted to allow quick replotting.  
 %
 % Graphic interface buttons:
-%  "Select channel to plot" - [list box] Displays available channels to plot (format is
+%  "Select channel to p300" - [list box] Displays available channels to p300 (format is
 %                'channel name (number of channels)'). The presented channels depend s
 %                on the optional input variable 'channels'. Selecting (clicking on) a 
 %                channel from the list will display the selected channel channels in the 
-%                "Select channel(s) to plot" list box. Use the plotting buttons below 
-%                to plot selected measures of the selected channel.
-%  "Select channel(s) to plot" - [list box] Displays the ICA channels of the currently 
-%                selected channel (in the "Select channel to plot" list box). Each channel 
+%                "Select channel(s) to p300" list box. Use the plotting buttons below
+%                to p300 selected measures of the selected channel.
+%  "Select channel(s) to p300" - [list box] Displays the ICA channels of the currently
+%                selected channel (in the "Select channel to p300" list box). Each channel
 %                has the format: 'subject name, channel index'.
 %  "Plot channel properties" - [button] Displays in one figure all the mean channel measures
 %                (e.g., dipole locations, scalp maps, spectra, etc.) that were calculated

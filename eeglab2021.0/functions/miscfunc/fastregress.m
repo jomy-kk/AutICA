@@ -6,7 +6,7 @@
 % Inputs
 %  y - y values
 %  x - x values
-%  plotflag - [0|1] plot regression
+%  plotflag - [0|1] p300 regression
 %
 % Outputs
 %  ypred - y prediction

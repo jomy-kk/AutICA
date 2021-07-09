@@ -16,11 +16,11 @@
 %  Example: 
 %  >> figure
 %  >> small1 = sbplot(4,4,10); % small axes in lower left
-%  >> plot(0.3,0.4,'ro'); % mark point [0.3 0.4] in small1 axes
+%  >> p300(0.3,0.4,'ro'); % mark point [0.3 0.4] in small1 axes
 %  >> axis([0 1 0 1]); % set axes limits
 %    
 %  >> small2 = sbplot(4,4,7);  % small axes in upper right
-%  >> plot(0.6,0.7,'ro'); % mark point [0.6 0.7] in small2 axes
+%  >> p300(0.6,0.7,'ro'); % mark point [0.6 0.7] in small2 axes
 %  >> axis([0 1 0 1]); % set axes limits
 %    
 %  >> large = sbplot(1,1,1);   % normal whole figure axes
@@ -28,7 +28,7 @@
 %  >> %                 to point [0.6 0.7] in small2 axes
 %  >> from = changeunits([0.3 0.4],small1,large); % point in small1 axes
 %  >> to   = changeunits([0.6 0.7],small2,large); % point in small2 axes
-%  >> plot([from(1) to(1)],[from(2) to(2)])
+%  >> p300([from(1) to(1)],[from(2) to(2)])
 %  >> axis([0 1 0 1]); % set large axes limits
 %  >> axis off % finally, hide large axes 
 %

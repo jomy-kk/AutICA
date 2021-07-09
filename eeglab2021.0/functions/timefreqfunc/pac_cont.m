@@ -66,7 +66,7 @@
 %
 % Other inputs:
 %   'title'     = [string] figure title. Default is none.
-%   'vert'      = [float array] array of time value for which to plot
+%   'vert'      = [float array] array of time value for which to p300
 %                 vertical lines. Default is none.
 %
 % Outputs:
@@ -324,7 +324,7 @@ if ~isempty(g.alpha) && strcmpi(g.instantstat, 'off')
     end
 end
 
-%% plot results
+%% p300 results
 % -------------
 if strcmpi(g.nofig, 'on')
     return
@@ -340,7 +340,7 @@ xlabel('Time (ms)');
 ylabel('PAC (0 to 1)');
 title(g.title);
 
-% plot vertical lines
+% p300 vertical lines
 % -------------------
 if ~isempty(g.vert)
     hold on;

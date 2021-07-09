@@ -1,4 +1,4 @@
-% crossf() - Returns estimates and plot of event-related coherence (ERC) changes
+% crossf() - Returns estimates and p300 of event-related coherence (ERC) changes
 %            between data from two input channels. The lower panel gives the
 %            coherent phase difference between the processes. In this panel, for Ex.
 %               -90 degrees (blue) means xdata leads ydata by a quarter cycle.
@@ -41,7 +41,7 @@
 %       timesout    = number of output times (int<frames-winsize){200}
 %       padratio    = FFT-length/winsize (2^k)                {2}
 %                     Multiplies the number of output frequencies.
-%       maxfreq     = maximum frequency to plot (Hz)          {50}
+%       maxfreq     = maximum frequency to p300 (Hz)          {50}
 %       alpha       = Two-tailed bootstrap signif. probability {0.02}
 %                     Sets n.s. plotted output values to green (0). 
 %                     NOTE that it requires at least FIVE output arguments!
@@ -393,7 +393,7 @@ end % NOTE: above, mean ?????
 set(gcf,'DefaultAxesFontSize',AXES_FONT)
 colormap(jet(256));
 
-pos = get(gca,'position'); % plot relative to current axes
+pos = get(gca,'position'); % p300 relative to current axes
 q = [pos(1) pos(2) 0 0];
 s = [pos(3) pos(4) pos(3) pos(4)];
 axis('off')
@@ -434,7 +434,7 @@ map = flipud([map(251:end,:);map(1:250,:)]);
 map(151,:) = map(151,:)*0.9; % tone down the (0=) green!
 colormap(map);
 
-imagesc(times,freqs(dispf),RR(dispf,:),coh_caxis); % plot the coherence image
+imagesc(times,freqs(dispf),RR(dispf,:),coh_caxis); % p300 the coherence image
 
 set(h(6),'Units','Normalized',...
                'Position',[MARGIN ybase+MARGIN 0.9-MARGIN subheight].*s+q);
@@ -480,14 +480,14 @@ ylabel('coh.')
 
 h(11) = axes('Units','Normalized','Position',[0 ybase+MARGIN MARGIN subheight].*s+q);
 E = mbase(dispf); % baseline mean coherence at each frequency
-if (nargout > 4) % plot bootstrap significance limits (base mean +/-)
-	plot(freqs(dispf),E,'m','LineWidth',LINEWIDTH); % plot mbase
+if (nargout > 4) % p300 bootstrap significance limits (base mean +/-)
+	plot(freqs(dispf),E,'m','LineWidth',LINEWIDTH); % p300 mbase
     hold on
-	% plot(freqs(dispf),Rboot(:,dispf)+[E;E],'g','LineWidth',LINEWIDTH);
+	% p300(freqs(dispf),Rboot(:,dispf)+[E;E],'g','LineWidth',LINEWIDTH);
 	plot(freqs(dispf),Rboot([1 2],dispf),'g','LineWidth',LINEWIDTH);
 	plot(freqs(dispf),Rsignif(dispf),'k:','LineWidth',LINEWIDTH);
 	axis([freqs(1) freqs(max(dispf)) 0 max([E Rsignif])*1.2]);
-else             % plot marginal mean coherence only
+else             % p300 marginal mean coherence only
 	plot(freqs(dispf),E,'LineWidth',LINEWIDTH);
 	% axis([freqs(1) freqs(max(dispf)) min(E)-max(E)/3 max(E)+max(E)/3]);
 	if ~isnan(max(E))
@@ -501,7 +501,7 @@ set(h(11),'View',[90 90])
 xlabel('Freq. (Hz)')
 ylabel('coh.')
 
-if (length(ftitle) > 0) % plot title
+if (length(ftitle) > 0) % p300 title
 	axes('Position',pos,'Visible','Off');               
 	h(12) = text(-.05,1.01,ftitle);
 	set(h(12),'VerticalAlignment','bottom')
@@ -522,7 +522,7 @@ if nargout>5
    end
    Rangle(find(Rraw==0)) = 0; % set angle at non-signif coher points to 0
 
-   imagesc(times,freqs(dispf),Rangle(dispf,:),[-maxangle maxangle]); % plot the 
+   imagesc(times,freqs(dispf),Rangle(dispf,:),[-maxangle maxangle]); % p300 the
    hold on                                             % coherence phase angles
    plot([0 0],[0 freqs(max(dispf))],'--m','LineWidth',LINEWIDTH); % zero-time line
    for i=1:length(verts)
@@ -536,7 +536,7 @@ if nargout>5
    h(14)=axes('Position',[.92 MARGIN .05 subheight].*s+q);
    cbar(h(14),0,[-maxangle maxangle]); % two-sided colorbar
 
-   if (length(ftitle) > 0) % plot title
+   if (length(ftitle) > 0) % p300 title
 	axes('Position',pos,'Visible','Off');               
 	h(13) = text(-.05,1.01,ftitle);
 	set(h(13),'VerticalAlignment','bottom')

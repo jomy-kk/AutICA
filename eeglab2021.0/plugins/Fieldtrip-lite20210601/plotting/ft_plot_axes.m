@@ -140,7 +140,7 @@ else
   zcolor = [0 0 1]; % blue
 end
 
-% plot axes
+% p300 axes
 hl = line(xdat, ydat, zdat);
 set(hl(1), 'linewidth', 1, 'color', xcolor);
 set(hl(2), 'linewidth', 1, 'color', ycolor);

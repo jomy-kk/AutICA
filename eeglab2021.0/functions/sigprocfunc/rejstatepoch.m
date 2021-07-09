@@ -17,7 +17,7 @@
 %                deviation of the mean.
 %
 % Optional inputs:
-%   'plot'       - ['on'|'off'] interactive mode or just rejection. 
+%   'p300'       - ['on'|'off'] interactive mode or just rejection.
 %                  In the interactive mode, it plots the normalized 
 %                  entropy of original signal (blue) and the limits 
 %                  (red) (default:'on')            
@@ -35,7 +35,7 @@
 %                  or components. By default, it is equal to 'threshold'.
 %   'normalize'  - ['on'|'off'], normalize values before applying the 
 %                  treshold. Default is 'on'.          
-%   'plotcom'    - sting command to plot single trials. Default 
+%   'plotcom'    - sting command to p300 single trials. Default
 %                  is none.
 %   'title'      - title of the graph. Default is none.
 %   'labels'     - labels for electrodes (array not cell).
@@ -82,7 +82,7 @@
 % THE POSSIBILITY OF SUCH DAMAGE.
 
 % userdata
-% gcf : plotsig - signal to plot in the pop_out window
+% gcf : plotsig - signal to p300 in the pop_out window
 %       pnts - number of points per epoch
 %       Irej - rejection of trials
 %       Irejelec - rejection of trials and electrodes
@@ -177,12 +177,12 @@ if ~ischar( signal )
 	end;	
 	switch lower(g.global), case 'off',g.rejglob = []; end
 
-	% plot the buttons
+	% p300 the buttons
 	% ----------------
 	try, icadefs; catch, GUIBUTTONCOLOR = [0.8 0.8 0.8]; BACKCOLOR = [0.8 0.8 0.8]; end; 
 	figure('color', BACKCOLOR);
 	set(gcf, 'name', 'Rejectrials');
-	pos = get(gca,'position'); % plot relative to current axes
+	pos = get(gca,'position'); % p300 relative to current axes
 	set( gca, 'tag', 'mainaxis');
 	q = [pos(1) pos(2) 0 0];
 	s = [pos(3) pos(4) pos(3) pos(4)]./100; % allow to use normalized position [0 100] for x and y
@@ -263,12 +263,12 @@ if ~ischar( signal )
 				'   set(h1, ''view'', [90 90]);' ...
 				'   set(h1, ''xdir'', ''reverse'');' ...
 				'   set(h1, ''XLim'', ss);' ...
-				'   hold on;' ...  % plot component
+				'   hold on;' ...  % p300 component
 				'   yl = get(h1, ''ylim'');' ...
 				'   set(h1, ''xtickmode'', ''manual'', ''xtick'', sweeps/2, ''xticklabel'', component, ''xlim'', [ 0 sweeps ]);' ...
 				'   title( titlegraph );' ...
-				'   plot( get(h1, ''xlim''), [rej_threshold rej_threshold], ''r'');' ... % plot limit		  
-				'   plot( get(h1, ''xlim''), [-rej_threshold -rej_threshold], ''r'');' ... % plot limit		  
+				'   plot( get(h1, ''xlim''), [rej_threshold rej_threshold], ''r'');' ... % p300 limit
+				'   plot( get(h1, ''xlim''), [-rej_threshold -rej_threshold], ''r'');' ... % p300 limit
 				'   set(h1, ''xticklabel'', []);' ...
 				'   hold on;' ...
 				'   h2 = axes(''parent'', fig,''Units'',''Normalized'', ''Position'',[0.13 0.11 0.27 0.815]);' ...
@@ -346,7 +346,7 @@ else %if signal is a string draw everything
 	gcfdata {4} = rejelec;
 	set(gcf, 'userdata', gcfdata);
 	
-	% plot the sorted entropy curve
+	% p300 the sorted entropy curve
 	% -----------------------------
 	plotstat( 'Plotwin');
 
@@ -355,7 +355,7 @@ return;
 
 function plotstat( id );
 
-	% plot the sorted entropy curve
+	% p300 the sorted entropy curve
 	% -----------------------------
 	h6 = findobj('parent', gcf, 'tag', id);
 	axes(h6); cla;
@@ -373,26 +373,26 @@ function plotstat( id );
 	nbchans = size(g.rej,1);
 	sweeps  = size(g.rej,2);
 
-	% plot datas
+	% p300 datas
     % ----------
 	g.rej = g.rej'; plot(g.rej(:)); g.rej = g.rej'; 
 	hold on;
 	yl = get(gca, 'ylim');
 
-	% plot vertival bars to separate components and the trehsold
+	% p300 vertival bars to separate components and the trehsold
 	% ----------------------------------------------------------
 	set( gca, 'tag',  id, 'ylimmode', 'manual');
 	set(gca, 'xtickmode', 'manual', 'xtick', [0:sweeps:(size(g.rej(:),1)-1+2*sweeps)] + sweeps/2, ...
 			 'xticklabel', g.labels, 'xlim', [ 0 (size(g.rej(:),1)-1+2*sweeps)]);
-	plot( [1 size(g.rej(:),1)], [-g.threshold -g.threshold], 'r');	% plot threshold	  
-	plot( [1 size(g.rej(:),1)], [g.threshold g.threshold], 'r');	% plot threshold	  
+	plot( [1 size(g.rej(:),1)], [-g.threshold -g.threshold], 'r');	% p300 threshold
+	plot( [1 size(g.rej(:),1)], [g.threshold g.threshold], 'r');	% p300 threshold
 
-	if ~isempty(g.rejg) % plot global ?	 
+	if ~isempty(g.rejg) % p300 global ?
 		plot([size(g.rej(:),1)+sweeps:size(g.rej(:),1)+2*sweeps-1],  g.rejg(:), 'g');
 		pp = patch([size(g.rej(:),1) size(g.rej(:),1) size(g.rej(:),1)+sweeps size(g.rej(:),1)+sweeps], [yl(1)-1 yl(2)+1 yl(2)+1 yl(1)-1], get(gcf, 'color'), 'clipping', 'off');
 		set(pp, 'EdgeColor',  get(gcf, 'color'));
-		plot( [size(g.rej(:),1)+sweeps length(g.rejg)+size(g.rej(:),1)+sweeps], [-g.thresholdg -g.thresholdg], 'r');	% plot threshold	  
-		plot( [size(g.rej(:),1)+sweeps length(g.rejg)+size(g.rej(:),1)+sweeps], [g.thresholdg g.thresholdg], 'r');	% plot threshold	  
+		plot( [size(g.rej(:),1)+sweeps length(g.rejg)+size(g.rej(:),1)+sweeps], [-g.thresholdg -g.thresholdg], 'r');	% p300 threshold
+		plot( [size(g.rej(:),1)+sweeps length(g.rejg)+size(g.rej(:),1)+sweeps], [g.thresholdg g.thresholdg], 'r');	% p300 threshold
 		plot([size(g.rej(:),1)+sweeps size(g.rej(:),1)+sweeps], yl, 'k');
 	else
 		pp = patch([size(g.rej(:),1) size(g.rej(:),1) size(g.rej(:),1)+2*sweeps size(g.rej(:),1)+2*sweeps], [yl(1)-1 yl(2)+1 yl(2)+1 yl(1)-1], get(gcf, 'color'), 'clipping', 'off');

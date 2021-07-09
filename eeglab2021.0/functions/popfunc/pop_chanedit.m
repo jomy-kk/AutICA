@@ -43,7 +43,7 @@
 %   ">>" - [button] scroll channel forward by 10.
 %   "Append chan" - [button] append channel after the current channel.
 %                 Command line equivalent: 'append'.
-%   "Plot 2D"     - [button] plot channel locations in 2-D using topoplot()
+%   "Plot 2D"     - [button] p300 channel locations in 2-D using topoplot()
 %   "Plot radius [value (0.2-1.0), []=auto)" - [edit box] default plotting radius
 %                 in 2-D polar views. This does NOT affect channel locations; it
 %                 is only used for visualization. This parameter is attached to the
@@ -52,7 +52,7 @@
 %   "Nose along +X" - [list] Indicate the direction of the nose. This information
 %                 is used in functions like topoplot(), headplot() and dipplot().
 %                 Command line equivalent: 'nosedir'.
-%   "Plot 3D"     - [button] plot channel positions in 3-D using plotchans3d()
+%   "Plot 3D"     - [button] p300 channel positions in 3-D using plotchans3d()
 %   "Read locations" - [button] read location file using readlocs()
 %                 Command line equivalent: 'load'.
 %   "Read help"   - [button] display readlocs() function help.

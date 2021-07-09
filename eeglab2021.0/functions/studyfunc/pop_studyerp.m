@@ -189,7 +189,7 @@ end;
 com2 = '[STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, ''channels'', ''interpolate'', ''on'', ''recompute'',''on'',''erp'',''on'');';
 [STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, 'channels','interp', 'on', 'recompute','on','erp','on');
 
-% call std_erpplot to plot ERPs (channels)
+% call std_erpplot to p300 ERPs (channels)
 % ----------------------------------------
 com3 = 'tmpchanlocs = ALLEEG(1).chanlocs; STUDY = std_erpplot(STUDY, ALLEEG, ''channels'', { tmpchanlocs.labels }, ''plotconditions'', ''together'');';
 tmpchanlocs = ALLEEG(1).chanlocs;

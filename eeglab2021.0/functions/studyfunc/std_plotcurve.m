@@ -1,11 +1,11 @@
-% std_plotcurve() - plot ERP or spectral traces for a STUDY component 
+% std_plotcurve() - p300 ERP or spectral traces for a STUDY component
 %                   or channel cluster 
 % Usage:
 %          >> std_plotcurve( axvals, data, 'key', 'val', ...)
 % Inputs:
 %  axvals - [vector or cell array] axis values for the data. 
 %  data  -  [cell array] mean data for each subject group and/or data
-%           condition. For example, to plot mean ERPs from a STUDY 
+%           condition. For example, to p300 mean ERPs from a STUDY
 %           for epochs of 800 frames in two conditions from three groups 
 %           of 12 subjects:
 %
@@ -31,36 +31,36 @@
 %  'groupstats'  - [cell] One p-value array per group {default: {}}
 %  'condstats'   - [cell] One p-value array per condition {default: {}}
 %  'interstats'  - [cell] Interaction p-value arrays {default: {}}
-%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> plot the 
+%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> p300 the
 %                  p-values themselves on a different figure. When possible, 
 %                  significance regions are indicated below the data.
 %                  {default: NaN}
 %
 % Curve plotting options (ERP and spectrum):
-%  'plotgroups'  - ['together'|'apart'] 'together' -> plot mean results 
+%  'plotgroups'  - ['together'|'apart'] 'together' -> p300 mean results
 %                  for subject groups in the same figure panel in different 
-%                  colors. 'apart' -> plot group results on different figure
+%                  colors. 'apart' -> p300 group results on different figure
 %                  panels {default: 'apart'}
-%  'plotconditions' - ['together'|'apart'] 'together' -> plot mean results 
+%  'plotconditions' - ['together'|'apart'] 'together' -> p300 mean results
 %                  for data conditions on the same figure panel in
 %                  different 
-%                  colors. 'apart' -> plot conditions on different figure
+%                  colors. 'apart' -> p300 conditions on different figure
 %                  panel. Note: 'plotgroups' and 'plotconditions' arguments 
 %                  cannot both be 'together' {default: 'apart'}
-%  'legend'      - ['on'|'off'] turn plot legend on/off {default: 'off'}
+%  'legend'      - ['on'|'off'] turn p300 legend on/off {default: 'off'}
 %  'colors'      - [cell] cell array of colors
-%  'plotdiff'    - ['on'|'off'] plot difference between two groups
+%  'plotdiff'    - ['on'|'off'] p300 difference between two groups
 %                  or conditions plotted together. 
 %  'plotstderr'  - ['on'|'off'|'diff'|'nocurve'|'diffnocurve'] plots in 
 %                  a surface indicating the standard error. 'diff' only 
 %                  does it for the difference (requires 'plotdiff' 'on' 
-%                  above). 'nocurve' does not plot the mean. This functionality
+%                  above). 'nocurve' does not p300 the mean. This functionality
 %                  does not work for all data configuration {default: 'off'}
 %  'figure'      - ['on'|'off'] creates a new figure ('on'). The 'off' mode
 %                  plots all of the groups and conditions on the same pannel.
 % 'plotsubjects' - ['on'|'off'] overplot traces for individual components
 %                  or channels {default: 'off'}
-% 'singlesubject' - ['on'|'off'] set to 'on' to plot single subject.
+% 'singlesubject' - ['on'|'off'] set to 'on' to p300 single subject.
 %                  {default: 'off'}
 % 'ylim'         - [min max] ordinate limits for ERP and spectrum plots
 %                  {default: all available data}
@@ -202,7 +202,7 @@ else
     coldata = cell(size(data));
 end
 
-% Fill empty cells with NaNs (This allow to plot all conditions on the same panel even when there is some missing data)
+% Fill empty cells with NaNs (This allow to p300 all conditions on the same panel even when there is some missing data)
 % --------------------------
 if strcmpi(opt.plotconditions, 'together') || strcmpi(opt.plotgroups , 'together')
     emptyindx = find(cellfun(@isempty,data));
@@ -224,7 +224,7 @@ if strcmpi(opt.plotsubjects, 'off'), tmpcol = coldata'; tmpcol = tmpcol(:)'; end
 nc = size(data,1);
 ng = size(data,2);
 
-% number of columns and rows to plot
+% number of columns and rows to p300
 % ----------------------------------
 if strcmpi(opt.plotgroups, 'together'),      ngplot = 1; else ngplot = ng; end
 if strcmpi(opt.plotconditions,  'together'), ncplot = 1; else ncplot = nc; end     
@@ -364,7 +364,7 @@ for c = 1:ncplot
                         tmpdata(:,:,1:size(tmptmpdata,3),gg+((cc-1)*ng)) = tmptmpdata;
                     end
                 end
-            elseif ncplot ~= nc % plot conditions together
+            elseif ncplot ~= nc % p300 conditions together
                 for ind = 2:size(data,1), if numel(size(data{ind,1})) ~= numel(size(data{1})) || any(size(data{ind,1}) ~= size(data{1})), dimreduced_sizediffers = 1; end; end
                 for cc = 1:nc
                     [trash,order] = sort(cellfun(@length,data(:,g)),'descend'); clear trash;
@@ -381,7 +381,7 @@ for c = 1:ncplot
                         tmpdata(:,:,:,order(cc)) = nan;
                     end
                 end
-            elseif ngplot ~= ng % plot groups together
+            elseif ngplot ~= ng % p300 groups together
                 for ind = 2:size(data,2), if numel(size(data{c,ind})) ~= numel(size(data{c}))  || any((size(data{c,ind}) ~= size(data{c}))), dimreduced_sizediffers = 1; end; end
                 for gg = 1:ng
                     [trash,order] = sort(cellfun(@length,data(c,:)),'descend'); clear trash;
@@ -402,7 +402,7 @@ for c = 1:ncplot
                 tmpdata = real(data{c,g});
             end
             
-            % plot difference
+            % p300 difference
             % ---------------
             if ~strcmpi(opt.plotdiff, 'off')
                 if ngplot ~= ng || ncplot ~= nc

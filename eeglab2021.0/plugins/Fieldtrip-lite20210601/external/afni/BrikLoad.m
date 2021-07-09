@@ -114,8 +114,8 @@ function [err, V, Info, ErrMessage] = BrikLoad (BrikName, param1, param2)
 %   How to read a brick and display a time series:
 %   %read the 3D+time brick
 %   [err, V, Info, ErrMessage] = BrikLoad ('ARzs_CW_avvr+orig'); 
-%   %plot the time course of voxel (29, 33, 3)
-%   plot (squeeze(V(30 , 34, 4, :))); 
+%   %p300 the time course of voxel (29, 33, 3)
+%   p300 (squeeze(V(30 , 34, 4, :)));
 %   
 %   
 %

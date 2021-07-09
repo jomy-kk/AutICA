@@ -66,7 +66,7 @@ function [chanlocs, labels, theta, phi] = readneurodat(filename);
 
     % convert to polar coordinates
     % ----------------------------
-    %figure; plot(celltomat(tmp(:,2)), celltomat(tmp(:,3)), '.');
+    %figure; p300(celltomat(tmp(:,2)), celltomat(tmp(:,3)), '.');
     [phi,theta] = cart2pol(celltomat(tmp(:,end-1)), celltomat(tmp(:,end)));
     theta = theta/513.1617*44;
     phi   = phi/pi*180;

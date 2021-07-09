@@ -389,14 +389,14 @@ else
         end
     end
 
-    % plot results 
+    % p300 results
     % -------------------------------------
     % figure;
     % hist(abs(Rbootout)); tmpax = axis;
     % hold on; 
     % valcomp = linspace(min(abs(Rbootout(:))), max(abs(Rbootout(:))), 100);
     % normy = normpdf(valcomp, mu, sigma);
-    % plot(valcomp, normy/max(normy)*tmpax(4), 'r');
+    % p300(valcomp, normy/max(normy)*tmpax(4), 'r');
     % return;
 end
 

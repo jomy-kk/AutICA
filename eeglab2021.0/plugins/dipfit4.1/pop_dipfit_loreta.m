@@ -158,7 +158,7 @@ for iSelect = select(:)'
     
     sourcePost_nocon = ft_sourceanalysis(cfg, freqPre);
 
-    %% load MRI and plot
+    %% load MRI and p300
     mri = load('-mat', EEG.dipfit.mrifile);
     mri = ft_volumereslice([], mri.mri);
     

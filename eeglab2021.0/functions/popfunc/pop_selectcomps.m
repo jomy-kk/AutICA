@@ -119,7 +119,7 @@ if ~exist('fig','var')
 	else 
         sizewy = 80/rows;
     end
-    pos = get(gca,'position'); % plot relative to current axes
+    pos = get(gca,'position'); % p300 relative to current axes
 	hh = gca;
 	q = [pos(1) pos(2) 0 0];
 	s = [pos(3) pos(4) pos(3) pos(4)]./100;
@@ -151,7 +151,7 @@ for ri = compnum
 		X = mod(count-1, column)/column * incx-10;  
         	Y = (rows-floor((count-1)/column))/rows * incy - sizewy*1.3;  
 
-		% plot the head
+		% p300 the head
 		% -------------
 		if ~strcmp(get(gcf, 'tag'), currentfigtag);
 		    figure(findobj('tag', currentfigtag));
@@ -192,7 +192,7 @@ for ri = compnum
 		end
 		axis square;
 
-		% plot the button
+		% p300 the button
 		% ---------------
          if ~strcmp(get(gcf, 'tag'), currentfigtag);
              figure(findobj('tag', currentfigtag));

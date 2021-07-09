@@ -1,4 +1,4 @@
-% std_topoplot() - Command line function to plot cluster component and mean scalp maps. 
+% std_topoplot() - Command line function to p300 cluster component and mean scalp maps.
 %                  Displays either mean cluster/s scalp map/s, or all cluster/s components
 %                  scalp maps with the mean cluster/s scsalp map in one figure.
 %                  The scalp maps can be visualized only if component scalp maps     
@@ -14,11 +14,11 @@
 %   ALLEEG     - global EEGLAB vector of EEG structures for the dataset(s) included in 
 %                the STUDY. ALLEEG for a STUDY set is typically created using load_ALLEEG().
 % Optional inputs:
-%   'clusters'   - [numeric vector| 'all']  -> specific cluster numbers to plot.
-%                  'all' -> plot all clusters in STUDY.
+%   'clusters'   - [numeric vector| 'all']  -> specific cluster numbers to p300.
+%                  'all' -> p300 all clusters in STUDY.
 %                  {default: 'all'}.
-%   'comps'      - [numeric vector | 'all']  -> indices of the cluster components to plot.
-%                  'all' -> plot all the components in the cluster 
+%   'comps'      - [numeric vector | 'all']  -> indices of the cluster components to p300.
+%                  'all' -> p300 all the components in the cluster
 %                  {default: 'all'}.
 %   'mode'       - ['together'|'apart'] a plotting mode. In 'together' mode, the average 
 %                  scalp maps of the requested clusters are plotted in the same figure,
@@ -74,8 +74,8 @@ icadefs;
 
 % Set default values
 cls = [];
-mode = 'together'; % plot all cluster mean scalp maps on one figure
-figureon = 1; % plot on a new figure
+mode = 'together'; % p300 all cluster mean scalp maps on one figure
+figureon = 1; % p300 on a new figure
 
 for k = 3:2:nargin
     switch varargin{k-2}
@@ -109,11 +109,11 @@ for k = 3:2:nargin
     end
 end
         
-% select clusters to plot
+% select clusters to p300
 % -----------------------
 if isempty(cls)
     tmp =[];
-    cls = 2:length(STUDY.cluster); % plot all clusters in STUDY
+    cls = 2:length(STUDY.cluster); % p300 all clusters in STUDY
     for k = 1: length(cls)
         % don't include 'Notclust' clusters
         if ~strncmpi('Notclust',STUDY.cluster(cls(k)).name,8) && ~strncmpi('ParentCluster',STUDY.cluster(cls(k)).name,13)
@@ -174,7 +174,7 @@ if strcmpi(mode, 'apart')
             %delete(h_wait)
             orient tall  % fill the figure page for printing
             axcopy
-        end % Finished one cluster plot 
+        end % Finished one cluster p300
     end   % Finished plotting all clusters
 end % Finished 'apart' plotting mode
 
@@ -239,8 +239,8 @@ end
 %   cluster     - single cluster number.  
 %
 % Optional inputs:
-%   comps      - [numeric vector]  -> indices of the cluster components to plot.
-%                       'all'                       -> plot all the components in the cluster
+%   comps      - [numeric vector]  -> indices of the cluster components to p300.
+%                       'all'                       -> p300 all the components in the cluster
 %                                                      (as in std_topoplot). {default: 'all'}.
 %
 % Outputs:
@@ -294,7 +294,7 @@ if isempty(cls)
    error('std_plotcompmap: you must provide a cluster numberas an input.');
 end
 if nargin == 3 % no component indices were given
-    % Default: plot all components of the cluster
+    % Default: p300 all components of the cluster
     [STUDY] = std_topoplot(STUDY, ALLEEG, 'clusters', cls, 'mode', 'apart');
     return
 else

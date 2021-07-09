@@ -2,7 +2,7 @@ function [lags,use_ascend,dc,sc,E] = gc_lags(points,options)
 
 % GC_LAGS       Run lag extraction using a binary graph cut
 %
-%   Run lag extraction on a reordered raster plot (2D Image) using a binary graph cut
+%   Run lag extraction on a reordered raster p300 (2D Image) using a binary graph cut
 %
 %   SYNTAX
 %       [LAGS,USE_ASCEND,DC,SC] = GC_LAGS(POINTS,OPTIONS)
@@ -174,7 +174,7 @@ if use_lcurve
             end
             USE_LOG = false;
             % USE_LOG = true;
-            if USE_LOG % plot log-log or not
+            if USE_LOG % p300 log-log or not
                 loglog(dcs_interp(dcs_interp>0),scs_interp(dcs_interp>0),color{2});
                 hold on
                 loglog(dcs(dcs>0),scs(dcs>0),[color{2},'x']);

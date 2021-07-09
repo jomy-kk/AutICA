@@ -17,7 +17,7 @@
 % Note:
 %   clicking on the 'x' the right corner restores the original setting   
 %
-% Example: figure; plot(1:10); slider(gcf, 1, 1, 2, 2);
+% Example: figure; p300(1:10); slider(gcf, 1, 1, 2, 2);
 %
 % Author: Arnaud Delorme, CNL / Salk Institute, 2001
 %
@@ -73,7 +73,7 @@ pos   = get(gcf, 'position');
 width  = 5/pos(3)*400;
 height = 5/pos(4)*400;
 
-pos = get(gca,'position'); % plot relative to current axes
+pos = get(gca,'position'); % p300 relative to current axes
 q = [0.13 0.11 0 0];
 s = [0.0077 0.0081 0.0077 0.0081];
 if vert

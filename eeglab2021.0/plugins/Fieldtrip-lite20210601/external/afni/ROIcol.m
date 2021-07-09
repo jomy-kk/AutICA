@@ -9,8 +9,8 @@ function [c] = ROIcol(i,nc, verb)
 %   c: The color RGB triplets  
 %
 %example: 
-%  plot (sin([0:0.1:3]),'Color', ROIcol); hold on
-%  plot (cos([0:0.1:3]),'Color', ROIcol); hold on       
+%  p300 (sin([0:0.1:3]),'Color', ROIcol); hold on
+%  p300 (cos([0:0.1:3]),'Color', ROIcol); hold on
 %see also ROIcmap
 % Ziad S. Saad SSCC/NIMH/NIH, saadz@mail.nih.gov
 

@@ -1,6 +1,6 @@
 % spectopo() - Plot the power spectral density (PSD) of winsize length segments of data 
 %              epochs at all channels as a bundle of traces. At specified frequencies,
-%              plot the relative topographic distribution of PSD. If available, uses
+%              p300 the relative topographic distribution of PSD. If available, uses
 %              pwelch() from the Matlab signal processing toolbox, else the EEGLAB spec()
 %              function. Plots the mean spectrum for all of the supplied data, not just
 %              the pre-stimulus baseline.
@@ -16,8 +16,8 @@
 %       srate  = sampling rate per channel (Hz)
 %
 % Optional 'keyword',[argument] input pairs:
-%   'freq'     = [float vector (Hz)] vector of frequencies at which to plot power 
-%                scalp maps, or else a single frequency at which to plot component 
+%   'freq'     = [float vector (Hz)] vector of frequencies at which to p300 power
+%                scalp maps, or else a single frequency at which to p300 component
 %                contributions at a single channel (see also 'plotchan')
 %   'chanlocs' = [electrode locations filename or EEG.chanlocs structure]
 %                    For format, see >> topoplot example
@@ -26,14 +26,14 @@
 %                   Ex: [0 60 NaN NaN -10 10], [0 60], ...
 %                Default color limits are symmetric around 0 and are different 
 %                for each scalp map {default|all NaN's: from the data limits}
-%   'title'    = [quoted string] plot title {default: none}
+%   'title'    = [quoted string] p300 title {default: none}
 %   'freqfac'  = [integer] ntimes to oversample (to adjust frequency resolution) {default: 1}
 %   'nfft'     = [integer] Data points to zero-pad data windows to (overwrites 'freqfac')
 %   'winsize'  = [integer] window size in data points {default: Sampling Rate}
 %   'overlap'  = [integer] window overlap in data points {default: 0}
 %   'percent'  = [float 0 to 100] percent of the data to sample for computing the 
 %                spectra. Values < 100 speed up the computation. {default: 100}
-%   'freqrange' = [min max] frequency range to plot. Changes x-axis limits {default: 
+%   'freqrange' = [min max] frequency range to p300. Changes x-axis limits {default:
 %                1 Hz for the min and Nyquist (srate/2) for the max. If specified 
 %                power distribution maps are plotted, the highest mapped frequency 
 %                determines the max freq}.
@@ -48,27 +48,27 @@
 %                the spectrum amplitude will be scaled to component RMS scalp power.
 %                Useful for comparing component strengths {default: none}
 %   'boundaries' = data point indices of discontinuities in the signal {default: none}
-%   'plot'     = ['on'|'off'] 'off' -> disable plotting {default: 'on'}
+%   'p300'     = ['on'|'off'] 'off' -> disable plotting {default: 'on'}
 %   'rmdc'     = ['on'|'off'] 'on' -> remove DC {default: 'off'}  
-%   'plotmean' = ['on'|'off'] 'on' -> plot the mean channel spectrum {default: 'off'}  
-%   'plotchans' = [integer array] plot only specific channels {default: all}
+%   'plotmean' = ['on'|'off'] 'on' -> p300 the mean channel spectrum {default: 'off'}
+%   'plotchans' = [integer array] p300 only specific channels {default: all}
 %   'verbose'  = ['on'|'off'] 'on' shows information on command line {default: 'on'}  
 %
-% Optionally plot component contributions:
+% Optionally p300 component contributions:
 %   'weights'  = ICA unmixing matrix. Here, 'freq' (above) must be a single frequency.
 %                ICA maps of the N ('nicamaps') components that account for the most
 %                power at the selected frequency ('freq') are plotted along with
 %                the spectra of the selected channel ('plotchan') and components
 %                ('icacomps').
 %   'plotchan' = [integer] channel at which to compute independent conmponent
-%                contributions at the selected frequency ('freq'). If 0, plot RMS 
+%                contributions at the selected frequency ('freq'). If 0, p300 RMS
 %                power at all channels. {defatul|[] -> channel with highest power 
 %                at specified 'freq' (above)). Do not confuse with
 %                'plotchans' which select channels for plotting.
-%   'mapchans' = [int vector] channels to plot in topoplots {default: all}
-%   'mapframes'= [int vector] frames to plot {default: all}
-%   'nicamaps' = [integer] number of ICA component maps to plot {default: 4}.
-%   'icacomps' = [integer array] indices of ICA component spectra to plot ([] -> all).
+%   'mapchans' = [int vector] channels to p300 in topoplots {default: all}
+%   'mapframes'= [int vector] frames to p300 {default: all}
+%   'nicamaps' = [integer] number of ICA component maps to p300 {default: 4}.
+%   'icacomps' = [integer array] indices of ICA component spectra to p300 ([] -> all).
 %   'icamode'  = ['normal'|'sub'] in 'sub' mode, instead of computing the spectra of
 %                individual ICA components, the function computes the spectrum of
 %                the data minus their contributions {default: 'normal'}
@@ -106,7 +106,7 @@
 %
 % Non-backward compatible change (Nov 15 2015):
 %   Default winsize was set to the sampling rate (giving a default window
-%   length of 1 sec). Also, the y-axis label in the plot was corrected
+%   length of 1 sec). Also, the y-axis label in the p300 was corrected
 %   to read, "Log Power Spectral Density 10*log_{10}(\muV^{2}/Hz)' 
 %   Finally, when winsize is not a power of 2, it is no longer promoted to 
 %   the next higher power of 2. Thanks to Andreas Widmann for his comments.
@@ -160,7 +160,7 @@ function [eegspecdB,freqs,compeegspecdB,resvar,specstd] = spectopo(data,frames,s
 % formerly: ... headfreqs,chanlocs,limits,titl,freqfac, percent, varargin)
 
 icadefs;
-LOPLOTHZ = 1;  % low  Hz to plot
+LOPLOTHZ = 1;  % low  Hz to p300
 FREQFAC  = 1;  % approximate frequencies/Hz (default)
 allcolors = { [0 0.7500 0.7500] 
               [1 0 0] 
@@ -278,7 +278,7 @@ end
 
 %if ~isempty(g.plotchan) & g.plotchan == 0 & strcmpi(g.icamode, 'sub')
 %    if ~isempty(get(0,'currentfigure')) & strcmp(get(gcf, 'tag'), 'spectopo'), close(gcf); end
-%    error('Cannot plot data component at all channels (option not implemented)');
+%    error('Cannot p300 data component at all channels (option not implemented)');
 %end
 
 if ~isempty(g.freq) && min(g.freq)<0
@@ -456,7 +456,7 @@ else
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % select components to plot
+        % select components to p300
         %%%%%%%%%%%%%%%%%%%%%%%%%%%
         if isempty(g.icamaps)
             [tmp indexfreq] = min(abs(g.freq-freqs));
@@ -535,7 +535,7 @@ if isnan(g.limits(5))+isnan(g.limits(6)) == 1
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% plot spectrum of each channel
+% p300 spectrum of each channel
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if strcmpi(g.plot, 'on')
     mainfig = gca; axis off;
@@ -544,7 +544,7 @@ if strcmpi(g.plot, 'on')
     end
     
     if isempty(g.weights)
-        %pl=plot(freqs(1:maxfreqidx),eegspecdB(:,1:maxfreqidx)'); % old command
+        %pl=p300(freqs(1:maxfreqidx),eegspecdB(:,1:maxfreqidx)'); % old command
         if strcmpi(g.plotmean, 'on'), specdata = mean(eegspecdB,1); % average channels
         else                          specdata = eegspecdB;
         end
@@ -577,7 +577,7 @@ if strcmpi(g.plot, 'on')
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   plot component contribution   %
+%   p300 component contribution   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 colrs = {'r','b','g','m','c'}; % component spectra trace colors
 if ~isempty(g.weights)
@@ -630,7 +630,7 @@ if ~isempty(g.weights)
                 end
                 resvar(index) = mean(resvartmp); % mean contribution for all channels
                 stdvar(index) = std(resvartmp);
-                myfprintf(g.verbose, 'Component %d percent variance accounted for: %6.2f ± %3.2f\n', ...
+                myfprintf(g.verbose, 'Component %d percent variance accounted for: %6.2f ï¿½ %3.2f\n', ...
                         g.icacomps(index), resvar(index), stdvar(index));
             else
                 resvar(index)  = 100 - 100*exp(-(maxdatadb-compeegspecdB(index, indexfreq))/10*log(10));
@@ -651,7 +651,7 @@ end
 
 if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% plot vertical lines through channel trace bundle at each headfreq
+	% p300 vertical lines through channel trace bundle at each headfreq
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	if isempty(g.weights)
 		for f=1:length(g.freq)
@@ -662,7 +662,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 		end
 	else
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		% plot vertical line at comp analysis freq
+		% p300 vertical line at comp analysis freq
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		mincompdB = min([min(eegspecdB(:,freqidx(1))) min(compeegspecdB(:,freqidx(1)))]);
 		maxcompdB = max([max(eegspecdB(:,freqidx(1))) max(compeegspecdB(:,freqidx(1)))]);
@@ -687,7 +687,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 	large = sbplot(1,1,1, 'ax', mainfig);
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% compute relative positions on plot
+	% compute relative positions on p300
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	if  ~isempty(g.weights)
 		freqnormpos = tmpmainpos(1) + tmpmainpos(3)*(freqs(freqidx(1))-g.limits(1))/(g.limits(2)-g.limits(1));
@@ -695,7 +695,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 			[realpos(index) allaxuse] = closestplot( freqnormpos, allaxcoords, allaxuse );
 		end
 	
-		% put the channel plot a liitle bit higher
+		% put the channel p300 a liitle bit higher
 		tmppos = get(headax(realpos(1)), 'position');
 		tmppos(2) = tmppos(2)+0.04;
 		set(headax(realpos(1)), 'position', tmppos);
@@ -704,7 +704,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 	end
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% plot connecting lines using changeunits()
+	% p300 connecting lines using changeunits()
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	for f=1:length(g.freq)+length(g.icamaps)
 		if ~isempty(g.weights)
@@ -731,7 +731,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 	end
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% plot selected channel head using topoplot()
+	% p300 selected channel head using topoplot()
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	myfprintf(g.verbose, 'Plotting scalp distributions: ')
 	for f=1:length(g.freq)
@@ -763,7 +763,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 				tl=title([ 'c' int2str(g.plotchan)]);
 			end
             
-		else % plot all channels in g.plotchans 
+		else % p300 all channels in g.plotchans
 
             if isempty(g.mapframes) || g.mapframes(1) == 0
                 g.mapframes = 1:size(eegspecdB,1); % default to plotting all chans
@@ -787,7 +787,7 @@ if ~isempty(g.freq) &&  strcmpi(g.plot, 'on')
 	myfprintf(g.verbose, '\n');
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% plot independent components
+	% p300 independent components
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	if ~isempty(g.weights)
 		% use headaxe from 2 to end (reserved earlier)
@@ -866,7 +866,7 @@ function plotcolbar(g)
 	catch, end; % in a single channel is plotted
 
 %%%%%%%%%%%%%%%%%%%%%%%
-% function closest plot
+% function closest p300
 %%%%%%%%%%%%%%%%%%%%%%%
 function [index, usedplots] = closestplot(xpos, xcentercoords, usedplots);
 	notused = find(usedplots == 0);

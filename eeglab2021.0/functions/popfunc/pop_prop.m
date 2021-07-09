@@ -1,4 +1,4 @@
-% pop_prop() - plot the properties of a channel or of an independent
+% pop_prop() - p300 the properties of a channel or of an independent
 %              component. 
 % Usage:
 %   >> pop_prop( EEG);           % pops up a query window 
@@ -143,7 +143,7 @@ fhandle = figure('name', ['pop_prop() - ' basename ' properties'], 'color', BACK
 pos     = get(fhandle,'Position');
 set(fhandle,'Position', [pos(1) pos(2)-500+pos(4) 500 500], 'visible', 'on');
 hh = axes('parent',fhandle);
-pos      = get(hh,'position'); % plot relative to current axes
+pos      = get(hh,'position'); % p300 relative to current axes
 q = [pos(1) pos(2) 0 0];
 s = [pos(3) pos(4) pos(3) pos(4)]./100;
 axis(hh,'off');
@@ -155,10 +155,10 @@ h = axes('parent',fhandle,'Units','Normalized', 'Position',[-10 60 40 42].*s+q);
 %topoplot( EEG.icawinv(:,chanorcomp), EEG.chanlocs); axis square; 
 
 if isfield(EEG.chanlocs, 'theta')
-    if typecomp == 1 % plot single channel locations
+    if typecomp == 1 % p300 single channel locations
         topoplot( chanorcomp, EEG.chanlocs, 'chaninfo', EEG.chaninfo, ...
                  'electrodes','off', 'style', 'blank', 'emarkersize1chan', 12); axis square;
-    else             % plot component map
+    else             % p300 component map
         topoplot( EEG.icawinv(:,chanorcomp), EEG.chanlocs, 'chaninfo', EEG.chaninfo, ...
                  'shading', 'interp', 'numcontour', 3); axis square;
     end
@@ -183,13 +183,13 @@ if EEG.trials > 1
     else
       ei_smooth = 3;
     end
-    if typecomp == 1 % plot channel
+    if typecomp == 1 % p300 channel
          offset = nan_mean(EEG.data(chanorcomp,:));
          erp=nan_mean(squeeze(EEG.data(chanorcomp,:,:))')-offset;
          erp_limits=get_era_limits(erp);
          erpimage( EEG.data(chanorcomp,:)-offset, ones(1,EEG.trials)*10000, EEG.times*1000, ...
                        '', ei_smooth, 1, 'caxis', 2/3, 'cbar','erp','erp_vltg_ticks',erp_limits);   
-    else % plot component
+    else % p300 component
          icaacttmp  = eeg_getdatact(EEG, 'component', chanorcomp);
          offset     = nan_mean(icaacttmp(:));
          era        = nan_mean(squeeze(icaacttmp)')-offset;
@@ -218,13 +218,13 @@ else
       erpimageframes = floor(size(EEG.data,2)/ERPIMAGELINES);
       erpimageframestot = erpimageframes*ERPIMAGELINES;
       eegtimes = linspace(0, erpimageframes-1, length(erpimageframes)); % 05/27/2014 Ramon: length(erpimageframes) by EEG.srate/1000  in eegtimes = linspace(0, erpimageframes-1, EEG.srate/1000);
-      if typecomp == 1 % plot channel
+      if typecomp == 1 % p300 channel
            offset = nan_mean(EEG.data(chanorcomp,:));
            % Note: we don't need to worry about ERP limits, since ERPs
            % aren't visualized for continuous data
            erpimage( reshape(EEG.data(chanorcomp,1:erpimageframestot),erpimageframes,ERPIMAGELINES)-offset, ones(1,ERPIMAGELINES)*10000, eegtimes , ...
                          EI_TITLE, ei_smooth, 1, 'caxis', 2/3, 'cbar');  
-      else % plot component
+      else % p300 component
          icaacttmp = eeg_getdatact(EEG, 'component', chanorcomp);
          offset = nan_mean(icaacttmp(:));
          erpimage(reshape(icaacttmp(:,1:erpimageframestot),erpimageframes,ERPIMAGELINES)-offset,ones(1,ERPIMAGELINES)*10000, eegtimes , ...

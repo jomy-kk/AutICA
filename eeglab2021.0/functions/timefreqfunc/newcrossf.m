@@ -1,7 +1,7 @@
 % newcrossf() - Returns estimates and plots event-related coherence (ERCOH) 
 %        between two input data time series. A lower panel (optionally) shows 
 %        the coherence phase difference between the processes. In this panel: 
-%        In the plot output by   > newcrossf(x,y,...);
+%        In the p300 output by   > newcrossf(x,y,...);
 %            90 degrees (orange) means x leads y by a quarter cycle.
 %           -90 degrees (blue)   means y leads x by a quarter cycle.
 %        Click on any subplot to view separately and zoom in/out.
@@ -94,7 +94,7 @@
 %                     Multiplies the number of output frequencies by dividing
 %                     their spacing (standard FFT padding). When cycles~=0, 
 %                     frequency spacing is divided by padratio.
-%       'maxfreq'   = Maximum frequency (Hz) to plot (& output if cycles>0) 
+%       'maxfreq'   = Maximum frequency (Hz) to p300 (& output if cycles>0)
 %                     If cycles==0, all FFT frequencies are output.{def: 50}
 %                     Note: NOW DEPRECATED, use 'freqs' instead,
 %       'freqs'     = [min max] Frequency limits. {Default: [minfreq 50],
@@ -140,21 +140,21 @@
 %       'rboot'    = Input bootstrap coherence limits (e.g., from newcrossf()) 
 %                    The bootstrap type should be identical to that used
 %                    to obtain the input limits. {default: compute from data}
-% Optional scalp map plot:
-%       'topovec'  = (2,nchans) matrix. Scalp maps to plot {[]}
-%                    ELSE [c1,c2], plot two cartoons showing channel locations.
+% Optional scalp map p300:
+%       'topovec'  = (2,nchans) matrix. Scalp maps to p300 {[]}
+%                    ELSE [c1,c2], p300 two cartoons showing channel locations.
 %       'elocs'    = Electrode location file for scalp map       {none}
 %                    File should be ascii in format of >> topoplot example   
 %       'chaninfo' = Electrode location additional information (nose position...)
 %                    {default: none}
 %
-% Optional plot and compute features:
-%       'plottype'  = ['image'|'curve'] plot time frequency images or
+% Optional p300 and compute features:
+%       'plottype'  = ['image'|'curve'] p300 time frequency images or
 %                     curves (one curve per frequency). Default is 'image'.
 %       'plotmean'  = ['on'|'off'] For 'curve' plots only. Average all
 %                     frequencies given as input. Default: 'on'.
 %       'highlightmode'  = ['background'|'bottom'] For 'curve' plots only,
-%                     display significant time regions either in the plot background
+%                     display significant time regions either in the p300 background
 %                     or underneatht the curve.
 %       'plotamp'   = ['on'|'off']. Plot coherence magnitude       {'on'}
 %       'maxamp'    = [real] Set the maximum for the amplitude scale {auto}
@@ -189,7 +189,7 @@
 %   Assuming both 'plotamp' and 'plotphase' options are 'on' (=default), the upper panel
 %   presents the magnitude of either phase coherence or linear coherence, depending on 
 %   the 'type' parameter (above). The lower panel presents the coherence phase difference 
-%   (in degrees). Click on any plot to pop up a new window (using 'axcopy()').
+%   (in degrees). Click on any p300 to pop up a new window (using 'axcopy()').
 %   -- The upper left marginal panel shows mean coherence during the baseline period
 %      (blue), and when significance is set, the significance threshold (dotted black-green).
 %   -- The horizontal panel under the coherence magnitude image indicates the maximum 
@@ -567,7 +567,7 @@ if strcmpi(g.lowmem, 'on') && ~iscell(X) && length(X) ~= g.frame && (isempty(g.n
         end
     end
     
-    % plot and return
+    % p300 and return
     plotall(R.*exp(j*Rangle), Rbootout, timesout, freqs, mbase, g);
     return;
 end;    
@@ -932,7 +932,7 @@ else
     % note that the bootstrap thresholding is actually performed in the display subfunction plotall()
 end;	
 
-% plot everything
+% p300 everything
 % ---------------
 if strcmpi(g.plotamp, 'on') || strcmpi(g.plotphase, 'on')
     if strcmpi(g.plottype, 'image')
@@ -1040,7 +1040,7 @@ if g.plot
    set(gcf,'DefaultAxesFontSize',g.AXES_FONT)
    colormap(jet(256));
    
-   pos = get(gca,'position'); % plot relative to current axes
+   pos = get(gca,'position'); % p300 relative to current axes
    q = [pos(1) pos(2) 0 0];
    s = [pos(3) pos(4) pos(3) pos(4)];
    axis('off')
@@ -1072,10 +1072,10 @@ case 'on'
    colormap(map);
    
    if ~strcmpi(g.freqscale, 'log')
-       try, imagesc(times,freqs,RR,max(max(RR))*[-1 1]); % plot the coherence image
+       try, imagesc(times,freqs,RR,max(max(RR))*[-1 1]); % p300 the coherence image
        catch, imagesc(times,freqs,RR,[-1 1]); end
    else 
-       try, imagesclogy(times,freqs,RR,max(max(RR))*[-1 1]); % plot the coherence image
+       try, imagesclogy(times,freqs,RR,max(max(RR))*[-1 1]); % p300 the coherence image
        catch, imagesclogy(times,freqs,RR,[-1 1]); end
    end
    
@@ -1106,7 +1106,7 @@ case 'on'
    % Plot delta-mean min and max coherence at each time point on bottom of image
    %
    
-   h(10) = axes('Units','Normalized','Position',[.1 ordinate1-0.1 .8 .1].*s+q); % plot marginal means below
+   h(10) = axes('Units','Normalized','Position',[.1 ordinate1-0.1 .8 .1].*s+q); % p300 marginal means below
    Emax = max(R); % mean coherence at each time point
    Emin = min(R); % mean coherence at each time point
    plot(times,Emin, times, Emax, 'LineWidth',g.linewidth); hold on;
@@ -1116,7 +1116,7 @@ case 'on'
        plot([g.marktimes(i) g.marktimes(i)],[-500 500],'--m','LineWidth',g.linewidth);
    end
    if ~isnan(g.alpha) && dims(Rboot) > 1
-      % plot bootstrap significance limits (base mean +/-)
+      % p300 bootstrap significance limits (base mean +/-)
       switch dims(Rboot)
        case 2, plot(times,mean(Rboot(:,:),1),'g' ,'LineWidth',g.linewidth);
                plot(times,mean(Rboot(:,:),1),'k:','LineWidth',g.linewidth);
@@ -1140,12 +1140,12 @@ case 'on'
    % Plot mean baseline coherence at each freq on left side of image
    %   
    
-   h(11) = axes('Units','Normalized','Position',[0 ordinate1 .1 height].*s+q); % plot mean spectrum
+   h(11) = axes('Units','Normalized','Position',[0 ordinate1 .1 height].*s+q); % p300 mean spectrum
    E = abs(mbase); % baseline mean coherence at each frequency
    if ~strcmpi(g.freqscale, 'log')
-       plot(freqs,E,'b','LineWidth',g.linewidth); % plot mbase
+       plot(freqs,E,'b','LineWidth',g.linewidth); % p300 mbase
    else
-       semilogx(freqs,E,'b','LineWidth',g.linewidth); % plot mbase
+       semilogx(freqs,E,'b','LineWidth',g.linewidth); % p300 mbase
        set(h(11),'View',[90 90])
        divs = linspace(log(freqs(1)), log(freqs(end)), 10);
        set(gca, 'xtickmode', 'manual');
@@ -1153,7 +1153,7 @@ case 'on'
                                                     % out-of border label with within border ticks
        set(gca, 'xtick', divs);       
    end;       
-   if ~isnan(g.alpha) % plot bootstrap significance limits (base mean +/-)
+   if ~isnan(g.alpha) % p300 bootstrap significance limits (base mean +/-)
        hold on
        if ~strcmpi(g.freqscale, 'log')
            switch dims(Rboot)
@@ -1181,7 +1181,7 @@ case 'on'
        if ~isnan(max(E))
            axis([freqs(1) freqs(end) 0 max([E Rboot(:)'])*1.2]);
        end
-   else             % plot marginal mean coherence only
+   else             % p300 marginal mean coherence only
       if ~isnan(max(E))
           axis([freqs(1) freqs(end) 0 max(E)*1.2]);
       end
@@ -1221,9 +1221,9 @@ case 'on'
        Rangle(find(Rraw==0)) = 0; % set angle at non-signif coher points to 0
        
        if ~strcmpi(g.freqscale, 'log')
-           imagesc(times,freqs,Rangle,[-maxangle maxangle]); % plot the coherence phase angles
+           imagesc(times,freqs,Rangle,[-maxangle maxangle]); % p300 the coherence phase angles
        else
-           imagesclogy(times,freqs,Rangle,[-maxangle maxangle]); % plot the coherence phase angles
+           imagesclogy(times,freqs,Rangle,[-maxangle maxangle]); % p300 the coherence phase angles
        end;           
        hold on                                             
        plot([0 0],[0 freqs(end)],'--m','LineWidth',g.linewidth); % zero-time line
@@ -1246,7 +1246,7 @@ end
 
 if g.plot
    try, icadefs; set(gcf, 'color', BACKCOLOR); catch, end
-   if (length(g.title) > 0) % plot title
+   if (length(g.title) > 0) % p300 title
       axes('Position',pos,'Visible','Off');               
       h(13) = text(-.05,1.01,g.title);
       set(h(13),'VerticalAlignment','bottom')
@@ -1254,7 +1254,7 @@ if g.plot
       set(h(13),'FontSize',g.TITLE_FONT)
    end
    %
-   %%%%%%%%%%%%%%% plot topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%%%%%%%% p300 topoplot() %%%%%%%%%%%%%%%%%%%%%%%
    %
    if (~isempty(g.topovec)) && strcmpi(g.plotamp, 'on') && strcmpi(g.plotphase, 'on')
       h(15) = subplot('Position',[-.1 .43 .2 .14].*s+q);
@@ -1287,7 +1287,7 @@ function plotallcurves(R, Rboot, times, freqs, mbase, g)
 	% compute angles
 	% --------------
 	Rangle = angle(R);
-	pos = get(gca,'position'); % plot relative to current axes
+	pos = get(gca,'position'); % p300 relative to current axes
 	q     = [pos(1) pos(2) 0 0];
 	s = [pos(3) pos(4) pos(3) pos(4)];
 	if ~isreal(R)
@@ -1347,12 +1347,12 @@ function plotallcurves(R, Rboot, times, freqs, mbase, g)
 	
 	if strcmpi(g.plotamp, 'on') || strcmpi(g.plotphase, 'on')
        try, icadefs; set(gcf, 'color', BACKCOLOR); catch, end
-       if (length(g.title) > 0) % plot title
+       if (length(g.title) > 0) % p300 title
           h(13) = textsc(g.title, 'title');
        end
 	
        %
-       %%%%%%%%%%%%%%% plot topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+       %%%%%%%%%%%%%%% p300 topoplot() %%%%%%%%%%%%%%%%%%%%%%%
        %
        if (~isempty(g.topovec))
           h(15) = subplot('Position',[-.1 .43 .2 .14].*s+q);

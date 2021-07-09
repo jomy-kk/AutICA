@@ -38,7 +38,7 @@
 %                  be automatically increased. (This keyword is currently
 %                  only modifiable from the command line, not from the gui).
 %  'alpha'       - [NaN|alpha] Significance threshold (0<alpha<<1). Value
-%                  NaN will plot p-values for each time and/or frequency
+%                  NaN will p300 p-values for each time and/or frequency
 %                  on a different axis. If alpha is used, significant time
 %                  and/or frequency regions will be indicated either on
 %                  a separate axis or (whenever possible) along with the

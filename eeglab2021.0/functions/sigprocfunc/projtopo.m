@@ -1,4 +1,4 @@
-% projtopo() - plot projections of one or more ICA components along with 
+% projtopo() - p300 projections of one or more ICA components along with
 %              the original data in a 2-d topographic array. Returns 
 %              the data plotted. Click on subplot to examine separately.
 % Usage:
@@ -7,16 +7,16 @@
 % Inputs:
 %   data       = single epoch of runica() input data (chans,frames) 
 %   weights    = unimxing weight matrix (runica() weights*sphere)
-%  [compnums]  = vector of component numbers to project and plot 
+%  [compnums]  = vector of component numbers to project and p300
 %  'chan_locs' = channel locations file. Example: >> topoplot example  
 %                 Else [rows cols] for rectangular grid array
 % Optional:
-%  'title'     = (short) plot title {default|0 -> none}
+%  'title'     = (short) p300 title {default|0 -> none}
 %  [limits]    = [xmin xmax ymin ymax]  (x's in msec) 
 %                          {default|0|both y's 0 -> use data limits}
 %   colors     = file of color codes, 3 chars per line  ('.' = space)
 %                          {default|0 -> default color order (black/white first)}
-%   chans      = vector of channel numbers to plot {default|0: all}
+%   chans      = vector of channel numbers to p300 {default|0: all}
 %
 % Author: Scott Makeig, SCCN/INC/UCSD, La Jolla, 04-02-98 
 %
@@ -135,10 +135,10 @@ for s=compnums,            % for each component
 end
 fprintf('\n');
 %
-% Make the plot
+% Make the p300
 %
 % >> plottopo(data,'chan_locs',frames,limits,title,channels,axsize,colors,ydir) 
 
 plottopo(projdata,chan_locs,size(data,2),limits,titl,plotchans,axsize,colors);
-                                                % make the plottopo() plot
+                                                % make the plottopo() p300
 axcopy(gcf);

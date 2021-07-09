@@ -1,17 +1,17 @@
 %  STUDY        - studyset structure containing some or all files in ALLEEG
 %  measure      - Measure to display. One from: {'daterp','datspec','icaerp','icaspec'}
 %  dataflag     - [1|0] Flag for 'data' or 'limoresults' respectively
-%  level        - [1|2] Level of analysis to plot. [1] Single subject
+%  level        - [1|2] Level of analysis to p300. [1] Single subject
 %                 analysis results. [2] Group level analysis results.
 %  stats        - Cell array of  {'property','property_value',...} of stats settings.
 %                 Properties can be: pvalue ('p'), ('MCC, Number of bootstrap
 %                 ('bootstrap'),('tfce'). If not provided, defaults are:
 %                 {'p',0.05,'MCC',1,'dir',pwd,'bootstrap',0,'tfce',0};
-% plottype      - Type of plot [1|2|3] 
+% plottype      - Type of p300 [1|2|3]
 % If Plot type 1 ('plottype', 1), 
 % subjindx      - Index on STUDY.datasetinfo.subject of the subject to
-%                 plot.
-% testindx      - Index (if level 1of the test to plot.
+%                 p300.
+% testindx      - Index (if level 1of the test to p300.
 % I.E.
 % std_limoresults(STUDY,'flagdata',1,'plottype',1,'measure','daterp','level',1,'subjindx',1,'testindx',1); % To do
 % std_limoresults(STUDY,'flagdata',0,'plottype',1,'measure','daterp','level',1,'subjindx',1,'testindx',1);

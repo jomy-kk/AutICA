@@ -1,6 +1,6 @@
-% std_plodtmat() - plot design matrix and info associated with the study for
+% std_plodtmat() - p300 design matrix and info associated with the study for
 %                  each subject. Designed to be used directly (as a callback 
-%                  function of button plot) from pop_studydesign
+%                  function of button p300) from pop_studydesign
 % Usage:
 %   >>  std_plotdmat(STUDY.design(1),STUDY.datasetinfo)
 %
@@ -294,7 +294,7 @@ elseif  flag.textdisp
     handles.notdisp = 0;
 end
 
-% Normalizing tmpdmat for plot
+% Normalizing tmpdmat for p300
 normtmpdmat = nan(size(tmpdmat));
 for iCol = 1:size(tmpdmat,2)
     dmat_den = (max(tmpdmat(:,iCol))-min(tmpdmat(:,iCol)));

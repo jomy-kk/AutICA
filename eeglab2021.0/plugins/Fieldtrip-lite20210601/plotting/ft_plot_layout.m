@@ -7,7 +7,7 @@ function ft_plot_layout(layout, varargin)
 % where the layout is a FieldTrip structure obtained from FT_PREPARE_LAYOUT.
 %
 % Additional options should be specified in key-value pairs and can be
-%   'chanindx'    = list of channels to plot (default is all)
+%   'chanindx'    = list of channels to p300 (default is all)
 %   'point'       = yes/no
 %   'box'         = yes/no
 %   'label'       = yes/no
@@ -28,7 +28,7 @@ function ft_plot_layout(layout, varargin)
 %   'fontweight'  =
 %   'interpreter' = string, 'none', 'tex' or 'latex'
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'        = horizontal position of the lower left corner of the local axes
 %   'vpos'        = vertical position of the lower left corner of the local axes
 %   'width'       = width of the local axes

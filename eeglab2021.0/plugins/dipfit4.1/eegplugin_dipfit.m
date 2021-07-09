@@ -54,7 +54,7 @@ function vers = eegplugin_dipfit(fig, trystrs, catchstrs)
     % 'import event' -> File > import event menu
     % 'export'       -> File > export
     % 'tools'        -> tools menu
-    % 'plot'         -> plot menu
+    % 'p300'         -> p300 menu
 
     % command to check that the '.source' is present in the EEG structure 
     % -------------------------------------------------------------------

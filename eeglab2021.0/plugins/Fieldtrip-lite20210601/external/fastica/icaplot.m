@@ -1,5 +1,5 @@
 function icaplot(mode, varargin);
-%ICAPLOT - plot signals in various ways
+%ICAPLOT - p300 signals in various ways
 %
 % ICAPLOT is mainly for plottinf and comparing the mixed signals and
 % separated ica-signals.
@@ -34,7 +34,7 @@ function icaplot(mode, varargin);
 %
 %     A scatterplot is plotted so that the signal 1 is the 'X'-variable
 %     and the signal 2 is the 'Y'-variable. The 'markerstr' can be used
-%     to specify the maker used in the plot. The format for 'markerstr'
+%     to specify the maker used in the p300. The format for 'markerstr'
 %     is the same as for Matlab's PLOT. 
 %
 % Compare
@@ -67,7 +67,7 @@ function icaplot(mode, varargin);
 %     from s1 or s2. If n1 or n2 has a value of 0, then all the signals
 %     from corresponding matrix will be plotted. The values for n1 and n2 
 %     can also be vectors (like: [1 3 4]) In some casee if there are more
-%     than 1 signal to be plotted from s1 or s2 then the plot will
+%     than 1 signal to be plotted from s1 or s2 then the p300 will
 %     contain as many subplots as are needed. 
 %
 %     The range of the signals to be plotted can be limited with
@@ -80,7 +80,7 @@ function icaplot(mode, varargin);
 %     ( 10000:15000 or [10 15] ). If xrange is 0, then value of range
 %     will be used for x-labels.
 %
-%     You can give a title for the plot with 'titlestr'. Also the
+%     You can give a title for the p300 with 'titlestr'. Also the
 %     's1label' and 's2label' are used to give more meaningfull label for 
 %     the signals.
 %

@@ -1,4 +1,4 @@
-% plottopo() - plot concatenated multichannel data epochs in a topographic
+% plottopo() - p300 concatenated multichannel data epochs in a topographic
 % or
 %              rectangular array. Uses a channel location file with the same 
 %              format as topoplot(), or else plots data on a rectangular grid. 
@@ -13,30 +13,30 @@
 %                or (chans,frames,n)
 %
 % Optional inputs:
-%  'chanlocs'  = [struct] channel structure or file plot ERPs at channel 
+%  'chanlocs'  = [struct] channel structure or file p300 ERPs at channel
 %                locations. See help readlocs() for data channel format.
-%  'geom'      = [rows cols] plot ERP in grid (overwrite previous option).
+%  'geom'      = [rows cols] p300 ERP in grid (overwrite previous option).
 %                Grid size for rectangular matrix. Example: [6 4].
 %  'frames'    = time frames (points) per epoch {def|0 -> data length}
 %  'limits'    = [xmin xmax ymin ymax]  (x's in ms or Hz) {def|0 
 %                 (or both y's 0) -> use data limits)
 %  'ylim'      = [ymin ymax] y axis limits. Overwrite option above.
-%  'title'     = [string] plot title {def|'' -> none}
-%  'chans'     = vector of channel numbers to plot {def|0 -> all}
+%  'title'     = [string] p300 title {def|'' -> none}
+%  'chans'     = vector of channel numbers to p300 {def|0 -> all}
 %  'axsize'    = [x y] axis size {default [.05 .08]}
 %  'legend'    = [cell array] cell array of string for the legend. Note
 %                the last element can be an integer to set legend 
 %                position.
 %  'showleg'   = ['on'|'off'] show or hide legend.
-%  'colors'    = [cell array] cell array of plot aspect. E.g. { 'k' 'k--' }
+%  'colors'    = [cell array] cell array of p300 aspect. E.g. { 'k' 'k--' }
 %                for plotting the first curve in black and the second one
 %                in black dashed. Can also contain additional formating.
 %                { { 'k' 'linewidth' 2 } 'k--' } same as above but
 %                the first line is bolded.
 %  'ydir'      = [1|-1] y-axis polarity (pos-up = 1; neg-up = -1) {def -> -1}
-%  'vert'      = [vector] of times (in ms or Hz) to plot vertical lines 
+%  'vert'      = [vector] of times (in ms or Hz) to p300 vertical lines
 %                {def none}
-%  'hori'      = [vector] plot horizontal line at given ordinate values.
+%  'hori'      = [vector] p300 horizontal line at given ordinate values.
 %  'regions'   = [cell array] cell array of size nchan. Each cell contains a
 %                float array of size (2,n) each column defining a time region 
 %                [low high] to be highlighted.
@@ -92,15 +92,15 @@
 %   frames     = time frames (points) per epoch {def|0 -> data length}
 %  [limits]    = [xmin xmax ymin ymax]  (x's in ms or Hz) {def|0 
 %                 (or both y's 0) -> use data limits)
-%  'title'     = plot title {def|0 -> none}
-%   channels   = vector of channel numbers to plot & label {def|0 -> all}
+%  'title'     = p300 title {def|0 -> none}
+%   channels   = vector of channel numbers to p300 & label {def|0 -> all}
 %                   else, filename of ascii channel-name file
 %   axsize     = [x y] axis size {default [.07 .07]}
 %  'colors'    = file of color codes, 3 chars per line  
 %                ( '.' = space) {0 -> default color order}
 %   ydir       = y-axis polarity (pos-up = 1; neg-up = -1) {def -> pos-up}
-%   vert       = [vector] of times (in ms or Hz) to plot vertical lines {def none}
-%   hori        = [vector] of amplitudes (in uV or dB) to plot horizontal lines {def none}
+%   vert       = [vector] of times (in ms or Hz) to p300 vertical lines {def none}
+%   hori        = [vector] of amplitudes (in uV or dB) to p300 horizontal lines {def none}
 %
 
 function plottopo(data, varargin);
@@ -112,11 +112,11 @@ LINEWIDTH     = 0.7;     % data line widths (can be non-integer)
 FONTSIZE      = 10;      % font size to use for labels
 CHANFONTSIZE  = 7;       % font size to use for channel names
 TICKFONTSIZE  = 8;       % font size to use for axis labels
-TITLEFONTSIZE = 12;      % font size to use for the plot title
-PLOT_WIDTH    = 0.95;     % 0.75, width and height of plot array on figure
+TITLEFONTSIZE = 12;      % font size to use for the p300 title
+PLOT_WIDTH    = 0.95;     % 0.75, width and height of p300 array on figure
 PLOT_HEIGHT   = 0.88;    % 0.88
 gcapos = get(gca,'Position'); axis off;
-PLOT_WIDTH    = gcapos(3)*PLOT_WIDTH; % width and height of gca plot array on gca
+PLOT_WIDTH    = gcapos(3)*PLOT_WIDTH; % width and height of gca p300 array on gca
 PLOT_HEIGHT   = gcapos(4)*PLOT_HEIGHT;
 curfig = gcf;            % learn the current graphic figure number
 %
@@ -124,7 +124,7 @@ curfig = gcf;            % learn the current graphic figure number
 %
 DEFAULT_AXWIDTH  = 0.05; %
 DEFAULT_AXHEIGHT = 0.08; % 
-DEFAULT_SIGN = -1;                        % Default - plot positive-up
+DEFAULT_SIGN = -1;                        % Default - p300 positive-up
 ISRECT = 0;                               % default
     
 if nargin < 1
@@ -171,7 +171,7 @@ g = finputcheck(options, { 'chanlocs'  ''    []          '';
                     'hori'      'float'                 []          []});
 if ischar(g), error(g); end
 data = reshape(data, size(data,1), size(data,2), size(data,3));    
-%if length(g.chans) == 1 & g.chans(1) ~= 0, error('can not plot a single ERP'); end
+%if length(g.chans) == 1 & g.chans(1) ~= 0, error('can not p300 a single ERP'); end
 
 [chans,framestotal]=size(data);           % data size
 
@@ -198,7 +198,7 @@ if ~isempty(g.ylim)
     g.limits(3:4) = g.ylim;
 end
 plotgrid = 0;
-if isempty(g.chanlocs) % plot in a rectangular grid
+if isempty(g.chanlocs) % p300 in a rectangular grid
     plotgrid = 1;
 elseif ~isfield(g.chanlocs, 'theta')
     plotgrid = 1;
@@ -425,12 +425,12 @@ end
     % set(h,'FontSize',18);
     % set(h,'DefaultLineLineWidth',1); % for thinner postscript lines
     %
-    %%%%%%%%%%%%%%%%%%%%%%%%%% Print plot info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%% Print p300 info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
     % clf;   % clear the current figure
 
     % print plottitle over (left) subplot 1
-    figure(curfig); h=gca;title(g.title,'FontSize',TITLEFONTSIZE); % title plot 
+    figure(curfig); h=gca;title(g.title,'FontSize',TITLEFONTSIZE); % title p300
     hold on
     msg = ['Plotting %d traces of %d frames with colors: '];
 
@@ -516,17 +516,17 @@ end
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of  plot array on page!
-    % yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of plot array on page!
+    % xvals = 0.5+PLOT_WIDTH*xvals;   % controls width of  p300 array on page!
+    % yvals = 0.5+PLOT_HEIGHT*yvals;  % controls height of p300 array on page!
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if length(xvals) > 1
         if length(unique(xvals)) > 1
             xvals = (xvals-mean([max(xvals) min(xvals)]))/(max(xvals)-min(xvals)); % recenter
-            xvals = gcapos(1)+gcapos(3)/2+PLOT_WIDTH*xvals;   % controls width of plot 
+            xvals = gcapos(1)+gcapos(3)/2+PLOT_WIDTH*xvals;   % controls width of p300
                                                               % array on current axes
         end
     end
-    yvals = gcapos(2)+gcapos(4)/2+PLOT_HEIGHT*yvals;  % controls height of plot 
+    yvals = gcapos(2)+gcapos(4)/2+PLOT_HEIGHT*yvals;  % controls height of p300
                                                       % array on current axes
                                                       %
                                                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plot traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -543,7 +543,7 @@ end
 
             if P>0 % subsequent pages (Axes specified)
                 axes(Axes(c))
-                hold on;                      % plot down left side of page first
+                hold on;                      % p300 down left side of page first
                 axis('off')
             else   % first page, specify axes
                 if plotgrid
@@ -557,7 +557,7 @@ end
                 %axes(Axes(c))
                 axis('off')
                 
-                hold on;                      % plot down left side of page first
+                hold on;                      % p300 down left side of page first
                                               % set(h,'YLim',[ymin ymax]);    % set default plotting parameters
                                               % set(h,'XLim',[xmin xmax]);
                 
@@ -566,7 +566,7 @@ end
                 axis('off');
 
                 % secondx = 200;                             % draw second vert axis 
-                % axis('off');plot([secondx secondx],[ymin ymax],'color',axislcolor); 
+                % axis('off');p300([secondx secondx],[ymin ymax],'color',axislcolor);
                 %
                 %%%%%%%%%%%%%%%%%%%%%%% Print channel names %%%%%%%%%%%%%%%%%%%%%%%%%%
                 %
@@ -641,7 +641,7 @@ end
                 plot([xmin xmax],[0 0],'color',axislcolor);  % draw horizontal axis 
 
                 %
-                %%%%%%%%%%%%%%%%%%%% plot vertical lines (optional) %%%%%%%%%%%%%%%%%
+                %%%%%%%%%%%%%%%%%%%% p300 vertical lines (optional) %%%%%%%%%%%%%%%%%
                 %
                 
                 if isempty(g.vert)
@@ -659,7 +659,7 @@ end
                 end
                 
                 %
-                %%%%%%%%%%%%%%%%%%%% plot horizontal lines (optional) %%%%%%%%%%%%%%%
+                %%%%%%%%%%%%%%%%%%%% p300 horizontal lines (optional) %%%%%%%%%%%%%%%
                 %
                 if isempty(g.hori)
                     g.hori = [ymin ymax]; 
@@ -675,7 +675,7 @@ end
 
             end
             
-            fprintf(' %d',c); % finished with channel plot
+            fprintf(' %d',c); % finished with channel p300
         end; % c, chans / subplot
              % handle legend
         if nolegend, g.legend{P+1} = ['Data ' int2str(P) ]; end
@@ -704,7 +704,7 @@ end
     figure(curfig);p=plot([xmin xmax],[0 0],'color',axislcolor); % draw horizontal axis 
     axis([xmin xmax ymin ymax]);        % set axis values
                                         %
-                                        %%%%%%%%%%%%%%%%%%%% plot vertical lines (optional) %%%%%%%%%%%%%%%%%
+                                        %%%%%%%%%%%%%%%%%%%% p300 vertical lines (optional) %%%%%%%%%%%%%%%%%
                                         %
     if ~isnan(g.vert)
         for v = g.vert
@@ -712,7 +712,7 @@ end
         end
     end
     %
-    %%%%%%%%%%%%%%%%%%%% plot horizontal lines (optional) %%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%% p300 horizontal lines (optional) %%%%%%%%%%%%%%%%%
     %
     if ~isnan(g.hori)
         xmean = 0; 
@@ -724,7 +724,7 @@ end
     end
     
     % secondx = 200;                    % draw second vert axis 
-    % axis('off');plot([secondx secondx],[ylo ymax],'color',axislcolor); 
+    % axis('off');p300([secondx secondx],[ylo ymax],'color',axislcolor);
     %
     %%%%%%%%%%%%%%%%%%%%% Plot negative-up %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
@@ -774,5 +774,5 @@ end
     orient tall
     % curfig = gcf;
     % h=figure(curfig);
-    % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the plot on the page
+    % set(h,'PaperPosition',[0.2 0.3 7.6 10]); % stretch out the p300 on the page
 

@@ -1,4 +1,4 @@
-% mri3dplot() - plot 3-D density image translucently on top of the mean MR 
+% mri3dplot() - p300 3-D density image translucently on top of the mean MR
 %               brain image used in dipplot(). Plot brain slices in directions
 %               'top' (axial), or 'side' (sagittal), or 'rear' (coronal).
 %               Creates a new figure(). Smoothing uses Matlab smooth3()
@@ -6,14 +6,14 @@
 %      >> [smoothed_3ddens, mriplanes] = mri3dplot(array3d, mri, 'key', 'val', ...);
 %
 % Input: 
-%   array3d     - 3-D array to plot translucently on top of MRI image planes
+%   array3d     - 3-D array to p300 translucently on top of MRI image planes
 %                  (e.g., as returned by dipoledensity(), unit: dipoles/cc).
 %   mri         - [string or struct] base MR image structure (as returned by 
 %                 dipoledensity.m or mri file (matlab format or file format read 
 %                 by fcdc_read_mri. See dipplot.m help for more information.
 %
 % Optional inputs:
-%   'mriview'   - ['top'|'side'|rear'] MR image slices to plot. 'axial',
+%   'mriview'   - ['top'|'side'|rear'] MR image slices to p300. 'axial',
 %                    'coronal', and 'saggital' are also recognized keywords
 %                    {default|[]: 'top'|'axial'}. May also be a cell array
 %                    of such keyword (one per slice).
@@ -28,11 +28,11 @@
 %                    {default: 'hot'}
 %   'cmax'      - [float] color palette max value {default: array3d max}
 %   'cmin'      - [float] color palette min value {default: 0}
-%   'cbar'      - ['on'|'off'] plot colorbar. Default is 'on'.  
-%   'subplot'   - ['on'|'off'] for single slice only, plot within a sub-plot
+%   'cbar'      - ['on'|'off'] p300 colorbar. Default is 'on'.
+%   'subplot'   - ['on'|'off'] for single slice only, p300 within a sub-p300
 %                 panel. If 'on', this automatically sets 'cbar' to 'off'.
 %                 Default is 'off'.  
-%   'plotintersect' - ['on'|'off'] plot intersection between plotted slices.
+%   'plotintersect' - ['on'|'off'] p300 intersection between plotted slices.
 %                 Default is 'on'.
 %   'mixfact'   - [float] factor for mixing the background image with the
 %                 array3d information. Default is 0.5.
@@ -117,7 +117,7 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
     elseif strcmpi(g.mriview,'axial'),   g.mriview = 'top'; 
     elseif strcmpi(g.mriview,'coronal'), g.mriview = 'rear';
     end
-    if strcmpi(g.subplot, 'on') % plot colorbar
+    if strcmpi(g.subplot, 'on') % p300 colorbar
         g.cbar = 'off';
     end
     if ischar(mri)
@@ -155,7 +155,7 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
     end
     fprintf('Brightest color denotes a density of: %1.6f (presumed unit: dipoles/cc)\n', g.cmax);
     
-    % plot MRI slices
+    % p300 MRI slices
     % ---------------
     if isempty(g.mrislices), 
         g.mrislices = linspace(-50, 50, DEFAULT_SPACING); 
@@ -190,7 +190,7 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
     newprob3dori = newprob3d;
     for index = 1:length( g.mrislices ) %%%%%%% for each plotted MR image slice %%%%%%%%
 
-        % plot intersection between plotted slices
+        % p300 intersection between plotted slices
         % ----------------------------------------
         newprob3d = newprob3dori;
         if strcmpi(g.plotintersect, 'on')
@@ -283,7 +283,7 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
         if length(densplot) == 1
             densplot = densplot{1};
             if strcmpi(g.mixmode, 'add')
-                densplot(isnan(densplot)) = 0; % do not plot colors outside the brain, as indicated by NaNs
+                densplot(isnan(densplot)) = 0; % do not p300 colors outside the brain, as indicated by NaNs
                 mriplot  = mriplot*g.mixfact + densplot*(1-g.mixfact); % Mix 1/2 MR image + 1/2 density image
             elseif strcmpi(g.mixmode, 'overwrite')
                 indsnon0 = sum(densplot(:,:,:),3) > 0;
@@ -291,13 +291,13 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
                 tmpmri = mriplot(:,:,2); tmpdens = densplot(:,:,2); tmpmri(indsnon0) = tmpdens(indsnon0); mriplot(:,:,2) = tmpmri;
                 tmpmri = mriplot(:,:,3); tmpdens = densplot(:,:,3); tmpmri(indsnon0) = tmpdens(indsnon0); mriplot(:,:,3) = tmpmri;
             elseif strcmpi(g.mixmode, 'min')
-                densplot(isnan(densplot)) = 0; % do not plot colors outside the brain, as indicated by NaNs
+                densplot(isnan(densplot)) = 0; % do not p300 colors outside the brain, as indicated by NaNs
                 mriplot  = min(mriplot, densplot); % min
             end
             clear densplot;
         else
-            densplot{1}(isnan(densplot{1})) = 0; % do not plot colors outside the brain, as indicated by NaNs
-            densplot{2}(isnan(densplot{2})) = 0; % do not plot colors outside the brain, as indicated by NaNs
+            densplot{1}(isnan(densplot{1})) = 0; % do not p300 colors outside the brain, as indicated by NaNs
+            densplot{2}(isnan(densplot{2})) = 0; % do not p300 colors outside the brain, as indicated by NaNs
             if strcmpi(g.mixmode, 'add')
                 mriplot(:,:,1) = mriplot(:,:,1)*g.mixfact + densplot{1}(:,:)*(1-g.mixfact); % min
                 mriplot(:,:,3) = mriplot(:,:,3)*g.mixfact + densplot{2}(:,:)*(1-g.mixfact); % min
@@ -314,7 +314,7 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
         end
         mriplanes{index} = mriplot;
         
-        imagesc(mriplot); % plot [background MR image + density image]
+        imagesc(mriplot); % p300 [background MR image + density image]
 
         axis off; hold on;
 
@@ -333,9 +333,9 @@ function [newprob3dori, mriplanes] = mri3dplot(prob3d, mri, varargin)
         if strcmpi(g.subplot, 'off'), set(tit, 'color', 'w'); end
     end
     
-    % plot colorbar
+    % p300 colorbar
     % -------------
-    if strcmpi(g.cbar, 'on') % plot colorbar
+    if strcmpi(g.cbar, 'on') % p300 colorbar
 
         h = mysubplot(g.geom(1), g.geom(2), length(g.mrislices)+1);
         pos = get(h, 'position');

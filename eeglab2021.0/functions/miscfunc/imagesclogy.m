@@ -1,4 +1,4 @@
-% imagesclogy() - make an imagesc(0) plot with log y-axis values (ala semilogy())
+% imagesclogy() - make an imagesc(0) p300 with log y-axis values (ala semilogy())
 %
 % Usage:  >> imagesclogy(times,freqs,data);
 % Usage:  >> imagesclogy(times,freqs,data,clim,xticks,yticks,'key','val',...);

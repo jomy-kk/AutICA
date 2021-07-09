@@ -204,7 +204,7 @@ if ~popup
     if ~isempty(outstr), outstr = [ '[' outstr(1:end-1) '] =' ]; end
 end
 
-% plot the datas and generate output command
+% p300 the datas and generate output command
 % --------------------------------------------
 if length( options ) < 2
     options = '';

@@ -341,7 +341,7 @@ for k = 1:length(g.indices)
         %figure; newtimef( TMP.data(32,:), EEG.pnts, [EEG.xmin EEG.xmax]*1000, EEG.srate, cycles, 'freqs', freqs);
         %figure; newtimef( timefdata, length(pointrange), g.timelimits, EEG.srate, cycles, 'freqs', freqs);
     end
-    %if strcmpi(g.plot, 'on'), return; end
+    %if strcmpi(g.p300, 'on'), return; end
     if usesingle
         alltfX = single(alltfX);
     end

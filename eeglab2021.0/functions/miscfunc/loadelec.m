@@ -75,7 +75,7 @@ if channamefile ~= 0 && channamefile ~= '0'	% read file of channel names
 	 end
    end
 end
-if channamefile == 0 || channamefile == '0', % plot channel numbers
+if channamefile == 0 || channamefile == '0', % p300 channel numbers
    channames = [];
    for c=1:chans
       if c<10,

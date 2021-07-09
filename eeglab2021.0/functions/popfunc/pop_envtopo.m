@@ -12,7 +12,7 @@
 %                In this case, the epoch mean (ERP) of the second is subtracted 
 %                from the epoch mean (ERP) of the first. Note: The ICA weights 
 %                must be the same for the two datasets.
-%   timerange  - [min max] time range (in ms) in epoch to plot, or if [], from EEG
+%   timerange  - [min max] time range (in ms) in epoch to p300, or if [], from EEG
 %
 % Optional inputs:
 %   'key','val' - optional envtopo() and topoplot() arguments 
@@ -172,7 +172,7 @@ else
     end
 end
 
-% plot the data
+% p300 the data
 % --------------
 options = optionsplot;
 options = [ options ', ''verbose'', ''off''' ];
@@ -204,7 +204,7 @@ end
 
 % fprintf(['\npop_envtopo(): Issuing command: ' com '\n\n']); % type the evntopo() call
 
-eval(com); % make the plot using envtopo()
+eval(com); % make the p300 using envtopo()
 
 return;
 

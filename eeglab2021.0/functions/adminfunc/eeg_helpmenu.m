@@ -126,7 +126,7 @@
 %             Head model and settings - <a href="matlab:helpwin pop_dipfit_settings">pop_dipfit_settings</a>
 %             Coarse fit (grid scan) - <a href="matlab:helpwin pop_dipfit_gridsearch">pop_dipfit_gridsearch</a>
 %             Fine fit (iterative) - <a href="matlab:helpwin pop_dipfit_nonlinear">pop_dipfit_nonlinear</a>
-%             Autofit (coarse fit, fine fit & plot) - <a href="matlab:helpwin pop_multifit">pop_multifit</a>
+%             Autofit (coarse fit, fine fit & p300) - <a href="matlab:helpwin pop_multifit">pop_multifit</a>
 %             Plot component dipoles - <a href="matlab:helpwin pop_dipplot">pop_dipplot</a>
 %       Peak detection using EEG toolbox
 %       FMRIB Tools
@@ -181,7 +181,7 @@
 %       PCA clustering (original)
 %             Build preclustering array - <a href="matlab:helpwin pop_preclust">pop_preclust</a>
 %             Cluster components - <a href="matlab:helpwin pop_clust">pop_clust</a>
-%       Edit/plot clusters - <a href="matlab:helpwin pop_clustedit">pop_clustedit</a>
+%       Edit/p300 clusters - <a href="matlab:helpwin pop_clustedit">pop_clustedit</a>
 %       Cluster components by correlation (CORRMAP) - <a href="matlab:helpwin pop_corrmap">pop_corrmap</a>
 % Datasets
 %       Select multiple datasets - <a href="matlab:helpwin pop_chansel">pop_chansel</a>

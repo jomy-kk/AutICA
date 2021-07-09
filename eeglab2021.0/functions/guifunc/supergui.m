@@ -229,7 +229,7 @@ try
 catch
 end
     
-pos = [0 0 1 1]; % plot relative to current axes
+pos = [0 0 1 1]; % p300 relative to current axes
 q = [pos(1) pos(2) 0 0];
 s = [pos(3) pos(4) pos(3) pos(4)]; % allow to use normalized position [0 100] for x and y
 axis('off');

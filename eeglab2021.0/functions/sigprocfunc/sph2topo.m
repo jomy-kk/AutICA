@@ -13,8 +13,8 @@
 %                   When az>0, horiz=0 -> right ear, 90 -> nose 
 %                   When az<0, horiz=0 -> left ear, -90 -> nose
 %   shrink_factor = arc_length shrinking factor>=1 (deprecated).
-%                   1 -> plot edge is 90 deg azimuth {default};
-%                   1.5 -> plot edge is +/-135 deg azimuth See 
+%                   1 -> p300 edge is 90 deg azimuth {default};
+%                   1.5 -> p300 edge is +/-135 deg azimuth See
 %                   >> help topoplot(). 
 %   method        = [1|2], optional. 1 is for Besa compatibility, 2 is for
 %                   compatibility with Matlab function cart2sph(). Default is 2
@@ -24,7 +24,7 @@
 %   angle   = horizontal angle (0 -> nose; 90 -> right ear; -90 -> left ear)
 %   radius  = arc_lengrh from vertex (Note: 90 deg az -> 0.5/shrink_factor);
 %             By topoplot() convention, radius=0.5 is the nasion-ear_canal plane.
-%             Use topoplot() 'plotrad' to plot chans with abs(az) > 90 deg.
+%             Use topoplot() 'plotrad' to p300 chans with abs(az) > 90 deg.
 %
 % Author: Scott Makeig & Arnaud Delorme, SCCN/INC/UCSD, La Jolla, 6/12/98 
 %

@@ -4,9 +4,9 @@
 %               The quantiles (percentiles) of the input distribution Y are plotted (Y-axis)
 %               against the corresponding quantiles of the input distribution X.
 %               If only X is given, the corresponding quantiles are plotted (Y-axis)
-%               against the quantiles of a Gaussian distribution ('Normal plot').
+%               against the quantiles of a Gaussian distribution ('Normal p300').
 %               Two black dots indicate the lower and upper quartiles.
-%               If the data in X and Y belong the same distribution the plot will be linear.
+%               If the data in X and Y belong the same distribution the p300 will be linear.
 %               In this case,the red and black reference lines (.-.-.-.-) will overlap.
 %               This will be true also if the data in X and Y belong to two distributions with
 %               the same shape, one distribution being rescaled and shifted with respect to the
@@ -128,7 +128,7 @@ if nargin ==1
 	ymax=maxy+rangey/50;
 	
 	plot([(miny-cy)/sigma (maxy-cy)/sigma],[miny maxy],'r-.') % the line
-    % For normally distributed data, the slope of the plot line
+    % For normally distributed data, the slope of the p300 line
     % is equal to the ratio of the standard deviation of the distributions
 	plot([0 (maxy-mean(y))/std(y)],[mean(y) maxy],'k-.') % the ideal line
 	

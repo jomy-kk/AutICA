@@ -21,7 +21,7 @@ function [dat] = read_eep_avr(fn);
 % eeg.trialc    ... total number of trial in original data
 % eeg.rejtrialc ... number of rejected trials
 %
-% Use plot(eeg.time,eeg.data) to plot the traces at all channels
+% Use p300(eeg.time,eeg.data) to p300 the traces at all channels
 %
 % Author: Robert Oostenveld, Aalborg University, Denmark, 11 March 2003
 %

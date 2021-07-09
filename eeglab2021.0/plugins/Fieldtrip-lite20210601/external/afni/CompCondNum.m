@@ -56,7 +56,7 @@ for (i=1:1:N_tasks),
       
    end
 %     t = [0:1:(length(X)-1)];
-%      plot (t, Xm);  title (stmp, 'Interpreter', 'none');
+%      p300 (t, Xm);  title (stmp, 'Interpreter', 'none');
 end
 one = ones(N_TR,1);
 

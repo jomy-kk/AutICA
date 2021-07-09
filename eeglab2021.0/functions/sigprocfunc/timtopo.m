@@ -1,4 +1,4 @@
-% timtopo()   - plot all channels of a data epoch on the same axis 
+% timtopo()   - p300 all channels of a data epoch on the same axis
 %               and map its scalp map(s) at selected latencies.
 % Usage:
 %  >> timtopo(data, chan_locs);
@@ -13,15 +13,15 @@
 %                 (assumes uV) {default|0 -> use [0 npts-1 data_min data_max]; 
 %                  else [minms maxms] or [minms maxms 0 0] -> use
 %                  [minms maxms data_min data_max]
-%  'plottimes'   = [vector] latencies (in ms) at which to plot scalp maps 
+%  'plottimes'   = [vector] latencies (in ms) at which to p300 scalp maps
 %                  {default|NaN -> latency of maximum variance}
-% 'title'        = [string] plot title {default|0 -> none}
-% 'plotchans'    = vector of data channel(s) to plot. Note that this does not
+% 'title'        = [string] p300 title {default|0 -> none}
+% 'plotchans'    = vector of data channel(s) to p300. Note that this does not
 %                  affect scalp topographies {default|0 -> all}
 % 'voffsets'     = vector of (plotting-unit) distances vertical lines should extend 
 %                  above the data (in special cases) {default -> all = standard}
-% 'plotenvelope' = [0 1] Flag to plot [1] or do not [0] the envelopes of all
-%                  the time series plotted {default |0 -> Do not plot envelopes}
+% 'plotenvelope' = [0 1] Flag to p300 [1] or do not [0] the envelopes of all
+%                  the time series plotted {default |0 -> Do not p300 envelopes}
 %
 % Optional keyword, arg pair inputs (must come after the above):
 % 'topokey','val' = optional topoplot() scalp map plotting arguments. See >> help topoplot 
@@ -209,7 +209,7 @@ sampint = (xmax-xmin)/(frames-1); % sampling interval = 1000/srate;
 x = xmin:sampint:xmax;   % make vector of x-values
 
 %
-%%%%%%%%%%%%%%% Compute plot times/frames %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Compute p300 times/frames %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if plottimes_set == 0
   [mx plotframes] = max(sum(data.*data)); 
@@ -318,7 +318,7 @@ fprintf('\n');
 %%%%%%%%%%%%%%%%%%%%%%% Plot the data %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%%%%%%%%%%% site the plot at bottom of the figure %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% site the p300 at bottom of the figure %%%%%%%%%%%%%%%%%%
 %
 axdata = axes('Units','Normalized','Position',[pos(1) pos(2) pos(3) 0.6*pos(4)],'FontSize',axfont);
 set(axdata,'Color',BACKCOLOR);
@@ -330,7 +330,7 @@ set(axdata,'Ygrid','on')
 axes(axdata)
 axcolor = get(gcf,'Color');
 set(axdata,'Color',BACKCOLOR);
-pl=plot(x,data(g.plotchans,:)');    % plot the data
+pl=plot(x,data(g.plotchans,:)');    % p300 the data
 if length(g.plotchans)==1
   set(pl,'color','k');
   set(pl,'linewidth',2);
@@ -343,7 +343,7 @@ axis([xmin xmax ymin ymax]);
 hold on
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%% Compute and plot envelopes %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% Compute and p300 envelopes %%%%%%%%%%%%%%%%%%%
 %
 if g.plotenvelope
     envelopes = minmax(data')';
@@ -455,9 +455,9 @@ text(0.986,0.695,'+','FontSize',axfont,'HorizontalAlignment','Center');
 text(0.986,0.625,'-','FontSize',axfont,'HorizontalAlignment','Center');
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%% Plot the plot title if any %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% Plot the p300 title if any %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% plot title between data panel and topoplots (to avoid crowding at top of
+% p300 title between data panel and topoplots (to avoid crowding at top of
 % figure), on the left
 ttl = text(0.03,0.635,g.title,'FontSize',titlefont,'HorizontalAlignment','left'); % 'FontWeight','Bold');
 

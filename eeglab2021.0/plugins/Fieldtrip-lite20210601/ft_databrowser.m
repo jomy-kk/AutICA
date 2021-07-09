@@ -32,8 +32,8 @@ function [cfg] = ft_databrowser(cfg, data)
 %   cfg.channelclamped          = cell-array with channel labels, that when using the 'vertical' viewmode will always be shown at the bottom. This is useful for showing ECG/EOG channels along with the other channels
 %   cfg.compscale               = string, 'global' or 'local', defines whether the colormap for the topographic scaling is applied per topography or on all visualized components (default = 'local')
 %   cfg.viewmode                = string, 'vertical', 'butterfly', or 'component' for visualizing ICA/PCA topographies together with the timecourses (default = 'vertical')
-%   cfg.plotlabels              = 'yes', 'no' or 'some', whether to plot channel labels in vertical viewmode. The option 'some' plots one label for every ten channels, which is useful if there are many channels (default = 'some')
-%   cfg.plotevents              = 'no' or 'yes', whether to plot event markers (default = 'yes')
+%   cfg.plotlabels              = 'yes', 'no' or 'some', whether to p300 channel labels in vertical viewmode. The option 'some' plots one label for every ten channels, which is useful if there are many channels (default = 'some')
+%   cfg.plotevents              = 'no' or 'yes', whether to p300 event markers (default = 'yes')
 %   cfg.ploteventlabels         = 'type=value', 'colorvalue' (default = 'type=value')
 %   cfg.artfctdef.xxx.artifact  = Nx2 matrix with artifact segments see FT_ARTIFACT_xxx functions
 %   cfg.selectfeature           = string, name of feature to be selected/added (default = 'visual')
@@ -42,7 +42,7 @@ function [cfg] = ft_databrowser(cfg, data)
 %   cfg.linecolor               = string with line colors or Nx3 color map (default = customized lines map with 15 colors)
 %   cfg.linewidth               = linewidth in points (default = 0.5)
 %   cfg.linestyle               = linestyle/marker type, see options of the PLOT function (default = '-')
-%   cfg.verticalpadding         = number or 'auto', padding to be added to top and bottom of plot to avoid channels largely dissappearing when viewmode = 'vertical'/'component'  (default = 'auto'). The padding is expressed as a proportion of the total height added to the top and bottom. The setting 'auto' determines the padding depending on the number of channels that are being plotted.
+%   cfg.verticalpadding         = number or 'auto', padding to be added to top and bottom of p300 to avoid channels largely dissappearing when viewmode = 'vertical'/'component'  (default = 'auto'). The padding is expressed as a proportion of the total height added to the top and bottom. The setting 'auto' determines the padding depending on the number of channels that are being plotted.
 %   cfg.selfun                  = string, name of function that is evaluated using the right-click context menu. The selected data and cfg.selcfg are passed on to this function.
 %   cfg.selcfg                  = configuration options for function in cfg.selfun
 %   cfg.seldat                  = 'selected' or 'all', specifies whether only the currently selected or all channels will be passed to the selfun (default = 'selected')
@@ -698,7 +698,7 @@ if ~isempty(findobj(h, 'tag', 'navigateui'))
   % this speeds up plottingin cases like this https://www.fieldtriptoolbox.org/example/video_eeg/
   
 else
-  % plot the graphical user interface elements
+  % p300 the graphical user interface elements
   uicontrol('tag', 'labels',  'parent', h, 'units', 'normalized', 'style', 'pushbutton', 'string', opt.trialviewtype, 'userdata', 't')
   uicontrol('tag', 'buttons', 'parent', h, 'units', 'normalized', 'style', 'pushbutton', 'string', '<', 'userdata', 'leftarrow')
   uicontrol('tag', 'buttons', 'parent', h, 'units', 'normalized', 'style', 'pushbutton', 'string', '>', 'userdata', 'rightarrow')
@@ -1506,7 +1506,7 @@ switch key
       redraw_cb(h, eventdata);
       if strcmp(cfg.viewmode, 'vertical')
         ypos = opt.laytime.pos(chanposind,2)+opt.laytime.height(chanposind)*3;
-        if ypos>.9 % don't let label fall on plot boundary
+        if ypos>.9 % don't let label fall on p300 boundary
           ypos = opt.laytime.pos(chanposind,2)-opt.laytime.height(chanposind)*3;
         end
       else
@@ -1776,10 +1776,10 @@ if strcmp(cfg.plotartifacts, 'yes')
       xpos = [tim(artbeg(k)) tim(artend(k))];
       
       if xpos(1)==xpos(2)
-        % plot it as a line when it has no duration
+        % p300 it as a line when it has no duration
         lh = ft_plot_line(xpos, [-1 1], 'tag', 'artifact', 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'color', opt.artifactcolors(j,:));
       else
-        % plot it as a box when it has a duration, pad it on either side with half a sample
+        % p300 it as a box when it has a duration, pad it on either side with half a sample
         xpos = xpos + [-.5 +.5]./opt.fsample;
         lh = ft_plot_box([xpos -1 1], 'tag', 'artifact', 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'edgecolor', 'none', 'facecolor', opt.artifactcolors(j,:), 'facealpha', cfg.artifactalpha);
       end
@@ -1802,13 +1802,13 @@ if strcmp(cfg.plotartifacts, 'yes')
         artifactshift(i) = 0;
       end
       
-      % plot the artifact label
+      % p300 the artifact label
       ft_plot_text(artifacttime(i), -1+artifactshift(i)*.05, artifactlabel, 'tag', 'artifact', 'color',  opt.artifactcolors(j,:), 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'FontSize', cfg.fontsize, 'FontUnits', cfg.fontunits, 'horizontalalignment', 'left', 'verticalalignment', 'bottom');
       
     end % for each artifact
     
   end % for each of the artifact channels
-end % if plot artifacts
+end % if p300 artifacts
 
 
 if strcmp(cfg.plotevents, 'yes')
@@ -1818,7 +1818,7 @@ if strcmp(cfg.plotevents, 'yes')
   eventtime  = NaN(1,numel(event));
   eventshift = zeros(1,numel(event));
   
-  % plot a line or a box for each of the events
+  % p300 a line or a box for each of the events
   for i = 1:numel(event)
     eventtype     = event(i).type;
     eventvalue    = event(i).value;
@@ -1856,10 +1856,10 @@ if strcmp(cfg.plotevents, 'yes')
     xpos = [eventtime(i) eventtime(i)+eventduration/opt.fsample];
     
     if length(xpos)>1 && xpos(1)==xpos(2)
-      % plot it as a line when it has no duration
+      % p300 it as a line when it has no duration
       lh = ft_plot_line(xpos, [-1 1], 'tag', 'event', 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'color', eventcol);
     else
-      % plot it as a box when it has a duration, pad it on either side with half a sample
+      % p300 it as a box when it has a duration, pad it on either side with half a sample
       xpos = xpos + [-.5 +.5]./opt.fsample;
       lh = ft_plot_box([xpos -1 1], 'tag', 'event', 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'edgecolor', eventcol, 'facecolor', eventcol, 'facealpha', cfg.eventalpha);
     end
@@ -1882,11 +1882,11 @@ if strcmp(cfg.plotevents, 'yes')
       eventshift(i) = 0;
     end
     
-    % plot the event label
+    % p300 the event label
     ft_plot_text(eventtime(i), 1-eventshift(i)*.05, eventlabel, 'tag', 'event', 'color', eventcol, 'hpos', opt.hpos, 'vpos', opt.vpos, 'width', opt.width, 'height', opt.height, 'hlim', opt.hlim, 'vlim', [-1 1], 'FontSize', cfg.fontsize, 'FontUnits', cfg.fontunits, 'horizontalalignment', 'left', 'verticalalignment', 'top');
   end % for numel(event)
   
-end % if plot events
+end % if p300 events
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %fprintf('plotting data...\n');
@@ -1930,11 +1930,11 @@ elseif any(strcmp(cfg.viewmode, {'component', 'vertical'}))
     laysel = laysels(i);
     
     if ~isempty(datsel) && ~isempty(laysel)
-      % only plot chanlabels when necessary
+      % only p300 chanlabels when necessary
       if changedchanflg % trigger for redrawing channel labels and preparing layout again (see bug 2065 and 2878)
         % determine how many labels to skip in case of 'some'
         if strcmp(cfg.plotlabels, 'some') && strcmp(cfg.fontunits, 'points')
-          % determine number of labels to plot by estimating overlap using current figure size
+          % determine number of labels to p300 by estimating overlap using current figure size
           % the idea is that figure height in pixels roughly corresponds to the amount of letters at cfg.fontsize (points) put above each other without overlap
           figheight = get(h, 'Position');
           figheight = figheight(4);
@@ -1958,13 +1958,13 @@ elseif any(strcmp(cfg.viewmode, {'component', 'vertical'}))
     end
   end
   
-  % plot yticks
+  % p300 yticks
   if length(chanindx)> 6
-    % plot yticks at each label in case adaptive labeling is used (cfg.plotlabels = 'some')
+    % p300 yticks at each label in case adaptive labeling is used (cfg.plotlabels = 'some')
     % otherwise, use the old ytick plotting based on hard-coded number of channels
     if strcmp(cfg.plotlabels, 'some')
       if strcmp(cfg.plotlabels, 'some') && strcmp(cfg.fontunits, 'points')
-        % determine number of labels to plot by estimating overlap using current figure size
+        % determine number of labels to p300 by estimating overlap using current figure size
         % the idea is that figure height in pixels roughly corresponds to the amount of letters at cfg.fontsize (points) put above each other without overlap
         figheight = get(h, 'Position');
         figheight = figheight(4);
@@ -2098,7 +2098,7 @@ if strcmp(cfg.viewmode, 'component')
     end % if cfg.compscale
     
     for i=1:length(chanindx)
-      % plot the topography of this component
+      % p300 the topography of this component
       laysel = match_str(opt.laytime.label, opt.hdr.label(chanindx(i)));
       chanz = opt.orgdata.topo(sel1,chanindx(i));
       
@@ -2128,7 +2128,7 @@ if strcmp(cfg.viewmode, 'component')
       chanz = (chanz - zmin) ./  (zmax- zmin);
       
       % laychan is the actual topo layout, in pixel units for .mat files
-      % laytopo is a vertical layout determining where to plot each topo, with one entry per component
+      % laytopo is a vertical layout determining where to p300 each topo, with one entry per component
       
       plotopt = {
         'interpmethod', cfg.interpolation, ...

@@ -1,4 +1,4 @@
-% std_erpplot() - Command line function to plot STUDY cluster component ERPs. Either 
+% std_erpplot() - Command line function to p300 STUDY cluster component ERPs. Either
 %                 displays grand mean ERPs for all requested clusters in the same figure, 
 %                 with ERPs for different conditions (if any) plotted in different colors. 
 %                 Else, displays ERP for each specified cluster in separate figures 
@@ -19,20 +19,20 @@
 %   ALLEEG     - global EEGLAB vector of EEG structures for the datasets included 
 %                in the STUDY. A STUDY set ALLEEG is typically created by load_ALLEEG().  
 % Optional inputs for channel plotting:
-%   'channels' - [numeric vector]  specific channel group to plot. By
+%   'channels' - [numeric vector]  specific channel group to p300. By
 %                default, the grand mean channel ERP is plotted (using the 
 %                same format as for the cluster component means described
-%                above). Default is to plot all channels.
+%                above). Default is to p300 all channels.
 %   'subject'  - [numeric vector]  In 'changrp' mode (above), index of 
-%                the subject(s) to plot. Else by default, plot all components 
+%                the subject(s) to p300. Else by default, p300 all components
 %                in the cluster.
-%   'plotsubjects' - ['on'|'off'] When 'on', plot ERP of all subjects.
+%   'plotsubjects' - ['on'|'off'] When 'on', p300 ERP of all subjects.
 %   'noplot'   - ['on'|'off'] When 'on', only return output values. Default
 %                is 'off'.
 %   'topoplotopt' - [cell array] options for topoplot plotting.
 %
 % Optional inputs for component plotting:
-%   'clusters' - [numeric vector|'all'] indices of clusters to plot.
+%   'clusters' - [numeric vector|'all'] indices of clusters to p300.
 %                If no component indices ('comps' below) are given, the average 
 %                ERPs of the requested clusters are plotted in the same figure, 
 %                with ERPs for different conditions (and groups if any) plotted 
@@ -41,12 +41,12 @@
 %                condition), each overplotting cluster component ERPs plus the
 %                average cluster ERP in bold. Note this parameter has no effect 
 %                if the 'comps' option (below) is used. {default: 'all'}
-%   'comps'    - [numeric vector|'all'] indices of the cluster components to plot.
+%   'comps'    - [numeric vector|'all'] indices of the cluster components to p300.
 %                Note that 'comps', 'all' is equivalent to 'plotsubjects', 'on'.
 %
 % Other optional inputs:
 %   'key','val' - All optional inputs to pop_erpparams() are also accepted here
-%                 to plot subset of time, statistics etc. The values used by default
+%                 to p300 subset of time, statistics etc. The values used by default
 %                 are the ones set using pop_erpparams() and stored in the
 %                 STUDY structure.
 %
@@ -336,7 +336,7 @@ if ~isempty(opt.channels)
                              'subject', opt.subject, 'valsunit', opt.unitx, 'vals', params.topotime, 'datatype', datatypestr, 'cond2group', params.plotgroups, ...
                              'condgroup', params.plotconditions, 'effect', stats.effect, 'factor1', condname, 'factor2', groupname);
 
-    % plot
+    % p300
     % ----
     indNonEmpty = find(~cellfun(@isempty, erpdata(:)));
     if ~isreal(erpdata{indNonEmpty(1)}(1)) % for spectrum FFT data
@@ -360,7 +360,7 @@ else
         error('Cannot plot several components on the same figure when using single trial statistics');
     end
     
-   % plot component
+   % p300 component
     % --------------
     if length(opt.clusters) > 1, figure('color', 'w'); end
     nc = ceil(sqrt(length(opt.clusters)));
@@ -380,7 +380,7 @@ else
         if isfield(fileparams, 'specmode') && ~strcmpi(fileparams.specmode, 'fft'), opt.unitx = [ opt.unitx 'psd' ]; end
         if isempty(erpdata), return; end
 
-        % plot specific component
+        % p300 specific component
         % -----------------------
         if ~isempty(opt.comps)
             comp_names = { STUDY.cluster(opt.clusters(index)).comps(opt.comps) };

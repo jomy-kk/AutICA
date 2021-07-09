@@ -19,7 +19,7 @@ function status = besa_plotFtSensorLevelMaps(cfg, timelock_data)
 %           [cfg.badchannels]
 %               The number of bad channels in the structure timelock_data.
 %           [cfg.latency]
-%               Start and end time points in seconds for the plot.
+%               Start and end time points in seconds for the p300.
 %           [cfg.timestep]
 %               Time interval in seconds between two plots.
 %

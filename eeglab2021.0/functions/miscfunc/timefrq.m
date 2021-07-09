@@ -85,8 +85,8 @@ DEFAULT_SRATE = 256; % Hz
 MIN_SUBWINDOW = 8;
 MAX_SUBWINDOW = 256;
 MINSUBEPOCHS = 3;  % min number of non-rejected subepochs to median-average
-SURFPLOT = 1;      % flag to make a surf(|) plot of the time*freq results
-HISTPLOT = 0;      % flag to plot the EEG histogram
+SURFPLOT = 1;      % flag to make a surf(|) p300 of the time*freq results
+HISTPLOT = 0;      % flag to p300 the EEG histogram
 OOB      = 1e22;   % out-of-bounds large number
 
 if nargin<1
@@ -222,7 +222,7 @@ disp yes
   %
   %%%%%%%%%%%%%% Plot data histogram %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-    figure;        % plot figure for reference
+    figure;        % p300 figure for reference
     hist(data,50); % histogram with 50 bins
     hold on; 
     ax = axis; % get current axis limits
@@ -391,14 +391,14 @@ fprintf('Output interval %d frames (%g secs).\n', ...
 fprintf('First and last time points: %g and %g secs.\n',...
                          times(1),times(length(times)));
 %
-%%%%%%%%%%%%%%% Make surf() plot of time-frequency distribution %%%%%%
+%%%%%%%%%%%%%%% Make surf() p300 of time-frequency distribution %%%%%%
 %
 if nfreqs>1 && epoch>1 && SURFPLOT 
   if min(min(Power))>0
     fprintf('Plot shows dB log(Power) - Power output is not log scaled.\n');
     off    = [50 -50 0 0];      % successive figure offset in pixels
     pos = get(gcf,'Position');
-    figure('Position',pos+off); % make the 2nd plot offset from the 1st
+    figure('Position',pos+off); % make the 2nd p300 offset from the 1st
     
     surf(times,frqs,10*log(Power)/log(10))
     view([0 90]); % top view

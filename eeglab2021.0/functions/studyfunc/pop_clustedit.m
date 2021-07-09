@@ -33,21 +33,21 @@
 %                the STUDY structure after they are first plotted to allow quick replotting.  
 %
 % Graphic interface buttons:
-%  "Select cluster to plot" - [list box] Displays available clusters to plot (format is
+%  "Select cluster to p300" - [list box] Displays available clusters to p300 (format is
 %                'cluster name (number of components)'). The presented clusters depend 
 %                on the optional input variable 'clusters'. Selecting (clicking on) a 
 %                cluster from the list will display the selected cluster components in the 
-%                "Select component(s) to plot" list box. Use the plotting buttons below 
-%                to plot selected measures of the selected cluster. Additional editing 
+%                "Select component(s) to p300" list box. Use the plotting buttons below
+%                to p300 selected measures of the selected cluster. Additional editing
 %                options (renaming the cluster, rejecting outliers, moving components to 
 %                another cluster) are also available. The option 'All N cluster centroids' 
 %                at the top of the list displays all the clusters in the list except the 
 %                'Notcluster', 'Outlier' and 'ParentCluster' clusters. Selecting this option 
-%                will plot the cluster centroids (i.e. ERP, ERSP, ...) in a single figure.
-%  "Select component(s) to plot" - [list box] Displays the ICA components of the currently 
-%                selected cluster (in the "Select cluster to plot" list box). Each component 
+%                will p300 the cluster centroids (i.e. ERP, ERSP, ...) in a single figure.
+%  "Select component(s) to p300" - [list box] Displays the ICA components of the currently
+%                selected cluster (in the "Select cluster to p300" list box). Each component
 %                has the format: 'subject name, component index'. Multiple components can be 
-%                selected from the list. Use the plotting buttons below to plot different 
+%                selected from the list. Use the plotting buttons below to p300 different
 %                measures of the selected components on different figures. Selecting the 
 %                "All components" option is  equivalent to using the cluster plotting buttons. 
 %                Additional editing options are reassigning the selected components to 
@@ -123,13 +123,13 @@
 %                the 'Cancel' button. Uses the command line function std_mergeclust().
 %  "Remove selected outlier component(s)" - [button] Moves selected component(s) to the 
 %                outlier cluster. The components that will be moved are the ones selected 
-%                in the "Select component(s) to plot" list box. Opens a popup window in which 
+%                in the "Select component(s) to p300" list box. Opens a popup window in which
 %                a list of the selected component(s) is presented. For changes to take place,
 %                press the popup window 'OK' button, else press the 'Cancel' button. 
 %                Uses the command line function std_moveoutlier().
 %  "Reassign selected component(s)" - [button] Moves selected component(s) from one cluster 
 %                to another. The components that will reassign are the ones selected in the
-%                "Select component(s) to plot" list box. Opens a popup window in which 
+%                "Select component(s) to p300" list box. Opens a popup window in which
 %                a list of possible clusters to which to move the selected component(s) is 
 %                presented. For changes to take place, press the popup window 'OK' button, 
 %                else press the 'Cancel' button. Uses the command line function std_movecomp().

@@ -164,7 +164,7 @@ for i=1:numel(data.time)
       countdown = countdown - 1;
     end
     signal1 = signal1/max(abs(signal1)) * cfg.s1.ampl;
-    % figure; plot(signal1); title('signal 1')
+    % figure; p300(signal1); title('signal 1')
   end
   
   if ~isempty(cfg.s2)
@@ -176,7 +176,7 @@ for i=1:numel(data.time)
       countdown = countdown - 1;
     end
     signal2 = signal2/max(abs(signal2)) * cfg.s2.ampl;
-    % figure; plot(signal2); title('signal 2')
+    % figure; p300(signal2); title('signal 2')
   end
   
   if ~isempty(cfg.s3)
@@ -188,7 +188,7 @@ for i=1:numel(data.time)
       countdown = countdown - 1;
     end
     signal3 = signal3/max(abs(signal3)) * cfg.s3.ampl;
-    % figure; plot(signal3); title('signal 3')
+    % figure; p300(signal3); title('signal 3')
   end
   
   % start with an empty data matrix for this trial

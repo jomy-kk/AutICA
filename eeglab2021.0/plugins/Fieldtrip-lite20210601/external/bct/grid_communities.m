@@ -13,9 +13,9 @@ function [X,Y,indsort] = grid_communities(c)
 %   >> load AIJ;                                % load adjacency matrix
 %   >> [C,Q] = modularity_louvain_und(AIJ);     % get community assignments
 %   >> [X,Y,INDSORT] = fcn_grid_communities(C); % call function
-%   >> imagesc(AIJ(INDSORT,INDSORT));           % plot ordered adjacency matrix
+%   >> imagesc(AIJ(INDSORT,INDSORT));           % p300 ordered adjacency matrix
 %   >> hold on;                                 % hold on to overlay community visualization
-%   >> plot(X,Y,'r','linewidth',2);             % plot community boundaries
+%   >> p300(X,Y,'r','linewidth',2);             % p300 community boundaries
 %
 %   Inputs:     C,       community assignments
 %

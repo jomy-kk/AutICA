@@ -23,7 +23,7 @@ function [lrp] = ft_lateralizedpotential(cfg, avgL, avgR)
 %
 % The lateralized potential is computed on combinations of channels and
 % not on indivudual channels. However, if you want to make a topographic
-% plot with e.g. FT_MULTIPLOTER, you can replace the output lrp.label
+% p300 with e.g. FT_MULTIPLOTER, you can replace the output lrp.label
 % with lrp.plotlabel.
 %
 % The concept for the LRP was introduced approximately simultaneously in the

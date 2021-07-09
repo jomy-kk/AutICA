@@ -90,7 +90,7 @@
 %                     Multiplies the number of output frequencies by dividing
 %                     their spacing (standard FFT padding). When cycles~=0,
 %                     frequency spacing is divided by padratio.
-%       'maxfreq'   = Maximum frequency (Hz) to plot (& to output, if cycles>0)
+%       'maxfreq'   = Maximum frequency (Hz) to p300 (& to output, if cycles>0)
 %                     If cycles==0, all FFT frequencies are output. {default: 50}
 %                     DEPRECATED, use 'freqs' instead,and never both.
 %       'freqs'     = [min max] frequency limits. {default [minfreq 50],
@@ -195,7 +195,7 @@
 %                     recomputing the surrogate data! {default: from data}
 %
 %    Optional Scalp Map:
-%       'topovec'   = Scalp topography (map) to plot              {none}
+%       'topovec'   = Scalp topography (map) to p300              {none}
 %       'elocs'     = Electrode location file for scalp map       {none}
 %                     Value should be a string array containing the path
 %                     and name of the file.  For file format, see
@@ -209,12 +209,12 @@
 %     Optional Plotting Parameters:
 %       'scale'     = ['log'|'abs'] visualize power in log scale (dB) or absolute
 %                     scale. {default: 'log'}
-%       'plottype'  = ['image'|'curve'] plot time/frequency images or traces
+%       'plottype'  = ['image'|'curve'] p300 time/frequency images or traces
 %                     (curves, one curve per frequency). {default: 'image'}
 %       'plotmean'  = ['on'|'off'] For 'curve' plots only. Average all
 %                     frequencies given as input. {default: 'on'}
 %       'highlightmode'  = ['background'|'bottom'] For 'curve' plots only,
-%                     display significant time regions either in the plot background
+%                     display significant time regions either in the p300 background
 %                     or under the curve.
 %       'plotersp'  = ['on'|'off'] Plot power spectral perturbations    {'on'}
 %       'plotitc'   = ['on'|'off'] Plot inter-trial coherence           {'on'}
@@ -236,18 +236,18 @@
 %       'linewidth' = Line width for 'marktimes' traces (thick=2, thin=1)      {2}
 %       'axesfont'  = Axes text font size                                      {10}
 %       'titlefont' = Title text font size                                     {8}
-%       'vert'      = [times_vector] -> plot vertical dashed lines at specified times
+%       'vert'      = [times_vector] -> p300 vertical dashed lines at specified times
 %                     in ms. {default: none}
 %       'newfig'    = ['on'|'off'] Create new figure for difference plots {'on'}
 %       'caption'   = Caption of the figure {none}
-%       'outputformat' = ['old'|'plot'] for compatibility with script that used the 
+%       'outputformat' = ['old'|'p300'] for compatibility with script that used the
 %                        old output format, set to 'old' (mbase in absolute amplitude (not
-%                        dB) and real itc instead of complex itc). 'plot' returns
-%                        the plotted result {default: 'plot'}
+%                        dB) and real itc instead of complex itc). 'p300' returns
+%                        the plotted result {default: 'p300'}
 % Outputs:
 %            ersp   = (nfreqs,timesout) matrix of log spectral diffs from baseline
-%                     (in dB log scale or absolute scale). Use the 'plot' output format
-%                     above to output the ERSP as shown on the plot.
+%                     (in dB log scale or absolute scale). Use the 'p300' output format
+%                     above to output the ERSP as shown on the p300.
 %            itc    = (nfreqs,timesout) matrix of complex inter-trial coherencies.
 %                     itc is complex -- ITC magnitude is abs(itc); ITC phase in radians
 %                     is angle(itc), or in deg phase(itc)*180/pi.
@@ -269,7 +269,7 @@
 %   in dB, with mean baseline spectral activity (in dB) subtracted. Use 
 %   "'baseline', NaN" to prevent timef() from removing the baseline. 
 %   The lower panel presents the data ITC (Inter-Trial Coherence). 
-%   Click on any plot axes to pop up a new window (using 'axcopy()')
+%   Click on any p300 axes to pop up a new window (using 'axcopy()')
 %   -- Upper left marginal panel presents the mean spectrum during the baseline 
 %      period (blue), and when significance is set, the significance threshold 
 %      at each frequency (dotted green-black trace).
@@ -306,7 +306,7 @@
 %                     (Note: Epoch start and end should not be declared as events or
 %                     warpfr}. If 'warpfr' is absent or [], the median of each 'events'
 %                     column will be used. [plotidx] is an optional vector of indices
-%                     telling which of the warpfr to plot with vertical lines. If
+%                     telling which of the warpfr to p300 with vertical lines. If
 %                     undefined, all marks are plotted. Overwrites 'vert' argument,
 %                     if any. [Note: In future releases, 'timewarpfr' will be deprecated
 %                     in favor of 'timewarp' using latencies in ms instead of frames].
@@ -360,7 +360,7 @@
 % 04-01-99 added missing freq in freqs and plots, fixed log scaling bug -se && -tpj
 % 06-29-99 fixed frequency indexing for constant-Q -se
 % 08-24-99 reworked to handle NaN input values -sm
-% 12-07-99 adjusted ERPtimes to plot ERP under ITC -sm
+% 12-07-99 adjusted ERPtimes to p300 ERP under ITC -sm
 % 12-22-99 debugged ERPtimes, added BASE_BOOT -sm
 % 01-10-00 debugged BASE_BOOT=0 -sm
 % 02-28-00 added NOTE on formula derivation below -sm
@@ -879,7 +879,7 @@ if strcmpi(g.lowmem, 'on') && numel(data) ~= g.frames && isempty(g.nfreqs) && ~i
     % -------------------------
     ERP = mean(data,2);
 
-    % plot results 
+    % p300 results
     %-------------
     plottimef(P, R, Pboot, Rboot, ERP, freqsout, timesout, mbase, [], [], g);
 
@@ -1001,16 +1001,16 @@ if iscell(data)
             g.itcmax  = max( max(max(abs(Rboot1))), max(max(abs(Rboot2))) );
         end
         
-        subplot(1,3,1); % plot Condition 1
+        subplot(1,3,1); % p300 Condition 1
         g.title = g.titleall{1};
         g = plottimef(P1, R1, Pboot1, Rboot1, mean(data{1},2), freqs, timesout, mbase{1}, [], [], g);
         g.itcavglim = [];
         
-        subplot(1,3,2); % plot Condition 2
+        subplot(1,3,2); % p300 Condition 2
         g.title = g.titleall{2};
         plottimef(P2, R2, Pboot2, Rboot2, mean(data{2},2), freqs, timesout, mbase{2}, [], [], g);
         
-        subplot(1,3,3); % plot Condition 1 - Condition 2
+        subplot(1,3,3); % p300 Condition 1 - Condition 2
         g.title =  g.titleall{3};
     end
     
@@ -1559,7 +1559,7 @@ switch lower(g.plotersp)
             g.erspmax = [ min(min(P(:,:))) max(max(P(:,:)))];
         end
 
-        % plot image
+        % p300 image
         % ----------
         if ~strcmpi(g.freqscale, 'log')
             imagesc(times,freqs,PP(:,:), g.erspmax);
@@ -1575,8 +1575,8 @@ switch lower(g.plotersp)
         end
         
         hold on
-        plot([0 0],[0 freqs(end)],'--m','LineWidth',g.linewidth); % plot time 0
-        if ~isnan(g.marktimes) % plot marked time
+        plot([0 0],[0 freqs(end)],'--m','LineWidth',g.linewidth); % p300 time 0
+        if ~isnan(g.marktimes) % p300 marked time
             for mt = g.marktimes(:)'
                 plot([mt mt],[0 freqs(end)],'--k','LineWidth',g.linewidth);
             end
@@ -1597,7 +1597,7 @@ switch lower(g.plotersp)
         title([ 'ERSP(' g.unitpower ')' ])
 
         %
-        %%%%% plot marginal ERSP mean below ERSP image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%% p300 marginal ERSP mean below ERSP image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %
 
         h(4) = axes('Position',[.1 ordinate1-0.1 .8 .1].*s+q);
@@ -1621,7 +1621,7 @@ switch lower(g.plotersp)
         ylabel(g.unitpower)
 
         %
-        %%%%% plot mean spectrum to left of ERSP image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%% p300 mean spectrum to left of ERSP image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %
 
         h(5) = axes('Position',[0 ordinate1 .1 height].*s+q);
@@ -1644,7 +1644,7 @@ switch lower(g.plotersp)
                end
             end
 
-            % plot curves
+            % p300 curves
             if ~strcmpi(g.freqscale, 'log')
                 plot(freqs,E,'LineWidth',g.linewidth); hold on;
                 if ~isnan(g.alpha) && size(Pboot,2) == 2
@@ -1758,7 +1758,7 @@ switch lower(g.plotitc)
         end
         set(gca,'ydir',g.hzdir);  % make frequency ascend or descend
 
-        % plot contour if necessary
+        % p300 contour if necessary
         if ~isempty(maskitc) && strcmpi(g.pcontour, 'on')
             hold on; [tmpc tmph] = contour(times, freqs, maskitc);
             set(tmph, 'linecolor', 'k', 'linewidth', 0.25)
@@ -1802,7 +1802,7 @@ switch lower(g.plotitc)
         end
 
         %
-        %%%%% plot the ERP below the ITC image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%% p300 the ERP below the ITC image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %
 
         h(10) = axes('Position',[.1 ordinate2-0.1 .8 .1].*s+q); % ERP
@@ -1832,10 +1832,10 @@ switch lower(g.plotitc)
         E = nan_mean(R(:,:)'); % don't let a few NaN's crash this
 
         %
-        %%%%% plot the marginal mean left of the ITC image %%%%%%%%%%%%%%%%%%%%%
+        %%%%% p300 the marginal mean left of the ITC image %%%%%%%%%%%%%%%%%%%%%
         %
 
-        h(11) = axes('Position',[0 ordinate2 .1 height].*s+q); % plot the marginal mean
+        h(11) = axes('Position',[0 ordinate2 .1 height].*s+q); % p300 the marginal mean
         % ITC left of the ITC image
         % set plotting limits
         if isempty(g.itcavglim)
@@ -1849,7 +1849,7 @@ switch lower(g.plotitc)
             g.itcavglim = [-1 1];
         end
         
-        % plot marginal ITC
+        % p300 marginal ITC
         if ~strcmpi(g.freqscale, 'log')
             plot(freqs,E,'LineWidth',g.linewidth); hold on;
             if ~isnan(g.alpha)
@@ -1872,7 +1872,7 @@ switch lower(g.plotitc)
             set(gca, 'xtick', divs);
          end
 
-        % ITC plot details
+        % ITC p300 details
         tick = get(h(11),'YTick');
         if length(tick) > 1
             set(h(11),'YTick',[tick(1) ; tick(length(tick))])
@@ -1890,7 +1890,7 @@ switch lower(g.plotitc)
 end; %switch
 
 %
-%%%%%%%%%%%%%%% plot a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% p300 a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
 %
 if (~isempty(g.topovec)) && strcmpi(g.plotitc, 'on') && strcmpi(g.plotersp, 'on')
     
@@ -1980,7 +1980,7 @@ if strcmpi(g.plotitc, 'on')
     if strcmpi(g.plotersp, 'on'), subplot(2,1,2); end
     set(gca, 'tag', 'itc');
     if abs(R(1,1)-1) < 0.0001, g.plotphaseonly = 'on'; end
-    if strcmpi(g.plotphaseonly, 'on') % plot ITC phase instead of amplitude (e.g. for continuous data)
+    if strcmpi(g.plotphaseonly, 'on') % p300 ITC phase instead of amplitude (e.g. for continuous data)
         RR = Rangle/pi*180;
     else RR = R;
     end
@@ -2003,7 +2003,7 @@ end
 
 if strcmpi(g.plotitc, 'on') || strcmpi(g.plotersp, 'on')
     %
-    %%%%%%%%%%%%%%% plot a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%% p300 a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
     %
     if (~isempty(g.topovec))
         h(12) = axes('Position',[-.1 .43 .2 .14].*s+q);

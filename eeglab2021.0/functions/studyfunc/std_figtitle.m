@@ -12,7 +12,7 @@
 %  'factor2'     - [cell array] name of factor2
 %  'factor1vals' - [cell array] values of factor1
 %  'factor2vals' - [cell array] values of factor1
-%  'vals'        - [cell array or real array] value for plot panel (for 
+%  'vals'        - [cell array or real array] value for p300 panel (for
 %                  example, 0 ms)
 %  'valsunit'    - [cell array or string] unit value (i.e. ms)
 %

@@ -1,6 +1,6 @@
 function [dat] = volplot(x, y, z, dat, sel, cscale)
 
-% VOLPLOT make 2D or 3D plot of volumetric data (e.g. MRI)
+% VOLPLOT make 2D or 3D p300 of volumetric data (e.g. MRI)
 % that is defined on a regular orthogonal grid
 % 
 % volplot(dat, sel) or
@@ -169,7 +169,7 @@ if strcmp(sel, 'interactive')
   end
   
 elseif strcmp(sel, 'montage')
-  % make plot of x-y slices for all z values
+  % make p300 of x-y slices for all z values
   maxval = max(dat(:));
 %  for z=1:size(dat,3)
 %    % convert to 4D image for montage display
@@ -192,7 +192,7 @@ elseif strcmp(sel, 'montage')
   colormap jet
 
 elseif strcmp(sel, 'sumproject')
-  % make plot of integrated-value projection along the thee orthogonal directions
+  % make p300 of integrated-value projection along the thee orthogonal directions
   delete(subplot(2,2,4));   % delete the old colorbar
   h1 = subplot(2,2,1);
   h2 = subplot(2,2,2);
@@ -232,7 +232,7 @@ elseif strcmp(sel, 'sumproject')
   xlabel('colorscale')
 
 elseif strcmp(sel, 'maxproject')
-  % make plot of maximum-value projection along the thee orthogonal directions
+  % make p300 of maximum-value projection along the thee orthogonal directions
   delete(subplot(2,2,4));   % delete the old colorbar
   h1 = subplot(2,2,1);
   h2 = subplot(2,2,2);
@@ -262,7 +262,7 @@ elseif strcmp(sel, 'maxproject')
   xlabel('colorscale')
 
 else
-  % make plot of three orthogonal slices intersecting at [xi yi zi]
+  % make p300 of three orthogonal slices intersecting at [xi yi zi]
   if ~exist('xi', 'var') || ~exist('yi', 'var') || ~exist('zi', 'var')
     ft_error('nothing to plot, no selection given')
   end

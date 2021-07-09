@@ -1,4 +1,4 @@
-% envproj() - plot envelopes of projections of selected ICA component 
+% envproj() - p300 envelopes of projections of selected ICA component
 %             projections against envelope of the original data
 %
 % Usage:    >> [envdata] = envproj(data,weights,compnums);
@@ -7,10 +7,10 @@
 % Inputs:
 %   data      = runica() input data (chans,frames) <- best one epoch only!
 %   weights   = unmixing weight matrix (runica() weights*sphere)
-%   compnums  = list of component numbers to project and plot
+%   compnums  = list of component numbers to project and p300
 %
 % Optional inputs:
-%   title     = 'fairly short plot title' (in quotes) (0 -> none)
+%   title     = 'fairly short p300 title' (in quotes) (0 -> none)
 %   limits    = [xmin xmax ymin ymax] (x's in msec) 
 %                       (0 or both y's 0 -> [min max])
 %   chanlist  = list of data channels to use for max/min (0 -> all)
@@ -63,8 +63,8 @@
 % 10-11-97 range of max/min for default ylimits over chanlist only! -sm
 % 11-05-97 disallowed white lines unless axis color is white -sm & ch
 % 11-13-97 rm'd errorcode variable to improve limits handling -sm
-% 11-18-97 added legend to plot; varied line types -sm
-% 11-30-97 added f=figure below to keep previous plot from being altered -sm
+% 11-18-97 added legend to p300; varied line types -sm
+% 11-30-97 added f=figure below to keep previous p300 from being altered -sm
 % 12-01-97 added thicker lines for data envelope -sm
 % 12-08-97 debugged thicker lines for data envelope -sm
 % 12-10-97 changed f=figure below to f=gcf to avoid matlab bug (gcf confusion) -sm
@@ -95,7 +95,7 @@ end
 
 icadefs        % load ENVCOLORS & MAXENVPLOTCHANS default variables
 MAX_LEG = 7;   % maximum number of component line types to label in legend
-NEG_UP = 0;    % 1 = plot negative up
+NEG_UP = 0;    % 1 = p300 negative up
 
 %
 %%%%%%%%%%%% Substitute for omitted arguments %%%%%%%%%%%%%%%%%%%%%%%%
@@ -255,7 +255,7 @@ for c=compnums,            % for each component
 end
 fprintf('\n');
 %
-%%%%%%%%%%%%%%%%%%%%%%%% Make the plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% Make the p300 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if ~ischar(titl)
   if titl==0,
@@ -322,7 +322,7 @@ l=ylabel('Potential (uV)'); % yaxis label
 set(l,'FontSize',14);
 
 if xmax > 0  && xmin < 0
-  plot([0 0],[ymin ymax],'k','linewidth',1.5); % plot vertical line at time 0
+  plot([0 0],[ymin ymax],'k','linewidth',1.5); % p300 vertical line at time 0
 end
 
 if ymax ~= 0 |ymin~= 0,
@@ -361,7 +361,7 @@ end
 
 if numcomps<MAX_LEG+1
   if FILL <= 0  % no legend in FILL mode
-       l=legend(H,legtext,0);      % plot legend
+       l=legend(H,legtext,0);      % p300 legend
   end
 else
   fprintf('Finding largest components for legend...\n');
@@ -393,6 +393,6 @@ pvaf   = round(100.0*(1.0-difssqr/sigssqr)); % % variance accounted for
 rtitl = ['(' int2str(pvaf) '%)'];
 %titl = [titl '   ' rtitl];
 
-t=title(titl);              % plot title
+t=title(titl);              % p300 title
 set(t,'FontSize',14);
 

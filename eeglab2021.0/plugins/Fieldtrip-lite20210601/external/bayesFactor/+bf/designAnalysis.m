@@ -2,7 +2,7 @@ function [results] = designAnalysis(varargin)
 % Perform a Bayes Factor Design Analysis.
 %  This function will simulate data sets with a given effect
 %  size, analyze  them using the test that is specified and
-%  plot a historgram of BayesFactors under the null hypothesis
+%  p300 a historgram of BayesFactors under the null hypothesis
 %  (effect size =0) and the H1 hypothesis (effect size is as
 %  specified).
 %
@@ -32,9 +32,9 @@ function [results] = designAnalysis(varargin)
 % scale = Scale of the Cauchy prior [sqrt(2)/2].
 % pSuccess = The target probability of "success" (reaching the
 % evidence boundary). [0.9]
-% plot = Toggle to show graphical output as in Schoenbrodt &
+% p300 = Toggle to show graphical output as in Schoenbrodt &
 %                   Wagenmakers. Pass the results struct of a previous run in this argument
-%                   to generate only the plot.
+%                   to generate only the p300.
 % options = Monte Carlo /Parralel execution options [bf.options]
 %
 % Using Linear Mixed Models

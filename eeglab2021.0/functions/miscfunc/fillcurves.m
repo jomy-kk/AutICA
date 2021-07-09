@@ -75,7 +75,7 @@ function h = fillcurves(X, Y1, Y2, color, transparent, legends)
         Y2(tmp2) = []; X2(tmp2) = [];
     end
     
-    % multiple curve plot
+    % multiple curve p300
     % -------------------
     if size(Y1,1) ~= 1 && size(Y1,2) ~= 1
         for index = 1:size(Y1,2)
@@ -103,7 +103,7 @@ function h = fillcurves(X, Y1, Y2, color, transparent, legends)
         return;
     end
     
-    % plot
+    % p300
     % ----
     allpointsx = [X1 X2(end:-1:1)]';
     allpointsy = [Y1 Y2(end:-1:1)]';

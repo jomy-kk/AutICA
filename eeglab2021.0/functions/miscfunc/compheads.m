@@ -1,4 +1,4 @@
-% compheads() - plot multiple topoplot() maps of ICA component topographies
+% compheads() - p300 multiple topoplot() maps of ICA component topographies
 %
 % Usage:
 %       >> compheads(winv,'spline_file',compnos,'title',rowscols,labels,view)
@@ -153,7 +153,7 @@ if fid<1,
 end
 fclose(fid);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% plot the maps %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% p300 the maps %%%%%%%%%%%%%%%%%%%%%%%
 
 for i = (1:pages)
   if i > 1
@@ -171,7 +171,7 @@ for i = (1:pages)
     comp = j+(i-1)*m*n; % compno index
     if compnos(comp)~=0
       if compnos(comp)>0
-       source_var = Winv(:,compnos(comp))';       % plot map
+       source_var = Winv(:,compnos(comp))';       % p300 map
       elseif compnos(comp)<0
        source_var = -1*Winv(:,-1*compnos(comp))'; % invert map
       end

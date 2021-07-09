@@ -4,7 +4,7 @@ function svgGaussianBlur(s, source, deviation, result)
 %
 % svgGaussianBlur(s, source, deviation, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   source : Any previous defined filter result string, 'SourceGraphic',
 %            or 'SourceAlpha'.
 %   deviation : Blur strength

@@ -41,7 +41,7 @@ if FileInfo.TimeSpan > 150  % Limit the timespan shown in the graphs to 150 seco
 else
     totaltime = FileInfo.TimeSpan; % seconds
 end
-time = 0 : stepsize : totaltime;   % Initialize time axis for gaussian plot
+time = 0 : stepsize : totaltime;   % Initialize time axis for gaussian p300
 
 % Build catalogue of entities
 [nsresult, EntityInfo] = ns_GetEntityInfo(hfile, [1 : 1 : FileInfo.EntityCount]);

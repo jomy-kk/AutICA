@@ -6,7 +6,7 @@
 %   >>   std_detachplots('','','data',data 'figtitles', alltitlestmp,'sbtitles',sbtitles,'handles', handles);
 %
 % Inputs:
-%      data        - Cell array containing the data matrices for each plot in the same order showed in the figure
+%      data        - Cell array containing the data matrices for each p300 in the same order showed in the figure
 %      figtitles   - Cell array of the titles of each individual axes in
 %                    the  figure. The titles must correspond. The function
 %                    use this value to find the right hanlde of the axis
@@ -14,7 +14,7 @@
 %                    detached line per axis. i.e. {{'Axis1 line1' 'Axis1 line2'} {'Axis2 line1' 'Axis2 line2'}}
 %      handles     - Handles of the main figure who contain all the
 %                    subplots
-%      flagstd     - Flag to plot the Standar Deviation  {default: 1} means 'on'
+%      flagstd     - Flag to p300 the Standar Deviation  {default: 1} means 'on'
 %
 % See also:
 %  
@@ -209,11 +209,11 @@ end
 
 function plotlines(kindx,idata,meandata,lower,upper,sbtitle,g)
 for i = 1:length(kindx)
-    plot(g.timevec,idata(:,kindx(i)),'b','LineWidth', 0.1); % plot g.data
+    plot(g.timevec,idata(:,kindx(i)),'b','LineWidth', 0.1); % p300 g.data
 end
-plot(g.timevec,meandata,'r','LineWidth', 0.1);              % plot mean
+plot(g.timevec,meandata,'r','LineWidth', 0.1);              % p300 mean
 
-if g.flagstd                                                % plot std band
+if g.flagstd                                                % p300 std band
     eeglabciplot(lower,upper,g.timevec, 'r', 0.2);
     axis tight;
 end

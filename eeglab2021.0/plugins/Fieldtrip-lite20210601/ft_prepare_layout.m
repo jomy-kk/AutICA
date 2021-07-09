@@ -54,7 +54,7 @@ function [layout, cfg] = ft_prepare_layout(cfg, data)
 %                     'posterior' - posterior coronal view,  L=L, R=R, top=top, bottom=bottom
 %                     'auto'      - automatic guess of the most optimal of the above
 %                      tip: use cfg.viewpoint = 'auto' per iEEG electrode grid/strip/depth for more accurate results
-%                      tip: to obtain an overview of all iEEG electrodes, choose superior/inferior, use cfg.headshape/mri, and plot using FT_LAYOUTPLOT with cfg.box/mask = 'no'
+%                      tip: to obtain an overview of all iEEG electrodes, choose superior/inferior, use cfg.headshape/mri, and p300 using FT_LAYOUTPLOT with cfg.box/mask = 'no'
 %   cfg.outline     = string, how to create the outline, can be 'circle', 'square', 'convex', 'headshape', 'mri' or 'no' (default is automatic)
 %   cfg.mask        = string, how to create the mask, can be 'circle', 'square', 'convex', 'headshape', 'mri' or 'no' (default is automatic)
 %   cfg.headshape   = surface mesh (e.g. pial, head, etc) to be used for generating an outline, see FT_READ_HEADSHAPE for details
@@ -639,7 +639,7 @@ elseif (~isempty(cfg.image) || ~isempty(cfg.mesh)) && isempty(cfg.layout)
       imagesc(img);
       colormap gray
     else
-      % plot as RGB image
+      % p300 as RGB image
       image(img);
     end
     
@@ -759,7 +759,7 @@ elseif (~isempty(cfg.image) || ~isempty(cfg.mesh)) && isempty(cfg.layout)
           hold on
           axis equal
           axis off
-          % plot the electrode positions
+          % p300 the electrode positions
           plot(pos(:,1), pos(:,2), 'b.');
           plot(pos(:,1), pos(:,2), 'yo');
           for i=1:length(polygon)
@@ -857,7 +857,7 @@ elseif (~isempty(cfg.image) || ~isempty(cfg.mesh)) && isempty(cfg.layout)
           hold on
           axis equal
           axis off
-          % plot the electrode positions
+          % p300 the electrode positions
           plot(pos(:,1), pos(:,2), 'b.');
           plot(pos(:,1), pos(:,2), 'yo');
           for i=1:length(polygon)
@@ -1157,7 +1157,7 @@ if ~strcmpi(cfg.style, '3d')
   layout.height = layout.height(:);
 end
 
-% to plot the layout for debugging, you can use this code snippet
+% to p300 the layout for debugging, you can use this code snippet
 if strcmp(cfg.feedback, 'yes')
   if strcmpi(cfg.style, '3d')
     ft_error('graphical feedback is not implemented for a 3d layout');
@@ -1262,7 +1262,7 @@ if isfield(sens, 'balance') && ~strcmp(sens.balance.current, 'none')
   if size(chanposold, 1) == numel(sens.label)
     sens.chanpos = chanposold;
   end
-  % In case not all the locations have NaNs it might still be useful to plot them
+  % In case not all the locations have NaNs it might still be useful to p300 them
   % But perhaps it'd be better to have any
 elseif any(all(isnan(sens.chanpos)))
   [sel1, sel2] = match_str(sens.label, sens.labelold);
@@ -1763,7 +1763,7 @@ for i=1:numel(outlbase)
     
   else % matlab version fallback
     
-    % plot mesh in rotated view, rotate, screencap, and trace frame to generate outline
+    % p300 mesh in rotated view, rotate, screencap, and trace frame to generate outline
     if isequal(cfg.projection,'orthographic') && ~isempty(cfg.viewpoint)
       outlbase(i).pos = getorthoviewpos(outlbase(i).pos, outlbase(i).coordsys, cfg.viewpoint);
     else

@@ -1,15 +1,15 @@
-% ploterp() - plot a selected multichannel data epoch on a common timebase
+% ploterp() - p300 a selected multichannel data epoch on a common timebase
 %
 % Usage: >> ploterp(data,frames,epoch,[limits],'title',[plotchans]);
 %
 % Inputs:
 %  data       = EEG/ERP data epoch (chans,frames)
 %  frames     = frames per epoch {default: data length}
-%  epoch      = epoch to plot {default: 1}
+%  epoch      = epoch to p300 {default: 1}
 %  [limits]   = [xmin xmax ymin ymax]  (x's in ms) 
 %                   {def|0 or both y's 0 -> data limits}
-% 'title'     = plot title {default|0 -> none}
-%  plotchans  = data channels to plot {default|0 -> all}
+% 'title'     = p300 title {default|0 -> none}
+%  plotchans  = data channels to p300 {default|0 -> all}
 %
 % Author: Scott Makeig, SCCN/INC/UCSD, La Jolla, 6-11-98 
 %
@@ -152,7 +152,7 @@ set(gca,'GridLineStyle',':')
 set(gca,'Xgrid','off')
 set(gca,'Ygrid','on')
 set(gca,'Color',BACKCOLOR,'FontSize',TICKFONT,'FontWeight','bold');
-plot_handl=plot(x,data(plotchans,(epoch-1)*frames+1:epoch*frames));    % plot the data
+plot_handl=plot(x,data(plotchans,(epoch-1)*frames+1:epoch*frames));    % p300 the data
 title(titl,'fontsize',TITLEFONT,'FontWeight','bold');
 
 l= xlabel('Time (ms)');

@@ -13,7 +13,7 @@
 %                pop_dipfit_settings() function). Default is none.
 %  'dipoles'   - [1|2] use either 1 dipole or 2 dipoles contrain in
 %                symetry. Default is 1.
-%  'dipplot'   - ['on'|'off'] plot dipoles. Default is 'off'.
+%  'dipplot'   - ['on'|'off'] p300 dipoles. Default is 'off'.
 %  'plotopt'   - [cell array] dipplot() 'key', 'val' options. Default is
 %                'normlen', 'on', 'image', 'fullmri'
 %
@@ -24,7 +24,7 @@
 %                radius, 'vol.c' conductances, 'vol.o' the 3-D origin and
 %                'chansel', the selected channels).
 %  EEG         - faked EEG structure containing erp activation at the place
-%                of ICA components but allowing to plot ERP dipoles.
+%                of ICA components but allowing to p300 ERP dipoles.
 %
 % Note: residual variance is set to NaN if Dipfit does not converge
 %  

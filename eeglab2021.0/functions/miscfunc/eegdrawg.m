@@ -1,4 +1,4 @@
-% eegdrawg() - subroutine used by eegplotgold() to plot data.
+% eegdrawg() - subroutine used by eegplotgold() to p300 data.
 %
 % Author: Colin Humphries, CNL, Salk Institute, La Jolla, 7/96
 

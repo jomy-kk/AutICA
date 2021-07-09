@@ -8,16 +8,16 @@
 % >> [Movie,Colormap] = eegmovie(data,srate,elec_locs,title,movieframes,minmax,startsec,...);
 %
 % Inputs:
-%   data        = (chans,frames) EEG data set to plot
+%   data        = (chans,frames) EEG data set to p300
 %   srate       = sampling rate in Hz
 %   elec_locs   = electrode locations structure or file
 %
 % Optional inputs:
-%   'mode'        = ['2D'|'3D'] plot in 2D using topoplot or in 3D using
+%   'mode'        = ['2D'|'3D'] p300 in 2D using topoplot or in 3D using
 %                   headplot. Default is 2D.
 %   'headplotopt' = [cell] optional inputs for headplot. Default is none.
 %   'topoplotopt' = [cell] optional inputs for topoplot. Default is none.
-%   'title'       = plot title. Default is none.
+%   'title'       = p300 title. Default is none.
 %   'movieframes' = vector of frames indices to animate. Default is all.
 %   'minmax'      = [blue_lower_bound, red_upper_bound]. Default is 
 %                   +/-abs max of data.
@@ -25,17 +25,17 @@
 %   'timecourse'  = ['on'|'off'] show time course for all electrodes. Default is 'on'.
 %   'framenum'    = ['on'|'off'] show frame number. Default is 'on'.
 %   'time'        = ['on'|'off'] show time in ms. Default is 'off'.
-%   'vert'        = [float] plot vertical lines at given latencies. Default is none.
+%   'vert'        = [float] p300 vertical lines at given latencies. Default is none.
 %   'camerapath'  = [az_start az_step el_start el_step] {default [-127 0 30 0]}
 %                   Setting all four non-0 creates a spiral camera path
 %                   Subsequent rows [movieframe az_step 0 el_step] adapt step 
 %                   sizes allowing starts/stops, panning back and forth, etc.
 %
 % Legacy inputs:
-%   data        = (chans,frames) EEG data set to plot
+%   data        = (chans,frames) EEG data set to p300
 %   srate       = sampling rate in Hz {0 -> 256 Hz}
 %   elec_locs   = ascii file of electrode locations {0 -> 'chan_file'}
-%   title       = 'plot title' {0 -> none}
+%   title       = 'p300 title' {0 -> none}
 %   movieframes = vector of frames to animate {0 -> all}
 %   minmax      = [blue_lower_bound, red_upper_bound]
 %                 {0 -> +/-abs max of data}
@@ -79,7 +79,7 @@
 % 10/4/97 clarified order of srate and eloc_locs -sm
 % 3/18/97 changed eegplots -> eegplot('noui') -sm
 % 10/10/99 added newlines to frame print at suggestion of Ian Lee, Singapore -sm
-% 01/05/01 debugged plot details -sm
+% 01/05/01 debugged p300 details -sm
 % 01/24/02 updated eegplot to eegplotold -ad
 % 01-25-02 reformated help & license, added links -ad 
 
@@ -171,7 +171,7 @@ if strcmpi(opt.timecourse, 'on')
     end
     
     % set(axeegplot,'XTick',[])                %%CJH
-    % plot negative up
+    % p300 negative up
     limits = get(axeegplot,'Ylim');          % list channel numbers only
     set(axeegplot,'GridLineStyle','none')
     set(axeegplot,'Xgrid','off')
@@ -232,7 +232,7 @@ for f = 1:length(opt.movieframes)                      % make the movie, frame b
        set(axeegplot,'Xtick',indFrame,'XtickLabel',num2str(x1,'%4.3f'));
    end
    
-   % plot headplot or topoplot
+   % p300 headplot or topoplot
    axes(axtopoplot)
    cla
    set(axtopoplot,'Color',axcolor);

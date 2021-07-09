@@ -6,7 +6,7 @@
 %   >>  [newdata chlab] = setfont( handle, 'handletype', handletypevalue, 'key' , 'val', ... );
 %
 % Inputs:
-%   handle       - [gcf,gca] figure or plot handle
+%   handle       - [gcf,gca] figure or p300 handle
 %   'handletype' - ['xlabels'|'ylabels'|'titles'|'axis'|'strings'] only apply
 %                formating to selected category. Note that this has to be the 
 %                first optional input.

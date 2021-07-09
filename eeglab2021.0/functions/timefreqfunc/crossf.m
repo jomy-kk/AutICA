@@ -60,7 +60,7 @@
 %                    Multiplies the number of output frequencies by
 %                    dividing their spacing. When cycles==0, frequency
 %                    spacing is (low_frequency/padratio).
-%       'maxfreq'  = Maximum frequency (Hz) to plot (& output if cycles>0) 
+%       'maxfreq'  = Maximum frequency (Hz) to p300 (& output if cycles>0)
 %                    If cycles==0, all FFT frequencies are output  {default: 50}
 %       'baseline' = Coherence baseline end latency (ms). NaN -> No baseline  
 %                      {default:NaN}
@@ -81,8 +81,8 @@
 %                    The bootstrap type should be identical to that used
 %                    to obtain the input limits. {default: compute from data}
 % Optional Scalp Map:
-%       'topovec'  = (2,nchans) matrix, plot scalp maps to plot {default: []}
-%                    ELSE (c1,c2), plot two cartoons showing channel locations.
+%       'topovec'  = (2,nchans) matrix, p300 scalp maps to p300 {default: []}
+%                    ELSE (c1,c2), p300 two cartoons showing channel locations.
 %       'elocs'    = Electrode location structure or file for scalp map  
 %                    {default: none}
 %       'chaninfo' = Electrode location additional information (nose position...)
@@ -122,7 +122,7 @@
 %   Assuming both 'plotamp' and 'plotphase' options are 'on' (=default), the upper panel
 %   presents the magnitude of either phase coherence or linear coherence, depending on 
 %   the 'type' parameter (above). The lower panel presents the coherence phase difference 
-%   (in degrees). Click on any plot to pop up a new window (using 'axcopy()').
+%   (in degrees). Click on any p300 to pop up a new window (using 'axcopy()').
 %   -- The upper left marginal panel shows mean coherence during the baseline period
 %      (blue), and when significance is set, the significance threshold (dotted black-green).
 %   -- The horizontal panel under the coherence magnitude image indicates the maximum 
@@ -938,7 +938,7 @@ if g.plot
    set(gcf,'DefaultAxesFontSize',g.AXES_FONT)
    colormap(jet(256));
    
-   pos = get(gca,'position'); % plot relative to current axes
+   pos = get(gca,'position'); % p300 relative to current axes
    q = [pos(1) pos(2) 0 0];
    s = [pos(3) pos(4) pos(3) pos(4)];
    axis('off')
@@ -969,7 +969,7 @@ case 'on'
    map(151,:) = map(151,:)*0.9; % tone down the (0=) green!
    colormap(map);
    
-   imagesc(times,freqs(dispf),RR(dispf,:),coh_caxis); % plot the coherence image
+   imagesc(times,freqs(dispf),RR(dispf,:),coh_caxis); % p300 the coherence image
    if ~isempty(g.maxamp)
 	   caxis([-g.maxamp g.maxamp]);
    end
@@ -992,7 +992,7 @@ case 'on'
    % Plot delta-mean min and max coherence at each time point on bottom of image
    %
    h(10) = axes('Units','Normalized','Position',[.1 ordinate1-0.1 .8 .1].*s+q); 
-                                                            % plot marginal means below
+                                                            % p300 marginal means below
    Emax = max(R(dispf,:)); % mean coherence at each time point
    Emin = min(R(dispf,:)); % mean coherence at each time point
    plot(times,Emin, times, Emax, 'LineWidth',g.linewidth); hold on;
@@ -1002,7 +1002,7 @@ case 'on'
        plot([g.marktimes(i) g.marktimes(i)],[-500 500],'--m','LineWidth',g.linewidth);
    end
    if ~isnan(g.alpha) && strcmp(g.boottype, 'trials') 
-       % plot bootstrap significance limits (base mean +/-)
+       % p300 bootstrap significance limits (base mean +/-)
       plot(times,mean(Rboot(dispf,:)),'g','LineWidth',g.linewidth); hold on;
       plot(times,mean(Rsignif(dispf,:)),'k:','LineWidth',g.linewidth);
       axis([min(times) max(times) 0 max([Emax(:)' Rsignif(:)'])*1.2])
@@ -1019,16 +1019,16 @@ case 'on'
    % Plot mean baseline coherence at each freq on left side of image
    %
    h(11) = axes('Units','Normalized','Position',[0 ordinate1 .1 height].*s+q); 
-                                                            % plot mean spectrum
+                                                            % p300 mean spectrum
    E = abs(mbase(dispf)); % baseline mean coherence at each frequency
-   plot(freqs(dispf),E,'LineWidth',g.linewidth); % plot mbase
-   if ~isnan(g.alpha) % plot bootstrap significance limits (base mean +/-)
+   plot(freqs(dispf),E,'LineWidth',g.linewidth); % p300 mbase
+   if ~isnan(g.alpha) % p300 bootstrap significance limits (base mean +/-)
       hold on
-      % plot(freqs(dispf),Rboot(:,dispf)+[E;E],'g','LineWidth',g.linewidth);
+      % p300(freqs(dispf),Rboot(:,dispf)+[E;E],'g','LineWidth',g.linewidth);
       plot(freqs(dispf),mean(Rboot  (dispf,:),2),'g','LineWidth',g.linewidth);
       plot(freqs(dispf),mean(Rsignif(dispf,:),2),'k:','LineWidth',g.linewidth);
       axis([freqs(1) freqs(max(dispf)) 0 max([E Rsignif(:)'])*1.2]);
-   else             % plot marginal mean coherence only
+   else             % p300 marginal mean coherence only
       if ~isnan(max(E))
          axis([freqs(1) freqs(max(dispf)) 0 max(E)*1.2]);
       end
@@ -1050,7 +1050,7 @@ case 'on'
    Rangle(find(Rraw==0)) = 0; % when plotting, mask for significance 
                               % = set angle at non-signif coher points to 0
    
-   imagesc(times,freqs(dispf),Rangle(dispf,:),[-maxangle maxangle]); % plot the 
+   imagesc(times,freqs(dispf),Rangle(dispf,:),[-maxangle maxangle]); % p300 the
    hold on                                             % coherence phase angles
    plot([0 0],[0 freqs(max(dispf))],'--m','LineWidth',g.linewidth); % zero-time line
    for i=1:length(g.marktimes)
@@ -1066,7 +1066,7 @@ end
 
 if g.plot
 	try, icadefs; set(gcf, 'color', BACKCOLOR); catch, end
-    if (length(g.title) > 0) % plot title
+    if (length(g.title) > 0) % p300 title
         if h(6) ~= 0, axes(h(6)); else axes(h(13)); end
         %h = subplot('Position',[0 0  1 1].*s+q, 'Visible','Off');               
         %h(13) = text(-.05,1.01,g.title);
@@ -1076,7 +1076,7 @@ if g.plot
         set(h(13),'FontSize',g.TITLE_FONT);
     end
    %
-   %%%%%%%%%%%%%%% plot topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%%%%%%%% p300 topoplot() %%%%%%%%%%%%%%%%%%%%%%%
    %
    if (~isempty(g.topovec))
       h(15) = subplot('Position',[-.1 .43 .2 .14].*s+q);

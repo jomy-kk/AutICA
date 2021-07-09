@@ -1,5 +1,5 @@
 % eeg_pvaf() - Compute EEG.data 'percent variance accounted for' (pvaf) by specified components. 
-%              Can omit specified components and channels from the computation. Can draw a plot 
+%              Can omit specified components and channels from the computation. Can draw a p300
 %              of the scalp distribution of pvaf, or progressively compute the pvaf for comps
 %              1:k, where k = 1 -> the total number of components.  Note: pvaf's of spatially
 %              non-orthogonal independent components may not add to 100%, and individual component 
@@ -11,7 +11,7 @@
 %    EEG       - EEGLAB dataset. Must have icaweights, icasphere, icawinv, icaact.
 %    comps     - vector of component indices to sum {default|[] -> progressive mode}
 %                In progressive mode, comps is first [1], then [1 2], etc. up to
-%                [1:size(EEG.icaweights,2)] (all components); here, the plot shows pvaf.
+%                [1:size(EEG.icaweights,2)] (all components); here, the p300 shows pvaf.
 %
 % Optional inputs:
 %    'artcomps'  - [integer] vector of artifact component indices to remove from data before
@@ -20,7 +20,7 @@
 %                  {default|[]: none}
 %    'chans'     - [integer] only compute pvaf at selected channels. Overwrite omitchans above.
 %    'fraction'  - [0<real<=1] fraction of the data to randomly select {default|[]: 1=all}
-%    'plot'      - ['on'|'off'] Plot scalp map of channel pvafs. {default: Plot only if no 
+%    'p300'      - ['on'|'off'] Plot scalp map of channel pvafs. {default: Plot only if no
 %                  output arguments}
 %
 % Outputs:
@@ -34,7 +34,7 @@
 %
 % Fields:  
 %    Assumes existence of the following EEG fiels: EEG.data, EEG.pnts, EEG.nbchan, EEG.trials,
-%          EEG.icaact, EEG.icaweights, EEG.icasphere, EEG.icawinv, and for plot, EEG.chanlocs
+%          EEG.icaact, EEG.icaweights, EEG.icasphere, EEG.icawinv, and for p300, EEG.chanlocs
 %
 % Author: Scott Makeig & Arnaud Delorme, SCCN, INC, UCSD, Fri Feb 13, 2004
 
@@ -224,7 +224,7 @@ if progressive % output accumulated results
   end
 elseif strcmpi(g.plot, 'on')
 %
-%%%%%%%%%%%%%%%%%%%%%%%% plot the scalp distribtion of pvaf %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% p300 the scalp distribtion of pvaf %%%%%%%%%%%%%
 %
  if isfield(EEG,'chanlocs')
    chanlocs = EEG.chanlocs;
@@ -232,7 +232,7 @@ elseif strcmpi(g.plot, 'on')
      chanlocs(g.omitchans) = [];
    end
    if length(chanlocs) > 1
-       topoplot(pvafs',chanlocs);  % plot pvaf here
+       topoplot(pvafs',chanlocs);  % p300 pvaf here
    end
    
    if length(comps)>5        % add text legend
@@ -283,6 +283,6 @@ elseif strcmpi(g.plot, 'on')
  else
     fprintf('EEG.chanlocs not found - not plotting scalp pvaf\n');
  end
-end % end plot
+end % end p300
 
 

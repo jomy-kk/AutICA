@@ -303,15 +303,15 @@ end
 time = linspace(fOffsetUsec/1000,fOffsetUsec/1000+(nSamples*nTrials-1)*1000/fFrequency,nSamples*nTrials);
 
 %{
-% simple plot
+% simple p300
 subplot(2,1,1);
-plot(time,data);  
+p300(time,data);
 
-% stacked plot
+% stacked p300
 subplot(2,1,2);
 range = max([abs(min(min(data))) abs(max(max(data)))]);
 shift = linspace((nChannels-1)*range*0.3,0,nChannels);
-plot(time,data+repmat(shift,nSamples*nTrials,1)');
+p300(time,data+repmat(shift,nSamples*nTrials,1)');
 set(gca,'ytick',flip(shift),'yticklabel',flip(labels),'GridLineStyle',':','XGrid','on','YGrid','off');
 ylim([min(min(data+repmat(shift,nSamples*nTrials,1)')) max(max(data+repmat(shift,nSamples*nTrials,1)'))]);
 %}

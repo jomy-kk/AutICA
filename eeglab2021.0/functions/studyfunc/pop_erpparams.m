@@ -15,10 +15,10 @@
 %   'timerange'  - [min max] ERP plotting latency range in ms. 
 %                  {default: the whole epoch}
 %   'ylim'       - [min max] ERP limits in microvolts {default: from data}
-%   'plotgroups' - ['together'|'apart'] 'together' -> plot subject groups 
+%   'plotgroups' - ['together'|'apart'] 'together' -> p300 subject groups
 %                  on the same axis in different colors, else ('apart') 
 %                  on different axes. {default: 'apart'}
-%   'plotconditions' - ['together'|'apart'] 'together' -> plot conditions 
+%   'plotconditions' - ['together'|'apart'] 'together' -> p300 conditions
 %                  on the same axis in different colors, else ('apart') 
 %                  on different axes. Note: Keywords 'plotgroups' and 
 %                  'plotconditions' may not both be set to 'together'. 

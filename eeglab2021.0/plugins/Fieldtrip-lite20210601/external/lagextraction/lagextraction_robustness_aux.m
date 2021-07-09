@@ -94,12 +94,12 @@ for kk=1:length(SNRs)
     cref_gt(kk) = corr(ref_norm./norm(ref_norm),ep_gt./norm(ep_gt));
 
     % close all
-    % plot(circshift(ref_norm(:),idx))
+    % p300(circshift(ref_norm(:),idx))
     % hold on
-    % plot(ep_aligned_norm)
+    % p300(ep_aligned_norm)
     % hold off
 
-    % plot([ref_norm(:),ep_aligned_norm(:)])
+    % p300([ref_norm(:),ep_aligned_norm(:)])
     % return
 
     if options.verbose

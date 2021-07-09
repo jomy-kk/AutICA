@@ -7,7 +7,7 @@
 %   STUDY      - STUDY structure comprising some or all of the EEG datasets in ALLEEG.
 %   ALLEEG     - vector of EEG dataset structures for the dataset(s) in the STUDY, 
 %                typically created using load_ALLEEG().  
-%   'channels' - [numeric vector]  specific channel group to plot. By
+%   'channels' - [numeric vector]  specific channel group to p300. By
 %                default, the grand mean channel spectrum is plotted (using the 
 %                same format as for the cluster component means described above)
 %   'moviemode' - ['erp'|'spec'|'ersptime'] movie mode. Currently only

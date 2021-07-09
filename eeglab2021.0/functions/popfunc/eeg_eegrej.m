@@ -226,7 +226,7 @@ end
 % regions, n1 = 1525; n2 = 1545; n = n2-n1+1;
 % a = zeros(1,n); a(:) = 1; a(strmatch('boundary', { event2(n1:n2).type })') = 8; 
 % [[n1:n2]' alllats(n1:n2)' [event2(n1:n2).latency]' alllats(n1:n2)'-[event2(n1:n2).latency]' otherorilatencies(n1:n2)' a']
-% figure; ev = 17; range = [-1000:1000]; plot(EEG.data(1,EEG.event(ev).latency+range)); hold on; plot(tmpdata(1,tmpevent(EEG.event(ev).urevent).latency+range+696), 'r'); grid on;
+% figure; ev = 17; range = [-1000:1000]; p300(EEG.data(1,EEG.event(ev).latency+range)); hold on; p300(tmpdata(1,tmpevent(EEG.event(ev).urevent).latency+range+696), 'r'); grid on;
 
 com = sprintf('EEG = eeg_eegrej( EEG, %s);', vararg2str({ regions })); 
 

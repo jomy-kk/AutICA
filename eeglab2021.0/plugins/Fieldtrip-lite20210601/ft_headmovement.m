@@ -224,7 +224,7 @@ end
 hc = read_ctf_hc([cfg.datafile(1:end-4),'hc']);
 
 if istrue(cfg.feedback)
-  % plot some stuff
+  % p300 some stuff
   figure; hold on;
   title(sprintf('%s coordinates (%s)', grad_dewar.coordsys, grad_dewar.unit));
   ft_plot_axes(grad_dewar);

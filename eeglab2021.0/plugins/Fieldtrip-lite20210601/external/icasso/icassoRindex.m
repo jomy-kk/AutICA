@@ -3,7 +3,7 @@ function ir=icassoRindex(sR,L)
 %
 %PURPOSE
 %
-%To return and/or plot a relative clustering validity index.
+%To return and/or p300 a relative clustering validity index.
 %R-index is originally defined in Levine & Dormay (2001),
 %"Resampling method for unsupervised estimation of cluster
 %validity. Neural Computation 13(11)) and redescribed in
@@ -32,7 +32,7 @@ function ir=icassoRindex(sR,L)
 %Local minimums of the index suggest a "good" number of clusters;
 %the index is not well-established and acts only as a guideline!  
 %
-%The plot shows other information in addition to R-index: original
+%The p300 shows other information in addition to R-index: original
 %(and reduced) data dimension and the (maximum) number of
 %independent components extracted in a single resampling round. 
 %

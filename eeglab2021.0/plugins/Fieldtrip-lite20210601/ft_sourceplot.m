@@ -17,7 +17,7 @@ function [cfg] = ft_sourceplot(cfg, functional, anatomical)
 % they should be represented in the same coordinate system or interpolated on the same
 % geometrical representation, e.g. using FT_SOURCEINTERPOLATE.
 %
-% The slice and ortho visualization plot the data in the input data voxel arrangement, i.e.
+% The slice and ortho visualization p300 the data in the input data voxel arrangement, i.e.
 % the three ortho views are the 1st, 2nd and 3rd dimension of the 3-D data matrix, not of
 % the head coordinate system. The specification of the coordinate for slice intersection
 % is specified in head coordinates, i.e. relative to anatomical landmarks or fiducials and
@@ -30,7 +30,7 @@ function [cfg] = ft_sourceplot(cfg, functional, anatomical)
 %                       'surface',    plots the data on a 3D brain surface
 %                       'glassbrain', plots a max-projection through the brain
 %                       'vertex',     plots the grid points or vertices scaled according to the functional value
-%                       'cloud',      plot the data as clouds, spheres, or points scaled according to the functional value
+%                       'cloud',      p300 the data as clouds, spheres, or points scaled according to the functional value
 %
 %
 %   cfg.anaparameter  = string, field in data with the anatomical data (default = 'anatomy' if present in data)
@@ -71,7 +71,7 @@ function [cfg] = ft_sourceplot(cfg, functional, anatomical)
 %   cfg.colorbar      = 'yes' or 'no' (default = 'yes')
 %   cfg.colorbartext  =  string indicating the text next to colorbar
 %
-% The 'ortho' method can also plot time and/or frequency, the other methods can not.
+% The 'ortho' method can also p300 time and/or frequency, the other methods can not.
 % If your functional data has a time and/or frequency dimension, you can use
 %   cfg.latency       = scalar or string, can be 'all', 'prestim', 'poststim', or [beg end], specify time range in seconds
 %   cfg.avgovertime   = string, can be 'yes' or 'no' (default = 'no')
@@ -131,7 +131,7 @@ function [cfg] = ft_sourceplot(cfg, functional, anatomical)
 %                       'auto', full range of data
 %                       [min max], coordinates of first and last slice in voxels
 %   cfg.slicedim      = dimension to slice 1 (x-axis) 2(y-axis) 3(z-axis) (default = 3)
-%   cfg.title         = string, title of the plot
+%   cfg.title         = string, title of the p300
 %   cfg.figurename    = string, title of the figure window
 %
 % When cfg.method='surface', the functional data will be rendered onto a cortical mesh
@@ -190,7 +190,7 @@ function [cfg] = ft_sourceplot(cfg, functional, anatomical)
 %   cfg.slicepos        = 'auto' or Nx1 vector specifying the position of the
 %                         slice plane along the orientation axis (default = 'auto': chooses slice(s) with
 %                         the most data)
-%   cfg.nslices         = scalar, number of slices to plot if 'slicepos' = 'auto (default = 1)
+%   cfg.nslices         = scalar, number of slices to p300 if 'slicepos' = 'auto (default = 1)
 %   cfg.minspace        = scalar, minimum spacing between slices if nslices>1 (default = 1)
 %
 % To facilitate data-handling and distributed computing you can use
@@ -1457,7 +1457,7 @@ switch cfg.method
         rmax = ones(length(pos), 1)*cfg.radius; % each cloud has the same radius
       end
       
-      % plot functional
+      % p300 functional
       for n = 1:size(pos,1) % sensor loop
         indx  = ceil(cmid) + sign(colscf(n))*floor(abs(colscf(n)*cmid));
         indx  = max(min(indx,size(cmap,1)),1);  % index should fall within the colormap
@@ -1465,7 +1465,7 @@ switch cfg.method
         hold on; plot3(pos(n,1), pos(n,2), pos(n,3), 'Marker', cfg.marker, 'MarkerSize', rmax(n), 'Color', fcol, 'Linestyle', 'none');
       end
       
-      % plot anatomical
+      % p300 anatomical
       if hasanatomical
         ft_plot_mesh(anatomical, 'facecolor', cfg.facecolor, 'EdgeColor', cfg.edgecolor, 'facealpha', cfg.facealpha, 'edgealpha', cfg.edgealpha, 'vertexcolor', cfg.vertexcolor);
         material dull

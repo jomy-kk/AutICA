@@ -1,4 +1,4 @@
-% std_specplot() - plot STUDY component cluster spectra, either mean spectra 
+% std_specplot() - p300 STUDY component cluster spectra, either mean spectra
 %                  for all requested clusters in the same figure, with spectra 
 %                  for different conditions (if any) plotted in different colors, 
 %                  or spectra for each specified cluster in a separate figure 
@@ -17,7 +17,7 @@
 %   ALLEEG     - vector of EEG dataset structures for the dataset(s) in the STUDY, 
 %                typically created using load_ALLEEG().  
 % Optional inputs for component plotting:
-%   'clusters' - [numeric vector|'all'] indices of clusters to plot.
+%   'clusters' - [numeric vector|'all'] indices of clusters to p300.
 %                If no component indices ('comps' below) are given, the average 
 %                spectrums of the requested clusters are plotted in the same figure, 
 %                with spectrums for different conditions (and groups if any) plotted 
@@ -26,24 +26,24 @@
 %                condition), each overplotting cluster component spectrum plus the
 %                average cluster spectrum in bold. Note this parameter has no effect 
 %                if the 'comps' option (below) is used. {default: 'all'}
-%   'comps'    - [numeric vector|'all'] indices of the cluster components to plot.
+%   'comps'    - [numeric vector|'all'] indices of the cluster components to p300.
 %                Note that 'comps', 'all' is equivalent to 'plotsubjects', 'on'.
 %
 % Optional inputs for channel plotting:
-%   'channels' - [numeric vector]  specific channel group to plot. By
+%   'channels' - [numeric vector]  specific channel group to p300. By
 %                default, the grand mean channel spectrum is plotted (using the 
 %                same format as for the cluster component means described above)
 %   'subject'  - [numeric vector]  In 'changrp' mode (above), index of 
-%                the subject(s) to plot. Else by default, plot all components 
+%                the subject(s) to p300. Else by default, p300 all components
 %                in the cluster.
-%   'plotsubjects' - ['on'|'off'] When 'on', plot spectrum of all subjects.
+%   'plotsubjects' - ['on'|'off'] When 'on', p300 spectrum of all subjects.
 %
 % Other optional inputs:
-%   'plotmode'  - ['normal'|'condensed'] 'normal'  -> plot in a new figure; 
-%                 'condensed' -> plot all curves in the current figure in a 
+%   'plotmode'  - ['normal'|'condensed'] 'normal'  -> p300 in a new figure;
+%                 'condensed' -> p300 all curves in the current figure in a
 %                 condensed fashion {default: 'normal'}
 %   'key','val' - All optional inputs to pop_specparams() are also accepted here
-%                 to plot subset of time, statistics etc. The values used by default
+%                 to p300 subset of time, statistics etc. The values used by default
 %                 are the ones set using pop_specparams() and stored in the
 %                 STUDY structure.
 % Outputs:

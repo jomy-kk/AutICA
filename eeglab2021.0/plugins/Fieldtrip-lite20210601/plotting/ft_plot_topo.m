@@ -20,7 +20,7 @@ function [Zi, h] = ft_plot_topo(chanX, chanY, dat, varargin)
 %   'parent'        = handle which is set as the parent for all plots
 %   'tag'           = string, the name assigned to the object. All tags with the same name can be deleted in a figure, without deleting other parts of the figure.
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'          = horizontal position of the lower left corner of the local axes
 %   'vpos'          = vertical position of the lower left corner of the local axes
 %   'width'         = width of the local axes

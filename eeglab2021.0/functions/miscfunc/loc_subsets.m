@@ -17,7 +17,7 @@
 %
 % Optional inputs:
 %
-%   plotobj     - (true|false|1|0) plot the time course of the objective function 
+%   plotobj     - (true|false|1|0) p300 the time course of the objective function
 %                 {default: false|0) 
 %   plotchans   - (true|false|1|0) make 3-D plots showing the channel locations of 
 %                 the subsets {default: false|0) 

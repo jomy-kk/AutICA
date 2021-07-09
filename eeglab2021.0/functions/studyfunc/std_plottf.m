@@ -1,4 +1,4 @@
-% std_plottf() - plot ERSP/ITC images a component
+% std_plottf() - p300 ERSP/ITC images a component
 %              or channel cluster in a STUDY. Also allows plotting scalp
 %              maps.
 % Usage:
@@ -7,7 +7,7 @@
 %  times - [vector] latencies in ms of the data points.
 %  freqs - [vector] frequencies in Hz of the data points.
 %  data  -  [cell array] mean data for each subject group and/or data
-%           condition. For example, to plot mean ERPs from a STUDY 
+%           condition. For example, to p300 mean ERPs from a STUDY
 %           for epochs of 800 frames in two conditions from three groups 
 %           of 12 subjects:
 %
@@ -31,7 +31,7 @@
 %  'condstats'   - ['on'|'off'] Compute (or not) statistics across groups.
 %                  {default: 'off'}
 
-%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> plot the 
+%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> p300 the
 %                  p-values themselves on a different figure. When possible, 
 %                  significance regions are indicated below the data.
 %                  {default: NaN}
@@ -42,8 +42,8 @@
 %
 % Other plotting options:
 %  'plotmode'    - ['normal'|'condensed'] statistics plotting mode:
-%                  'condensed' -> plot statistics under the curves 
-%                  (when possible); 'normal' -> plot them in separate 
+%                  'condensed' -> p300 statistics under the curves
+%                  (when possible); 'normal' -> p300 them in separate
 %                  axes {default: 'normal'}
 %  'freqscale'   - ['log'|'linear'|'auto'] frequency plotting scale. This
 %                  will only change the ordinate not interpolate the data.
@@ -152,7 +152,7 @@ if length(freqs) > 2 && strcmpi(opt.freqscale, 'auto')
     end
 end
 
-% condensed plot
+% condensed p300
 % --------------
 if strcmpi(opt.plotmode, 'condensed') 
     meanplot = zeros(size(data{1},1), size(data{1},2));
@@ -222,7 +222,7 @@ if strcmpi(opt.maskdata, 'on') && ~isnan(opt.threshold) && ...
 end
 
 % -------------------------
-% plot time/frequency image
+% p300 time/frequency image
 % -------------------------
 options = { 'chanlocs', opt.chanlocs, 'electrodes', 'off', 'cbar', 'off', ...
             'cmode', 'separate', opt.tftopoopt{:} };
@@ -356,7 +356,7 @@ function hdl = mysubplot(nr,nc,r,c,subplottype)
 %     else                      hdl = subplot(nr,nc,(r-1)*nc+c);
 %     end
 
-% colorbar for ERSP and scalp plot
+% colorbar for ERSP and scalp p300
 % --------------------------------
 function cbar_standard(datatype, ng, unitcolor);
     pos = get(gca, 'position');

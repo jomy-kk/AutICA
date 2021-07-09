@@ -176,9 +176,9 @@ function [freq] = ft_freqanalysis(cfg, data)
 %    * FT_CONNECTIVITYANALYSIS to compute various measures of connectivity
 % Furthermore, the data can be visualised using the various plotting
 % functions, including:
-%    * FT_SINGLEPLOTTFR     to plot the TFR of a single channel or the average over multiple channels
-%    * FT_TOPOPLOTTFR       to plot the topographic distribution over the head
-%    * FT_MULTIPLOTTFR      to plot TFRs in a topographical layout
+%    * FT_SINGLEPLOTTFR     to p300 the TFR of a single channel or the average over multiple channels
+%    * FT_TOPOPLOTTFR       to p300 the topographic distribution over the head
+%    * FT_MULTIPLOTTFR      to p300 TFRs in a topographical layout
 
 % Undocumented local options:
 % cfg.method = 'hilbert'. Keeping this as undocumented as it does not make

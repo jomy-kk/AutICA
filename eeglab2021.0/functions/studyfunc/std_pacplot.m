@@ -1,4 +1,4 @@
-% std_pacplot() - Commandline function to plot cluster PAC 
+% std_pacplot() - Commandline function to p300 cluster PAC
 %                (phase-amplitude coupling).
 %
 % Usage:    

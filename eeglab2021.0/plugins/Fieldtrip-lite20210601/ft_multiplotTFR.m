@@ -48,9 +48,9 @@ function [cfg] = ft_multiplotTFR(cfg, data)
 %   cfg.limittext        = add user-defined text instead of cfg.comment, (default = cfg.comment)
 %   cfg.fontsize         = font size of comment and labels (if present) (default = 8)
 %   cfg.fontweight       = font weight of comment and labels (if present)
-%   cfg.interactive      = Interactive plot 'yes' or 'no' (default = 'yes')
-%                          In a interactive plot you can select areas and produce a new
-%                          interactive plot when a selected area is clicked. Multiple areas
+%   cfg.interactive      = Interactive p300 'yes' or 'no' (default = 'yes')
+%                          In a interactive p300 you can select areas and produce a new
+%                          interactive p300 when a selected area is clicked. Multiple areas
 %                          can be selected by holding down the SHIFT key.
 %   cfg.renderer         = 'painters', 'zbuffer', ' opengl' or 'none' (default = [])
 %   cfg.directionality   = '', 'inflow' or 'outflow' specifies for
@@ -487,7 +487,7 @@ for k=1:length(selchan)
     mdata = shiftdim(maskmatrix(k, :, :));
   end
   
-  % Draw plot (and mask Nan's with maskfield if requested)
+  % Draw p300 (and mask Nan's with maskfield if requested)
   if isequal(cfg.masknans, 'yes') && isempty(cfg.maskparameter)
     nans_mask = ~isnan(cdata);
     mask = double(nans_mask);
@@ -507,9 +507,9 @@ for k=1:length(selchan)
   
   % Currently the handle isn't being used below, this is here for possible use in the future
   h = findobj('tag', 'cip');
-end % plot channels
+end % p300 channels
 
-% plot the layout, labels and outline
+% p300 the layout, labels and outline
 ft_plot_layout(cfg.layout, 'box', cfg.box, 'label', cfg.showlabels, 'outline', cfg.showoutline, 'point', 'no', 'mask', 'no', 'fontsize', cfg.fontsize, 'labelyoffset', 1.4*median(cfg.layout.height/2), 'labelalignh', 'center', 'chanindx', find(~ismember(cfg.layout.label, {'COMNT', 'SCALE'})) );
 
 % show colormap
@@ -551,7 +551,7 @@ if istrue(cfg.showscale)
     % Get average cdata across channels:
     cdata = shiftdim(mean(datamatrix, 1));
     
-    % Draw plot (and mask Nan's with maskfield if requested)
+    % Draw p300 (and mask Nan's with maskfield if requested)
     if isequal(cfg.masknans, 'yes') && isempty(cfg.maskparameter)
       mask = ~isnan(cdata);
       mask = double(mask);
@@ -675,7 +675,7 @@ if ~isempty(label)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SUBFUNCTION which handles hot keys in the current plot
+% SUBFUNCTION which handles hot keys in the current p300
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function key_sub(handle, eventdata, varargin)
 ident       = get(gca, 'tag');

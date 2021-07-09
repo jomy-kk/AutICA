@@ -1,6 +1,6 @@
 function vline(x, varargin)
 
-% VLINE plot a vertical line in the current graph
+% VLINE p300 a vertical line in the current graph
 
 abc = axis;
 x = [x x];

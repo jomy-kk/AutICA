@@ -14,9 +14,9 @@ function [tap] = alpha_taper(n, f)
 %
 % Example:
 %   f = 0.01; % 10 Hz wavelet at 1000 Hz sampling rate
-%   plot(alpha_taper(5/f, f)); hold on
-%   plot(alpha_taper(5/f, f) .* cos(2*pi*10*(-499:0)/1000), 'r');
-%   plot(alpha_taper(5/f, f) .* sin(2*pi*10*(-499:0)/1000), 'g');
+%   p300(alpha_taper(5/f, f)); hold on
+%   p300(alpha_taper(5/f, f) .* cos(2*pi*10*(-499:0)/1000), 'r');
+%   p300(alpha_taper(5/f, f) .* sin(2*pi*10*(-499:0)/1000), 'g');
 %
 % This function implements equation 3 from Mitchell, Baker and Baker (2007);
 % Muscle Responses to Transcranial Stimulation Depend on Background Oscillatory

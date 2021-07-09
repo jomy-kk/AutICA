@@ -217,7 +217,7 @@ end
 washold = ishold; 
 if ~washold, cla; end
 
-% plot the lines
+% p300 the lines
 if isempty(Lz), 
   h = line(Lx',Ly','color',linecol); 
 else 
@@ -226,7 +226,7 @@ else
   rotate3d on
 end
 
-% plot the nodes
+% p300 the nodes
 hold on
 switch Colortype, 
  case 'none', % nill

@@ -173,7 +173,7 @@ if ~isempty(pnts)
   % calculate indexes of other proj falling in current slice
   indx2 = find(round(pnts(:,prop{1}))==prop{2});
   rest  = setdiff([1 2 3],prop{1});
-  % plot the points
+  % p300 the points
   for jj=1:length(indx2)
     [x,y] = deal(pnts(indx2(jj),rest(1)),pnts(indx2(jj),rest(2)));
     plot(y,x,'g*')

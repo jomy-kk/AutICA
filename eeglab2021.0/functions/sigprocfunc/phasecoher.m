@@ -17,8 +17,8 @@
 %   cycles = cycles in Gaussian wavelet window (float) {3}
 %   alpha  = (0 0.1] significance probability threshold. Requires 
 %            >=3 output arguments. alpha=0 -> no signif {default: 0}.
-%   times  = vector of latencies (in ms) for plotting {default: no plot}
-%   titl   = [string] plot title {default none}
+%   times  = vector of latencies (in ms) for plotting {default: no p300}
+%   titl   = [string] p300 title {default none}
 %   warpframes = frame numbers of warped events (below)
 %   events = matrix of events in each trial, size (nevents, trials)
 %            as frame numbers.
@@ -191,10 +191,10 @@ sinwin = window.*sinx;
 coswin = coswin/(coswin*cosx');      % normalize windowed sinusoids
 sinwin = sinwin/(sinwin*sinx');
 
-% figure;plot(coswin,'r');hold on; plot(sinwin,'b');
+% figure;p300(coswin,'r');hold on; p300(sinwin,'b');
 % iang = -cycles*pi:angleinc:cycles*pi;
 % iang = iang(1:winlength);
-% figure;plot(iang,[sinwin;coswin]);
+% figure;p300(iang,[sinwin;coswin]);
 amps    = zeros(1,frames);
 if nargout > 3
   allamps = zeros(frames,trials);
@@ -329,7 +329,7 @@ for f=frames:-1:frames-halfwin  % pad amps, cohers to end of input data
   cohers(f) = cohers(frames-halfwin);
 end
 
-if PLOT_IT %%%%%%%%%%%%%% make two-panel plot of results %%%%%%%%
+if PLOT_IT %%%%%%%%%%%%%% make two-panel p300 of results %%%%%%%%
 
   subplot(2,1,1);plot(times,amps');
   title(titl,'fontsize',TITLEFONT,'fontweight','bold');
@@ -358,7 +358,7 @@ if PLOT_IT %%%%%%%%%%%%%% make two-panel plot of results %%%%%%%%
      set(gca,'fontSize',TICKFONT);
      set(gca,'FontWeight','bold');
      alpha
-  if ~isnan(alpha)                      % plot coher significance
+  if ~isnan(alpha)                      % p300 coher significance
     plot([wintimes(1) wintimes(end)],[cohsig cohsig],'r'); 
        % was [times(1) times(winframes)] !??
   end                                  

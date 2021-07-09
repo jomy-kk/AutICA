@@ -19,9 +19,9 @@
 %                 (overides the option above).
 %   'averef'    - ['on'|'off'] 'on' computes average reference before
 %                 applying threshold. Default is 'off'.
-%   'plothist'  - ['on'|'off'] 'on' plot the histogram of values along 
+%   'plothist'  - ['on'|'off'] 'on' p300 the histogram of values along
 %                 with the threshold.
-%   'plotchans'  - ['on'|'off'] 'on' plot the channels scrollplot with
+%   'plotchans'  - ['on'|'off'] 'on' p300 the channels scrollplot with
 %                 selected channels for rejection in red. Allow selected
 %                 channels rejection with the 'REJECT' button.
 %   'elec'      - [integer array] only include specific channels. Default
@@ -197,7 +197,7 @@ for index = 1:size(opt.freqlims,1)
     end
     allrmchan = [ allrmchan rmchan' ];    
     
-    % plot histogram
+    % p300 histogram
     % --------------
     if strcmpi(opt.plothist, 'on')
         figure; hist(selectedspec);

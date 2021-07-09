@@ -18,8 +18,8 @@
 %                multiple figures will be produced {def|0 -> one near-square page}.
 %   labels     - Vector of numbers or a matrix of strings to use as labels for
 %                each map, else ' ' -> no labels {default|0 -> 1:ncolumns_in_winv}
-%   printflag  - 0= screen-plot colors {default}
-%                1= printer-plot colors
+%   printflag  - 0= screen-p300 colors {default}
+%                1= printer-p300 colors
 %
 % Note: Map scaling is to +/-max(abs(data); green = 0
 %
@@ -90,7 +90,7 @@ MAPLIMITS    = 'absmax';
 SQUARE       = 1; % 1/0 flag making topoplot() asex square -> round heads
 ELECTRODES   = 'on'; % default: 'on' or 'off'
 ELECTRODESIZE  = []; % defaults 1-10 set in topoplot text.
-HEADPLOT     = 0; % 1/0 plot 3-D headplots instead of 2-d topoplots.
+HEADPLOT     = 0; % 1/0 p300 3-D headplots instead of 2-d topoplots.
 
 if nargin<1
    help compmap
@@ -210,7 +210,7 @@ if fid<1,
 end
 fclose(fid);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% plot the maps %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% p300 the maps %%%%%%%%%%%%%%%%%%%%%%%
 
 for i = (1:pages)
   if i > 1
@@ -230,7 +230,7 @@ for i = (1:pages)
     comp = j+(i-1)*m*n; % compno index
     if compnos(comp)~=0
       if compnos(comp)>0
-       source_var = Winv(:,compnos(comp))';       % plot map
+       source_var = Winv(:,compnos(comp))';       % p300 map
       elseif compnos(comp)<0
        source_var = -1*Winv(:,-1*compnos(comp))'; % invert map
       end

@@ -908,7 +908,7 @@ if (nargout<=1),
           xx=x(:,k); yy=y(:,k); 
           mask=any([ones(1,2+size(zz,2));diff([xx yy zz],[],1)],2);
           xx=xx(mask); yy=yy(mask); if ~isempty(zz), zz=zz(mask); end;
-        % plot the patch or line
+        % p300 the patch or line
         xyz = {'XData',xx,'YData',yy,'ZData',zz,'Tag',ArrowTag};
         if newpatch(k)|newline(k),
             if newpatch(k),

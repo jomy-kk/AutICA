@@ -408,7 +408,7 @@ function varargout=spm_conman(varargin)
 %   their estimability. Double clicking extracts the estimability
 %   vector into the base MatLab workspace.
 %
-% * Contrast weights plot/image:
+% * Contrast weights p300/image:
 %   The weights of the selected contrast(s) are imaged above the design
 %   matrix, labelled by their contrast number. t-contrasts are displayed
 %   as bar-charts, F-contrasts have their weights matrix c' depicted as a
@@ -530,7 +530,7 @@ function varargout=spm_conman(varargin)
 %     string defining the indicies is similarly parsed, with errors and
 %     information messages appearing in the two panes.
 %
-% * Contrast weights plot/image:
+% * Contrast weights p300/image:
 %   Depicts the contrast once valid contrast weights have been specified.
 %
 % * Image of the design matrix:
@@ -1333,7 +1333,7 @@ switch lower(varargin{1}), case 'initialise'
             set(hD_ConMtx,'String',{},'UserData',[])            %-Clear ConMtx box
             set(hD_X1cols,'String','')                          %-Clear X1cols box
             set([hD_ConErrs,hD_ConInfo],'String',{},'Value',[]) %-Clear parsing boxes
-            spm_conman('GraphCons',[],[],F)                     %-Clear contrast plot
+            spm_conman('GraphCons',[],[],F)                     %-Clear contrast p300
             spm_conman('D_Status',F)                            %-Set StatusLine
 
             switch STAT
@@ -1665,7 +1665,7 @@ switch lower(varargin{1}), case 'initialise'
             spm_conman('GraphCons',DxCon,-1,F)      %-Depict contrast
         else
             set(hD_ConMtx,'UserData',[]);           %-Clear contrast store
-            spm_conman('GraphCons',[],[],F)         %-Clear contrast plot
+            spm_conman('GraphCons',[],[],F)         %-Clear contrast p300
         end
         spm_conman('D_Status',F)                %-Set StatusLine
 

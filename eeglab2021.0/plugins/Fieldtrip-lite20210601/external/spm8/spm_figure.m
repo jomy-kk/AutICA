@@ -41,7 +41,7 @@ function varargout=spm_figure(varargin)
 % Editing: Right button ('alt' button) cancels operations
 % * Cut  : Deletes the graphics object next selected (if deletable)
 %          Select with middle mouse button to delete blocks of text,
-%          or to delete individual elements from a plot.
+%          or to delete individual elements from a p300.
 % * Move : To re-position a text, uicontrol or axis object using a
 %          'drag and drop' implementation (i.e. depress - move - release)
 %          Using the middle 'extend' mouse button on a text object moves

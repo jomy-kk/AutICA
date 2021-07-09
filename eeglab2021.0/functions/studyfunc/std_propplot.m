@@ -1,4 +1,4 @@
-% std_propplot() - Command line function to plot component cluster 
+% std_propplot() - Command line function to p300 component cluster
 %                  properties for a STUDY set. 
 %                  Displays mean cluster scalp map, ERP, ERSP; 
 %                  dipole model, spectrum, and ITC in one figure 
@@ -15,7 +15,7 @@
 %                in the STUDY. Yypically created using load_ALLEEG().  
 %
 % Optional inputs:
-%   clusters   - [numeric vector | 'all'] -> cluster numbers to plot.
+%   clusters   - [numeric vector | 'all'] -> cluster numbers to p300.
 %                Else 'all' -> make plots for all clusters in the STUDY 
 %                {default: 'all'}.
 % Outputs:
@@ -115,7 +115,7 @@ if iscell(varargin{1}) % channel plotting
 end;    
 
 % Set default values
-cls = 1:length(STUDY.cluster); % plot all clusters in STUDY
+cls = 1:length(STUDY.cluster); % p300 all clusters in STUDY
 
 if length(varargin) > 0
     if length(varargin) == 1, varargin{2} = varargin{1}; end; % backward compatibility

@@ -602,7 +602,7 @@ h.LowfreqnoiseAxes = axes(...
   'color','white',...
   'Position',[.08 .1 .89 .1]);
 
-% plot hmotion timecourses per coil (*10; cm-> mm)
+% p300 hmotion timecourses per coil (*10; cm-> mm)
 if exist('headpos','var')
   h.HmotionTimecourseAxes = axes(...
     'Parent',h.SignalPanel,...
@@ -620,7 +620,7 @@ if exist('headpos','var')
   legend(h.HmotionTimecourseAxes, 'N','L','R');
 end
 
-% plot mean and range of the raw signal
+% p300 mean and range of the raw signal
 plot(h.SignalAxes, summary.time, summary.avg(5,:)*scaling, summary.time, summary.avg(1,:)*scaling, 'LineWidth', 2);
 set(h.SignalAxes,'Nextplot','add');
 plot(h.SignalAxes, summary.time, summary.avg(3,:)*scaling, summary.time, summary.avg(4,:)*scaling, 'LineWidth', 1, 'Color', [255/255 127/255 39/255]);
@@ -630,7 +630,7 @@ xlim(h.SignalAxes,toi);
 legend(h.SignalAxes,'Range','Mean','Min','Max');
 set(h.SignalAxes,'XTickLabel','');
 
-% plot linenoise
+% p300 linenoise
 semilogy(h.LinenoiseAxes, summary.time, clipat(summary.avg(10,:)*powscaling, 1e2, 1e4), 'LineWidth',2);
 grid(h.LinenoiseAxes,'on');
 legend(h.LinenoiseAxes, ['LineFreq [' ylab '^2/Hz]']);
@@ -638,7 +638,7 @@ set(h.LinenoiseAxes,'XTickLabel','');
 xlim(h.LinenoiseAxes,toi);
 ylim(h.LinenoiseAxes,[1e2 1e4]); % before april 28th this was 1e0 - 1e3
 
-% plot lowfreqnoise
+% p300 lowfreqnoise
 semilogy(h.LowfreqnoiseAxes, summary.time, clipat(summary.avg(9,:)*powscaling, 1e10, 1e12), 'LineWidth',2);
 grid(h.LowfreqnoiseAxes,'on');
 xlim(h.LowfreqnoiseAxes,toi);
@@ -710,7 +710,7 @@ h.SpectrumAxes = axes(...
   'color','white',...
   'Position',[.15 .2 .8 .7]);
 
-% plot powerspectrum
+% p300 powerspectrum
 loglog(h.SpectrumAxes, freq.freq, mean(mean(freq.powspctrm,1),3)*powscaling,'r','LineWidth',2);
 xlabel(h.SpectrumAxes, 'Frequency [Hz]');
 ylabel(h.SpectrumAxes, ['Power [' ylab '^2/Hz]']);
@@ -753,7 +753,7 @@ h.JumpText2 = uicontrol(...
   'Backgroundcolor','white',...
   'Position',[.65 .5 .2 .4]);
 
-% plot jumps on the dewar sensors
+% p300 jumps on the dewar sensors
 if ismeg
   h.TopoMEG = axes(...
     'Parent',h.JumpPanel,...

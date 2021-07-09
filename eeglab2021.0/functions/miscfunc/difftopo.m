@@ -1,6 +1,6 @@
-% difftopo - compute and plot component decomposition for the difference ERP 
+% difftopo - compute and p300 component decomposition for the difference ERP
 %            between two EEG datasets. Plots into the current axis (gca); 
-%            plot into a new empty figure as below.
+%            p300 into a new empty figure as below.
 % Usage:
 %          >> figure; difftopo(ALLEEG,eeg1,eeg2,interval);
 % Inputs:
@@ -8,7 +8,7 @@
 %         eeg1   - index of subtrahend (+) dataset
 %         eeg2   - index of minuend (-) dataset
 %         interval - [minms maxms] latency interval in which to find 
-%                  and plot largest contributing components {default: whole epoch}
+%                  and p300 largest contributing components {default: whole epoch}
 %         limits - [stms endms] latenc plotting limits (in ms) {default|0: whole epoch}
 %         subcomps - array of component indices to remove from data 
 %                  (e.g. eye movement components) {default|0: none}

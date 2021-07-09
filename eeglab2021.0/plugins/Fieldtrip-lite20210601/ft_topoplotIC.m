@@ -28,11 +28,11 @@ function [cfg] = ft_topoplotIC(cfg, comp)
 %   cfg.highlightfontsize  = highlight marker size (default = 8)
 %   cfg.colorbar           = 'yes'
 %                            'no' (default)
-%                            'North'              inside plot box near top
+%                            'North'              inside p300 box near top
 %                            'South'              inside bottom
 %                            'East'               inside right
 %                            'West'               inside left
-%                            'NorthOutside'       outside plot box near top
+%                            'NorthOutside'       outside p300 box near top
 %                            'SouthOutside'       outside bottom
 %                            'EastOutside'        outside right
 %                            'WestOutside'        outside left
@@ -41,7 +41,7 @@ function [cfg] = ft_topoplotIC(cfg, comp)
 %                            'electrodes' to furthest electrode
 %                            'head' to edge of head
 %   cfg.interpolation      = 'linear','cubic','nearest','v4' (default = 'v4') see GRIDDATA
-%   cfg.style              = plot style (default = 'both')
+%   cfg.style              = p300 style (default = 'both')
 %                            'straight' colormap only
 %                            'contour' contour lines only
 %                            'both' (default) both colormap and contour lines

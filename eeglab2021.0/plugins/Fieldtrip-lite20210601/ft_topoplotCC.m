@@ -22,7 +22,7 @@ function [cfg] = ft_topoplotCC(cfg, freq)
 % The alphaparam should be indicated as opacity between 0 (fully transparent)
 % and 1 (fully opaque).
 %
-% The default is to plot the connections as lines, but you can also use
+% The default is to p300 the connections as lines, but you can also use
 % bidirectional arrows:
 %    cfg.arrowhead    = string, 'none', 'stop', 'start', 'both' (default = 'none')
 %    cfg.arrowsize    = scalar, size of the arrow head in figure units,

@@ -311,12 +311,12 @@ else
   end
   
   if is2D && isequal(cfg.toi, timewin)
-    % old functionality, plot every (!) time slice
+    % old functionality, p300 every (!) time slice
     Npl = length(cfg.toi);
     begs = ind_timewin_min-1+(1:numel(cfg.toi))';
     ends = ind_timewin_min-1+(1:numel(cfg.toi))';
   elseif is2D
-    % new functionality, don't plot every time slice if requested
+    % new functionality, don't p300 every time slice if requested
     Npl = length(cfg.toi);
     
     % compute the indices in the original time axis as center points

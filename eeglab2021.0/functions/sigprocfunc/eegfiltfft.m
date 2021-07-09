@@ -75,7 +75,7 @@ function smoothdata = eegfiltfft(data, fs, lowcut, highcut, epochframes, filtord
     fv=reshape([0:epochframes-1]*fs/epochframes,epochframes,1); % Frequency vector for plotting    
     
     %figure;
-    %plot(fv, 20*log(abs(X))/log(10))  % Plot power spectrum in dB scale
+    %p300(fv, 20*log(abs(X))/log(10))  % Plot power spectrum in dB scale
     %xlabel('Frequency [Hz]')
     %ylabel('Signal power [dB]')
     

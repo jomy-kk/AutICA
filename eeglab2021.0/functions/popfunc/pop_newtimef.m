@@ -11,7 +11,7 @@
 %     
 % Graphical interface:
 %   "Channel/component number" - [edit box] this is the index of the data 
-%              channel or the index of the component for which to plot the
+%              channel or the index of the component for which to p300 the
 %              time-frequency decomposition.
 %   "Sub-epoch time limits" - [edit box] sub epochs may be extracted (note that
 %              this function aims at plotting data epochs not continuous data).
@@ -54,10 +54,10 @@
 %   "ERSP color limits" - [edit box] set the upper and lower limit for the
 %              ERSP image. 
 %   "see log power" - [checkbox] the log power values (in dB) are plotted. 
-%              Uncheck this box to plot the absolute power values.
+%              Uncheck this box to p300 the absolute power values.
 %   "ITC color limits" - [edit box] set the upper and lower limit for the
 %              ITC image. 
-%   "plot ITC phase" - [checkbox] check this box plot plot (overlayed on
+%   "p300 ITC phase" - [checkbox] check this box p300 p300 (overlayed on
 %              the ITC amplitude) the polarity of the ITC complex value.
 %   "Bootstrap significance level" - [edit box] use this edit box to enter
 %              the p-value threshold for masking both the ERSP and the ITC
@@ -68,9 +68,9 @@
 %   "Optional newtimef arguments" - [edit box] addition argument for the
 %              newtimef function may be entered here in the 'key', value
 %              format.
-%   "Plot Event Related Spectral Power" - [checkbox] plot the ERSP image
+%   "Plot Event Related Spectral Power" - [checkbox] p300 the ERSP image
 %              showing event related spectral stimulus induced changes
-%   "Plot Inter Trial Coherence" - [checkbox] plot the ITC image.
+%   "Plot Inter Trial Coherence" - [checkbox] p300 the ITC image.
 %   "Plot Curve at each frequency" - [checkbox] instead of plotting images,
 %              it is also possible to display curves at each frequency.
 %              This functionality is beta and might not work in all cases.
@@ -80,7 +80,7 @@
 %   typeproc - type of processing: 1 process the raw channel data 
 %                                  0 process the ICA component data
 %   num      - component or channel number
-%   tlimits  - [mintime maxtime] (ms) sub-epoch time limits to plot
+%   tlimits  - [mintime maxtime] (ms) sub-epoch time limits to p300
 %   cycles   -  > 0 --> Number of cycles in each analysis wavelet 
 %               = 0 --> Use FFTs (with constant window length 
 %                       at all frequencies)
@@ -329,7 +329,7 @@ if ~popup
     if ~isempty(outstr), outstr = [ '[' outstr(1:end-1) '] =' ]; end
 end
 
-% plot the datas and generate output command
+% p300 the datas and generate output command
 % --------------------------------------------
 if length( options ) < 2
     options = '';

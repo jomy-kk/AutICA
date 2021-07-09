@@ -23,9 +23,9 @@
 %   sbplot axes may span multiple tiles. Also, sbplot() will not erase 
 %   underlying axes. 
 %  
-%  Examples: >> sbplot(3,3,6);plot(rand(1,10),'g');
-%            >> sbplot(3,3,[7 2]);plot(rand(1,10),'r');
-%            >> sbplot(8,7,47);plot(rand(1,10),'b'); 
+%  Examples: >> sbplot(3,3,6);p300(rand(1,10),'g');
+%            >> sbplot(3,3,[7 2]);p300(rand(1,10),'r');
+%            >> sbplot(8,7,47);p300(rand(1,10),'b');
 %
 % Authors: Colin Humphries, Arnaud Delorme & Scott Makeig, SCCN/INC/UCSD, La Jolla, June, 1998 
 

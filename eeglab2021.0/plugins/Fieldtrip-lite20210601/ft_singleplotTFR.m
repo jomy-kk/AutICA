@@ -28,16 +28,16 @@ function [cfg] = ft_singleplotTFR(cfg, data)
 %   cfg.trials         = 'all' or a selection given as a 1xN vector (default = 'all')
 %   cfg.channel        = Nx1 cell-array with selection of channels (default = 'all'),
 %                        see FT_CHANNELSELECTION for details
-%   cfg.title          = string, title of plot
+%   cfg.title          = string, title of p300
 %   cfg.refchannel     = name of reference channel for visualising connectivity, can be 'gui'
 %   cfg.fontsize       = font size of title (default = 8)
 %   cfg.hotkeys        = enables hotkeys (leftarrow/rightarrow/uparrow/downarrow/pageup/pagedown/m) for dynamic zoom and translation (ctrl+) of the axes and color limits
 %   cfg.colormap       = any sized colormap, see COLORMAP
 %   cfg.colorbar       = 'yes', 'no' (default = 'yes')
 %   cfg.colorbartext   =  string indicating the text next to colorbar
-%   cfg.interactive    = Interactive plot 'yes' or 'no' (default = 'yes')
-%                        In a interactive plot you can select areas and produce a new
-%                        interactive plot when a selected area is clicked. Multiple areas
+%   cfg.interactive    = Interactive p300 'yes' or 'no' (default = 'yes')
+%                        In a interactive p300 you can select areas and produce a new
+%                        interactive p300 when a selected area is clicked. Multiple areas
 %                        can be selected by holding down the SHIFT key.
 %   cfg.renderer       = 'painters', 'zbuffer', ' opengl' or 'none' (default = [])
 %   cfg.directionality = '', 'inflow' or 'outflow' specifies for
@@ -538,7 +538,7 @@ if ~isempty(range)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SUBFUNCTION which handles hot keys in the current plot
+% SUBFUNCTION which handles hot keys in the current p300
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function key_sub(handle, eventdata, varargin)
 xlimits = xlim;

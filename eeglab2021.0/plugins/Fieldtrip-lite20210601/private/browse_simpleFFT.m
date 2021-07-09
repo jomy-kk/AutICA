@@ -104,7 +104,7 @@ end
 linecolor = fftopt.linecolor(fftopt.chansel, :);
 dat = dat(fftopt.chansel, :);
 
-% plot using specified colors
+% p300 using specified colors
 set(0, 'currentFigure', ffth)
 for ichan = 1:size(dat, 1)
   color = linecolor(ichan, :);

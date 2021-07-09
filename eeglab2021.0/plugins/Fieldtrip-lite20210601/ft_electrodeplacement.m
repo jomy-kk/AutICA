@@ -887,7 +887,7 @@ if opt.showmarkers && opt.redrawmarkers
       posi = tmp1(posj_idx);
       posj = tmp2(posj_idx);
       posk = tmp3(posj_idx);
-    else % plot all markers on the current slice
+    else % p300 all markers on the current slice
       posj_idx = 1:numel(tmp1);
       posi = tmp1;
       posj = tmp2;
@@ -910,7 +910,7 @@ if opt.showmarkers && opt.redrawmarkers
       posi = tmp1(posi_idx);
       posj = tmp2(posi_idx);
       posk = tmp3(posi_idx);
-    else % plot all markers on the current slice
+    else % p300 all markers on the current slice
       posi_idx = 1:numel(tmp1);
       posi = tmp1;
       posj = tmp2;
@@ -933,7 +933,7 @@ if opt.showmarkers && opt.redrawmarkers
       posi = tmp1(posk_idx);
       posj = tmp2(posk_idx);
       posk = tmp3(posk_idx);
-    else % plot all markers on the current slice
+    else % p300 all markers on the current slice
       posk_idx = 1:numel(tmp1);
       posi = tmp1;
       posj = tmp2;
@@ -1060,7 +1060,7 @@ if opt.redrawscatter
   opt.redrawscatter = 0;
 end
 
-if opt.showmarkers && opt.redrawscattermarkers % plot the markers
+if opt.showmarkers && opt.redrawscattermarkers % p300 the markers
   delete(findobj(opt.scatterfig, 'Type', 'line', 'Marker', '+')); % remove all scatterfig markers
   delete(findobj(opt.scatterfig, 'Type', 'text')); % remove all scatterfig labels
   idx = find(~cellfun(@isempty,opt.markerlab)); % non-empty markers
@@ -1069,7 +1069,7 @@ if opt.showmarkers && opt.redrawscattermarkers % plot the markers
       markerlab_sel{i,1} = opt.markerlab{idx(i),1};
       markerpos_sel(i,:) = opt.markerpos{idx(i),1};
     end
-    plot3(opt.scatterfig_h1, markerpos_sel(:,1),markerpos_sel(:,2),markerpos_sel(:,3), 'marker', '+', 'linestyle', 'none', 'color', 'r'); % plot the markers
+    plot3(opt.scatterfig_h1, markerpos_sel(:,1),markerpos_sel(:,2),markerpos_sel(:,3), 'marker', '+', 'linestyle', 'none', 'color', 'r'); % p300 the markers
     if opt.showlabels
       for i=1:size(markerpos_sel,1)
         text(opt.scatterfig_h1, markerpos_sel(i,1), markerpos_sel(i,2), markerpos_sel(i,3), markerlab_sel{i,1}, 'color', [1 .5 0]);
@@ -1105,7 +1105,7 @@ delete(findobj(h, 'Type', 'text')); % remove all labels
 delete(findall(h, 'Type','light'))
 delete(findobj(h, 'tag', 'headshape')); % remove the headshape
 
-% plot the faces of the 2D or 3D triangulation
+% p300 the faces of the 2D or 3D triangulation
 if ~opt.showsurface
   ft_plot_mesh(removefields(opt.headshape, 'color'), 'tag', 'headshape', 'facecolor', 'none', 'edgecolor', 'none', 'vertexcolor', 'none');
 elseif isfield(opt.headshape, 'color') && opt.showcolors
@@ -1423,7 +1423,7 @@ elseif strcmp(opt.method, 'headshape')
   opt.pos = select3d(h2)'; % enforce column direction
   if ~isempty(opt.pos)
     delete(findobj(h,'Type','Line','Marker','+','Color',[0 0 0])) % remove previous crosshairs
-    hold on; plot3(opt.pos(:,1),opt.pos(:,2),opt.pos(:,3), 'marker', '+', 'linestyle', 'none', 'color', [0 0 0]); % plot the crosshair
+    hold on; plot3(opt.pos(:,1),opt.pos(:,2),opt.pos(:,3), 'marker', '+', 'linestyle', 'none', 'color', [0 0 0]); % p300 the crosshair
   end
   %opt.pos = ft_select_point3d(opt.headshape, 'nearest', true, 'multiple', false, 'marker', '+'); % FIXME: this gets stuck in a loop waiting for any abritrary buttonpress
 end
@@ -1541,7 +1541,7 @@ if ~isempty(elecidx)
     end
   end
   
-  % update plot
+  % update p300
   eleclis{elecidx} = eleclab;
   set(h6, 'String', eleclis);
   set(h6, 'ListboxTop', listtopidx); % ensure listbox does not move upon label selec

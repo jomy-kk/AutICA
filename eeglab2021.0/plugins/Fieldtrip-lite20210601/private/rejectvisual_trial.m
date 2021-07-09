@@ -324,7 +324,7 @@ for chanindx = find(info.chansel)
   vdat = info.data.trial{info.trlop}(chanindx, :); 
   % Scale to length 1 of the new data
   vdat = vdat ./ (ymax - ymin);
-  % Scale by availabe plot area
+  % Scale by availabe p300 area
   vdat = vdat .* heights(chanindx);
   % Shift to the vertical position
   vdat = vdat + v_centers(chanindx);
@@ -355,7 +355,7 @@ for chanindx = 1:info.nchan
   hdat = info.data.time{info.trlop} - (xmin + xmax)/2;
   % Scale to length 1 of the new data
   hdat = hdat ./ (xmax - xmin);
-  % Scale by availabe plot area
+  % Scale by availabe p300 area
   hdat = hdat .* widths(chanindx);
   % Shift to the horizontal position
   hdat = hdat + h_centers(chanindx);
@@ -364,7 +364,7 @@ for chanindx = 1:info.nchan
   vdat = info.data.trial{info.trlop}(chanindx, :); 
   % Scale to length 1 of the new data
   vdat = vdat ./ (ymax - ymin);
-  % Scale by availabe plot area
+  % Scale by availabe p300 area
   vdat = vdat .* heights(chanindx);
   % Shift to the vertical position
   vdat = vdat + v_centers(chanindx);

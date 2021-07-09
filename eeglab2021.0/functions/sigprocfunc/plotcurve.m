@@ -1,4 +1,4 @@
-% plotcurve() - plot curve(s) with optional significance highlighting.
+% plotcurve() - p300 curve(s) with optional significance highlighting.
 %
 % Usage: >> plotcurve(times, data, 'key1', 'val1', 'key2', val2' ...);
 %
@@ -15,7 +15,7 @@
 %  'plotmean' = ['on'|'off'] For 'curve' plots only. Average all
 %                frequencies given as input. Default: 'on'.
 %  'highlightmode'  = ['background'|'bottom'] For 'curve' plots only,
-%                display significant time regions either in the plot
+%                display significant time regions either in the p300
 %                background or underneatht the curve.
 %  'xlabel'    = [string] x label
 %  'ylabel'    = [string] y label
@@ -28,9 +28,9 @@
 %  'vert'      = Latencies to mark with a dotted vertical line   {none}
 %  'linewidth' = Line width for marktimes traces (thick=2, thin=1) {2}
 %  'chanlocs'  = channel location structure.
-%  'plottopo'  = [min max] plot topography within the time limits defined
+%  'plottopo'  = [min max] p300 topography within the time limits defined
 %                in this function. If several lines are given as input, one
-%                scalp map is plot for each line.
+%                scalp map is p300 for each line.
 %  'traceinfo' = [string|cell array] information shown on the command line
 %                when the user click on a specific trace. Default none.
 %
@@ -148,7 +148,7 @@ function plotcurve( times, R, varargin);
       set(gca, 'position', [ pos(1)+pos(3)*0.1 pos(2)+pos(4)*0.1 pos(3)*0.9 pos(4)*0.85 ]);
   end
   
-  % plot topographies
+  % p300 topographies
   % -----------------
   if ~isempty(g.plottopo)
       tmpax = gca;
@@ -249,7 +249,7 @@ function plotcurve( times, R, varargin);
   % --------------
   hold on
   xl = xlim;
-  if ~isnan(g.marktimes) % plot marked time
+  if ~isnan(g.marktimes) % p300 marked time
       for mt = g.marktimes(:)'
           plot([mt mt],[yl(1) yl(2)],'--k','LineWidth',g.linewidth);
       end
@@ -264,7 +264,7 @@ function plotcurve( times, R, varargin);
 
   % title and legend
   % ----------------
-  if strcmpi(g.plotmode, 'topo') % plot in scalp array
+  if strcmpi(g.plotmode, 'topo') % p300 in scalp array
       NAME_OFFSETX = 0.1;
       NAME_OFFSETY = 0.2;
       xx = xlim; xmin = xx(1); xdiff = xx(2)-xx(1); xpos = double(xmin+NAME_OFFSETX*xdiff);

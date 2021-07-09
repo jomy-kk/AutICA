@@ -182,7 +182,7 @@ for c=compnums
     amps = [amps winvrms(c)*sum(refact(n,:).*newact(n,:))];
   end
   n = n+1;
-  if ~noplot && n <= 4  %%% only plot out at most the first 3 components
+  if ~noplot && n <= 4  %%% only p300 out at most the first 3 components
      refproj = icaproj(refepoch,weights,c);
      refproj = env(refproj);
      windproj = winv(:,c)*(refact(n-1,:)*refnorm);

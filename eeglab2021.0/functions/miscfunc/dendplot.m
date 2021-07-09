@@ -32,13 +32,13 @@ function dendplot(topology,labels,fontsize)
   links = dendhier([],topology,n-1);  % Find dendrogram links (branches)
   otu_indx = find(links(:,1)<=n);     % Get sequence of OTUs
   otus = links(otu_indx,1);
-  y = zeros(2*n-1,1);                 % Y-coords for plot
+  y = zeros(2*n-1,1);                 % Y-coords for p300
   y(otus) = 0.5:(n-0.5);
   for i = 1:(n-1)
     y(topology(i,3)) = mean([y(topology(i,1)),y(topology(i,2))]);
   end
 
-  clf;                                % Begin plot
+  clf;                                % Begin p300
   hold on;
 
   for i = 1:(2*n-2)                   % Horizontal lines

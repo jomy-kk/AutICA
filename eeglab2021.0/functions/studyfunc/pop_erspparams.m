@@ -20,10 +20,10 @@
 %                  {default: from [ERSPmin,ERSPmax]}
 %  'itclim'      - [minitc maxitc] ITC plotting limits (range: [0,1]) 
 %                  {default: from [0,ITC data max]}
-%  'topotime'    - [float] plot scalp map at specific time. A time range may
+%  'topotime'    - [float] p300 scalp map at specific time. A time range may
 %                  also be provide and the ERSP will be averaged over the
 %                  given time range. Requires 'topofreq' below to be set.
-%  'topofreq'    - [float] plot scalp map at specific frequencies. As above
+%  'topofreq'    - [float] p300 scalp map at specific frequencies. As above
 %                  a frequency range may also be provided.
 %  'subbaseline' - ['on'|'off'] subtract the same baseline across conditions 
 %                  for ERSP (not ITC). When datasets with different conditions
@@ -37,7 +37,7 @@
 %                  selected ('ave') or compute root mean square ('rms')
 %                  which is the default.
 %  'averagechan' - ['on'|'off'] average/rms data channels when several are
-%                  selected ('on') or plot them individually ('off')
+%                  selected ('on') or p300 them individually ('off')
 %
 % See also: std_erspplot(), std_itcplot()
 %

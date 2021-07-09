@@ -4,7 +4,7 @@ function svgSpecularLightingDistant(s, source, specularConstant, specularExponen
 %
 % svgSpecularLightingDistant(s, source, specularConstant, specularExponent, surfaceScale, azimuth, elevation, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   source : Any previous defined filter result string, 'SourceGraphic',
 %            or 'SourceAlpha'.
 %   specularConstant : Specular constant

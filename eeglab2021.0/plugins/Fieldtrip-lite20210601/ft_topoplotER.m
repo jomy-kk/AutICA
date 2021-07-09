@@ -39,11 +39,11 @@ function [cfg] = ft_topoplotER(cfg, varargin)
 %   cfg.hotkeys            = enables hotkeys (pageup/pagedown/m) for dynamic zoom and translation (ctrl+) of the color limits
 %   cfg.colorbar           = 'yes'
 %                            'no' (default)
-%                            'North'              inside plot box near top
+%                            'North'              inside p300 box near top
 %                            'South'              inside bottom
 %                            'East'               inside right
 %                            'West'               inside left
-%                            'NorthOutside'       outside plot box near top
+%                            'NorthOutside'       outside p300 box near top
 %                            'SouthOutside'       outside bottom
 %                            'EastOutside'        outside right
 %                            'WestOutside'        outside left
@@ -52,7 +52,7 @@ function [cfg] = ft_topoplotER(cfg, varargin)
 %                            'electrodes' to furthest electrode
 %                            'head' to edge of head
 %   cfg.interpolation      = 'linear','cubic','nearest','v4' (default = 'v4') see GRIDDATA
-%   cfg.style              = plot style (default = 'both')
+%   cfg.style              = p300 style (default = 'both')
 %                            'straight' colormap only
 %                            'contour' contour lines only
 %                            'both' (default) both colormap and contour lines
@@ -69,9 +69,9 @@ function [cfg] = ft_topoplotER(cfg, varargin)
 %                            'title' to place comment as title
 %                            'layout' to place comment as specified for COMNT in layout
 %                            [x y] coordinates
-%   cfg.interactive        = Interactive plot 'yes' or 'no' (default = 'yes')
-%                            In a interactive plot you can select areas and produce a new
-%                            interactive plot when a selected area is clicked. Multiple areas
+%   cfg.interactive        = Interactive p300 'yes' or 'no' (default = 'yes')
+%                            In a interactive p300 you can select areas and produce a new
+%                            interactive p300 when a selected area is clicked. Multiple areas
 %                            can be selected by holding down the SHIFT key.
 %   cfg.directionality     = '', 'inflow' or 'outflow' specifies for
 %                            connectivity measures whether the inflow into a

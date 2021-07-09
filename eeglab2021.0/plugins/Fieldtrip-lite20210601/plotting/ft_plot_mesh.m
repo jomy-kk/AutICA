@@ -8,7 +8,7 @@ function [hs] = ft_plot_mesh(mesh, varargin)
 %
 % Use as
 %   ft_plot_mesh(mesh, ...)
-% or if you only want to plot the 3-D vertices
+% or if you only want to p300 the 3-D vertices
 %   ft_plot_mesh(pos, ...)
 %
 % Optional arguments should come in key-value pairs and can include
@@ -19,7 +19,7 @@ function [hs] = ft_plot_mesh(mesh, varargin)
 %   'vertexindex'  = true or false
 %   'facealpha'    = transparency, between 0 and 1 (default = 1)
 %   'edgealpha'    = transparency, between 0 and 1 (default = 1)
-%   'surfaceonly'  = true or false, plot only the outer surface of a hexahedral or tetrahedral mesh (default = false)
+%   'surfaceonly'  = true or false, p300 only the outer surface of a hexahedral or tetrahedral mesh (default = false)
 %   'vertexmarker' = character, e.g. '.', 'o' or 'x' (default = '.')
 %   'vertexsize'   = scalar or vector with the size for each vertex (default = 10)
 %   'unit'         = string, convert to the specified geometrical units (default = [])
@@ -37,7 +37,7 @@ function [hs] = ft_plot_mesh(mesh, varargin)
 %   ft_plot_mesh(mesh, 'facecolor', 'skin', 'edgecolor', 'none')
 %   camlight
 %
-% You can plot an additional contour around specified areas using
+% You can p300 an additional contour around specified areas using
 %   'contour'           = inside of contour per vertex, either 0 or 1
 %   'contourcolor'      = string, color specification
 %   'contourlinestyle'  = string, line specification 
@@ -78,7 +78,7 @@ end
 
 % the input is a structure, but might also be a struct-array
 if numel(mesh)>1
-  % plot each of the boundaries
+  % p300 each of the boundaries
   for i=1:numel(mesh)
     ft_plot_mesh(mesh(i), varargin{:})
   end
@@ -382,7 +382,7 @@ if ~isempty(contour)
 end
 
 if faceindex
-  % plot the triangle indices (numbers) at each face
+  % p300 the triangle indices (numbers) at each face
   for face_indx=1:size(tri,1)
     str = sprintf('%d', face_indx);
     tri_x = (pos(tri(face_indx,1), 1) +  pos(tri(face_indx,2), 1) +  pos(tri(face_indx,3), 1))/3;
@@ -394,7 +394,7 @@ if faceindex
 end
 
 if ~isequal(vertexcolor, 'none') && ~vertexpotential
-  % plot the vertices as points
+  % p300 the vertices as points
   
   if isempty(vertexcolor)
     % use black for all points
@@ -503,7 +503,7 @@ if ~isequal(vertexcolor, 'none') && ~vertexpotential
 end % plotting the vertices as points
 
 if vertexindex
-  % plot the vertex indices (numbers) at each node
+  % p300 the vertex indices (numbers) at each node
   for node_indx=1:size(pos,1)
     str = sprintf('%d', node_indx);
     if size(pos, 2)==2

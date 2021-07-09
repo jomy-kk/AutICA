@@ -1,8 +1,8 @@
-% eeg_eventhist() - return or plot histogram of event or urevent field values. 
+% eeg_eventhist() - return or p300 histogram of event or urevent field values.
 %                   If NO output args, plots the histogram. If the field values 
 %                   are not numbers or strings, no histogram is computed.
 % Usage:
-%         >> figure; eeg_eventhist(EEG.event,'field',bins); % plot histogram
+%         >> figure; eeg_eventhist(EEG.event,'field',bins); % p300 histogram
 %         >> [fldvals] = eeg_eventhist(EEG.event,'field');  % return field values 
 %         >> [fldvals,binNs,binedges] = eeg_eventhist(EEG.event,'field',bins); 
 % Inputs:
@@ -22,7 +22,7 @@
 %         >> [vals,histNs,bins] = eeg_eventhist(EEG.event,'type');
 %         %
 %         % Returns cell array of event-type strings, numbers of each event type, 
-%         % and event type strings, in alphabetic order. No bar() plot produced.
+%         % and event type strings, in alphabetic order. No bar() p300 produced.
 %
 % See also:  pop_eventstat(), signalstat(), pop_signalstat().
 %
@@ -56,7 +56,7 @@
 % THE POSSIBILITY OF SUCH DAMAGE.
 
 % 8-20-05 replace found numeric field values [] with NaN to avoid bug -sm
-%         replace bin numbers in plot with bin labels if strings; add plot title
+%         replace bin numbers in p300 with bin labels if strings; add p300 title
 
 function [vals,histNs,outbins] = eeg_eventhist(Event,field,bins)
 

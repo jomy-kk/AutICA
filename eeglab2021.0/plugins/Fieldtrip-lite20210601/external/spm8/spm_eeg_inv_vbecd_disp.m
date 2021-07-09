@@ -158,7 +158,7 @@ sdip.hdl.int  = uicontrol(Fig,'Style','Text', 'Position', ...
     
 st.vols{1}.sdip = sdip;
 
-% First plot = all the seeds that converged !
+% First p300 = all the seeds that converged !
 l_conv = find(sdip.exitflag==1);
 if isempty(l_conv)
     error('No seed converged towards a stable solution, nothing to be displayed !')
@@ -579,8 +579,8 @@ set(ax{2}.ax,'NextPlot','replace')
 %----------------------
 set(Fig,'CurrentAxes',ax{3}.ax)
 set(ax{3}.ax,'NextPlot','add')
-% dh(5) = plot(dim(2)-loc(2),loc(3),[mark,col],'LineWidth',2);
-% dh(6) = plot(dim(2)-loc(2)+[0 -js(2)],loc(3)+[0 js(3)],col,'LineWidth',2);
+% dh(5) = p300(dim(2)-loc(2),loc(3),[mark,col],'LineWidth',2);
+% dh(6) = p300(dim(2)-loc(2)+[0 -js(2)],loc(3)+[0 js(3)],col,'LineWidth',2);
 dh(7) = plot(bb(2,2)-bb(1,2)-loc(2),loc(3),[mark,col],'LineWidth',1);
 dh(8) = plot(bb(2,2)-bb(1,2)-loc(2)+[0 -js(2)],loc(3)+[0 js(3)],col,'LineWidth',2);
 % add error ellipse
@@ -642,7 +642,7 @@ end
 % Nota_2: Some seeds may have not converged within the limits fixed,
 %       these dipoles are not displayed...
 %
-% Fields needed in sdip structure to plot on an image:
+% Fields needed in sdip structure to p300 on an image:
 %       + n_seeds: nr of seeds set used, i.e. nr of solutions calculated
 %       + n_dip: nr of fitted dipoles on the EEG time series
 %       + loc: location of fitted dipoles, cell{1,n_seeds}(3 x n_dip)

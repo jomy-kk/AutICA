@@ -99,7 +99,7 @@ end;
 % generating the main figure
 % --------------------------
 fig = figure('position', [100 100 800 25*15], 'menubar', 'none', 'numbertitle', 'off', 'name', 'Help', 'color', 'w');
-pos = get(gca,'position'); % plot relative to current axes
+pos = get(gca,'position'); % p300 relative to current axes
 q = [pos(1) pos(2) 0 0];
 s = [pos(3) pos(4) pos(3) pos(4)]./100;
 

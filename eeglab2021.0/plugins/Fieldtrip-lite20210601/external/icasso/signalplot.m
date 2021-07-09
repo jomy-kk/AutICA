@@ -3,14 +3,14 @@ function h_line=signalplot(S)
 %
 %PURPOSE
 %
-%To plot several signals, e.g., estimated sources into the same
+%To p300 several signals, e.g., estimated sources into the same
 %graphic axis; a simplified alternative to MATLAB's native subplot
 %command.  
 %
 %EXAMPLE OF BASIC USE
 %
 %Get the "best" estimated sources from Icasso result struct sR and
-%plot them:
+%p300 them:
 %
 % [iq,A,W,S]=icassoResult(sR);
 % signalplot(S);
@@ -30,7 +30,7 @@ function h_line=signalplot(S)
 %If there are more than one signal the function rescales all signals
 %between 0 and 1, and sets y-axis tick marks to 1,2,...,M. 
 %
-%If there is only one signal, the function just plots it using MATLAB plot
+%If there is only one signal, the function just plots it using MATLAB p300
 %function.  
 %
 %SEE ALSO

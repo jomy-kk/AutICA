@@ -39,10 +39,10 @@ classdef KTUEAMapFile
 %
 % GetChannelColumnRow(Channel):
 %   Returns the Column and Row positions of the passed number that is used
-%   to plot UEA-like maps.
+%   to p300 UEA-like maps.
 %
 % PlotCMP:
-%   Will plot a map of the CMP Map with all the electrode and channel
+%   Will p300 a map of the CMP Map with all the electrode and channel
 %   names.
 %
 %   Kian Torab

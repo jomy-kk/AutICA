@@ -44,19 +44,19 @@ function [Iq, A, W, S, index]=icassoShow(sR,varargin)
 %   Argument 'off' suppresses the window.
 % 'colorlimit' (vector) default [0.5 0.75 0.9] 
 %   sets the thresholds for color of graph lines and clusters 
-%   in the 2D plot; if the cluster density (the average
+%   in the 2D p300; if the cluster density (the average
 %   intra-cluster similarity) exceeds the highest value, the
 %   cluster/lines will be bright red, if it is below the minimum,
 %   the cluster is white/lines are suppressed. The rest is colored
 %   with shades of red.    
 % 'line' (string) 'on' (default) | 'off' 
-%   whether to show the similarity graph lines in the 2D plot or not
+%   whether to show the similarity graph lines in the 2D p300 or not
 % 'hull' (string) 'on' (default) | 'off'
-%   whether to show the "cluster hulls" in the 2D plot or not
+%   whether to show the "cluster hulls" in the 2D p300 or not
 % 'graphlimit' (scalar) in 0...1 | (string) 'auto' (default) 
-%   Controls the 2D plot: See function icassoGraph
+%   Controls the 2D p300: See function icassoGraph
 % 'dense' (scalar) in 0...1 | (string) 'auto' (default) 
-%   Controls the 2D plot: See function icassoGraph
+%   Controls the 2D p300: See function icassoGraph
 % 'quality' (string) 'simple' (default) | 'detailed'
 %   'simple' shows the cluster quality index, 'detailed' shows also
 %   more detailed info in a separate window (figure 6)
@@ -232,7 +232,7 @@ icassoRindex(sR,level);
 
 figure(2); clf;
 
-% compute & plot quality index
+% compute & p300 quality index
 
 subplot(1,2,1);
 Iq=icassoStability(sR,level,'plotindex');
@@ -241,7 +241,7 @@ Iq=icassoStability(sR,level,'plotindex');
 clusterlabels=1:Ncluster;
 [tmp,estimateOrder]=sort(-Iq);
 
-% plot number of estimates in each cluster
+% p300 number of estimates in each cluster
 subplot(1,2,2);
 barh(s.N(estimateOrder));
 set(gca,'ytick',1:Ncluster,'yticklabel', ...

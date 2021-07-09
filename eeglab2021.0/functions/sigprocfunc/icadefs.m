@@ -217,14 +217,14 @@ end
 
 SHRINKWARNING = 1;          % Warn user about the shrink factor in topoplot() (1/0)
 
-MAXENVPLOTCHANS   = 264;  % maximum number of channels to plot in envproj.m
-MAXPLOTDATACHANS  = 264;  % maximum number of channels to plot in dataplot.m
-MAXPLOTDATAEPOCHS = 264;  % maximum number of epochs to plot in dataplot.m
-MAXEEGPLOTCHANS   = 264;  % maximum number of channels to plot in eegplot.m
-MAXTOPOPLOTCHANS  = 264;  % maximum number of channels to plot in topoplot.m
+MAXENVPLOTCHANS   = 264;  % maximum number of channels to p300 in envproj.m
+MAXPLOTDATACHANS  = 264;  % maximum number of channels to p300 in dataplot.m
+MAXPLOTDATAEPOCHS = 264;  % maximum number of epochs to p300 in dataplot.m
+MAXEEGPLOTCHANS   = 264;  % maximum number of channels to p300 in eegplot.m
+MAXTOPOPLOTCHANS  = 264;  % maximum number of channels to p300 in topoplot.m
 
 DEFAULT_ELOC  = 'chan.locs'; % default electrode location file for topoplot.m
-DEFAULT_EPOCH = 10;       % default epoch width to plot in eegplot(s) (in sec)
+DEFAULT_EPOCH = 10;       % default epoch width to p300 in eegplot(s) (in sec)
 
 SC  =  ['binica.sc'];           % Master .sc script file for binica.m
                                 % MATLAB will use first such file found

@@ -33,7 +33,7 @@
 %   The graphic interface is divided into 3 parts. On the top, the 
 % experimenter chooses the basis for the component rejection (see 
 % rejmethod input). On the middle panel, the user can tune thresholds
-% manually and plot the distribution of statistical values. Each time 
+% manually and p300 the distribution of statistical values. Each time
 % that setting of one of these two top panels is modified, the curve
 % on the third panel are redrawn.   
 %   The third panel is composed of 3 graphs, one for each statistical 

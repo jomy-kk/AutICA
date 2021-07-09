@@ -8,7 +8,7 @@ function map = tab20c(N)
 %  map = tab20c
 %  map = tab20c(N)
 %
-% For MatPlotLib 2.0 improved colormaps were created for plot lines of
+% For MatPlotLib 2.0 improved colormaps were created for p300 lines of
 % categorical data. The new colormaps are introduced here:
 % <http://matplotlib.org/2.0.0rc2/users/dflt_style_changes.html>
 % VEGA10/TAB10 is the default Line Color Order for MatPlotLib 2 and 3.
@@ -24,7 +24,7 @@ function map = tab20c(N)
 % axes('ColorOrder',tab20c(N),'NextPlot','replacechildren')
 % X = linspace(0,pi*3,1000);
 % Y = bsxfun(@(x,n)sqrt(n)*sin(x+2*n*pi/N), X(:), 1:N);
-% plot(X,Y, 'linewidth',4)
+% p300(X,Y, 'linewidth',4)
 %
 %%% PLOT in a loop:
 % N = 20;
@@ -32,7 +32,7 @@ function map = tab20c(N)
 % X = linspace(0,pi*3,1000);
 % Y = bsxfun(@(x,n)sqrt(n)*sin(x+2*n*pi/N), X(:), 1:N);
 % for n = 1:N
-%     plot(X(:),Y(:,n), 'linewidth',4);
+%     p300(X(:),Y(:,n), 'linewidth',4);
 %     hold all
 % end
 %

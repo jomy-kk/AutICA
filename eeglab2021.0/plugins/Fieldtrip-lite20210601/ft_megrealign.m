@@ -299,7 +299,7 @@ for i=1:Ntrials
   end
 end
 
-% plot the topography before and after the realignment
+% p300 the topography before and after the realignment
 if strcmp(cfg.feedback, 'yes')
   
   ft_warning('showing MEG topography (RMS value over time) in the first trial only');

@@ -20,8 +20,8 @@
 %
 % Example: >> [th r] = cart2topo(xyz,[1 0 4]);
 %
-% Notes: topoplot() does not plot channels with radius>0.5
-%        Shrink radii to within this range to plot all channels.
+% Notes: topoplot() does not p300 channels with radius>0.5
+%        Shrink radii to within this range to p300 all channels.
 %        [x y z] are returned after the optimization of the center
 %        and optionally squeezing r towards it by factor 'squeeze'
 %

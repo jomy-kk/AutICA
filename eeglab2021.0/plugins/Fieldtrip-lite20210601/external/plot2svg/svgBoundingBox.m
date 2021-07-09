@@ -4,7 +4,7 @@ function svgBoundingBox(s, type, overlap, visible)
 %
 % svgBoundingBox(s, type, overlap, visible)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   type : [axes, element, relative]
 %          Sets the filter bounding box to cover the axis reagion (axes), the
 %          element extension (element or relative). Axes gives usually the

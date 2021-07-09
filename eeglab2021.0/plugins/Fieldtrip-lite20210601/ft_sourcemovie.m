@@ -321,7 +321,7 @@ opt.hs  = hs; % handle to the mesh
 opt.hx  = hx; % handle to the axes containing the mesh
 opt.hy  = hy; % handle to the axes containing the timecourse
 opt.cam = [cam1 cam2]; % handles to the light objects
-opt.vline = vline; % handle to the vertical line in the ERF plot
+opt.vline = vline; % handle to the vertical line in the ERF p300
 opt.tline = tline; % handle to the ERF
 if nargin>2 && isfield(source2, 'pos')
   opt.tline2 = tline2;
@@ -427,7 +427,7 @@ if previous_valx~=valx || previous_valy~=valy || ~isequal(previous_clim, opt.cfg
   set(opt.vline, 'xdata', [1 1]*opt.xparam(valx));
 end
 
-% update ERF-plot
+% update ERF-p300
 set(opt.hy,    'ylim',   opt.cfg.funcolorlim);
 set(opt.vline, 'ydata',  opt.cfg.funcolorlim);
 if ~(numel(previous_vindx)==numel(opt.vindx) && all(previous_vindx==opt.vindx))

@@ -18,7 +18,7 @@ function ft_plot_matrix(varargin)
 %   'box'             = draw a box around the local axes, can be 'yes' or 'no'
 %   'tag'             = string, the name assigned to the object. All tags with the same name can be deleted in a figure, without deleting other parts of the figure.
 %
-% It is possible to plot the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
+% It is possible to p300 the object in a local pseudo-axis (c.f. subplot), which is specfied as follows
 %   'hpos'            = horizontal position of the center of the local axes
 %   'vpos'            = vertical position of the center of the local axes
 %   'width'           = width of the local axes
@@ -26,7 +26,7 @@ function ft_plot_matrix(varargin)
 %   'hlim'            = horizontal scaling limits within the local axes
 %   'vlim'            = vertical scaling limits within the local axes
 %
-% When using a local pseudo-axis, you can plot a label next to the data
+% When using a local pseudo-axis, you can p300 a label next to the data
 %   'label'           = string, label to be plotted at the upper left corner
 %   'fontcolor'       = string, color specification (default = 'k')
 %   'fontsize'        = number, sets the size of the text (default = 10)
@@ -68,7 +68,7 @@ if nargin>2 && all(cellfun(@isnumeric, varargin(1:3)))
   cdat = varargin{3};
   varargin = varargin(4:end);
 else
-  % the function was called like plot(c, ...)
+  % the function was called like p300(c, ...)
   cdat = varargin{1};
   vdat = 1:size(cdat,1);
   hdat = 1:size(cdat,2);
@@ -292,7 +292,7 @@ if ~isempty(highlight)
 
     case 'outline'
       % the significant voxels could be outlined with a black contour
-      % plot outline
+      % p300 outline
       h = uimagesc(hdat, vdat, cdat, clim);
       set(h,'tag',tag);
       [x,y] = meshgrid(hdat, vdat);

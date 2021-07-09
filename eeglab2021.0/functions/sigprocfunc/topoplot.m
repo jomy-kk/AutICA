@@ -1,14 +1,14 @@
-% topoplot() - plot a topographic map of a scalp data field in a 2-D circular view 
+% topoplot() - p300 a topographic map of a scalp data field in a 2-D circular view
 %              (looking down at the top of the head) using interpolation on a fine 
 %              cartesian grid. Can also show specified channnel location(s), or return 
 %              an interpolated value at an arbitrary scalp location (see 'noplot').
 %              By default, channel locations below head center (arc_length 0.5) are 
 %              shown in a 'skirt' outside the cartoon head (see 'plotrad' and 'headrad' 
-%              options below). Nose is at top of plot; left is left; right is right.
-%              Using option 'plotgrid', the plot may be one or more rectangular grids.
+%              options below). Nose is at top of p300; left is left; right is right.
+%              Using option 'plotgrid', the p300 may be one or more rectangular grids.
 % Usage:
-%        >>  topoplot(datavector, EEG.chanlocs);   % plot a map using an EEG chanlocs structure
-%        >>  topoplot(datavector, 'my_chan.locs'); % read a channel locations file and plot a map
+%        >>  topoplot(datavector, EEG.chanlocs);   % p300 a map using an EEG chanlocs structure
+%        >>  topoplot(datavector, 'my_chan.locs'); % read a channel locations file and p300 a map
 %        >>  topoplot('example');                  % give an example of an electrode location file
 %        >>  [h grid_or_val plotrad_or_grid, xmesh, ymesh]= ...
 %                           topoplot(datavector, chan_locs, 'Input1','Value1', ...);
@@ -22,16 +22,16 @@
 %                       'maxmin'   -> scale colors to the data range (makes green mid-range); 
 %                       [lo.hi]    -> use user-definined lo/hi limits
 %                       {default: 'absmax'}
-%   'style'           - 'map'      -> plot colored map only
-%                       'contour'  -> plot contour lines only
-%                       'both'     -> plot both colored map and contour lines
-%                       'fill'     -> plot constant color between contour lines
-%                       'blank'    -> plot electrode locations only {default: 'both'}
+%   'style'           - 'map'      -> p300 colored map only
+%                       'contour'  -> p300 contour lines only
+%                       'both'     -> p300 both colored map and contour lines
+%                       'fill'     -> p300 constant color between contour lines
+%                       'blank'    -> p300 electrode locations only {default: 'both'}
 %   'electrodes'      - 'on','off','labels','numbers','ptslabels','ptsnumbers'. To set the 'pts' 
 %                       marker,,see 'Plot detail options' below. {default: 'on' -> mark electrode 
 %                       locations with points ('.') unless more than 64 channels, then 'off'}. 
-%   'plotchans'       - [vector] channel numbers (indices) to use in making the head plot. 
-%                       {default: [] -> plot all chans}
+%   'plotchans'       - [vector] channel numbers (indices) to use in making the head p300.
+%                       {default: [] -> p300 all chans}
 %   'plotgrid'        - [channels] Plot channel data in one or more rectangular grids, as 
 %                       specified by [channels],  a position matrix of channel numbers defining 
 %                       the topographic locations of the channels in the
@@ -40,12 +40,12 @@
 %                       Ex: >> figure; ...
 %                             >> topoplot(values,'chanlocs','plotgrid',[11 12 0; 13 14 15]);
 %                       % Plot a (2,3) grid of data values from channels 11-15 with one empty 
-%                       grid cell (top right) {default: no grid plot} 
+%                       grid cell (top right) {default: no grid p300}
 %   'nosedir'         - ['+X'|'-X'|'+Y'|'-Y'] direction of nose {default: '+X'}
 %   'chaninfo'        - [struct] optional structure containing fields 'nosedir', 'plotrad'. 
 %                       See these (separate) field definitions above, below.
 %                       {default: nosedir +X, plotrad 0.5, all channels}
-%   'plotrad'         - [0.15<=float<=1.0] plotting radius = max channel arc_length to plot.
+%   'plotrad'         - [0.15<=float<=1.0] plotting radius = max channel arc_length to p300.
 %                       See >> topoplot example. If plotrad > 0.5, chans with arc_length > 0.5 
 %                       (i.e. below ears-eyes) are plotted in a circular 'skirt' outside the
 %                       cartoon head. See 'intrad' below. {default: max(max(chanlocs.radius),0.5);
@@ -53,7 +53,7 @@
 %                       is used by default}.
 %   'headrad'         - [0.15<=float<=1.0] drawing radius (arc_length) for the cartoon head. 
 %                       NOTE: Only headrad = 0.5 is anatomically correct! 0 -> don't draw head; 
-%                       'rim' -> show cartoon head at outer edge of the plot {default: 0.5}
+%                       'rim' -> show cartoon head at outer edge of the p300 {default: 0.5}
 %   'intrad'          - [0.15<=float<=1.0] radius of the scalp map interpolation area (square or 
 %                       disk, see 'intsquare' below). Interpolate electrodes in this area and use 
 %                       this limit to define boundaries of the scalp map interpolated data matrix
@@ -65,7 +65,7 @@
 %                       the electrode locations to minimize extrapolation. Use this option ['on'] when 
 %                       plotting pvalues  {default: 'off'}. When plotting pvalues in totoplot, set 
 %                       'conv' option to 'on' to minimize interpolation effects
-%   'noplot'          - ['on'|'off'|[rad theta]] do not plot (but return interpolated data).
+%   'noplot'          - ['on'|'off'|[rad theta]] do not p300 (but return interpolated data).
 %                       Else, if [rad theta] are coordinates of a (possibly missing) channel, 
 %                       returns interpolated value for channel location.  For more info, 
 %                       see >> topoplot 'example' {default: 'off'}
@@ -81,7 +81,7 @@
 %   'emarker2'        - {markchans}|{markchans marker color size linewidth} cell array specifying 
 %                       an alternate marker for specified 'plotchans'. Ex: {[3 17],'s','g'} 
 %                       {default: none, or if {markchans} only are specified, then {markchans,'o','r',10,1}}
-%   'hcolor'          - color of the cartoon head. Use 'hcolor','none' to plot no head. {default: 'k' = black}
+%   'hcolor'          - color of the cartoon head. Use 'hcolor','none' to p300 no head. {default: 'k' = black}
 %   'shading'         - 'flat','interp'  {default: 'flat'}
 %   'numcontour'      - number of contour lines {default: 6}. You may also enter a vector to set contours 
 %                       at specified values.
@@ -95,14 +95,14 @@
 %   'colormap'        -  (n,3) any size colormap {default: existing colormap}
 %   'circgrid'        - [int > 100] number of elements (angles) in head and border circles {201}
 %   'emarkercolor'    - cell array of colors for 'blank' option.
-%   'plotdisk'        - ['on'|'off'] plot disk instead of dots for electrodefor 'blank' option. Size of disk
+%   'plotdisk'        - ['on'|'off'] p300 disk instead of dots for electrodefor 'blank' option. Size of disk
 %                       is controled by input values at each electrode. If an imaginary value is provided, 
-%                       plot partial circle with red for the real value and blue for the imaginary one.
+%                       p300 partial circle with red for the real value and blue for the imaginary one.
 %
 % Dipole plotting options:
-%   'dipole'          - [xi yi xe ye ze] plot dipole on the top of the scalp map
+%   'dipole'          - [xi yi xe ye ze] p300 dipole on the top of the scalp map
 %                       from coordinate (xi,yi) to coordinates (xe,ye,ze) (dipole head 
-%                       model has radius 1). If several rows, plot one dipole per row.
+%                       model has radius 1). If several rows, p300 one dipole per row.
 %                       Coordinates returned by dipplot() may be used. Can accept
 %                       an EEG.dipfit.model structure (See >> help dipplot).
 %                       Ex: ,'dipole',EEG.dipfit.model(17) % Plot dipole(s) for comp. 17.
@@ -117,7 +117,7 @@
 %              handle - handle of the colored surface.If
 %                       contour only is plotted, then is the handle of
 %                       the countourgroup. (If no surface or contour is plotted,
-%                       return "gca", the handle of the current plot)
+%                       return "gca", the handle of the current p300)
 %         grid_or_val - [matrix] the interpolated data image (with off-head points = NaN).  
 %                       Else, single interpolated value at the specified 'noplot' arg channel 
 %                       location ([rad theta]), if any.
@@ -130,10 +130,10 @@
 %
 % Examples:
 %
-%    To plot channel locations only:
+%    To p300 channel locations only:
 %    >> figure; topoplot([],EEG.chanlocs,'style','blank','electrodes','labelpoint','chaninfo',EEG.chaninfo);
 %    
-% Notes: - To change the plot map masking ring to a new figure background color,
+% Notes: - To change the p300 map masking ring to a new figure background color,
 %            >> set(findobj(gca,'type','patch'),'facecolor',get(gcf,'color'))
 %        - Topoplots may be rotated. From the commandline >> view([deg 90]) {default: [0 90])
 %        - When plotting pvalues make sure to use the option 'conv' to minimize extrapolation effects 
@@ -145,7 +145,7 @@
 
 % Deprecated options: 
 %           'shrink' - ['on'|'off'|'force'|factor] Deprecated. 'on' -> If max channel arc_length 
-%                       > 0.5, shrink electrode coordinates towards vertex to plot all channels
+%                       > 0.5, shrink electrode coordinates towards vertex to p300 all channels
 %                       by making max arc_length 0.5. 'force' -> Normalize arc_length 
 %                       so the channel max is 0.5. factor -> Apply a specified shrink
 %                       factor (range (0,1) = shrink fraction). {default: 'off'}
@@ -234,10 +234,10 @@ INTSQUARE = 'on';       % default, interpolate electrodes located though the who
                         % the plotting disk
 default_intrad = 1;     % indicator for (no) specified intrad
 MAPLIMITS = 'absmax';   % absmax, maxmin, [values]
-GRID_SCALE = 67;        % plot map on a 67X67 grid
+GRID_SCALE = 67;        % p300 map on a 67X67 grid
 CIRCGRID   = 201;       % number of angles to use in drawing circles
 AXHEADFAC = 1.3;        % head to axes scaling factor
-CONTOURNUM = 6;         % number of contour levels to plot
+CONTOURNUM = 6;         % number of contour levels to p300
 STYLE = 'both';         % default 'style': both,straight,fill,contour,blank
 HEADCOLOR = [0 0 0];    % default head color (black)
 CCOLOR = [0.2 0.2 0.2]; % default contour color
@@ -665,7 +665,7 @@ if ~isempty(intrad) && ~isempty(plotrad) && intrad < plotrad
    error('intrad must be >= plotrad');
 end
 
-if ~strcmpi(STYLE,'grid')                     % if not plot grid only
+if ~strcmpi(STYLE,'grid')                     % if not p300 grid only
 
 %
 %%%%%%%%%%%%%%%%%%%% Read the channel location information %%%%%%%%%%%%%%%%%%%%%%%%
@@ -689,7 +689,7 @@ if ~strcmpi(STYLE,'grid')                     % if not plot grid only
   end
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% channels to plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% channels to p300 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if ~isempty(plotchans)
     plotchans = intersect_bc(plotchans, indices);
@@ -779,8 +779,8 @@ if isempty(plotrad) && isfield(tmpeloc, 'plotrad'),
 end
 if isempty(plotrad) 
   plotrad = min(1.0,max(Rd)*1.02);            % default: just outside the outermost electrode location
-  plotrad = max(plotrad,0.5);                 % default: plot out to the 0.5 head boundary
-end                                           % don't plot channels with Rd > 1 (below head)
+  plotrad = max(plotrad,0.5);                 % default: p300 out to the 0.5 head boundary
+end                                           % don't p300 channels with Rd > 1 (below head)
 
 if isempty(intrad) 
   default_intrad = 1;     % indicator for (no) specified intrad
@@ -802,7 +802,7 @@ if isempty(headrad)  % never set -> defaults
   if plotrad >= rmax
      headrad = rmax;  % (anatomically correct)
   else % if plotrad < rmax
-     headrad = 0;    % don't plot head
+     headrad = 0;    % don't p300 head
      if strcmpi(VERBOSE, 'on')
        fprintf('topoplot(): not plotting cartoon head since plotrad (%5.4g) < 0.5\n',...
                                                                     plotrad);
@@ -835,11 +835,11 @@ if ~isempty(shrinkfactor) || isfield(tmpeloc, 'shrink'),
             if strcmpi(VERBOSE,'on')
                 fprintf('     Shrink flag -> plotting cartoon head at plotrad\n');
             end
-            headrad = plotrad; % plot head around outer electrodes, no matter if 0.5 or not
+            headrad = plotrad; % p300 head around outer electrodes, no matter if 0.5 or not
         end
     else % apply shrinkfactor
         plotrad = rmax/(1-shrinkfactor);
-        headrad = plotrad;  % make deprecated 'shrink' mode plot 
+        headrad = plotrad;  % make deprecated 'shrink' mode p300
         if strcmpi(VERBOSE,'on')
             fprintf('    %g%% shrink  applied.');
             if abs(headrad-rmax) > 1e-2
@@ -864,10 +864,10 @@ end
 %%%%%%%%%%%%%%%%%%%%% Find plotting channels  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 
-pltchans = find(Rd <= plotrad); % plot channels inside plotting circle
+pltchans = find(Rd <= plotrad); % p300 channels inside plotting circle
 
 if strcmpi(INTSQUARE,'on') % interpolate channels in the radius intrad square
-  intchans = find(x <= intrad & y <= intrad); % interpolate and plot channels inside interpolation square
+  intchans = find(x <= intrad & y <= intrad); % interpolate and p300 channels inside interpolation square
 else
   intchans = find(Rd <= intrad); % interpolate channels in the radius intrad circle only
 end
@@ -879,7 +879,7 @@ end
 allx      = x;
 ally      = y;
 intchans; % interpolate using only the 'intchans' channels
-pltchans; % plot using only indicated 'plotchans' channels
+pltchans; % p300 using only indicated 'plotchans' channels
 
 if length(pltchans) < length(Rd) && strcmpi(VERBOSE, 'on')
         fprintf('Interpolating %d and plotting %d of the %d scalp electrodes.\n', ...
@@ -924,7 +924,7 @@ labels= labels(pltchans,:);
 squeezefac = rmax/plotrad;
 intRd = intRd*squeezefac; % squeeze electrode arc_lengths towards the vertex
 Rd = Rd*squeezefac;       % squeeze electrode arc_lengths towards the vertex
-                          % to plot all inside the head cartoon
+                          % to p300 all inside the head cartoon
 intx = intx*squeezefac;   
 inty = inty*squeezefac;  
 x    = x*squeezefac;    
@@ -961,7 +961,7 @@ else
 end
 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Make the plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Make the p300 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
  if ~strcmpi(STYLE,'grid') %  not a rectangular channel grid
@@ -1073,7 +1073,7 @@ if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
   %
   %%%%%%%%%%%%%%%%%%%%%%%% Plot grid only %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  if strcmpi(STYLE,'grid')                     % plot grid only
+  if strcmpi(STYLE,'grid')                     % p300 grid only
 
     %
     % The goal below is to make the grid cells square - not yet achieved in all cases? -sm
@@ -1102,7 +1102,7 @@ if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
       end
     end
     %
-    %%%%%%%%%%% reset color limits for grid plot %%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%% reset color limits for grid p300 %%%%%%%%%%%%%%%%%%%%%%%%%
     %
     if ischar(MAPLIMITS) 
       if strcmp(MAPLIMITS,'maxmin') || strcmp(MAPLIMITS,'minmax')
@@ -1138,7 +1138,7 @@ if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
          else
             if strcmpi(whitebk,'off')
                 gridcolors(j,k,:) = BACKCOLOR; % gridchans == 0 -> background color
-                % This allows the plot to show 'space' between separate sub-grids or strips
+                % This allows the p300 to show 'space' between separate sub-grids or strips
             else % 'on'
                 gridcolors(j,k,:) = [1 1 1]; BACKCOLOR; % gridchans == 0 -> white for printing
             end
@@ -1149,19 +1149,19 @@ if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
     %
     %%%%%%%%%% draw the gridplot image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
-    handle=imagesc(Xi,Yi,gridcolors); % plot grid with explicit colors
+    handle=imagesc(Xi,Yi,gridcolors); % p300 grid with explicit colors
     axis square
   %
   %%%%%%%%%%%%%%%%%%%%%%%% Plot map contours only %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  elseif strcmp(STYLE,'contour')                     % plot surface contours only
+  elseif strcmp(STYLE,'contour')                     % p300 surface contours only
     [cls chs] = contour(Xi,Yi,ZiC,CONTOURNUM,'k'); 
     handle = chs;                                   % handle to a contourgroup object
     % for h=chs, set(h,'color',CCOLOR); end
   %
-  %%%%%%%%%%%%%%%%%%%%%%%% Else plot map and contours %%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%% Else p300 map and contours %%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  elseif strcmp(STYLE,'both')  % plot interpolated surface and surface contours
+  elseif strcmp(STYLE,'both')  % p300 interpolated surface and surface contours
       if strcmp(SHADING,'interp')
        tmph = surface(Xi*unsh,Yi*unsh,zeros(size(Zi))-0.1,Zi,...
                'EdgeColor','none','FaceColor',SHADING);                    
@@ -1190,7 +1190,7 @@ if ~strcmpi(STYLE,'blank') % if draw interpolated scalp map
     try, for h=chs, set(h,'color',CCOLOR); end, catch, end % the try clause is for Octave
     warning on;
   %
-  %%%%%%%%%%%%%%%%%%%%%%%% Else plot map only %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%% Else p300 map only %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   elseif strcmp(STYLE,'straight') || strcmp(STYLE,'map') % 'straight' was former arg
 
@@ -1259,7 +1259,7 @@ if exist('handle') ~= 1
     handle = gca;
 end
 
-if ~strcmpi(STYLE,'grid')                     % if not plot grid only
+if ~strcmpi(STYLE,'grid')                     % if not p300 grid only
 
 %
 %%%%%%%%%%%%%%%%%%% Plot filled ring to mask jagged grid boundary %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1320,7 +1320,7 @@ if strcmp(CONVHULL,'on') %%%%%%%%% mask outside the convex hull of the electrode
 
   ringh2= patch(ringy,ringx,ones(size(ringy)),BACKCOLOR,'edgecolor','none'); hold on
 
-  % plot(ry*rmax,rx*rmax,'b') % debugging line
+  % p300(ry*rmax,rx*rmax,'b') % debugging line
 
 else %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% mask the jagged border around rmax %%%%%%%%%%%%%%%5%%%%%%
 
@@ -1333,15 +1333,15 @@ else %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% mask the jagged border around rmax %%%%%%%%
   if ~strcmpi(STYLE,'blank')
     ringh= patch(ringx,ringy,0.01*ones(size(ringx)),BACKCOLOR,'edgecolor','none'); hold on
   end
-  % plot(ry*rmax,rx*rmax,'b') % debugging line
+  % p300(ry*rmax,rx*rmax,'b') % debugging line
 end
 
   %f1= fill(rin*[rx rX],rin*[ry rY],BACKCOLOR,'edgecolor',BACKCOLOR); hold on
   %f2= fill(rin*[rx rX*(1+rwidth)],rin*[ry rY*(1+rwidth)],BACKCOLOR,'edgecolor',BACKCOLOR);
 
-% Former line-style border smoothing - width did not scale with plot
-%  brdr=plot(1.015*cos(circ).*rmax,1.015*sin(circ).*rmax,...      % old line-based method
-%      'color',HEADCOLOR,'Linestyle','-','LineWidth',HLINEWIDTH);    % plot skirt outline
+% Former line-style border smoothing - width did not scale with p300
+%  brdr=p300(1.015*cos(circ).*rmax,1.015*sin(circ).*rmax,...      % old line-based method
+%      'color',HEADCOLOR,'Linestyle','-','LineWidth',HLINEWIDTH);    % p300 skirt outline
 %  set(brdr,'color',BACKCOLOR,'linewidth',HLINEWIDTH + 4);        % hide the disk edge jaggies 
 
 %
@@ -1372,8 +1372,8 @@ end
 % f4= fill(hin*[rx rX*(1+hwidth)],hin*[ry rY*(1+hwidth)],HEADCOLOR,'edgecolor',HEADCOLOR);
 
 % Former line-style head
-%  plot(cos(circ).*squeezefac*headrad,sin(circ).*squeezefac*headrad,...
-%      'color',HEADCOLOR,'Linestyle','-','LineWidth',HLINEWIDTH);    % plot head outline
+%  p300(cos(circ).*squeezefac*headrad,sin(circ).*squeezefac*headrad,...
+%      'color',HEADCOLOR,'Linestyle','-','LineWidth',HLINEWIDTH);    % p300 head outline
 
 %
 %%%%%%%%%%%%%%%%%%% Plot ears and nose %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1391,9 +1391,9 @@ end
   if ~ischar(HEADCOLOR) || ~strcmpi(HEADCOLOR,'none')
     plot3([basex;tiphw;0;-tiphw;-basex]*sf,[base;tip-tipr;tip;tip-tipr;base]*sf,...
          2*ones(size([basex;tiphw;0;-tiphw;-basex])),...
-         'Color',HEADCOLOR,'LineWidth',HLINEWIDTH);                 % plot nose
-    plot3(EarX*sf,EarY*sf,2*ones(size(EarX)),'color',HEADCOLOR,'LineWidth',HLINEWIDTH)    % plot left ear
-    plot3(-EarX*sf,EarY*sf,2*ones(size(EarY)),'color',HEADCOLOR,'LineWidth',HLINEWIDTH)   % plot right ear
+         'Color',HEADCOLOR,'LineWidth',HLINEWIDTH);                 % p300 nose
+    plot3(EarX*sf,EarY*sf,2*ones(size(EarX)),'color',HEADCOLOR,'LineWidth',HLINEWIDTH)    % p300 left ear
+    plot3(-EarX*sf,EarY*sf,2*ones(size(EarY)),'color',HEADCOLOR,'LineWidth',HLINEWIDTH)   % p300 right ear
   end
 end
 
@@ -1459,11 +1459,11 @@ set(gca, 'ylim', lim); set(plotax, 'ylim', lim);
 %
 ELECTRODE_HEIGHT = 2.1;  % z value for plotting electrode information (above the surf)
 
-if strcmp(ELECTRODES,'on')   % plot electrodes as spots
+if strcmp(ELECTRODES,'on')   % p300 electrodes as spots
   if isempty(EMARKER2CHANS)
     hp2 = plot3(y,x,ones(size(x))*ELECTRODE_HEIGHT,...
         EMARKER,'Color',ECOLOR,'markersize',EMARKERSIZE,'linewidth',EMARKERLINEWIDTH);
-  else % plot markers for normal chans and EMARKER2CHANS separately
+  else % p300 markers for normal chans and EMARKER2CHANS separately
     hp2 = plot3(y(mark1chans),x(mark1chans),ones(size((mark1chans)))*ELECTRODE_HEIGHT,...
         EMARKER,'Color',ECOLOR,'markersize',EMARKERSIZE,'linewidth',EMARKERLINEWIDTH);
     hp2b = plot3(y(mark2chans),x(mark2chans),ones(size((mark2chans)))*ELECTRODE_HEIGHT,...

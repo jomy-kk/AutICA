@@ -4,8 +4,8 @@
 %   >> hist2(data1, data2, bins);
 %
 % Inputs:
-%   data1   - data to plot first process
-%   data2   - data to plot second process
+%   data1   - data to p300 first process
+%   data2   - data to p300 second process
 %
 % Optional inputs:
 %   bins    - vector of bin center

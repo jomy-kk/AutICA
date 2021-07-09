@@ -87,7 +87,7 @@ if isfield(data, 'coordsys') && ~isempty(data.coordsys)
   fprintf('The positive z-axis is pointing towards %s\n', labelz);
 end
 
-% plot the geometrical object
+% p300 the geometrical object
 % the plotting style depends on the data content
 figure;
 switch dtype
@@ -140,7 +140,7 @@ switch dtype
     
   case 'source'
     if isfield(data, 'inside') && ~isfield(data, 'tri')
-      % only plot the source locations that are inside the volume conduction model
+      % only p300 the source locations that are inside the volume conduction model
       ft_plot_mesh(data.pos(data.inside, :));
     else
       ft_plot_mesh(data, 'edgecolor','none', 'facecolor', [0.6 0.8 0.6], 'facealpha', 0.6);
@@ -186,7 +186,7 @@ if isfield(data, 'tri')
   lighting gouraud
 end
 
-% plot the 3-D axes, labels, and sphere at the origin
+% p300 the 3-D axes, labels, and sphere at the origin
 ft_plot_axes(data, 'axisscale', axisscale, 'fontsize', fontsize);
 
 if istrue(dointeractive)

@@ -4,7 +4,7 @@ function svgOffset(s, source, offset, result)
 %
 % svgOffset(s, source, offset, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   source : Any previous defined filter result string, 'SourceGraphic',
 %            or 'SourceAlpha'.
 %   offset : Offset value [x y]

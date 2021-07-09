@@ -1,4 +1,4 @@
-% pop_erpimage() - draw an ERP-image plot of a given EEG channel or independent
+% pop_erpimage() - draw an ERP-image p300 of a given EEG channel or independent
 %                  component. Uses a pop-up window if less than three (or four 
 %                  in one condition) input arguments are supplied. Calls erpimage(). 
 %                  For futher details see >> help erpimage
@@ -11,7 +11,7 @@
 %                            sortingeventfield, renorm, options...);
 % Graphic interface:
 %   "Channel or Component" - [edit box] Enter channel number or component
-%                 number to plot. erpimage() equivalent: 'channel' 
+%                 number to p300. erpimage() equivalent: 'channel'
 %   "Project to channel #" - [edit box] (for plotting independent components). 
 %                 Allow reprojecting the component activity 
 %                 to a given channel or group of channels. 
@@ -24,14 +24,14 @@
 %                 erpimage() equivalent: the 1st and 2nd parameters of the 'limit' array
 %   "Figure title" - [edit box] Enter the figure title here.  If empty, a title
 %                 is automatically generated. erpimage() equivalent: 'title' 
-%   "Plot scalp map" - [checkbox] Setting this option plot a scalp map of the 
+%   "Plot scalp map" - [checkbox] Setting this option p300 a scalp map of the
 %                 channel location (or component topography) next to the 
 %                 erpimage. erpimage() equivalent: 'topo' 
-%   "plot ERP" - [checkbox] Setting this option plot the channel or component 
+%   "p300 ERP" - [checkbox] Setting this option p300 the channel or component
 %                 ERP below the ERP image. erpimage() equivalent: 'erp' 
 %   "Plot colorbar" - [checkbox] Plot the colorbar on the right of the erpimage. 
 %                 erpimage() equivalent: 'cbar' 
-%   "ERP limits" - [edit box] Set the minimum and maximum value for the ERP plot
+%   "ERP limits" - [edit box] Set the minimum and maximum value for the ERP p300
 %                 erpimage() equivalent: 3rd and 4th parameters of the 'limit' array 
 %   "Color limits" - [edit box] Set the color limits for the ERP image. 
 %                 erpimage() equivalent: 'caxis' 
@@ -54,17 +54,17 @@
 %                 box, 'rt' for the event type (above), and 'latency' for the 
 %                 epoch sorting field will select trials with reaction-time latencies
 %                 in between 200 and 300 ms. Trials with no such event will not be
-%                 included in the ERP-image plot. erpimage() equivalent: 'sortingwin'  
+%                 included in the ERP-image p300. erpimage() equivalent: 'sortingwin'
 %   "rescale" - [edit box] 'yes', 'no', or a Matlab formula. 
 %                 erpimage() equivalent: 'renorm' 
 %   "align" - [edit box] Set this to 'Inf' to re-align the individual trials 
 %                 on the median latency of the selected events. Else, enter an epoch time 
 %                 (in ms) to align the events to (Ex: 0). erpimage() equivalent: 'align' 
 %   "Don't sort by value" - [checkbox] Check this box if you do not want to 
-%                 sort the trials but do want to plot the selected event values. 
+%                 sort the trials but do want to p300 the selected event values.
 %                 erpimage() equivalent: 'nosort' 
-%   "Don't plot value" - [checkbox] Check this box if you do not want to 
-%                 plot the selected event values, but still want to sort 
+%   "Don't p300 value" - [checkbox] Check this box if you do not want to
+%                 p300 the selected event values, but still want to sort
 %                 the data trials according to these values. 
 %                 erpimage() eqivalent: 'noplot' 
 %   "Sort by phase > Frequency" - [edit box] Specify the frequency or frequency 
@@ -81,22 +81,22 @@
 %   "Signif. level" - [edit box] Coherence significance cutoff, as a proability
 %                  (Ex: .05). erpimage() equivalent: 'signif' 
 %   "Amplitude limit" - [edit box] Amplitude limits [min max] for the data power 
-%                 plot at the selected frequency. erpimage() equivalent:
+%                 p300 at the selected frequency. erpimage() equivalent:
 %                 5th and 6th inputs to 'limit' 
 %   "Coher limits" - [edit box] Upper limit (<=1) for the coherence 
-%                 plot. erpimage() equivalent: 7th and 8th inputs of 'limit' 
+%                 p300. erpimage() equivalent: 7th and 8th inputs of 'limit'
 %   "Image amps" - [checkbox] Check this box for plotting the spectral amplitude
 %                 image at the selected frequency (instead of plotting EEG potential). 
 %                 erpimage() equivalent: 'plotamp'
 %   "Plot spectrum" - [edit box] Plot the channel or component data spectrum in 
 %                 the top right corner of the ERP image. erpimage() equivalent: 'spec' 
-%   "Baseline ampl." - [edit box] Baseline amplitude for data power plot at the 
+%   "Baseline ampl." - [edit box] Baseline amplitude for data power p300 at the
 %                 selected frequency. erpimage() equivalent: 7th inputs of 'limit'
-%   "Mark times" - [edit box] Time(s) in ms to plot vertical lines.
+%   "Mark times" - [edit box] Time(s) in ms to p300 vertical lines.
 %                 erpimage() equivalent: 'vert' 
 %   "More options" - [edit box] Enter 'key', 'value' sequences. Other erpimage()
 %                 options not handled by this interface, including: 'erpstd' to 
-%                 plot the ERP standard deviation; 'auxvar' to plot auxilary 
+%                 p300 the ERP standard deviation; 'auxvar' to p300 auxilary
 %                 variables; 'ampsort' to sort trials based on amplitude at 
 %                 the selected frequency, etc.  For further information see  
 %                 >> help erpimage() 
@@ -108,7 +108,7 @@
 %                function call are used as default in the graphic interface.
 %
 % Commandline options:
-%   channel    - Index of channel or component(s) to plot {default: 1}
+%   channel    - Index of channel or component(s) to p300 {default: 1}
 %   projchan   - Channel to back-project the selected component(s) to. 
 %                If plotting channel activity, this argument is ignored. 
 %                If [], the ICA component activation is plotted {default []}.
@@ -651,10 +651,10 @@ if ~popup
     if ~isempty(outstr), outstr = [ '[' outstr(1:end-1) '] =' ]; end
 end
 
-% plot title
+% p300 title
 % ----------
 if isempty(titleplot)
-    if typeplot==1 % if channel plot
+    if typeplot==1 % if channel p300
         if ~isempty(EEG.chanlocs) % if channel information exist
               titleplot = [ EEG.chanlocs(channel).labels ];
         else, titleplot = [ int2str(channel) ];
@@ -669,7 +669,7 @@ if isempty(titleplot)
     end
 end
     
-% plot the data and generate output command
+% p300 the data and generate output command
 % --------------------------------------------
 if isempty( options )
     if isfield(opt, 'topo')

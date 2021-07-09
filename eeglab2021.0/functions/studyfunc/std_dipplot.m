@@ -1,4 +1,4 @@
-% std_dipplot() - Commandline function to plot cluster component dipoles. Dipoles for each
+% std_dipplot() - Commandline function to p300 cluster component dipoles. Dipoles for each
 %                 named cluster is displayed in a separate figure. To view all the clustered 
 %                 components in the STUDY on the same figure (in a separate subplot), all 
 %                 STUDY clusters must be requested.
@@ -13,17 +13,17 @@
 %                the STUDY. ALLEEG for a STUDY set is typically created using load_ALLEEG().  
 %
 % Optional inputs:
-%   'clusters' - [numeric vector | 'all']  -> specific cluster numbers to plot.
-%                'all'  -> plot all clusters in STUDY.
+%   'clusters' - [numeric vector | 'all']  -> specific cluster numbers to p300.
+%                'all'  -> p300 all clusters in STUDY.
 %                {default: 'all'}.
-%   'comps'    - [numeric vector]  -> indices of the cluster components to plot.
-%                'all'  -> plot all the components in the cluster 
+%   'comps'    - [numeric vector]  -> indices of the cluster components to p300.
+%                'all'  -> p300 all the components in the cluster
 %                {default: 'all'}.
 %   'mode'     - ['together'|'apart'|'multicolor'] Display all requested cluster on one 
 %                figure ('together') or separate figures ('apart'). 
-%                'together'-> plot all 'clusters' individuall in one multi-pane figure (without the gui).
-%                'apart'   -> plot each cluster in a separate figure. 
-%                'multicolor' -> plot all clusters in one figure, 
+%                'together'-> p300 all 'clusters' individuall in one multi-pane figure (without the gui).
+%                'apart'   -> p300 each cluster in a separate figure.
+%                'multicolor' -> p300 all clusters in one figure,
 %                Note that this parameter has no effect if the 'comps' option (above) is used.
 %                {default: 'together'}
 %   'figure'   - ['on'|'off'] plots on a new figure ('on')  or plots on current
@@ -82,8 +82,8 @@
 function STUDY = std_dipplot(STUDY, ALLEEG, varargin)
 
 % Set default values
-cls = []; % plot all clusters in STUDY
-figureon = 1; % plot on a new figure
+cls = []; % p300 all clusters in STUDY
+figureon = 1; % p300 on a new figure
 mode = 'apart';
 
 STUDY = pop_dipparams(STUDY, 'default');
@@ -144,11 +144,11 @@ if strcmpi(mode, 'together')
     end
 end
 
-% select clusters to plot
+% select clusters to p300
 % -----------------------
 if isempty(cls)
     tmp =[];
-    cls = 2:length(STUDY.cluster); % plot all clusters in STUDY
+    cls = 2:length(STUDY.cluster); % p300 all clusters in STUDY
     for k = 1: length(cls)
         % don't include 'Notclust' clusters
         if ~strncmpi('Notclust',STUDY.cluster(cls(k)).name,8) && ~strncmpi('ParentCluster',STUDY.cluster(cls(k)).name,13)
@@ -546,8 +546,8 @@ end % multicolor. Supporting functions at end of file
 %   cluster     - single cluster number.  
 %
 % Optional inputs:
-%   comps      - [numeric vector]  -> indices of the cluster components to plot.
-%                       'all'                       -> plot all the components in the cluster {default: 'all'}. 
+%   comps      - [numeric vector]  -> indices of the cluster components to p300.
+%                       'all'                       -> p300 all the components in the cluster {default: 'all'}.
 %
 % Outputs:
 %   STUDY    - the input STUDY set structure modified with plotted cluster
@@ -598,7 +598,7 @@ if isempty(cls)
    error('std_plotcompdip: you must provide a cluster number as an input.');
 end
 if nargin == 3 % no components indices were given
-    % Default plot all components of the cluster
+    % Default p300 all components of the cluster
     [STUDY] = std_dipplot(STUDY, ALLEEG, 'clusters', cls);
     return
 end
@@ -792,7 +792,7 @@ function [cluster_dip_models, options] = dipgroups(ALLEEG, STUDY, cls, comp_to_d
         colors{16,1} = [0 0 0];            % Black
         % Silver is twice brighter because silver is used for a background color
         colors{5,1} = [0.875 0.875 0.875];
-        % Choosing and sorting 12 colors for line plot, namely Red, Blue, Green, Fuchsia, Lime, Aqua, Maroon, Olive, Purple, Teal, Navy, and Gray
+        % Choosing and sorting 12 colors for line p300, namely Red, Blue, Green, Fuchsia, Lime, Aqua, Maroon, Olive, Purple, Teal, Navy, and Gray
         selectedcolors = colors([4 13 14 3 11 10 9 7 8 12 15 6]);
 
     % determine the new dip colors

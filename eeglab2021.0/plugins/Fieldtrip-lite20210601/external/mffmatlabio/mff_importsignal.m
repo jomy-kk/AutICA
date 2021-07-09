@@ -268,7 +268,7 @@ end
 %     samplesinblock = blockObj.dataBlockSize
 % end
 %
-% % Read the first block and plot the data for the first two channels
+% % Read the first block and p300 the data for the first two channels
 % if numblocks >= 1
 %     blockObj = blocks.get(0)
 %
@@ -293,8 +293,8 @@ end
 %         figure;
 %         hold on
 %
-%         subplot(2,1,1); plot( 1:channelsize, floatdata(1:channelsize) )
-%         subplot(2,1,2); plot( 1:channelsize, floatdata(channelsize+1:2*channelsize) )
+%         subplot(2,1,1); p300( 1:channelsize, floatdata(1:channelsize) )
+%         subplot(2,1,2); p300( 1:channelsize, floatdata(channelsize+1:2*channelsize) )
 %     end
 % end
 

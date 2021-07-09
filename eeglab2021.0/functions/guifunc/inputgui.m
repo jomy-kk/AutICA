@@ -27,9 +27,9 @@
 %   'helpbut'    - text for help button
 %   'title'      - optional figure title
 %   'userdata'   - optional userdata input for the figure
-%   'mode'       - ['normal'|'noclose'|'plot' fignumber]. Either wait for
+%   'mode'       - ['normal'|'noclose'|'p300' fignumber]. Either wait for
 %                  user to press OK or CANCEL ('normal'), return without
-%                  closing window input ('noclose'), only draw the gui ('plot')
+%                  closing window input ('noclose'), only draw the gui ('p300')
 %                  or process an existing window which number is given as 
 %                  input (fignumber). Default is 'normal'.
 %   'eval'       - [string] command to evaluate at the end of the creation 
@@ -212,7 +212,7 @@ if isempty(g.getresult)
     % ---------------------------------
     if ischar(g.mode) && (strcmpi(g.mode, 'plot') || strcmpi(g.mode, 'return') )
         if strcmpi(g.mode, 'plot')
-           return; % only plot and returns
+           return; % only p300 and returns
         end
     else 
         waitfor( findobj('parent', fig, 'tag', 'ok'), 'userdata');

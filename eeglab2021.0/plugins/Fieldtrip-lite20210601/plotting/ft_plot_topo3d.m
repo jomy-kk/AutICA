@@ -82,7 +82,7 @@ end
 if ~isequal(topostyle, false)
   switch topostyle
     case 'color'
-      % plot a 2D or 3D triangulated surface with linear interpolation
+      % p300 a 2D or 3D triangulated surface with linear interpolation
       if length(val)==size(pos,1)
         hs = patch('Vertices', pos, 'Faces', tri, 'FaceVertexCData', val, 'FaceColor', 'interp');
       else
@@ -103,7 +103,7 @@ if ~isequal(topostyle, false)
     otherwise
       ft_error('unsupported topostyle');
   end % switch contourstyle
-end % plot the interpolated topography
+end % p300 the interpolated topography
 
 
 if ~strcmp(contourstyle, 'none')
@@ -215,7 +215,7 @@ if ~strcmp(contourstyle, 'none')
       ft_error('unsupported contourstyle');
   end % switch contourstyle
   
-end % plot the contours
+end % p300 the contours
 
 axis off
 axis vis3d

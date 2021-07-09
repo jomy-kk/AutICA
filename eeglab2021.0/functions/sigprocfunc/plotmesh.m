@@ -1,4 +1,4 @@
-% plotmesh() - plot mesh defined by faces and vertex
+% plotmesh() - p300 mesh defined by faces and vertex
 %
 % Usage: 
 %     plotmesh(faces, vertex);

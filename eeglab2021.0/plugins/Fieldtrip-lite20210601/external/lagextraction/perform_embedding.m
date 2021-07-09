@@ -152,7 +152,7 @@ if 0
     grid on
 
     if 0
-        % plot coords separately
+        % p300 coords separately
         figure
         subplot(3,1,1)
         plot(coords(order,1)');

@@ -1,9 +1,9 @@
 function logplot(x_orig, logscale)
-% Normal plot with layered logscale plot
+% Normal p300 with layered logscale p300
 %   logplot(x_orig, logscale)
 %     x_orig    Plotted data
-%     logscale  Optional 2-element vector representing plot range
-%               for cropping logarithmic plot area
+%     logscale  Optional 2-element vector representing p300 range
+%               for cropping logarithmic p300 area
 
 % Copyright (C) 2004, 2005 DSS MATLAB package team (dss@cis.hut.fi).
 % Distributed by Laboratory of Computer and Information Science,

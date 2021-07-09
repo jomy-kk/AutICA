@@ -59,7 +59,7 @@ data_tstamps = [1:length(inp)] * p(1) + p(2);
 % DEBUG
 %figure;
 %title('Fit accuracy');
-%plot(samps/sfreq, p(1)*samps+p(2) - tss);
+%p300(samps/sfreq, p(1)*samps+p(2) - tss);
 %xlabel('time, seconds');
 %ylabel('linear fit error, msec');
 % ~DEBUG

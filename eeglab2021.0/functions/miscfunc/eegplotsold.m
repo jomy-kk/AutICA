@@ -8,7 +8,7 @@
 %   data       - data matrix (chans,frames) 
 %   srate      - EEG sampling rate in Hz (0 -> 256 Hz)
 %   'chanfile' - file of channel info, topoplot() style, (0 -> chan nos)
-%   'title'    - plot title string {0 -> 'eegplotsold()'}
+%   'title'    - p300 title string {0 -> 'eegplotsold()'}
 %   yscaling   - initial y scaling factor (0 -> 300)
 %   epoch      - how many seconds to display in window (0 -> 10 sec)
 %   linecolor  - color of eeg (0 -> 'y')
@@ -68,7 +68,7 @@ if nargin < 1
 	help eegplotsold	% print usage message
     PLOT_TIME = 10;
 	data = 0.5*randn(8,floor(DEFAULT_SRATE*PLOT_TIME*2));	
-	titleval = ['eegplotsold() example - random noise'];	% show example plot
+	titleval = ['eegplotsold() example - random noise'];	% show example p300
 end
 
 [chans,frames] = size(data);		%size of data matrix
@@ -181,7 +181,7 @@ maxtime = frames / srate;       %size of matrix in seconds
 		end
 	end
   end
-  if channamefile ==0, % plot channel numbers
+  if channamefile ==0, % p300 channel numbers
 	channames = [];
 	for c=1:chans
 		if c<10,
@@ -229,7 +229,7 @@ channames = char(channames, ' ');	% add padding element to Y labels
 for i = 1:chans			
    F = data(chans-i+1,:);
    F = F - mean(F) + i*spacing_var;  % add offset to y-values
-   plot (xx,F,'clipping','off','Color',linecolor); % channel plot with x-values
+   plot (xx,F,'clipping','off','Color',linecolor); % channel p300 with x-values
 end 
 if xstart<0 && xstart+PLOT_TIME > 0
    linetime = round(-xstart/srate);

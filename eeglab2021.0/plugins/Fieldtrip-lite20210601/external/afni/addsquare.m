@@ -4,7 +4,7 @@ function [err, hndl] = addsquare(Pll, Pur, C)
 %
 %
 %Purpose:
-%  adds a rectangle on current plot
+%  adds a rectangle on current p300
 %   
 %   
 %   

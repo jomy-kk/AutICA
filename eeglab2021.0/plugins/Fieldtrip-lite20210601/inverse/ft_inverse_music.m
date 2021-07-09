@@ -155,7 +155,7 @@ for i=1:size(sourcemodel.pos,1)
   % compute the music metric, c.f. equation 26
   estimate.jr(i) = (norm(ps * lf)./norm(lf)).^2;
   % as described in the Mosher 1992 paper on page 550, "...the general approach is to
-  % evaluare Jr(i) over a fine three-dimensional grid, plot its inverse,
+  % evaluare Jr(i) over a fine three-dimensional grid, p300 its inverse,
   % and look for p sharp spikes..."
   
 end % for each dipole position

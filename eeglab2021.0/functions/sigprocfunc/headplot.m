@@ -1,4 +1,4 @@
-% headplot() - plot a spherically-splined EEG field map on a semi-realistic 
+% headplot() - p300 a spherically-splined EEG field map on a semi-realistic
 %              3-D head model. Can 3-D rotate the head image using the left 
 %              mouse button.
 % Example:
@@ -47,9 +47,9 @@
 %                   The transform is applied in the order shift(rotate(scale(elocs)))
 %                   by the dipfit2.* plugin function traditionaldipfit.m
 %                   This array is returned by coregister().
-%  'plotmeshonly' - [string] plot only mesh and electrode positions. Options are
-%                   'head' to plot the standard head mesh; 'sphere' to plot the
-%                   texture of the head on a sphere; 'off' not to plot anything.
+%  'plotmeshonly' - [string] p300 only mesh and electrode positions. Options are
+%                   'head' to p300 the standard head mesh; 'sphere' to p300 the
+%                   texture of the head on a sphere; 'off' not to p300 anything.
 %                   {default: 'off'}
 %   'comment'     - ['string'] optional string containing comments for spline file
 %                   {default: []}
@@ -69,8 +69,8 @@
 %                  description above. {default: the EEGLAB head template file}.
 %   'electrodes' - ['on'|'off'] -> show electrode positions {default 'on'}
 %   'title'      -  Plot title {default: none}
-%   'labels'     -  2 -> plot stored electrode labels;
-%                   1 -> plot channel numbers; 0 -> no labels {default 0}
+%   'labels'     -  2 -> p300 stored electrode labels;
+%                   1 -> p300 channel numbers; 0 -> no labels {default 0}
 %   'cbar'       -  0 -> Plot colorbar {default: no colorbar} 
 %                        Note: standard jet colormap) red = +;blue = -;green=0
 %                   h -> Colorbar axis handle (to specify headplot location)
@@ -85,7 +85,7 @@
 %                      {default = 'absmax'}
 %   'lights'     - (3,N) matrix whose rows give [x y z] pos. of each of
 %                   N lights {default: four lights at corners}
-%   'electrode3d' - ['on'|'off'] plot electrodes in 3-D. Default is 'off'.
+%   'electrode3d' - ['on'|'off'] p300 electrodes in 3-D. Default is 'off'.
 %   'lighting'   - 'off' = show wire frame head {default 'on'} 
 %   'material'   - [see material function] {default 'dull'}
 %   'colormap'   -  3-column colormap matrix {default: jet(64)}
@@ -171,8 +171,8 @@ DEFAULT_LIGHTS = [-125  125  80; ...
 HeadCenter = [0 0 30];
 FaceColor  = [.8 .55 .35]*1.1; % ~= ruddy Caucasian - pick your complexion!
 MAX_ELECTRODES = 1024;
-ElectDFac  = 1.06;  % plot electrode marker dots out from head surface
-plotelecopt.NamesDFac  = 1.05;  % plot electrode names/numbers out from markers
+ElectDFac  = 1.06;  % p300 electrode marker dots out from head surface
+plotelecopt.NamesDFac  = 1.05;  % p300 electrode names/numbers out from markers
 plotelecopt.NamesColor = 'k'; % 'r';
 plotelecopt.NamesSize  =  10;   % FontSize for electrode names
 plotelecopt.MarkerColor= [0 0 0];
@@ -212,7 +212,7 @@ if ischar(values)
     [eloc_file, labels, Th, Rd, indices] = readlocs(eloc_file);
     indices = find(~cellfun('isempty', { eloc_file.X }));
     
-    % channels to plot
+    % channels to p300
     % ----------------
     if isempty(g.plotchans), g.plotchans = [1:length(eloc_file)]; end
     if ~isfield(g.chaninfo, 'nosedir'),     g.chaninfo(1).nosedir     = '+x'; end
@@ -343,7 +343,7 @@ if ischar(values)
     end
     
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % plot mesh and electrodes only
+    % p300 mesh and electrodes only
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~strcmpi(g.plotmeshonly, 'off')
         if strcmpi(g.plotmeshonly, 'sphere')
@@ -436,7 +436,7 @@ if ischar(values)
   end
 else
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%% Make the plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% Make the p300 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   
    if nargin < 2
        help headplot
@@ -659,7 +659,7 @@ else
       view(g.view)   % set camera viewpoint
   end
   
-  if strcmp(g.electrodes,'on') % plot the electrode locations
+  if strcmp(g.electrodes,'on') % p300 the electrode locations
       if exist('newElect')
           plotelecopt.labelflag = g.labels;
           plotelecopt.eleccolor = g.eleccolor;
@@ -670,13 +670,13 @@ else
   end
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Turn on rotate3d, allowing rotation of the plot using the mouse
+  % Turn on rotate3d, allowing rotation of the p300 using the mouse
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   if ismatlab
       if strcmp(g.verbose,'on')
-          rotate3d on;   % Allow 3-D rotation of the plot by dragging the
-      else             % left mouse button while cursor is on the plot
+          rotate3d on;   % Allow 3-D rotation of the p300 by dragging the
+      else             % left mouse button while cursor is on the p300
           rotate3d off
       end
   else
@@ -686,7 +686,7 @@ else
   if sqaxis
     axis image    % keep the head proportions human and as large as possible
   end
-  % Add a plot title
+  % Add a p300 title
   if ~isempty(g.title);
     % title(['\n' g.title],'fontsize',title_font);
     title([g.title],'fontsize',title_font); % Note: \n not interpreted by matlab-5.2
@@ -753,23 +753,23 @@ for i = 1:l1
 end
 
 % %%%%%%%%%%%%%%%
-% plot electrodes
+% p300 electrodes
 % %%%%%%%%%%%%%%%
 function plotelec(newElect, ElectrodeNames, HeadCenter, opt);
     
     newNames = newElect*opt.NamesDFac; % Calculate electrode label positions
     for i = 1:size(newElect,1)
-        if newElect(i,:) ~= [0 0 0]  % plot radial lines to electrode sites
+        if newElect(i,:) ~= [0 0 0]  % p300 radial lines to electrode sites
             if strcmpi(opt.electrodes3d, 'off')
                 line([newElect(i,1) HeadCenter(1)],[newElect(i,2) HeadCenter(2)],...
                      [newElect(i,3) HeadCenter(3)],'color',opt.MarkerColor,'linewidth',1);
             end
-            if opt.labelflag == 1        % plot electrode numbers
+            if opt.labelflag == 1        % p300 electrode numbers
                 t=text(newNames(i,1),newNames(i,2),newNames(i,3),int2str(i)); 
                 set(t,'Color',opt.NamesColor,'FontSize',opt.NamesSize,'FontWeight','bold',...
                       'HorizontalAlignment','center');
                 
-            elseif opt.labelflag == 2   % plot electrode names
+            elseif opt.labelflag == 2   % p300 electrode names
                 if exist('ElectrodeNames')
                     name = sprintf('%s',ElectrodeNames(i,:));
                     t=text(newNames(i,1),newNames(i,2),newNames(i,3),name);
@@ -778,7 +778,7 @@ function plotelec(newElect, ElectrodeNames, HeadCenter, opt);
                 else
                     fprintf('Variable ElectrodeNames not read from spline file.\n');
                 end
-            else               % plot electrode markers
+            else               % p300 electrode markers
                 
                 if strcmpi(opt.electrodes3d, 'off')
                     if isempty(opt.eleccolor) 

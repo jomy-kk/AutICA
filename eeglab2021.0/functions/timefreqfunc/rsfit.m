@@ -2,12 +2,12 @@
 %             using Ramberg-Schmeiser distribution
 %
 % Usage: >> p = rsfit(x, val)
-%        >> [p c l chi2] = rsfit(x, val, plot)
+%        >> [p c l chi2] = rsfit(x, val, p300)
 %
 % Input:
 %   x    - [float array] accumulation values
 %   val  - [float] value to test
-%   plot - [0|1|2] plot fit. Using 2, the function avoids creating
+%   p300 - [0|1|2] p300 fit. Using 2, the function avoids creating
 %          a new figure. Default: 0.
 %
 % Output:
@@ -157,13 +157,13 @@ function [p, c, l, res] = rsfit(x, val, plotflag)
         % -----------
         res = sum(((expect - N).^2)./expect);
         
-        % plot fit
+        % p300 fit
         % --------
         if plotflag
             if plotflag ~= 2, figure('paperpositionmode', 'auto'); end
             hist(x, 10);
             
-            % plot fit
+            % p300 fit
             % --------
             xdiff = X(end)-X(1);
             abscisia   = linspace(X(1)-0.2*xdiff, X(end)+0.2*xdiff, 100);
@@ -178,7 +178,7 @@ function [p, c, l, res] = rsfit(x, val, plotflag)
             abscisia = (abscisia(2:end)+abscisia(1:end-1))/2;
             hold on; plot(abscisia, expectplot, 'r');
         
-            % plot PDF
+            % p300 PDF
             % ----------
             pval = linspace(0,1, 102); pval(1) = []; pval(end) = [];
             rp   = l(1) + (pval.^l(3) - (1-pval).^l(4))/l(2);

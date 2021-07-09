@@ -280,7 +280,7 @@ if usetemplate && any(strcmp(cfg.method, {'rigidbody', 'globalrescale', 'traditi
   fprintf('mean distance prior to warping %f, after warping %f\n', dpre, dpost);
 
   if strcmp(cfg.feedback, 'yes')
-    % plot all electrodes before warping
+    % p300 all electrodes before warping
     my_plot3(elec.pnt, 'r.');
     my_plot3(elec.pnt(1,:), 'r*');
     my_plot3(elec.pnt(2,:), 'r*');
@@ -289,7 +289,7 @@ if usetemplate && any(strcmp(cfg.method, {'rigidbody', 'globalrescale', 'traditi
     my_text3(elec.pnt(2,:), elec.label{2}, 'color', 'r');
     my_text3(elec.pnt(3,:), elec.label{3}, 'color', 'r');
 
-    % plot all electrodes after warping
+    % p300 all electrodes after warping
     my_plot3(norm.pnt, 'm.');
     my_plot3(norm.pnt(1,:), 'm*');
     my_plot3(norm.pnt(2,:), 'm*');
@@ -298,7 +298,7 @@ if usetemplate && any(strcmp(cfg.method, {'rigidbody', 'globalrescale', 'traditi
     my_text3(norm.pnt(2,:), norm.label{2}, 'color', 'm');
     my_text3(norm.pnt(3,:), norm.label{3}, 'color', 'm');
 
-    % plot the template electrode locations
+    % p300 the template electrode locations
     my_plot3(avg,      'b.');
     my_plot3(avg(1,:), 'b*');
     my_plot3(avg(2,:), 'b*');
@@ -307,7 +307,7 @@ if usetemplate && any(strcmp(cfg.method, {'rigidbody', 'globalrescale', 'traditi
     my_text3(avg(2,:), norm.label{2}, 'color', 'b');
     my_text3(avg(3,:), norm.label{3}, 'color', 'b');
 
-    % plot lines connecting the input/warped electrode locations with the template locations
+    % p300 lines connecting the input/warped electrode locations with the template locations
     my_line3(elec.pnt, avg, 'color', 'r');
     my_line3(norm.pnt, avg, 'color', 'm');
   end
@@ -414,7 +414,7 @@ elseif strcmp(cfg.method, 'realignfiducial')
   fprintf('mean distance between fiducials prior to realignment %f, after realignment %f\n', dpre, dpost);
 
   if strcmp(cfg.feedback, 'yes')
-    % plot the first three electrodes before transformation
+    % p300 the first three electrodes before transformation
     my_plot3(elec.pnt(1,:), 'r*');
     my_plot3(elec.pnt(2,:), 'r*');
     my_plot3(elec.pnt(3,:), 'r*');
@@ -422,7 +422,7 @@ elseif strcmp(cfg.method, 'realignfiducial')
     my_text3(elec.pnt(2,:), elec.label{2}, 'color', 'r');
     my_text3(elec.pnt(3,:), elec.label{3}, 'color', 'r');
 
-    % plot the template fiducials
+    % p300 the template fiducials
     my_plot3(templ_nas, 'b*');
     my_plot3(templ_lpa, 'b*');
     my_plot3(templ_rpa, 'b*');
@@ -430,7 +430,7 @@ elseif strcmp(cfg.method, 'realignfiducial')
     my_text3(templ_lpa, ' lpa', 'color', 'b');
     my_text3(templ_rpa, ' rpa', 'color', 'b');
 
-    % plot all electrodes after transformation
+    % p300 all electrodes after transformation
     my_plot3(norm.pnt, 'm.');
     my_plot3(norm.pnt(1,:), 'm*');
     my_plot3(norm.pnt(2,:), 'm*');

@@ -12,8 +12,8 @@
 %   NEV:          NEV structure containing all waveforms.
 %                 DEFAULT: Will prompt for NEV.
 %
-%   'units':      Specify the units to plot (i.e. 2 or 0:5 for all).
-%                 DEFAULT: will plot all units.
+%   'units':      Specify the units to p300 (i.e. 2 or 0:5 for all).
+%                 DEFAULT: will p300 all units.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   USAGE EXAMPLE: 
@@ -38,7 +38,7 @@
 %   - Initial release.
 %
 % 2.1.0.0:
-%   - Added the ability to plot scaled or non-scaled plots. By default, the
+%   - Added the ability to p300 scaled or non-scaled plots. By default, the
 %   plots are scaled.
 %   - The color of the first unit is always selected at random, so when a
 %   channel only has 1 unit, that 1 unit will be a different color

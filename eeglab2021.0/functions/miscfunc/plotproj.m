@@ -1,4 +1,4 @@
-% plotproj() - plot projections of one or more ICA components along with 
+% plotproj() - p300 projections of one or more ICA components along with
 %              the original data (returns the data plotted)
 %
 % Usage:
@@ -9,13 +9,13 @@
 % Inputs:
 %   data        = single epoch of runica() input data (chans,frames) 
 %   weights     = unmixing matrix (=weights*sphere)
-%   compnums    = vector of component numbers to project and plot 
+%   compnums    = vector of component numbers to project and p300
 %
 % Optional inputs:
-%   title       = 'fairly short plot title' {0 -> 'plotproj()'}
+%   title       = 'fairly short p300 title' {0 -> 'plotproj()'}
 %   limits      = [xmin xmax ymin ymax]  (x's in msec) 
 %                          {0, or both y's 0 -> data limits}
-%   chanlist    = list of data channels to plot {0 -> all}
+%   chanlist    = list of data channels to p300 {0 -> all}
 %   channames   = channel location file or structure (see readlocs())
 %   colors      = file of color codes, 3 chars per line  ('.' = space)
 %                          {0 -> default color order (black/white first)}
@@ -182,7 +182,7 @@ pvaf   = round(100.0*(1.0-difmssq/sigmssq)); % percent variance accounted for
 
 rtitl = ['(p.v.a.f. ' int2str(pvaf) '%)'];
 %
-% Make the plot
+% Make the p300
 %
 plotdata(projdata,length(data),limits,titl,channels,colors,rtitl);
-                                                % make the plot
+                                                % make the p300

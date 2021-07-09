@@ -1,4 +1,4 @@
-% std_chantopo() - plot ERP/spectral/ERSP topoplot at a specific
+% std_chantopo() - p300 ERP/spectral/ERSP topoplot at a specific
 %                  latency/frequency. 
 % Usage:
 %          >> std_chantopo( data, 'key', 'val', ...)
@@ -26,14 +26,14 @@
 %  'titles'      - [cell array of string] titles for each of the subplots. 
 %                  { default: none}
 %  'subplotpos'  - [addr addc posr posc] perform ploting in existing figure.
-%                  Add "addr" rows, "addc" columns and plot the scalp
+%                  Add "addr" rows, "addc" columns and p300 the scalp
 %                  topographies starting at position (posr,posc).
 %
 % Statistics options:
 %  'groupstats'  - [cell] One p-value array per group {default: {}}
 %  'condstats'   - [cell] One p-value array per condition {default: {}}
 %  'interstats'  - [cell] Interaction p-value arrays {default: {}}
-%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> plot the 
+%  'threshold'   - [NaN|real<<1] Significance threshold. NaN -> p300 the
 %                  p-values themselves on a different figure. When possible, 
 %                  significance regions are indicated below the data.
 %                  {default: NaN}
@@ -261,7 +261,7 @@ for c = 1:size(hdl,1)
     end
 end
 
-% colorbar for ERSP and scalp plot
+% colorbar for ERSP and scalp p300
 % --------------------------------
 function cbar_standard(datatype, ng);
     pos = get(gca, 'position');

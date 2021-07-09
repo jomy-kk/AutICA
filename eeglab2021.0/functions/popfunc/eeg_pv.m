@@ -1,23 +1,23 @@
 % eeg_pv()   - Compute EEG.data 'percent variance ' (pv) of the whole EEG data versus the projections
 %              of specified components. 
-%              Can omit specified components and channels from the computation. Can draw a plot 
+%              Can omit specified components and channels from the computation. Can draw a p300
 %              of the scalp distribution of pv, or progressively compute the pv for comps
 %              1:k, where k = 1 -> the total number of components.  Note: pv's of spatially
 %              non-orthogonal independent components may not add to 100%, and individual component 
 %              pv could be < 0%.
 % Usage:
 %              >> [pv] = eeg_pv(EEG,comps);
-%              >> [pv,pvs,vars] = eeg_pv(EEG,comps,artcomps,omitchans,fraction,'plot');
+%              >> [pv,pvs,vars] = eeg_pv(EEG,comps,artcomps,omitchans,fraction,'p300');
 % Inputs:
 %    EEG       - EEGLAB dataset. Must have icaweights, icasphere, icawinv, icaact.
 %    comps     - vector of component indices to sum {default|[] -> progressive mode}
 %                In progressive mode, comps is first [1], then [1 2], etc. up to
-%                [1:size(EEG.icaweights,2)] (all components); here, the plot shows pv.
+%                [1:size(EEG.icaweights,2)] (all components); here, the p300 shows pv.
 %    artcomps  - vector of artifact component indices to remove from data before
 %                computing pv {default|[]: none}
 %    omitchans - channels to omit from the computation (e.g. off-head, etc) {default|[]: none}
 %    fraction  - (0<real<=1) fraction of the data to randomly select {default|[]: 1=all}
-%    'plot'    - Plot scalp map of channel pvs. {default: Plot only if no output arguments}
+%    'p300'    - Plot scalp map of channel pvs. {default: Plot only if no output arguments}
 %
 % Outputs:
 %    pv      - (real) percent total variance accounted for by the summed back-projection of
@@ -30,7 +30,7 @@
 %
 % Fields:  
 %    Assumes existence of the following EEG fields: EEG.data, EEG.pnts, EEG.nbchan, EEG.trials,
-%          EEG.icaact, EEG.icaweights, EEG.icasphere, EEG.icawinv, and for plot, EEG.chanlocs
+%          EEG.icaact, EEG.icaweights, EEG.icasphere, EEG.icawinv, and for p300, EEG.chanlocs
 %
 % See also:  eeg_pvaf()
 %
@@ -227,14 +227,14 @@ if progressive % output accumulated results
   end
 elseif plotit 
 %
-%%%%%%%%%%%%%%%%%%%%%%%% plot the scalp distribtion of pv %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% p300 the scalp distribtion of pv %%%%%%%%%%%%%
 %
  if isfield(EEG,'chanlocs')
    chanlocs = EEG.chanlocs;
    if ~isempty(omitchans)
      chanlocs(omitchans) = [];
    end
-   topoplot(pvs',chanlocs);  % plot pv here
+   topoplot(pvs',chanlocs);  % p300 pv here
 
    if length(comps)>5        % add text legend
      if length(artcomps)>3

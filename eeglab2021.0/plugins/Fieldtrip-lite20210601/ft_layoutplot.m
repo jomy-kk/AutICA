@@ -124,7 +124,7 @@ else
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% plot all details pertaining to the layout in one figure
+% p300 all details pertaining to the layout in one figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % open a new figure with the specified settings
@@ -144,7 +144,7 @@ if isfield(cfg, 'image') && ~isempty(cfg.image)
     imagesc(img);
     colormap gray
   else
-    % plot as RGB image
+    % p300 as RGB image
     image(img);
   end
   axis equal

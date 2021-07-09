@@ -21,8 +21,8 @@ t0 = -0.2; % seconds
 n_channels = 8;
 n_train_epochs = 1600;
 
-subject = 12; 
-session = 3;
+subject = 15; 
+session = 6;
 ica_algorithm = 'picard';
 
 % Initialize EEGLAB session

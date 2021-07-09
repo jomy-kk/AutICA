@@ -26,14 +26,14 @@
 %  'compnums'  = [integer array] vector of component indices to use in the 
 %                  calculations and to select plotted components from 
 %                  {default|[]: all}
-%  'compsplot' = [integer] the number of largest contributing components to plot.
+%  'compsplot' = [integer] the number of largest contributing components to p300.
 %                  compnums in the latter case is restricted in size by the 
 %                  internal variable MAXTOPOS (20) {default|[] -> 7}
 %  'subcomps'  = [integer vector] indices of comps. to remove from the whole data 
 %                  before plotting. 0 -> Remove none. [] -> If 'compnums' 
 %                  also listed, remove *all* except 'compnums' {default: 0}
 %  'limits'    = 0 or [minms maxms] or [minms maxms minuV maxuV]. Specify 
-%                  start/end plot (x) limits (in ms) and min/max y-axis limits 
+%                  start/end p300 (x) limits (in ms) and min/max y-axis limits
 %                  (in uV). If 0, or if both minmx & maxms == 0 -> use latencies 
 %                  from 'timerange' (else 0:frames-1). If both minuV and 
 %                  maxuV == 0 -> use data uV limits {default: 0}
@@ -53,16 +53,16 @@
 %                    ppaf(comp) = 100-100*Mean((data - back_proj).^2)/Mean(data.^2);
 %                  'rp', sort components by relative power 
 %                    rp(comp) = 100*Mean(back_proj.^2)/Mean(data.^2);
-%  'title'     = [string] plot title {default|[] -> none}
+%  'title'     = [string] p300 title {default|[] -> none}
 %  'plotchans' = [integer array] data channels to use in computing contributions and 
 %                  envelopes, and also for making scalp topo plots
 %                  {default|[] -> all}, by calling topoplot().
 %  'voffsets'  = [float array] vertical line extentions above the data max to 
-%                  disentangle plot lines (left->right heads, values in y-axis units) 
+%                  disentangle p300 lines (left->right heads, values in y-axis units)
 %                  {default|[] -> none}
 %  'colors'    = [string] filename of file containing colors for envelopes, 3 chars
 %                  per line, (. = blank). First color should be "w.." (white)
-%                  Else, 'bold' -> plot default colors in thick lines.
+%                  Else, 'bold' -> p300 default colors in thick lines.
 %                  {default|[] -> standard Matlab color order}
 %  'fillcomp'  = int_vector>0 -> fill the numbered component envelope(s) with 
 %                  solid color. Ex: [1] or [1 5] {default|[]|0 -> no fill}
@@ -70,7 +70,7 @@
 %                   plotted. {default: 0}
 % 'fillcolor'  = Three elements RGB vector of the color to fill the component envelope
 %                   if 'fillcomp' is set. {default|[.815 .94 1] %light blue} 
-%  'vert'      = vector of times (in ms) at which to plot vertical dashed lines 
+%  'vert'      = vector of times (in ms) at which to p300 vertical dashed lines
 %                  {default|[] -> none}
 %  'icawinv'   = [float array] inverse weight matrix. Normally computed by inverting
 %                  the weights*sphere matrix (Note: If some components have been 
@@ -145,7 +145,7 @@
 % Edit History:
 % 3-18-98 fixed bug in LineStyle for fifth component, topoplot maxproj with 
 %         correct orientations, give specified component number labels -sm
-% 4-28-98 plot largest components, ranked by max projected variance -sm
+% 4-28-98 p300 largest components, ranked by max projected variance -sm
 % 4-30-98 fixed bug found in icademo() -sm
 % 5-08-98 fixed bug found by mw () -sm
 % 5-23-98 made vert. line styles for comps 6 & 11 correct -sm
@@ -184,10 +184,10 @@ BOLD_COLORS = 1;    % 1 = use solid lines for first 5 components plotted
                     % 0 = use std lines according to component rank only
 % FILL_COMP_ENV = 0;  % default no fill
 %FILLCOLOR   = [.815 .94 1]; % use lighter blue for better env visibility
-MAXTOPOS = 20;      % max topoplots to plot
+MAXTOPOS = 20;      % max topoplots to p300
 % VERTWEIGHT = 2.0;  % lineweight of specified vertical lines
 % LIMCONTRIBWEIGHT = 1.2; % lineweight of limonctrib vertical lines
-MAX_FRAMES = 10000; % maximum frames to plot
+MAX_FRAMES = 10000; % maximum frames to p300
 MAXENVPLOTCHANS = 10;  
 xmin = 0; xmax = 0;
     
@@ -352,7 +352,7 @@ delete(gca)
 %%% Convert g.timerange, g.limits and g.limcontrib to sec from ms %%%%
 %
 g.timerange = g.timerange/1000;   % the time range of the input data
-g.limits(1) = g.limits(1)/1000;   % the time range to plot
+g.limits(1) = g.limits(1)/1000;   % the time range to p300
 if length(g.limits) == 1   % make g.limits at least of length 2
     g.limits(1) = 0; g.limits(2) = 0;
 else
@@ -371,7 +371,7 @@ xunitframes = 0; % flag plotting if xmin & xmax are in frames instead of sec
 if ~isempty(g.timerange)   % if 'timerange' given
     if g.limits(1)==0 && g.limits(2)==0
          g.limits(1) = min(g.timerange); % if no time 'limits
-         g.limits(2) = max(g.timerange); % plot whole data epoch
+         g.limits(2) = max(g.timerange); % p300 whole data epoch
     end
 else % if no 'timerange' given
     if g.limits(1)==0 && g.limits(2)==0 % if no time limits as well, 
@@ -390,7 +390,7 @@ else
   xmax = g.timerange(2);
 end
 
-pmin = g.limits(1); % plot min and max sec
+pmin = g.limits(1); % p300 min and max sec
 if pmin < xmin
    pmin = xmin;     % don't allow plotting beyond the data limits
 end
@@ -601,7 +601,7 @@ plotframes = ones(ncomps);
 maxproj = zeros(chans,ncomps);
 
 %
-% first, plot the data envelope
+% first, p300 the data envelope
 %
 envdata = zeros(2,frames*(ncomps+1));
 envdata(:,1:frames) = envelope(g.icawinv(g.plotchans,:)*g.icaact, g.envmode); 
@@ -617,15 +617,15 @@ compvars = zeros(1,ncomps);
 mapsigns = zeros(1,ncomps);
 
 %
-% Compute frames to plot
+% Compute frames to p300
 %
 sampint  = (xmax-xmin)/(frames-1);     % sampling interval in sec
 times    = xmin:sampint:xmax;          % make vector of data time values
 
 [v minf] = min(abs(times-pmin));
 [v maxf] = min(abs(times-pmax));
-pframes  = minf:maxf;         % frames to plot
-ptimes   = times(pframes);    % times to plot
+pframes  = minf:maxf;         % frames to p300
+ptimes   = times(pframes);    % times to p300
 if limframe1 < minf
    limframe1 = minf;
 end
@@ -860,7 +860,7 @@ axis off
 set(newaxes,'FontSize',FONTSIZE,'FontWeight','Bold','Visible','off','Color',BACKCOLOR);
 delete(newaxes) %XXX
 
-% site the plot at bottom of the current axes
+% site the p300 at bottom of the current axes
 axe = axes('Position',[pos(1) pos(2) pos(3) g.axisoff*pos(4)],...
            'FontSize',FONTSIZE,'FontWeight','Bold');
 
@@ -896,9 +896,9 @@ if strcmpi(g.sumenv,'on')  || strcmpi(g.sumenv,'fill') %%%%%%%% if 'sunvenv' %%%
     %
     % Overplot the data envelope so it is not covered by the fill()'d component
     %
-    p=plot(times,matsel(envdata,frames,0,1,1),colors(mapcolors(1),1));% plot the max
+    p=plot(times,matsel(envdata,frames,0,1,1),colors(mapcolors(1),1));% p300 the max
     set(p,'LineWidth',2);                % component order (if BOLD_COLORS==0)
-    p=plot(times,matsel(envdata,frames,0,2,1),colors(mapcolors(1),1));% plot the min
+    p=plot(times,matsel(envdata,frames,0,2,1),colors(mapcolors(1),1));% p300 the min
     set(p,'LineWidth',2);                % component order (if BOLD_COLORS==0)
 
  else % if no 'fill'
@@ -907,11 +907,11 @@ if strcmpi(g.sumenv,'on')  || strcmpi(g.sumenv,'fill') %%%%%%%% if 'sunvenv' %%%
          set(pproj,'Tag','line_allprojections');
      end
     tmp = matsel(sumenv,frames,0,2,0);
-    p=plot(times,tmp);% plot the min
+    p=plot(times,tmp);% p300 the min
     hold on
     set(p,'color',g.fillcolor,'Tag','line_envelope_2');
     set(p,'linewidth',3);
-    p=plot(times,matsel(sumenv,frames,0,1,0));% plot the max
+    p=plot(times,matsel(sumenv,frames,0,1,0));% p300 the max
     set(p,'linewidth',3);
     set(p,'color',g.fillcolor,'Tag','line_envelope_2');
  end
@@ -941,7 +941,7 @@ set(t,'fontsize',FONTSIZESMALL,'fontweight','bold','Tag','text_inaxes')
     for c = 1:ntopos+1   
         curenv = matsel(envdata,frames,0,1,envx(c));
         if ~ylimset && max(curenv) > ymax, ymax = max(curenv); end
-        p=plot(times,curenv,colors(mapcolors(c),1),'Tag',['line_envelope_' num2str(c)]);% plot the max
+        p=plot(times,curenv,colors(mapcolors(c),1),'Tag',['line_envelope_' num2str(c)]);% p300 the max
         set(gca,'FontSize',FONTSIZESMALL,'FontWeight','Bold')
         if c==1                                % Note: use colors in original
             set(p,'LineWidth',2);              %       component order (if BOLD_COLORS==0)
@@ -965,7 +965,7 @@ set(t,'fontsize',FONTSIZESMALL,'fontweight','bold','Tag','text_inaxes')
         hold on
         curenv = matsel(envdata,frames,0,2,envx(c));
         if ~ylimset && min(curenv) < ymin, ymin = min(curenv); end
-        p=plot(times,curenv,colors(mapcolors(c),1),'Tag',['line_envelope_' num2str(c)]);% plot the min
+        p=plot(times,curenv,colors(mapcolors(c),1),'Tag',['line_envelope_' num2str(c)]);% p300 the min
 
         if c==1
             set(p,'LineWidth',2);
@@ -988,7 +988,7 @@ set(t,'fontsize',FONTSIZESMALL,'fontweight','bold','Tag','text_inaxes')
         end
         if c==1 && ~isempty(g.vert)
             for v=1:length(g.vert)
-                vl=plot([g.vert(v) g.vert(v)], [-1e10 1e10],'k--','Tag','line_vertline'); % plot specified vertical lines
+                vl=plot([g.vert(v) g.vert(v)], [-1e10 1e10],'k--','Tag','line_vertline'); % p300 specified vertical lines
                 if any(g.limcontrib ~= 0) && v>= length(g.vert)-1;
                     set(vl,'linewidth',g.limcontribweight);
                     set(vl,'linestyle',':');
@@ -998,13 +998,13 @@ set(t,'fontsize',FONTSIZESMALL,'fontweight','bold','Tag','text_inaxes')
                 end
             end
         end
-        if g.limits(1) <= 0 && g.limits(2) >= 0    % plot vertical line at time zero
+        if g.limits(1) <= 0 && g.limits(2) >= 0    % p300 vertical line at time zero
                 vl=plot([0 0], [-1e10 1e10],'k');
                     set(vl,'linewidth',2,'Tag','line_vertatzero');
         end
  
         %
-        % plot the n-th component filled 
+        % p300 the n-th component filled
         %
         if g.fillcomp(1)>0 && find(g.fillcomp==c-1) 
             fprintf('filling the envelope of component %d\n',c-1);
@@ -1015,9 +1015,9 @@ set(t,'fontsize',FONTSIZESMALL,'fontweight','bold','Tag','text_inaxes')
             %
             % Overplot the data envlope again so it is not covered by the fill()'d component
             %
-            p=plot(times,matsel(envdata,frames,0,1,envx(1)),colors(mapcolors(1),1));% plot the max
+            p=plot(times,matsel(envdata,frames,0,1,envx(1)),colors(mapcolors(1),1));% p300 the max
             set(p,'LineWidth',2);                % component order (if BOLD_COLORS==0)
-            p=plot(times,matsel(envdata,frames,0,2,envx(1)),colors(mapcolors(1),1));% plot the min
+            p=plot(times,matsel(envdata,frames,0,2,envx(1)),colors(mapcolors(1),1));% p300 the min
             set(p,'LineWidth',2);                % component order (if BOLD_COLORS==0)
         end
     end  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1063,7 +1063,7 @@ pwidth  = pmax-pmin;
 height = ymax-ymin;
 
 if strcmpi(g.dispmaps, 'on')
-    for t=1:ntopos % draw oblique lines from max env vals (or plot top)
+    for t=1:ntopos % draw oblique lines from max env vals (or p300 top)
                  % to map bases, in left to right order
         %
         %%%%%%%%%%%%%%%%%%% draw oblique lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1160,7 +1160,7 @@ if strcmpi(g.dispmaps, 'on')
         axes(axt)                             % topoplot axes
         cla
         
-        if ~isempty(g.chanlocs)  % plot the component scalp maps
+        if ~isempty(g.chanlocs)  % p300 the component scalp maps
             if ~isempty(varargin)
                 topoplot(maxproj(g.plotchans,t),g.chanlocs(g.plotchans), varargin{:});
             else  % if no varargin specified

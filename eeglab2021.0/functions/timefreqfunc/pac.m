@@ -280,14 +280,14 @@ elseif 1
         fprintf('Freq %d power limits: %3.2f to %3.2f\n', freqs2(freq), g.powerlim(freq,1), g.powerlim(freq,2)); 
     end
             
-    % power plot
-    %figure; plot(timesout2/1000, (mean(power(9,:,:),3)-mean(power(9,:)))/50);
-    %hold on; plot(linspace(0, length(Y)/srate, length(Y)), mean(Y'), 'g');
+    % power p300
+    %figure; p300(timesout2/1000, (mean(power(9,:,:),3)-mean(power(9,:)))/50);
+    %hold on; p300(linspace(0, length(Y)/srate, length(Y)), mean(Y'), 'g');
 
     % phase with power
-    % figure; plot(timesout2/1000, (mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50);
-    % hold on; plot(timesout1/1000, (mean(gammapower,3)-mean(gammapower(:)))/100, 'r');
-    %figure; plot((mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50+j*(mean(gammapower,3)-mean(gammapower(:)))/100, '.');
+    % figure; p300(timesout2/1000, (mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50);
+    % hold on; p300(timesout1/1000, (mean(gammapower,3)-mean(gammapower(:)))/100, 'r');
+    %figure; p300((mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50+j*(mean(gammapower,3)-mean(gammapower(:)))/100, '.');
     
     matsize               = 32;
     matcenter             = (matsize-1)/2+1;
@@ -367,14 +367,14 @@ else
         end
     end
 
-    % power plot
-    %figure; plot(timesout2/1000, (mean(power(9,:,:),3)-mean(power(9,:)))/50);
-    %hold on; plot(linspace(0, length(Y)/srate, length(Y)), mean(Y'), 'g');
+    % power p300
+    %figure; p300(timesout2/1000, (mean(power(9,:,:),3)-mean(power(9,:)))/50);
+    %hold on; p300(linspace(0, length(Y)/srate, length(Y)), mean(Y'), 'g');
 
     % phase with power
-    % figure; plot(timesout2/1000, (mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50);
-    % hold on; plot(timesout1/1000, (mean(gammapower,3)-mean(gammapower(:)))/100, 'r');
-    %figure; plot((mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50+j*(mean(gammapower,3)-mean(gammapower(:)))/100, '.');
+    % figure; p300(timesout2/1000, (mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50);
+    % hold on; p300(timesout1/1000, (mean(gammapower,3)-mean(gammapower(:)))/100, 'r');
+    %figure; p300((mean(phaseangle(9,:,:),3)-mean(phaseangle(9,:)))/50+j*(mean(gammapower,3)-mean(gammapower(:)))/100, '.');
     
     matsize               = 64;
     matcenter             = (matsize-1)/2+1;

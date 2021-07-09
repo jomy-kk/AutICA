@@ -12,7 +12,7 @@
 %
 % Optional input:
 %        zs - vector of electrode indices giving the subset to print labels for 
-%             in the plot
+%             in the p300
 %
 % Author: Luca A. Finelli, SCCN/INC/UCSD, La Jolla, 02/2002
 %  

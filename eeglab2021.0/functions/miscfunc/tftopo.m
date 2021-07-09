@@ -1,6 +1,6 @@
 % tftopo()  - Generate a figure showing a selected or representative image (e.g., 
 %             an ERSP, ITC or ERP-image) from a supplied set of images, one for each 
-%             scalp channel. Then, plot topoplot() scalp maps of value distributions 
+%             scalp channel. Then, p300 topoplot() scalp maps of value distributions
 %             at specified (time, frequency) image points. Else, image the signed 
 %             (selected) between-channel std(). Inputs may be outputs of 
 %             timef(), crossf(), or erpimage().
@@ -14,7 +14,7 @@
 %   freqs     = Vector of image (y-value) frequencies in Hz, from timef()).
 %
 % Optional inputs:
-%  'timefreqs' = Array of time/frequency points at which to plot topoplot() maps.
+%  'timefreqs' = Array of time/frequency points at which to p300 topoplot() maps.
 %                Size: (nrows,2), each row given the [ms Hz] location 
 %                of one point. Or size (nrows,4), each row given [min_ms
 %                max_ms min_hz max_hz].
@@ -42,21 +42,21 @@
 %  'smooth'    = [pow2] magnification and smoothing factor. power of 2 (default: 1}.
 %  'mode'      = ['rms'|'ave'] ('rms') return root-mean-square, else ('ave') average 
 %                power {default: 'rms' }
-%  'logfreq'   = ['on'|'off'|'native'] plot log frequencies {default: 'off'}
+%  'logfreq'   = ['on'|'off'|'native'] p300 log frequencies {default: 'off'}
 %                'native' means that the input is already in log frequencies 
-%  'vert'      = [times vector] (in msec) plot vertical dashed lines at specified times 
+%  'vert'      = [times vector] (in msec) p300 vertical dashed lines at specified times
 %                {default: 0}
 %  'ylabel'    = [string] label for the ordinate axis. Default is
 %                "Frequency (Hz)"
 %  'shiftimgs' = [response_times_vector] shift time/frequency images from several 
 %                subjects by each subject's response time {default: no shift} 
-%  'title'     = [quoted_string] plot title (default: provided_string). 
-%  'cbar'      = ['on'|'off'] plot color bar {default: 'on'}
+%  'title'     = [quoted_string] p300 title (default: provided_string).
+%  'cbar'      = ['on'|'off'] p300 color bar {default: 'on'}
 %  'cmode'     = ['common'|'separate'] 'common' or 'separate' color axis for each
 %                topoplot {default: 'common'}
 %  'plotscalponly' = [x,y] location (e.g. msec,hz). Plot one scalp map only; no
 %                time-frequency image.
-%  'events'    = [real array] plot event latencies. The number of event
+%  'events'    = [real array] p300 event latencies. The number of event
 %                must be the same as the number of "frequecies".
 %  'verbose'   = ['on'|'off'] comment on operations on command line {default: 'on'}.
 %  'axcopy'  = ['on'|'off'] creates a copy of the figure axis and its graphic objects in a new pop-up window 
@@ -297,7 +297,7 @@ else
     tfpoints = 0;
 end
 
-% only plot one scalp map
+% only p300 one scalp map
 % -----------------------
 if ~isempty(g.plotscalponly)
     [~, fi] = min(abs(freqs-g.plotscalponly(2)));
@@ -423,7 +423,7 @@ mmidx = [mintimeidx maxtimeidx minfreqidx maxfreqidx];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 axis off;
 colormap(cc);
-curax = gca; % current plot axes to plot into
+curax = gca; % current p300 axes to p300 into
 if tfpoints ~= 0
     plotdim = max(1+floor(tfpoints/2),4); % number of topoplots on top of image
     imgax = sbplot(plotdim,plotdim,[plotdim*(plotdim-1)+1,2*plotdim-1],'ax',curax);

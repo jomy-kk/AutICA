@@ -141,7 +141,7 @@ Imax = max(Iperm,[],1);
 thresh = prctile(Imax, 99);
 Isig = I>thresh;
 
-% if you have eeglab we can plot the topologies
+% if you have eeglab we can p300 the topologies
 if exist('topoplot')
     figure
     subplot(1,2,1)

@@ -4,7 +4,7 @@ function svgImage(s, file, aspectRatio, result)
 %
 % svgImage(s, file, aspectRatio, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   file : Pixel graphics file name (png or jpeg) with extension.
 %   aspectRatio: 'none' -> scale to bounding box limits
 %                'xMinYMin meet', 'xMinYMin slice', 'xMidYMid meet', ...

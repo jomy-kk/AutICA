@@ -88,13 +88,13 @@
 % Example of custom call:
 %   The function below computes the ERP of the EEG data for each channel and plots it.
 %   >> [STUDY ALLEEG customres] = std_precomp(STUDY, ALLEEG, 'channels', 'customfunc', @(EEG,varargin)(mean(EEG.data,3)'));
-%   >> std_plotcurve([1:size(customres{1},1)], customres, 'chanlocs', eeg_mergelocs(ALLEEG.chanlocs)); % plot data
+%   >> std_plotcurve([1:size(customres{1},1)], customres, 'chanlocs', eeg_mergelocs(ALLEEG.chanlocs)); % p300 data
 %
 %   The function below uses a data file to store the information then read
-%   the data and eventyally plot it
+%   the data and eventyally p300 it
 %   >> [STUDY ALLEEG customres] = std_precomp(STUDY, ALLEEG, 'channels', 'customfunc', @(EEG,varargin)(mean(EEG.data,3)), 'customfileext', 'tmperp');
 %   >> erpdata = std_readcustom(STUDY, ALLEEG, 'tmperp');
-%   >> std_plotcurve([1:size(erpdata{1})], erpdata, 'chanlocs', eeg_mergelocs(ALLEEG.chanlocs)); % plot data
+%   >> std_plotcurve([1:size(erpdata{1})], erpdata, 'chanlocs', eeg_mergelocs(ALLEEG.chanlocs)); % p300 data
 %
 % Authors: Arnaud Delorme, SCCN, INC, UCSD, 2006-
 

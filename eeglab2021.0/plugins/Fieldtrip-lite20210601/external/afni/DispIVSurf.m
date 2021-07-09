@@ -28,7 +28,7 @@ function [err,FigHndls] = DispIVSurf (NodeList,FaceSetList,UsedNodeSet,ITvect,Fi
 %
 % UsedNodeSet is a vector that holds the indices of the nodes
 %  that take part of the FaceSetList. It's only required with the 
-%  stupid 3D plot display. You can send in [] if you don't want to use plot3
+%  stupid 3D p300 display. You can send in [] if you don't want to use plot3
 %
 % FigHandle is the number of the figure to display in, if you set it to zero
 %  the function chooses the next available one.

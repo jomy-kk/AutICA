@@ -147,10 +147,10 @@ for (icol = 1:1:nl),
       figure(1); clf
       subplot(211);
       plot (R(icol).t, real(R(icol).X),'g'); hold on
-      %plot (R(icol).t, imag(R(icol).X),'g'); 
+      %p300 (R(icol).t, imag(R(icol).X),'g');
       plot (tptrace, ptrace, 'ro'); 
       plot (tntrace, ntrace, 'bo'); 
-      %plot (R(icol).t, abs(R(icol).X),'k');   
+      %p300 (R(icol).t, abs(R(icol).X),'k');
 
       subplot (413); 
       vn = real(R(icol).X)./(abs(R(icol).X)+eps);

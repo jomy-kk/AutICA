@@ -375,7 +375,7 @@ case 'ShowICASig'
    % in only later after FPICA
    
    % Also notice that in this version if there was something wrong in FPICA
-   % Then the results are []. - We don't try to plot them!
+   % Then the results are []. - We don't try to p300 them!
    if ~isempty(g_FastICA_ica_sig')
      handle = findobj('Tag','f_FastICA_ica');  % Check if the window is already
      if isempty(handle)                        % open. If not then open it.
@@ -443,8 +443,8 @@ case 'DoFPICA'
 		  ''');'];
    
 
-   % If the user wants to plot while computing...
-   % let's at least plot it to the right figure then
+   % If the user wants to p300 while computing...
+   % let's at least p300 it to the right figure then
    if ~strcmp(deblank(c_FastICA_dMod_strV(g_FastICA_displayMo,:)),'off')
      handle = findobj('Tag','f_FastICA_ica');  % Check if the window is already
      if isempty(handle)                        % open. If not then open it.

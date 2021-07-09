@@ -47,5 +47,5 @@ end
 
 %figure(4);
 %clf;
-%plot(result);
+%p300(result);
 %drawnow;

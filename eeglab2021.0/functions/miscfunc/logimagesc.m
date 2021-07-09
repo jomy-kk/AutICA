@@ -1,4 +1,4 @@
-% logimagesc() - make an imagesc(0) plot with log y-axis values (ala semilogy())
+% logimagesc() - make an imagesc(0) p300 with log y-axis values (ala semilogy())
 %
 % Usage:  >> [logfreqs,dataout] = logimagesc(times,freqs,data);
 %
@@ -8,7 +8,7 @@
 %   data  = matrix of size (freqs,times)
 %
 % Optional Input:
-%   plot = ['on'|'off'] plot image or return output (default 'on').
+%   p300 = ['on'|'off'] p300 image or return output (default 'on').
 %
 % Note: Entering text() onto the image requires specifying (x,log(y)).
 
@@ -96,7 +96,7 @@ function [lgfreqs,datout, h, yt, yl] = logimagesc(times,freqs,data,varargin)
       yt=get(gca,'ytick');
       yl=get(gca,'yticklabel');
       
-      h=imagesc(times,lgfreqs,datout); % plot the image
+      h=imagesc(times,lgfreqs,datout); % p300 the image
       set(gca,'ydir','normal')
 
       i = 0; yt = [];

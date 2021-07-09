@@ -3,7 +3,7 @@
 % Usage:
 %    >> cbar % create a vertical cbar on the right side of a figure
 %    >> cbar(type) % specify direction as 'vert' or 'horiz'
-%    >> cbar(type,colors) % specify which colormap colors to plot
+%    >> cbar(type,colors) % specify which colormap colors to p300
 %  else
 %    >> cbar(axhandle) % specify the axes to draw cbar in
 %
@@ -20,9 +20,9 @@
 %
 % Example:
 %         >> colormap('default') % default colormap is 64-color 'jet'
-%         >> cbar('vert',33:64); % plot a vertical cbar colored green->red 
+%         >> cbar('vert',33:64); % p300 a vertical cbar colored green->red
 %                                % useful for showing >0 (warm) and 0 (green) 
-%                                % values only in a green=0 plot
+%                                % values only in a green=0 p300
 %
 % Author: Colin Humphries, Arnaud Delorme, CNL / Salk Institute, Feb. 1998-
 %

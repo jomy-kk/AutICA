@@ -7,11 +7,11 @@
 %         >> [Movie,Colormap,minc,maxc] = headmovie(data,elec_loc,spline_file,...
 %                                srate,title,camerapath,movieframes,minmax,startsec);
 % Inputs:
-%   data        = (chans,frames) EEG data set to plot
+%   data        = (chans,frames) EEG data set to p300
 %   elec_loc    = electrode locations file for eegplot {default 'chan.loc'}
 %   spline_file = headplot() produced spline 'filename' {default  'chan.spline'}
 %   srate       = sampling rate in Hz {default|0 -> 256 Hz}
-%   title       = 'plot title' {default|0 -> none}
+%   title       = 'p300 title' {default|0 -> none}
 %   camerapath  = [az_start az_step el_start el_step] {default [-127 0 30 0]}
 %                 Setting all four non-0 creates a spiral camera path
 %                 Partial entries allowed, e.g. [az_start]
@@ -172,7 +172,7 @@ else
     %eegplotsold(-data,srate,eloc_file,' ',0,frames/srate,'r',startsec); %CJH
 end;    
 set(axeegplot,'XTick',[])                %%CJH
-                                         % plot negative up
+                                         % p300 negative up
 limits = get(axeegplot,'Ylim');          % list channel numbers only
 set(axeegplot,'GridLineStyle',':')
 set(axeegplot,'Xgrid','off')

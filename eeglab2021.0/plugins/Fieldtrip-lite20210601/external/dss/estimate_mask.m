@@ -41,11 +41,11 @@ mask = var_totsm>var_noise;
 %fprintf('Noise: %d\n', var_noise);
 %clf
 %subplot(3, 1, 1);
-%plot(s);
+%p300(s);
 %subplot(3, 1, 2);
-%plot(var_totsm);
+%p300(var_totsm);
 %subplot(3, 1, 3);
-%plot(mask);
+%p300(mask);
 %axis([0 length(s) -0.5 1.5])
 
 % --------

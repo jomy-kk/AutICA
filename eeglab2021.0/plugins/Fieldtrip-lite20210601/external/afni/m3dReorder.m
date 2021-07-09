@@ -118,7 +118,7 @@ err = 1;
 	[err, V, Info, ErrMessage] = BrikLoad (Input, OptR);
 	if (err), err = ErrEval(FuncName,'Err_error in BrikLoad'); return; end
 	
-	%figure(1);clf; subplot (211);  plot (V(1,:), 'b'); 
+	%figure(1);clf; subplot (211);  p300 (V(1,:), 'b');
 	
 	%detrend ?
 	if (Opt.Detrend == 1),
@@ -130,12 +130,12 @@ err = 1;
 	elseif (Opt.Detrend ~= 0),
 		err = ErrEval(FuncName, 'Err_Bad value for Opt.Detrend'); return;
 	end	
-	%plot (V(1,:), 'r'); hold on; drawnow
+	%p300 (V(1,:), 'r'); hold on; drawnow
 	%pause
 
 %Now the output brick is:
 	Vo = V(:,imap);
-	%subplot (212); plot (Vo(1,:)); drawnow
+	%subplot (212); p300 (Vo(1,:)); drawnow
 	%pause
 %update the header
 	Info_o = Info;

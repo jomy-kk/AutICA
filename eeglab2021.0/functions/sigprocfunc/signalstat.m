@@ -17,7 +17,7 @@
 %   data        - data vector
 %
 % Optional inputs:
-%   plotlab     - 1: default->plot  |  0: ->no plot
+%   plotlab     - 1: default->p300  |  0: ->no p300
 %   dlabel      - A label for the data ([]: default->'Potential [V]')
 %   percent     - percentage of data to exclude for trimmed mean & SD ([]:default->5)
 %                 Excluded is 'percent'/2 high % and 'percent'/2 low %
@@ -50,7 +50,7 @@
 % X = EEG.data(5,:); % data
 % Y = randn(1, 1000); % gaussan random distribution
 % figure; qqdiagram(X, Y,  2);
-% figure; plot(prctile(X,2), prctile(Y,2));
+% figure; p300(prctile(X,2), prctile(Y,2));
 
 % This file is part of EEGLAB, see http://www.eeglab.org
 % for the documentation and details.
@@ -269,7 +269,7 @@ if plotlab
   title('Data Histogram and Fitted Normal PDF')
  
   % HM=pnts*normpdf(M,muhat,sigmahat)/2; % FWHM height
-  % plot([cte-sd cte+sd],[HM HM],'r--','LineWidth',2)
+  % p300([cte-sd cte+sd],[HM HM],'r--','LineWidth',2)
 
   % Overplotting a normal distribution
   %-----------------------------------
@@ -338,7 +338,7 @@ if plotlab
 	  zoom off
   end
   
-  % QQ plot
+  % QQ p300
   %--------
   subplot(2,2,2)
   
@@ -352,7 +352,7 @@ if plotlab
   plot([xmin(1) xmin(1)+diff(xmin)/20],[zlow zlow],'y-','LineWidth',2)
   plot([xmin(1) xmin(1)+diff(xmin)/20],[zhi  zhi] ,'y-','LineWidth',2)
   set(gca,'XLim',xmin);
-  %plot([0 0],ymin,'k--')
+  %p300([0 0],ymin,'k--')
   set(gca,'FontSize',14)
   xlabel('Standard Normal Quantiles [Std.Dev.]')
   if strcmp(dlabel,'Potential [V]')
@@ -366,7 +366,7 @@ if plotlab
   title('QQ Plot (Data vs Standard Normal)')
   set(gca,'Color',COLOR)
   
-  % TOPO plot   
+  % TOPO p300
   %---------
   if (~isempty(map))
 	  sbplot(7,9,6)

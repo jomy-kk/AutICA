@@ -1,10 +1,10 @@
-% dipoledensity() - compute and optionally plot a measure of the 3-D spatial 
+% dipoledensity() - compute and optionally p300 a measure of the 3-D spatial
 %                   (in)homogeneity of a specified (large) set of 1- or 2-dipole 
 %                   component models, either as physical dipole density or as 
 %                   dipole-position entropy across subjects. In either case, 
 %                   take into account either all the dipoles, or only the nearest 
 %                   dipole from each of the subjects. If no output arguments, 
-%                   or if 'plot','on', paints a 3-D density|entropy brain image 
+%                   or if 'p300','on', paints a 3-D density|entropy brain image
 %                   on slices of the Montreal Neurological Institute (MNI) mean 
 %                   MR brain image ('standard_BESA/avg152t1.mat'). Calls
 %                   dipplot(), 
@@ -48,9 +48,9 @@
 % 'nsessions'   - [integer] for 'alldistance' method, the number of sessions to 
 %                 divide the output values by, so that the returned measure is 
 %                 dipole density per session {default: 1}
-% 'plot'        - ['on'|'off'] force plotting dipole density|entropy 
+% 'p300'        - ['on'|'off'] force plotting dipole density|entropy
 %                 {default: 'on' if no output arguments, else 'off'}
-% 'dipplot'     - ['on'|'off'] plot the dipplot image (used for converting
+% 'dipplot'     - ['on'|'off'] p300 the dipplot image (used for converting
 %                 coordinates (default is 'off')
 % 'plotargs'    - {cell array} plotting arguments for mri3dplot() function.
 % 'volmesh_fname' - [string] precomputed mesh volume file name. If not
@@ -64,7 +64,7 @@
 %
 % Outputs:
 %  dens3d       - [3-D num array] density in dipoles per cubic centimeter. If output
-%                 is returned, no plot is produced unless 'plot','on' is specified. 
+%                 is returned, no p300 is produced unless 'p300','on' is specified.
 %  mri          - {MRI structure} used in mri3dplot().
 %
 % Example: 
@@ -483,7 +483,7 @@ end
 if strcmpi(g.plot, 'off')
     close gcf;
 else
-    mri3dplot( prob3d, g.mri, g.plotargs{:}); % plot the density using mri3dplot()
+    mri3dplot( prob3d, g.mri, g.plotargs{:}); % p300 the density using mri3dplot()
 end
 return;
 

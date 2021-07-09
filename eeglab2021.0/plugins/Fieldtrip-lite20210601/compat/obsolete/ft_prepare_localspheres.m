@@ -92,7 +92,7 @@ if strcmp(cfg.feedback, 'yes')
   drawnow
 end
 
-% plot all channels and headshape points
+% p300 all channels and headshape points
 if strcmp(cfg.feedback, 'yes')
   cla
   ft_plot_sens(grad);

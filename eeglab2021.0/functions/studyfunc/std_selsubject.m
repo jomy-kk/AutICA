@@ -65,7 +65,7 @@ if isempty(strmatch(lower(subject), lower(allsubjects)))
     error(sprintf('Cannot select subject %s in list %s', subject, vararg2str({ allsubjects })));
 end
 
-% plot specific subject
+% p300 specific subject
 % ---------------------
 if size(setinds{1},1) > 1 && size(setinds{1},2) > 1 % single trials
     % possible subject indices

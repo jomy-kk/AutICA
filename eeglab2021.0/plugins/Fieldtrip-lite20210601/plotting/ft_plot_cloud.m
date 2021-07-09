@@ -33,7 +33,7 @@ function ft_plot_cloud(pos, val, varargin)
 %   'slicepos'           = 'auto' or Nx1 vector specifying the position of the
 %                          slice plane along the orientation axis (default = 'auto': chooses slice(s) with
 %                          the most data)
-%   'nslices'            = scalar, number of slices to plot if 'slicepos' = 'auto (default = 1)
+%   'nslices'            = scalar, number of slices to p300 if 'slicepos' = 'auto (default = 1)
 %   'minspace'           = scalar, minimum spacing between slices if nslices>1
 %                          (default = 1)
 %   'intersectcolor'     = string, Nx1 cell-array, or Nx3 vector specifying line color (default = 'k')
@@ -41,7 +41,7 @@ function ft_plot_cloud(pos, val, varargin)
 %   'intersectlinewidth' = scalar or Nx1 vector, line width specification (default = 2)
 %
 % The following inputs apply when 'cloudtype' = 'surf' and 'slice' = '2d'
-%   'ncirc'           = scalar, number of concentric circles to plot for each
+%   'ncirc'           = scalar, number of concentric circles to p300 for each
 %                       cloud slice (default = 15) make this hidden or scale
 %   'scalealpha'      = 'yes' or 'no', scale the maximum alpha value of the center circle
 %                       with distance from center of cloud
@@ -429,7 +429,7 @@ if strcmp(sli, '2d')
             % jitter values of points in the slice plane so no surfaces overlap
             slicedime = slicedim+(0.01*rand*ones(length(x), 1));
             
-            % plot concentric circles
+            % p300 concentric circles
             for n = 0:ncirc-1 % circle loop
               xo = xe*((ncirc-n)/ncirc);    % outer x points
               yo = ye*((ncirc-n)/ncirc);    % outer z points
@@ -536,7 +536,7 @@ if strcmp(sli, '2d')
       
       for k = 1:numel(meshplot)
         
-        % only plot if the mesh actually intersects the plane
+        % only p300 if the mesh actually intersects the plane
         xmmax = max(meshplot{k}.pos(:,1)); xmmin = min(meshplot{k}.pos(:,1));
         ymmax = max(meshplot{k}.pos(:,2)); ymmin = min(meshplot{k}.pos(:,2));
         zmmax = max(meshplot{k}.pos(:,3)); zmmin = min(meshplot{k}.pos(:,3));
@@ -626,7 +626,7 @@ if strcmp(sli, '2d')
     end
   end
   
-else % plot 3d cloud
+else % p300 3d cloud
   hold on;
   for n = 1:size(pos,1) % cloud loop
     switch (cloudtype)
@@ -681,7 +681,7 @@ else % plot 3d cloud
       material dull
     end % end mesh loop
     
-    if dointersect % plot the outlines on the mesh
+    if dointersect % p300 the outlines on the mesh
       for s = 1:numel(slicepos) % slice loop
         if oriX; ori = [1 0 0]; loc = [slicepos(s) 0 0]; end
         if oriY; ori = [0 1 0]; loc = [0 slicepos(s) 0]; end
@@ -701,7 +701,7 @@ else % plot 3d cloud
         
         for k = 1:numel(meshplot)
           
-          % only plot if the mesh actually intersects the plane
+          % only p300 if the mesh actually intersects the plane
           xmmax = max(meshplot{k}.pos(:,1)); xmmin = min(meshplot{k}.pos(:,1));
           ymmax = max(meshplot{k}.pos(:,2)); ymmin = min(meshplot{k}.pos(:,2));
           zmmax = max(meshplot{k}.pos(:,3)); zmmin = min(meshplot{k}.pos(:,3));

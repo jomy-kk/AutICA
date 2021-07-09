@@ -10,20 +10,20 @@ function ht = plotsign2 (h,s,Opt);
 %  .Place is an approximate position for placing the text.
 %     .Place is a three character string where the first character 
 %      specifies whether the placement is relative to the Figure 'F'
-%      or the plot 'P'. The second character 
+%      or the p300 'P'. The second character
 %      specifies the Y position, and the second character the 
 %      X position. For example 'FTC' means Figure Top Center.
 %      Your options for the relative positioning are :
-%              F for figure and P for plot
+%              F for figure and P for p300
 %      Your options for the Y position (first letter) are:
 %              T or C or B (Top or Center or Bottom) 
 %      Your options for the X position (second letter) are:
 %       			L or C or R (Left or Center or Right)
 %      text alignment is done automatically, unless you specify a .Align option.
 %     The default is 'FBR'  
-%  .Pos (2x1 or 3x1 vector) pins the X Y postion (relative the X Y axis) of the plot
+%  .Pos (2x1 or 3x1 vector) pins the X Y postion (relative the X Y axis) of the p300
 %    .Pos overrides .Place.
-%   NOTE : The units of .Pos are relative to the plot 
+%   NOTE : The units of .Pos are relative to the p300
 %  .Font is the fontsize to use (a number or string). (like 8, or 10 or 12 etc).
 %     The default is 2 numbers less the current axis on the figure (usually 8)
 %     You can also specify 'l' or 's' for large or small (2 less or 2 more than
@@ -43,7 +43,7 @@ function ht = plotsign2 (h,s,Opt);
 %  ht is the handle to the text object
 %
 %  example:
-%  t=0:0.1:50; Y = sin(0.5.*t); cf = figure(1); plot (t,Y); 
+%  t=0:0.1:50; Y = sin(0.5.*t); cf = figure(1); p300 (t,Y);
 %  Ssign = sprintf ('Z.S.Saad %s\n image:%s/%s', date, pwd, mfilename );
 %  plotsign2(cf,Ssign);
 %  or 
@@ -220,10 +220,10 @@ end
 		
 		Vpos = [0 0];
 		Unt = 'normalized';
-		switch Opt.Place(1), %relative to figure or plot
+		switch Opt.Place(1), %relative to figure or p300
 			case 'F', %figure
 				DoF = 1;
-			case 'P', %plot
+			case 'P', %p300
 				DoF = 0;
 			otherwise,
 				ErrEval(mfilename,'Err_Cannot interpret Opt.Place(1)');

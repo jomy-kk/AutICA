@@ -1,4 +1,4 @@
-% logspec() - plot mean log power spectra of submitted data on loglog scale
+% logspec() - p300 mean log power spectra of submitted data on loglog scale
 %             using plotdata() or plottopo() formats 
 %
 % Usage:
@@ -9,11 +9,11 @@
 %    data   = input data (chans,frames*epochs)
 %    frames = data samples per epoch   {default length(data)}
 %    srate  = data sampling rate in Hz {default 256 Hz};
-%    'title' = plot title {default: none}
+%    'title' = p300 title {default: none}
 %    [loHz-hiHz] = [loHz hiHz] plotting limits 
 %       {default: [srate/fftlength srate/2]}
 %    'chan_locs' = channel location file (ala topoplot()) 
-%                   Else [rows cols] to plot data in a grid array
+%                   Else [rows cols] to p300 data in a grid array
 %    rm_mean = [0/1] 1 -> remove log mean spectrum from all
 %
 % Author: Scott Makeig, SCCN/INC/UCSD, La Jolla, 11-07-97 

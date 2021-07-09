@@ -582,7 +582,7 @@ for indx=1:Ndata
   if strcmp(cfg.style, 'straight_imsat');  style = 'imsat';       end
   if strcmp(cfg.style, 'both_imsat');      style = 'imsatiso';    end
   
-  % Draw plot
+  % Draw p300
   if strcmp(cfg.style, 'blank')
     ft_plot_layout(cfg.layout, 'box', 'no', 'label', 'no', 'point', 'no')
   else
@@ -839,7 +839,7 @@ if ~isempty(label)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SUBFUNCTION which handles hot keys in the current plot
+% SUBFUNCTION which handles hot keys in the current p300
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function key_sub(handle, eventdata, varargin)
 ident       = get(gca, 'tag');

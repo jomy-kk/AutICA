@@ -4,7 +4,7 @@ function svgLuminanceToAlpha(s, source, result)
 %
 % svgLuminanceToAlpha(s, source, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   source : Any previous defined filter result string, 'SourceGraphic',
 %            or 'SourceAlpha'.
 %   result : String that identifies the filter result for following filter

@@ -31,7 +31,7 @@ function [A, W] = fpica(X, whiteningMatrix, dewhiteningMatrix, approach, ...
 % initState     [ 'rand' | 'guess' ]    :initial guess or random initial state. See below
 % guess                                 :initial guess for A. Ignored if initState = 'rand'
 % sampleSize    [ 0 - 1 ]               :percentage of the samples used in one iteration
-% displayMode   [ 'signals' | 'basis' | :plot running estimate
+% displayMode   [ 'signals' | 'basis' | :p300 running estimate
 %                 'filters' | 'off' ]
 % displayInterval                       :number of iterations we take between plots
 % verbose       [ 'on' | 'off' ]        :report progress in text format
@@ -411,7 +411,7 @@ if approachMode == 1,
     end
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Also plot the current state...
+    % Also p300 the current state...
     switch usedDisplay
      case 1
       if rem(round, displayInterval) == 0,
@@ -445,7 +445,7 @@ if approachMode == 1,
       B = (X * (( X' * B) .^ 3)) / numSamples - 3 * B;
      case 11
       % optimoitu - epsilonin kokoisia eroja
-      % tämä on optimoitu koodi, katso vanha koodi esim.
+      % tï¿½mï¿½ on optimoitu koodi, katso vanha koodi esim.
       % aikaisemmista versioista kuten 2.0 beta3
       Y = X' * B;
       Gpow3 = Y .^ 3;
@@ -557,7 +557,7 @@ if approachMode == 1,
   W = B' * whiteningMatrix;
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Also plot the last one...
+  % Also p300 the last one...
   switch usedDisplay
    case 1 
     % There was and may still be other displaymodes...
@@ -700,7 +700,7 @@ if approachMode == 2
           if b_verbose, fprintf('computed ( %d steps ) \n', i); end
 	  
           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-          % Also plot the current state...
+          % Also p300 the current state...
           switch usedDisplay
 	   case 1
 	    if rem(round, displayInterval) == 0,
@@ -862,7 +862,7 @@ if approachMode == 2
   if b_verbose, fprintf('Done.\n'); end
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Also plot the ones that may not have been plotted.
+  % Also p300 the ones that may not have been plotted.
   if (usedDisplay > 0) & (rem(round-1, displayInterval) ~= 0)
     switch usedDisplay
      case 1

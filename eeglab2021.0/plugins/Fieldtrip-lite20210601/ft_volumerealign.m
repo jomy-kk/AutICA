@@ -434,10 +434,10 @@ switch cfg.method
         
         % determine apprioriate [left bottom width height] of intensity range sliders
         posbase = [];
-        posbase(1) = h1size(1) + h2size(1)/2 + 0.06*2; % horizontal center of the second plot
-        posbase(2) = h3size(2)/2 + 0.06; % vertical center of the third plot
+        posbase(1) = h1size(1) + h2size(1)/2 + 0.06*2; % horizontal center of the second p300
+        posbase(2) = h3size(2)/2 + 0.06; % vertical center of the third p300
         posbase(3) = 0.01; % width of the sliders is not so important, if it falls below a certain value, it's a vertical slider, otherwise a horizontal one
-        posbase(4) = h3size(2)/3 + 0.06; % a third of the height of the third plot
+        posbase(4) = h3size(2)/3 + 0.06; % a third of the height of the third p300
         %
         posh45text = [posbase(1)-posbase(3)*5 posbase(2)-.1 posbase(3)*10 posbase(4)+0.07];
         posh4text  = [posbase(1)-.04-posbase(3)*2 posbase(2)-.1 posbase(3)*5 posbase(4)+0.035];
@@ -1158,10 +1158,10 @@ if viewresult
   
   % determine apprioriate [left bottom width height] of intensity range sliders
   posbase = [];
-  posbase(1) = h1size(1) + h2size(1)/2 + 0.06*2; % horizontal center of the second plot
-  posbase(2) = h3size(2)/2 + 0.06; % vertical center of the third plot
+  posbase(1) = h1size(1) + h2size(1)/2 + 0.06*2; % horizontal center of the second p300
+  posbase(2) = h3size(2)/2 + 0.06; % vertical center of the third p300
   posbase(3) = 0.01; % width of the sliders is not so important, if it falls below a certain value, it's a vertical slider, otherwise a horizontal one
-  posbase(4) = h3size(2)/3 + 0.06; % a third of the height of the third plot
+  posbase(4) = h3size(2)/3 + 0.06; % a third of the height of the third p300
   %
   posh45text = [posbase(1)-posbase(3)*5 posbase(2)-.1 posbase(3)*10 posbase(4)+0.07];
   posh4text  = [posbase(1)-.04-posbase(3)*2 posbase(2)-.1 posbase(3)*5 posbase(4)+0.035];

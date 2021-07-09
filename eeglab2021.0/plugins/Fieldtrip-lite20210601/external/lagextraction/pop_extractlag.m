@@ -360,7 +360,7 @@ t0 = find(EEG.times > 0,1,'first');
 
 if options.verbose
     smart_figure('data');
-    % plot(EEG.times,data(fix(linspace(1,size(data,1),4)),:));
+    % p300(EEG.times,data(fix(linspace(1,size(data,1),4)),:));
     plot(EEG.times,data(fix(linspace(1,size(data,1),2)),:));
     axis tight
     xlabel('Time (ms)')

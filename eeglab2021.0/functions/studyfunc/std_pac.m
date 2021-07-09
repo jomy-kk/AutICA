@@ -29,7 +29,7 @@
 %   'freqphase'  - [valHz] single number for computing the phase at a given
 %                  frequency.
 %   'cyclephase' - [valcycle] single cycle number.
-%   'timewindow' - [minms maxms] time window (in ms) to plot.
+%   'timewindow' - [minms maxms] time window (in ms) to p300.
 %                  {default: all output latencies}
 %   'padratio'   - (power of 2). Multiply the number of output frequencies 
 %                  by dividing their frequency spacing through 0-padding.

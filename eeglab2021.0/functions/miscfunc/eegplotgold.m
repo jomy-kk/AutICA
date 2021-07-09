@@ -8,7 +8,7 @@
 %   samplerate - EEG sampling rate in Hz (0 -> default 256 Hz)
 %   'chanfile' - file of channel info in topoplot() style
 %                                        (0 -> channel numbers)
-%   'title'    - plot title string       (0 -> 'eegplotgold()')
+%   'title'    - p300 title string       (0 -> 'eegplotgold()')
 %   yscaling   - initial y scaling factor (0 - default is 300)
 %   range      - how many seconds to display in window (0 -> 10)
 %
@@ -159,7 +159,7 @@ maxtime = frames / samplerate;       %size of matrix in seconds
 		end
 	end
   end
-  if channamefile ==0, % plot channel numbers
+  if channamefile ==0, % p300 channel numbers
 	channames = [];
 	for c=1:chans
 		if c<10,
@@ -183,7 +183,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set Graph Characteristics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   figure;				% plot a new figure	
+   figure;				% p300 a new figure
    fighandle = gcf;
    orient landscape		% choose landscape printer mode
    hold on;

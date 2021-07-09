@@ -1,13 +1,13 @@
 function moviefunction(cfg, varargin)
 
-% we need cfg.plotfun to plot the data
+% we need cfg.plotfun to p300 the data
 % data needs to be 3D, N x time x freq (last can be singleton)
 %   N needs to correspond to number of vertices (channels, gridpoints, etc)
 
 % new UI artwork
 %
 % [main window] -------------------------------------\
-% | [uipanel: plot]            | [uipanel: colormap] | 
+% | [uipanel: p300]            | [uipanel: colormap] |
 % |  <80%> ^70%v               |   <20%>             |
 % |  [axes: mainaxes]          |  [axes: coloraxes]  |
 % |   [axes: subaxes]          |                     |  
@@ -942,7 +942,7 @@ end
 
 
 % 
-% % This function should open a new window, plot in there, extract every
+% % This function should open a new window, p300 in there, extract every
 % % frame, store the movie in opt and return again
 % 
 % % this is not needed, no new window is needed

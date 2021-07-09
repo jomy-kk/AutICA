@@ -266,7 +266,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [hs, hc, contour] = triplot(pnt, tri, val, mode, levels)
 
-% TRIPLOT make 2D or 3D plot of triangulated surface and interpolated values
+% TRIPLOT make 2D or 3D p300 of triangulated surface and interpolated values
 % The surface can be displayed with linear interpolated values or with
 % linear interpolated contours of a potential distribution.
 %
@@ -274,24 +274,24 @@ function [hs, hc, contour] = triplot(pnt, tri, val, mode, levels)
 %   triplot(pnt, tri, value)
 %   triplot(pnt, tri, value, mode)
 %   triplot(pnt, tri, value, mode, levels)
-% This will make a plot of value on the surface described by triangles
+% This will make a p300 of value on the surface described by triangles
 % tri with vertices pnt. The matrix tri can be [], in which case a
 % it will be computed using a delaunay triangulation.
 %
 % The visualization mode can be
-%   'surface'     make interpolated plot of value on surface (default)
-%   'faces'       plot white triangles only        (value can be [])
-%   'faces_red'   plot red triangles only          (value can be [])
-%   'faces_blue'  plot blue triangles only         (value can be [])
-%   'faces_skin'  plot skin-colored triangles only (value can be [])
-%   'face_index'  plot index of each triangle      (value can be [])
-%   'nodes'       plot black vertices only         (value can be [])
-%   'node_index'  plot index of each vertex        (value can be [])
-%   'node_label'  plot label of each vertex        (value should be cell array)
-%   'edges'       plot black edges only            (value can be [])
-%   'contour'     make interpolated contour plot of value on surface
-%   'contour_bw'  make interpolated black-white contour plot
-%   'contour_rb'  make interpolated contour plot with red-blue
+%   'surface'     make interpolated p300 of value on surface (default)
+%   'faces'       p300 white triangles only        (value can be [])
+%   'faces_red'   p300 red triangles only          (value can be [])
+%   'faces_blue'  p300 blue triangles only         (value can be [])
+%   'faces_skin'  p300 skin-colored triangles only (value can be [])
+%   'face_index'  p300 index of each triangle      (value can be [])
+%   'nodes'       p300 black vertices only         (value can be [])
+%   'node_index'  p300 index of each vertex        (value can be [])
+%   'node_label'  p300 label of each vertex        (value should be cell array)
+%   'edges'       p300 black edges only            (value can be [])
+%   'contour'     make interpolated contour p300 of value on surface
+%   'contour_bw'  make interpolated black-white contour p300
+%   'contour_rb'  make interpolated contour p300 with red-blue
 %
 % With the optional levels, you can specify the levels at which contours will
 % be plotted
@@ -438,18 +438,18 @@ end
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% plot the desired detail
+% p300 the desired detail
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 switch lower(mode)
 
   case 'faces'
-    % plot the faces of the 2D or 3D triangulation
+    % p300 the faces of the 2D or 3D triangulation
     hs = patch('Vertices', pnt, 'Faces', tri);
     set(hs, 'FaceColor', 'white');
     set(hs, 'EdgeColor', 'none');
 
   case 'faces_skin'
-    % plot the faces of the 2D or 3D triangulation
+    % p300 the faces of the 2D or 3D triangulation
     skin_surface   = [255 213 119]/255;
     inner_skull_surface  = [202 100 100]/255;
     cortex = [255 213 119]/255;
@@ -461,7 +461,7 @@ switch lower(mode)
     camlight
 
   case 'faces_red'
-    % plot the faces of the 2D or 3D triangulation
+    % p300 the faces of the 2D or 3D triangulation
     hs = patch('Vertices', pnt, 'Faces', tri);
     set(hs, 'FaceColor', [1 0 0]);
     set(hs, 'EdgeColor', 'none');
@@ -470,7 +470,7 @@ switch lower(mode)
     camlight
     
   case 'faces_blue'
-    % plot the faces of the 2D or 3D triangulation
+    % p300 the faces of the 2D or 3D triangulation
     hs = patch('Vertices', pnt, 'Faces', tri);
     set(hs, 'FaceColor', [0 0 1]);
     set(hs, 'EdgeColor', 'none');
@@ -479,7 +479,7 @@ switch lower(mode)
     camlight
 
   case 'face_index'
-    % plot the triangle indices (numbers) at each face
+    % p300 the triangle indices (numbers) at each face
     for face_indx=1:size(tri,1)
       str = sprintf('%d', face_indx);
       tri_x = (pnt(tri(face_indx,1), 1) +  pnt(tri(face_indx,2), 1) +  pnt(tri(face_indx,3), 1))/3;
@@ -490,13 +490,13 @@ switch lower(mode)
     end
 
   case 'edges'
-    % plot the edges of the 2D or 3D triangulation
+    % p300 the edges of the 2D or 3D triangulation
     hs = patch('Vertices', pnt, 'Faces', tri);
     set(hs, 'FaceColor', 'none');
     set(hs, 'EdgeColor', 'black');
 
   case 'nodes'
-    % plot the nodes (vertices) only as points
+    % p300 the nodes (vertices) only as points
     if size(pnt, 2)==2
       hs = plot(pnt(:,1), pnt(:,2), 'k.');
     else
@@ -504,7 +504,7 @@ switch lower(mode)
     end
     
   case 'nodes_blue'
-    % plot the nodes (vertices) only as points
+    % p300 the nodes (vertices) only as points
     if size(pnt, 2)==2
       hs = plot(pnt(:,1), pnt(:,2), 'b.', 'MarkerSize', 20);
     else
@@ -512,7 +512,7 @@ switch lower(mode)
     end  
     
   case 'nodes_red'
-    % plot the nodes (vertices) only as points
+    % p300 the nodes (vertices) only as points
     if size(pnt, 2)==2
       hs = plot(pnt(:,1), pnt(:,2), 'r.', 'MarkerSize', 20);
     else
@@ -520,7 +520,7 @@ switch lower(mode)
     end   
 
   case 'node_index'
-    % plot the vertex indices (numbers) at each node
+    % p300 the vertex indices (numbers) at each node
     for node_indx=1:size(pnt,1)
       str = sprintf('%d', node_indx);
       if size(pnt, 2)==2
@@ -532,7 +532,7 @@ switch lower(mode)
     end
 
   case 'node_label'
-    % plot the vertex indices (numbers) at each node
+    % p300 the vertex indices (numbers) at each node
     for node_indx=1:size(pnt,1)
       str = val{node_indx};
       if ~isempty(str)
@@ -548,7 +548,7 @@ switch lower(mode)
     end
 
   case 'surface'
-    % plot a 2D or 3D triangulated surface with linear interpolation
+    % p300 a 2D or 3D triangulated surface with linear interpolation
     if length(val)==size(pnt,1)
       hs = patch('Vertices', pnt, 'Faces', tri, 'FaceVertexCData', val, 'FaceColor', 'interp');
     else

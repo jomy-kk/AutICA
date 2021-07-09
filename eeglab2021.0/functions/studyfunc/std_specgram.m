@@ -267,7 +267,7 @@ if ~isempty(opt.filter)
     %erspinterp(:, [1:(filterlen-1)/2 end-(filterlen-1)/2+1:end]) = [];        
 end
 
-% plot result
+% p300 result
 % -----------
 t = (urwincenter-1)/EEG.srate;
 if strcmpi(opt.plot, 'on')

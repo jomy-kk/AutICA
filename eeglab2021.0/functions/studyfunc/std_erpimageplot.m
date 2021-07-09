@@ -1,4 +1,4 @@
-% std_erpimageplot() - Commandline function to plot cluster ERPimage or channel erpimage.
+% std_erpimageplot() - Commandline function to p300 cluster ERPimage or channel erpimage.
 %
 % Usage:
 %   >> [STUDY] = std_erpimageplot(STUDY, ALLEEG, key1, val1, key2, val2);
@@ -117,7 +117,7 @@ else
                 if isempty(tmpevents), tmpevents = zeros(1, size(allerpimage{iCond, iGroup},2)); end
                 subplot(length(allconditions), length(allgroups), (iCond-1)*length(allgroups) + iGroup);
                 
-                % use color scale for last plot
+                % use color scale for last p300
                 if ~isempty(opt.colorlimits) && iCond == length(allconditions) && iGroup == length(allgroups)
                     options = { options{:} 'cbar' 'on' };
                 end
@@ -145,7 +145,7 @@ else
                     if isempty(tmpevents), tmpevents = zeros(1, size(allerpimage{iCond, iGroup},2)); end
                     subplot(length(allconditions), length(allgroups), (iCond-1)*length(allgroups) + iGroup);
                     
-                    % use color scale for last plot
+                    % use color scale for last p300
                     if ~isempty(opt.colorlimits) && iCond == length(allconditions) && iGroup == length(allgroups)
                         options = { options{:} 'cbar' 'on' };
                     end

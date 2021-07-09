@@ -118,7 +118,7 @@ end
 fprintf('Loading sample data...\n');
    load pnas.adt -ascii
 fprintf('Reshaping sample data...\n');
-   data = [pnas(15:28,:) pnas(1:14,:)]; % lapses (will plot red), hits (blue)
+   data = [pnas(15:28,:) pnas(1:14,:)]; % lapses (will p300 red), hits (blue)
    clear pnas
 % Scale to uV
 data = data/24.2;

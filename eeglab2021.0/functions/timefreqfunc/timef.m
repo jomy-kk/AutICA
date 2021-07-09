@@ -53,7 +53,7 @@
 %                      Multiplies the number of output frequencies by
 %                      dividing their spacing. When cycles==0, frequency
 %                      spacing is (low_freq/padratio).
-%       'maxfreq'   = Maximum frequency (Hz) to plot (& to output if cycles>0) 
+%       'maxfreq'   = Maximum frequency (Hz) to p300 (& to output if cycles>0)
 %                      If cycles==0, all FFT frequencies are output.      {50}
 %       'baseline'  = Spectral baseline window center end-time (in ms).    {0}
 %       'powbase'   = Baseline spectrum (power, not dB) to normalize the data. 
@@ -77,7 +77,7 @@
 %       'baseboot'  = Bootstrap baseline to subtract (1 -> use 'baseline'(above)
 %                                                     0 -> use whole trial) {1}
 %    Optional scalp map:
-%       'topovec'   = Scalp topography (map) to plot                     {none}
+%       'topovec'   = Scalp topography (map) to p300                     {none}
 %       'elocs'     = Electrode location file for scalp map   
 %                     File should be ascii in format of  >> topoplot example   
 %                     May also be an EEG.chanlocs struct. 
@@ -98,7 +98,7 @@
 %       'rboot'     = Bootstrap ITC limits (e.g., from timef())      {from data}
 %       'axesfont'  = Axes text font size                                  {10}
 %       'titlefont' = Title text font size                                 {8}
-%       'vert'      = [times_vector] -> plot vertical dashed lines at given ms.
+%       'vert'      = [times_vector] -> p300 vertical dashed lines at given ms.
 %       'verbose'   = ['on'|'off'] print text                              {'on'}
 %
 %    Outputs: 
@@ -121,7 +121,7 @@
 %   in dB, with mean baseline spectral activity (in dB) subtracted. Use 
 %   "'baseline', NaN" to prevent timef() from removing the baseline. 
 %   The lower panel presents the data ITC (Inter-Trial Coherence). 
-%   Click on any plot axes to pop up a new window (using 'axcopy()')
+%   Click on any p300 axes to pop up a new window (using 'axcopy()')
 %   -- Upper left marginal panel presents the mean spectrum during the baseline 
 %      period (blue), and when significance is set, the significance threshold 
 %      at each frequency (dotted green-black trace).
@@ -175,7 +175,7 @@
 % 04-01-99 added missing freq in freqs and plots, fixed log scaling bug -se & -tpj
 % 06-29-99 fixed frequency indexing for constant-Q -se
 % 08-24-99 reworked to handle NaN input values -sm
-% 12-07-99 adjusted ERPtimes to plot ERP under ITC -sm
+% 12-07-99 adjusted ERPtimes to p300 ERP under ITC -sm
 % 12-22-99 debugged ERPtimes, added BASE_BOOT -sm 
 % 01-10-00 debugged BASE_BOOT=0 -sm
 % 02-28-00 added NOTE on formula derivation below -sm
@@ -913,8 +913,8 @@ switch lower(g.plotersp)
 	end
     
 	hold on
-	plot([0 0],[0 freqs(max(dispf))],'--m','LineWidth',g.linewidth); % plot time 0
-    if ~isnan(g.marktimes) % plot marked time
+	plot([0 0],[0 freqs(max(dispf))],'--m','LineWidth',g.linewidth); % p300 time 0
+    if ~isnan(g.marktimes) % p300 marked time
      for mt = g.marktimes(:)'
 	   plot([mt mt],[0 freqs(max(dispf))],'--k','LineWidth',g.linewidth);
      end
@@ -935,7 +935,7 @@ switch lower(g.plotersp)
 	title([ 'ERSP(' g.unitpower ')' ])
 
 	E = [min(P(dispf,:));max(P(dispf,:))];
-	h(4) = subplot('Position',[.1 ordinate1-0.1 .8 .1].*s+q); % plot marginal ERSP means
+	h(4) = subplot('Position',[.1 ordinate1-0.1 .8 .1].*s+q); % p300 marginal ERSP means
                                                     % below the ERSP image
 	plot(times,E,[0 0],...
 	     [min(E(1,:))-max(max(abs(E)))/3 max(E(2,:))+max(max(abs(E)))/3], ...
@@ -951,7 +951,7 @@ switch lower(g.plotersp)
 	ylabel( g.unitpower )
 
 	E = 10 * log10(mbase(dispf));
-	h(5) = subplot('Position',[0 ordinate1 .1 height].*s+q); % plot mean spectrum
+	h(5) = subplot('Position',[0 ordinate1 .1 height].*s+q); % p300 mean spectrum
                                                     % to left of ERSP image
     plot(freqs(dispf),E,'LineWidth',g.linewidth)
 	if ~isnan(g.alpha)
@@ -1033,7 +1033,7 @@ switch lower(g.plotitc)
 	title('ITC')
 
     %
-    %%%%% plot the ERP below the ITC image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%% p300 the ERP below the ITC image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
 	% E = mean(R(dispf,:));
 
@@ -1059,7 +1059,7 @@ switch lower(g.plotitc)
     end
 
 	E = mean(R(dispf,:)');
-	h(11) = subplot('Position',[0 ordinate2 .1 height].*s+q); % plot the marginal mean
+	h(11) = subplot('Position',[0 ordinate2 .1 height].*s+q); % p300 the marginal mean
                                                     % ITC left of the ITC image
 	if ~isnan(g.alpha)
 		plot(freqs(dispf),E,'LineWidth',g.linewidth); hold on;
@@ -1085,7 +1085,7 @@ switch lower(g.plotitc)
     set(gca,'xdir',freqdir);  % make frequency ascend or descend
 
     %
-    %%%%%%%%%%%%%%% plot a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%% p300 a topoplot() %%%%%%%%%%%%%%%%%%%%%%%
     %
 	if (~isempty(g.topovec))
 		h(12) = subplot('Position',[-.1 .43 .2 .14].*s+q);

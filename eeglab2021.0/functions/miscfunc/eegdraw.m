@@ -1,4 +1,4 @@
-% eegdraw() - subroutine used by eegplotold() to plot data.
+% eegdraw() - subroutine used by eegplotold() to p300 data.
 %
 % Author: Colin Humphries, CNL, Salk Institute, La Jolla, 7/96
 

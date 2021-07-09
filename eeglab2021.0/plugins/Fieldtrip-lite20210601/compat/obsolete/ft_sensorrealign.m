@@ -327,16 +327,16 @@ if strcmp(cfg.method, 'template')
   fprintf('mean distance prior to warping %f, after warping %f\n', dpre, dpost);
 
   if strcmp(cfg.feedback, 'yes')
-    % plot all electrodes before warping
+    % p300 all electrodes before warping
     ft_plot_sens(elec, 'r*');
 
-    % plot all electrodes after warping
+    % p300 all electrodes after warping
     ft_plot_sens(norm, 'm.', 'label', 'label');
 
-    % plot the template electrode locations
+    % p300 the template electrode locations
     ft_plot_sens(average, 'b.');
 
-    % plot lines connecting the input and the realigned electrode locations with the template locations
+    % p300 lines connecting the input and the realigned electrode locations with the template locations
     my_line3(elec.chanpos, average.chanpos, 'color', 'r');
     my_line3(norm.chanpos, average.chanpos, 'color', 'm');
   end
@@ -459,7 +459,7 @@ elseif strcmp(cfg.method, 'fiducial')
   fprintf('mean distance between fiducials prior to realignment %f, after realignment %f\n', dpre, dpost);
 
   if strcmp(cfg.feedback, 'yes')
-    % plot the first three electrodes before transformation
+    % p300 the first three electrodes before transformation
     my_plot3(elec.chanpos(1,:), 'r*');
     my_plot3(elec.chanpos(2,:), 'r*');
     my_plot3(elec.chanpos(3,:), 'r*');
@@ -467,7 +467,7 @@ elseif strcmp(cfg.method, 'fiducial')
     my_text3(elec.chanpos(2,:), elec.label{2}, 'color', 'r');
     my_text3(elec.chanpos(3,:), elec.label{3}, 'color', 'r');
 
-    % plot the template fiducials
+    % p300 the template fiducials
     my_plot3(templ_nas, 'b*');
     my_plot3(templ_lpa, 'b*');
     my_plot3(templ_rpa, 'b*');
@@ -475,7 +475,7 @@ elseif strcmp(cfg.method, 'fiducial')
     my_text3(templ_lpa, ' lpa', 'color', 'b');
     my_text3(templ_rpa, ' rpa', 'color', 'b');
 
-    % plot all electrodes after transformation
+    % p300 all electrodes after transformation
     my_plot3(norm.chanpos, 'm.');
     my_plot3(norm.chanpos(1,:), 'm*');
     my_plot3(norm.chanpos(2,:), 'm*');
@@ -525,7 +525,7 @@ elseif strcmp(cfg.method, 'manual')
   disp('Close the figure or press "q" when you are done');
   % open a figure
   figure;
-  % plot the faces of the 2D or 3D triangulation
+  % p300 the faces of the 2D or 3D triangulation
   skin = [255 213 119]/255;
   ft_plot_mesh(headshape,'facecolor', skin,'EdgeColor','none','facealpha',0.7);
   lighting gouraud
@@ -682,7 +682,7 @@ if ~isempty(template)
 end
 
 if ~isempty(headshape)
-  % plot the faces of the 2D or 3D triangulation
+  % p300 the faces of the 2D or 3D triangulation
   skin = [255 213 119]/255;
   ft_plot_mesh(headshape,'facecolor', skin,'EdgeColor','none','facealpha',0.7);
   lighting gouraud

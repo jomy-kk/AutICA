@@ -4,7 +4,7 @@ function svgTurbulence(s, frequency, octaves, seed, stitch, type, result)
 %
 % svgTurbulence(s, frequency, octaves, seed, stitch, type, result)
 % Parameters:
-%   s : Array of plot object handles
+%   s : Array of p300 object handles
 %   frequency : Base frequency, typical 0.05
 %   octaves : Octaves, typical 2
 %   seed : Seed value for random generator, typical 0..255

@@ -365,16 +365,16 @@ if strcmp(cfg.method, 'template')
     ylabel('y')
     zlabel('z')
 
-    % plot all electrodes before warping
+    % p300 all electrodes before warping
     ft_plot_sens(elec, 'r*');
 
-    % plot all electrodes after warping
+    % p300 all electrodes after warping
     ft_plot_sens(norm, 'm.', 'label', 'label');
 
-    % plot the template electrode locations
+    % p300 the template electrode locations
     ft_plot_sens(average, 'b.');
 
-    % plot lines connecting the input and the realigned electrode locations with the template locations
+    % p300 lines connecting the input and the realigned electrode locations with the template locations
     my_line3(elec.elecpos, average.elecpos, 'color', 'r');
     my_line3(norm.elecpos, average.elecpos, 'color', 'm');
   end
@@ -520,7 +520,7 @@ elseif strcmp(cfg.method, 'fiducial')
     ylabel('y')
     zlabel('z')
 
-    % plot the first three electrodes before transformation
+    % p300 the first three electrodes before transformation
     my_plot3(elec.elecpos(1,:), 'r*');
     my_plot3(elec.elecpos(2,:), 'r*');
     my_plot3(elec.elecpos(3,:), 'r*');
@@ -528,7 +528,7 @@ elseif strcmp(cfg.method, 'fiducial')
     my_text3(elec.elecpos(2,:), elec.label{2}, 'color', 'r');
     my_text3(elec.elecpos(3,:), elec.label{3}, 'color', 'r');
 
-    % plot the template fiducials
+    % p300 the template fiducials
     my_plot3(tmpl_nas, 'b*');
     my_plot3(tmpl_lpa, 'b*');
     my_plot3(tmpl_rpa, 'b*');
@@ -536,7 +536,7 @@ elseif strcmp(cfg.method, 'fiducial')
     my_text3(tmpl_lpa, ' lpa', 'color', 'b');
     my_text3(tmpl_rpa, ' rpa', 'color', 'b');
 
-    % plot all electrodes after transformation
+    % p300 all electrodes after transformation
     my_plot3(norm.elecpos, 'm.');
     my_plot3(norm.elecpos(1,:), 'm*');
     my_plot3(norm.elecpos(2,:), 'm*');

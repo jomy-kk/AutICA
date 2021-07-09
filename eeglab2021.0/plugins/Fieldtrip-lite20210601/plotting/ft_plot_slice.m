@@ -31,7 +31,7 @@ function [h, T2] = ft_plot_slice(dat, varargin)
 %   'colormap'     = string, see COLORMAP
 %   'clim'         = 1x2 vector specifying the min and max for the colorscale
 %
-% You can plot the slices from the volume together with an intersection of the slices
+% You can p300 the slices from the volume together with an intersection of the slices
 % with a triangulated surface mesh (e.g. a cortical sheet) using
 %   'intersectmesh'       = triangulated mesh, see FT_PREPARE_MESH
 %   'intersectcolor'      = string, color specification
@@ -388,7 +388,7 @@ interp_edge_pc = [Xi(:) Yi(:) Zi(:)]; clear Xi Yi Zi
 interp_edge_hc = ft_warp_apply(T2, interp_edge_pc);
 
 if false
-  % plot all objects in head coordinates
+  % p300 all objects in head coordinates
   ft_plot_mesh(voxel_center_hc,   'vertexmarker', 'o')
   ft_plot_mesh(voxel_edge_hc,     'vertexmarker', '+')
   ft_plot_mesh(corner_hc,         'vertexmarker', '*')
@@ -487,7 +487,7 @@ elseif domask
   end
 end
 
-% plot the intersection with a mesh
+% p300 the intersection with a mesh
 if dointersect
   % determine three points on the plane
   inplane = eye(3) - (eye(3) * ori') * ori;

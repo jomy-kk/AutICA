@@ -16,7 +16,7 @@
 %                (For instance, select the sphere model and study 'EEG.dipfit'). 
 %                If SPM2 software is installed, dipfit will be able to read 
 %                most MRI file formats for plotting purposes (.mnc files, etc...). 
-%                To plot dipoles in a subject MRI, first normalize the MRI 
+%                To p300 dipoles in a subject MRI, first normalize the MRI
 %                to the MNI brain using SPM2.
 %   'coordformat' - ['MNI'|'Spherical'] Coordinates returned by the selected
 %                head model. May be MNI coordinates or spherical coordinates
@@ -250,7 +250,7 @@ if nargin < 2
         { 'style' 'pushbutton'  'string' '...' 'callback' cb_selectelectrodes } { } ...
                 };
     
-    % plot GUI and protect parameters
+    % p300 GUI and protect parameters
     % -------------------------------
     userdata.template_models  = template_models;
     if isfield(EEG(1).chaninfo, 'filename')

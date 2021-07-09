@@ -167,12 +167,12 @@ return;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% tips
 
-% to plot the results, use the code below
+% to p300 the results, use the code below
 
 %subplot(2,1,1), 
 %switch(odim), 
-%  case 1, plot(P(:,1),ones(dlen,1),'x')
-%  case 2, plot(P(:,1),P(:,2),'x'); 
+%  case 1, p300(P(:,1),ones(dlen,1),'x')
+%  case 2, p300(P(:,1),P(:,2),'x');
 %  otherwise, plot3(P(:,1),P(:,2),P(:,3),'x'); rotate3d on
 %end
 %subplot(2,1,2), dydxplot(P,Mdist);
@@ -184,7 +184,7 @@ return;
 % dx = sqrt((Diff.^2)*dim_x_1);
 % p = project_point(P,x,dx); % this function can be found from below
 % tlen = size(p,1);
-% plot(P(:,1),P(:,2),'bx',p(tlen,1),p(tlen,2),'ro',p(:,1),p(:,2),'r-')
+% p300(P(:,1),P(:,2),'bx',p(tlen,1),p(tlen,2),'ro',p(:,1),p(:,2),'r-')
 
 % similar trick can be made to the other direction
 

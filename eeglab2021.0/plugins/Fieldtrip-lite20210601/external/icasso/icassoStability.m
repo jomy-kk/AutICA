@@ -3,7 +3,7 @@ function [Iq,in_avg,ext_avg,in_min,ext_max]=icassoStability(sR,L,graphmode)
 %
 %PURPOSE
 %
-%To compute and/or plot the stability (quality) indices of the ICA
+%To compute and/or p300 the stability (quality) indices of the ICA
 %estimate-clusters. 
 %
 % Iq=avg(intra-cluster similarity) - avg(extra-cluster similarity)

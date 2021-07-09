@@ -1,6 +1,6 @@
-% std_plot() - This function is outdated. Use std_plottf() to plot time/
+% std_plot() - This function is outdated. Use std_plottf() to p300 time/
 %              frequency decompositions and function std_plotcurve() to
-%              plot erp and spectrum.
+%              p300 erp and spectrum.
 
 % Copyright (C) 2006 Arnaud Delorme
 %

@@ -555,7 +555,7 @@ if ~strcmpi(g.manual, 'show')
     close(fid);
 end
 
-% plot electrodes
+% p300 electrodes
 % ---------------
 function plotelec(elec, elecshow, color, tag)
     
@@ -583,7 +583,7 @@ function plotelec(elec, elecshow, color, tag)
         set(h2, 'tag', tag, 'marker', '.', 'markersize', 35); % make bigger if fiducial
     end
 
-    % plot axis and labels
+    % p300 axis and labels
     %- -------------------
     if isempty(findobj(gcf, 'tag', 'axlabels'))
         plot3([0.08 0.12],[0 0],[0 0],'r','LineWidth',4) % nose
@@ -620,7 +620,7 @@ function indices = decodelabels( chanlocs, strchan );
     otherwise, error('Unknown option');
   end
     
-% plot electrode labels
+% p300 electrode labels
 % ---------------------
 function plotlabels(elec, elecshow, color, tag);
 
@@ -789,7 +789,7 @@ function redrawgui(fid)
     end
     set(h, 'tag', 'plot3d');
     
-    % plot mesh
+    % p300 mesh
     % ---------
     if ~isempty(dat.meshpnt) && isempty(findobj(gcf, 'tag', 'mesh'))
         if ~isempty(dat.meshtri)
@@ -814,7 +814,7 @@ function redrawgui(fid)
     else set( meshobj, 'visible', 'off');
     end
     
-    % plot electrodes
+    % p300 electrodes
     % ---------------
     delete(findobj(gcf, 'tag', 'elec1labels'));        
     delete(findobj(gcf, 'tag', 'elec2labels'));        
@@ -829,7 +829,7 @@ function redrawgui(fid)
     rotate3d on    
     
   
-% function to plot the nose
+% function to p300 the nose
 % -------------------------
 function s = plotnose(transf, col)
 

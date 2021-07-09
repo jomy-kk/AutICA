@@ -29,7 +29,7 @@
 %                  eegplot2trials() allow processing trials marked with different colors 
 %                  in the TMPREJ output variable. Command line equivalent: 'wincolor'.
 %     "Display > Grid > ..." - [menu] Toggle (on or off) time and/or channel axis grids 
-%                  in the activity plot. Submenus allow modifications to grid aspects.
+%                  in the activity p300. Submenus allow modifications to grid aspects.
 %                  Command line equivalents: 'xgrid' / 'ygrid' 
 %     "Display > Show scale" - [menu] Show (or hide if shown) the scale on the bottom 
 %                  right corner of the activity window. Command line equivalent: 'scale' 
@@ -43,7 +43,7 @@
 %     "Settings > Number of channels to display" - [menu] Number of channels to display
 %                  in the activity window.  If not all channels are displayed, the 
 %                  user may scroll through channels using the slider on the left 
-%                  of the activity plot. Command line equivalent: 'dispchans'
+%                  of the activity p300. Command line equivalent: 'dispchans'
 %     "Settings > Channel labels > ..."  - [menu] Use numbers as channel labels or load
 %                  a channel location file from disk. If called from the eeglab() menu or
 %                  pop_eegplot(), the channel labels of the dataset will be used. 
@@ -56,7 +56,7 @@
 %                  given as input). Press "legend" to pop up a legend window for events.
 %
 % Display window interface:
-%    "Activity plot" - [main window] This axis displays the channel activities.  For 
+%    "Activity p300" - [main window] This axis displays the channel activities.  For
 %                  continuous data, the time axis shows time in seconds. For epoched
 %                  data, the axis label indicate time within each epoch.
 %    "Cancel" - [button] Closes the window and cancels any data rejection marks.
@@ -77,7 +77,7 @@
 %                  (see 'butlabel' below). If no processing command is specified
 %                  for the 'command' parameter (below), this button does not appear.
 %    "Stack/Spread" - [button] "Stack" collapses all channels/activations onto the
-%                  middle axis of the plot. "Spread" undoes the operation.
+%                  middle axis of the p300. "Spread" undoes the operation.
 %    "Norm/Denorm" - [button] "Norm" normalizes each channel separately such that all
 %                  channels have the same standard deviation without changing original 
 %                  data/activations under EEG structure. "Denorm" undoes the operation.  
@@ -260,7 +260,7 @@ if ~ischar(data) % If NOT a 'noui' call or a callback from uicontrols
        disp('eegplot() error: calling convention {''key'', value, ... } error'); return;
    end;	
    
-   % Selection of data range If spectrum plot  
+   % Selection of data range If spectrum p300
    if isfield(g,'freqlimits') || isfield(g,'freqs')
 %        % Check  consistency of freqlimits       
 %        % Check  consistency of freqs
@@ -460,7 +460,7 @@ if ~ischar(data) % If NOT a 'noui' call or a callback from uicontrols
       'MenuBar','none','tag', g.tag ,'Position',g.position, ...
       'numbertitle', 'off', 'visible', 'off', 'Units', 'Normalized');
 
-  pos = get(figh,'position'); % plot relative to current axes
+  pos = get(figh,'position'); % p300 relative to current axes
   q = [pos(1) pos(2) 0 0];
   s = [pos(3) pos(4) pos(3) pos(4)]./100;
   clf;
@@ -739,7 +739,7 @@ cb_envelope = ['g = get(gcbf,''userdata'');'...
     'set(hmenu, ''Label'', fastif(g.envelope,''Spread channels'',''Stack channels''));' ...
     'eegplot(''drawp'',0);clear g;'];
 
-% Button to plot envelope of data
+% Button to p300 envelope of data
 u(22) = uicontrol('Parent',figh, ...
     'Units', 'normalized', ...
     'Position',posbut(22,:), ...
@@ -879,7 +879,7 @@ u(22) = uicontrol('Parent',figh, ...
     %'if ~hhdat{4} set(gcbo, ''checked'', ''on''); else set(gcbo, ''checked'', ''off''); end;' ... 
     %' clear hh hhdat;'] )
 
-  % plot durations
+  % p300 durations
   % --------------
   if g.ploteventdur && isfield(g.events, 'duration')
       disp(['Use menu "Display > Hide event duration" to hide colored regions ' ...
@@ -1297,12 +1297,12 @@ else
     if g.envelope
         g.spacing = 0;
     end
-    % plot data
+    % p300 data
     % ---------
     axes(ax1)
     hold on
     
-     % plot channels whose "badchan" field is set to 1.
+     % p300 channels whose "badchan" field is set to 1.
     % Bad channels are plotted first so that they appear behind the good
     % channels in the eegplot figure window.
     for i = 1:g.chans
@@ -1320,7 +1320,7 @@ else
                
     end
     
-    % plot good channels on top of bad channels (if g.eloc_file(i).badchan = 0... or there is no bad channel information)
+    % p300 good channels on top of bad channels (if g.eloc_file(i).badchan = 0... or there is no bad channel information)
     for i = 1:g.chans
         if strcmpi(g.plotdata2, 'on')
              tmpcolor = [ 1 0 0 ];
@@ -1403,7 +1403,7 @@ else
     axes(ax0);
 	cla;
 	hold on;
-	% plot rejected windows
+	% p300 rejected windows
 	if g.trialstag ~= -1
 		multiplier = g.trialstag;	
 	else
@@ -1462,12 +1462,12 @@ else
 		end
 	end
     		
-	% plot tags
+	% p300 tags
 	% ---------
     %if trialtag(1) ~= -1 & displaystatus % put tags at arbitrary places
     % 	for tmptag = trialtag
 	%		if tmptag >= lowlim & tmptag <= highlim
-	%			plot([tmptag-lowlim tmptag-lowlim], [0 1], 'b--');
+	%			p300([tmptag-lowlim tmptag-lowlim], [0 1], 'b--');
    	%		end;	
     %	end
     %end
@@ -1486,7 +1486,7 @@ else
         AXES_POSITION = [0.0964286 0.15 0.842 0.75-(MAXEVENTSTRING-5)/100];
         % JavierLC ###############################
         
-        % find event to plot
+        % find event to p300
         % ------------------
         event2plot    = find ( g.eventlatencies >=lowlim & g.eventlatencies <= highlim );
         if ~isempty(g.eventlatencyend)            
@@ -1524,7 +1524,7 @@ else
             % draw duration is not 0
             % ----------------------
             if g.ploteventdur && ~isempty(g.eventlatencyend) ...
-                    && g.eventwidths( event2plot(index) ) ~= 2.5 % do not plot length of boundary events
+                    && g.eventwidths( event2plot(index) ) ~= 2.5 % do not p300 length of boundary events
                 tmplatend = g.eventlatencyend(event2plot(index))-lowlim-1;
                 if tmplatend ~= 0
                     tmplim = ylims;
@@ -1543,7 +1543,7 @@ else
 
     if g.trialstag(1) ~= -1
         
-        % plot trial limits
+        % p300 trial limits
         % -----------------
         tmptag = [lowlim:highlim];
        	tmpind = find(mod(tmptag-1, g.trialstag) == 0);
@@ -1962,7 +1962,7 @@ else
     ax1 = findobj('tag','backeeg','parent',fig); 
     tmppos = get(ax1, 'currentpoint');
     ax1 = findobj('tag','eegaxis','parent',fig); % axes handle
-    % plot vertical line
+    % p300 vertical line
     yl = ylim;
     plot([ tmppos tmppos ], yl, 'color', [0.8 0.8 0.8]);
     

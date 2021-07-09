@@ -103,7 +103,7 @@ function varargout = plot2svg(param1,id,pixelfiletype)
 %               (thanks to Aslak Grinsted)
 %             - Fix for another axis label problem (thanks to Ben Mitch)
 %  15-09-2012 - Fix for linestyle none of rectangles (thanks to Andrew)
-%             - Enabled scatter plot functionality
+%             - Enabled scatter p300 functionality
 
 global PLOT2SVG_globals
 global colorname
@@ -770,7 +770,7 @@ y = (1-(edges(2,:)*axpos(4)+axpos(2)))*paperpos(4);
 % Depth Sort of view box edges 
 [edge_z,edge_index]=sort(edges(3,:));
 most_back_edge_index = edge_index(1);
-% Back faces are plot box faces that are behind the plot (as seen by the
+% Back faces are p300 box faces that are behind the p300 (as seen by the
 % view point)
 back_faces = find(any(faces == most_back_edge_index,2));
 front_faces = find(all(faces ~= most_back_edge_index,2));
@@ -1186,7 +1186,7 @@ if strcmp(get(ax,'Visible'),'on')
                     % behavior of Matlab
                     axlabelx = repmat(axlabelx, length(axxindex), 1);
                 end
-                % Note: 3D plot do not support the property XAxisLocation
+                % Note: 3D p300 do not support the property XAxisLocation
                 % setting 'top'.
                 [angle, align] = improvedXLabel(ax, 0, 'Center');
                 if strcmp(get(ax,'XAxisLocation'),'top') && (projection.xyplane == true)
@@ -1244,7 +1244,7 @@ if strcmp(get(ax,'Visible'),'on')
                     % behavior of Matlab
                     axlabely = repmat(axlabely, length(axyindex), 1);
                 end
-                % Note: 3D plot do not support the property YAxisLocation
+                % Note: 3D p300 do not support the property YAxisLocation
                 % setting 'right'.
                 if (projection.xyplane == true)
                     if strcmp(get(ax,'YAxisLocation'),'right')

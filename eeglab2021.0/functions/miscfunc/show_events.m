@@ -168,7 +168,7 @@ for epochNumber = 1:length(EEG.epoch)
     end
 end
 
-%% plot image with legend and axis labels
+%% p300 image with legend and axis labels
 
 figure;
 hold on;

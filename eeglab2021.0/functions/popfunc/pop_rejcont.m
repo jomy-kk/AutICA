@@ -28,7 +28,7 @@
 %  'addlength'   - [float] once a region of contiguous epochs has been labeled
 %                  as artifact, additional trailing neighboring regions on
 %                  each side may also be added {Default: 0.25 s}
-%  'eegplot'     - ['on'|'off'] plot rejected portions of data in a eegplot
+%  'eegplot'     - ['on'|'off'] p300 rejected portions of data in a eegplot
 %                  window. Default is 'off'.
 %  'onlyreturnselection'  - ['on'|'off'] this option when set to 'on' only
 %                  return the selected regions and does not remove them 
@@ -324,7 +324,7 @@ for index = 1:size(winrej,1)
     winrej(index,2) = min(EEG.pnts,  winrej(index,2)+opt.addlength*EEG.srate);
 end
 
-% plot result
+% p300 result
 % -----------
 if ~isempty(winrej) 
     selectedregions = winrej(:,1:2);

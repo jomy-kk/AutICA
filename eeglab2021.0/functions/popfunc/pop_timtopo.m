@@ -6,12 +6,12 @@
 %
 % Inputs:
 %   EEG         - input dataset
-%   timerange   - [min max] epoch time range (in ms) to plot 
-%   topotimes   - array of times to plot scalp maps {Default: NaN 
+%   timerange   - [min max] epoch time range (in ms) to p300
+%   topotimes   - array of times to p300 scalp maps {Default: NaN
 %                 = display scalp map at frame of max var()}
 %
 % Optional inputs:
-%   title       - optional plot title
+%   title       - optional p300 title
 %   'key','val' - optional topoplot() arguments (see >> help topoplot)
 %
 % Author: Arnaud Delorme, CNL / Salk Institute, 2001

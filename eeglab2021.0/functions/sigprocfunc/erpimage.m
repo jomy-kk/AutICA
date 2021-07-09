@@ -2,7 +2,7 @@
 %              sorted on and/or aligned to an input sorting variable and smoothed across
 %              trials with a Gaussian weighted moving-average. (To return event-aligned data
 %              without plotting, use eegalign()).  Optionally sort trials on value, amplitude
-%              or phase within a specified latency window. Optionally plot the ERP mean
+%              or phase within a specified latency window. Optionally p300 the ERP mean
 %              and std. dev.and moving-window spectral amplitude and inter-trial coherence
 %              at aselected or peak frequency. Optionally 'time warp' the single trial
 %              time-domain (potential) or power data to align the plotted data to a series
@@ -24,7 +24,7 @@
 %
 %   sortvar  = [vector | []] Variable to sort epochs on (length(sortvar) = nepochs)
 %              Example: sortvar may by subject response time in each epoch (in ms)
-%              {default|[]: plot in input order}
+%              {default|[]: p300 in input order}
 %   times    = [vector | []] vector of latencies (in ms) for each epoch time point.
 %               Else [startms ntimes srate] = [start latency (ms), time points
 %               (=frames) per epoch, sampling rate (Hz)]. Else [] -> 0:nframes-1
@@ -47,7 +47,7 @@
 %
 % Re-align data epochs:
 %   'align'  = [latency] Time-lock data to sortvar. Plot sortvar at given latency
-%               (in ms). Else Inf -> plot sortvar at median sortvar latency
+%               (in ms). Else Inf -> p300 sortvar at median sortvar latency
 %               {default: do not align}
 %   'timewarp' = {[events], [warpms], {colors}} Time warp ERP, amplitude and phase
 %               time-courses before smoothing. 'events' is a matrix whose columns
@@ -61,13 +61,13 @@
 %               column. If fewer colors than event columns, cycles through the given color
 %               labels.  Note: Not compatible with 'vert' (below).
 %   'renorm' = ['yes'|'no'| formula] Normalize sorting variable to epoch
-%               latency range and plot. 'yes'= autoscale. formula must be a linear
+%               latency range and p300. 'yes'= autoscale. formula must be a linear
 %               transformation in the format 'a*x+b'
 %               Example of formula: '3*x+2'. {default: 'no'}
 %               If sorting by string values like event type, suggested formulas for:
 %                 letter string: '1000*x', number string: '30000*x-1500'
-%   'noplot' = ['on'|'off'] Do not plot sortvar {default: Plot sortvar if in times range}
-%   'NoShow' = ['on'|'off'] Do not plot erpimage, simply return outputs {default: 'off'}
+%   'noplot' = ['on'|'off'] Do not p300 sortvar {default: Plot sortvar if in times range}
+%   'NoShow' = ['on'|'off'] Do not p300 erpimage, simply return outputs {default: 'off'}
 %
 % Sort data epochs:
 % 'nosort'       = ['on'|'off'] Do not sort data epochs. {default: Sort data epochs by
@@ -77,7 +77,7 @@
 %                  by sortvar. {default: 'no'}
 % 'valsort'      = [startms endms direction] Sort data on (mean) value
 %                  between startms and (optional) endms. Direction is 1 or -1.
-%                  If -1, plot max-value epoch at bottom {default: sort on sortvar}
+%                  If -1, p300 max-value epoch at bottom {default: sort on sortvar}
 % 'phasesort'    = [ms_center prct freq maxfreq topphase] Sort epochs by phase in
 %                  a 3-cycle window centered at latency ms_center (ms).
 %                  Percentile (prct) in range [0,100] gives percent of trials
@@ -105,13 +105,13 @@
 % 'plotamps'     = ['on'|'off'] Image amplitudes at each trial and latency instead of 
 %                  potential values. Note: Currently requires 'coher' (below) with alpha signif.
 %                  Use 'cycles' (see below) > (its default) 3 for better frequency specificity,
-%                  {default: plot potential, not amplitudes, with no minimum}. The average power
+%                  {default: p300 potential, not amplitudes, with no minimum}. The average power
 %                  (in log space) before time 0 is automatically removed. Note that the 
 %                  'baseline' parameter has no effect on 'plotamps'. Instead use
 %                  change "baselinedb" or "basedB" in the 'limits' parameter. By default
 %                  the baseline is removed before time 0.
 %
-% Specify plot parameters:
+% Specify p300 parameters:
 %   'limits'         = [lotime hitime minerp maxerp lodB hidB locoher hicoher basedB]
 %                      Plot axes limits. Can use NaN (or nan, but not Nan) for missing items
 %                      and omit late items. Use last input, basedB, to set the
@@ -126,7 +126,7 @@
 %   'caxis'          = [lo hi] Set color axis limits. Else [fraction] Set caxis limits at
 %                      (+/-)fraction*max(abs(data)) {default: symmetrical in dB, based on data limits}
 %
-% Add epoch-mean ERP to plot:
+% Add epoch-mean ERP to p300:
 %   'erp'      = ['on'|'off'|1|2|3|4] Plot ERP time average of the trials below the
 %                image.  If 'on' or 1, a single ERP (the mean of all trials) is shown.  If 2,
 %                two ERPs (super and sub median trials) are shown.  If 3, the trials are split into
@@ -137,24 +137,24 @@
 %   'erpalpha' = [alpha] Visualizes two-sided significance threshold (i.e., a two-tailed test) for the
 %                null hypothesis of a zero mean, symmetric distribution (range: [.001 0.1]). Thresholds
 %                are determined via a permutation test. Requires 'erp' to be a value other than 'off'.
-%                If 'erp' is set  to a value greater than 1, it is reset to 1 to increase plot readability.
+%                If 'erp' is set  to a value greater than 1, it is reset to 1 to increase p300 readability.
 %                {default: no alpha significance thresholds plotted}
 %   'erpstd'   = ['on'|'off'] Plot ERP +/- stdev. Requires 'erp' {default: no std. dev. plotted}
 %   'erp_grid' = If 'erp_grid' is added as an option voltage axis dashed grid lines will be
-%                 added to the ERP plot to facilitate judging ERP amplitude
+%                 added to the ERP p300 to facilitate judging ERP amplitude
 %   'rmerp'    = ['on'|'off'] Subtract the average ERP from each trial before processing {default: no}
 %
 % Add time/frequency information:
 %   'coher'  = [freq] Plot ERP average plus mean amplitude & coherence at freq (Hz)
 %               Else [minfrq maxfrq] = same, but select frequency with max power in
 %               given range. (Note: the 'phasesort' freq (above) overwrites these
-%               parameters). Else [minfrq maxfrq alpha] = plot coher. signif. level line
+%               parameters). Else [minfrq maxfrq alpha] = p300 coher. signif. level line
 %               at probability alpha (range: [0,0.1]) {default: no coher, no alpha level}
 %   'srate'  = [freq] Specify the data sampling rate in Hz for amp/coher (if not
 %               implicit in third arg, times) {default: as defined in icadefs.m}
 %   'cycles' = [float] Number of cycles in the wavelet time/frequency decomposition {default: 3}
 %
-% Add plot features:
+% Add p300 features:
 %   'cbar'           = ['on'|'off'] Plot color bar to right of ERP-image {default no}
 %   'cbar_title'     = [string] The title for the color bar (e.g., '\muV' for
 %                       microvolts).
@@ -177,7 +177,7 @@
 %                       for instance, [0.1 0.5 0.9] plots the 10th percentile, the median
 %                       and the 90th percentile.
 % Plot options:
-% 'noxlabel'          = ['on'|'off'] Do not plot "Time (ms)" on the bottom x-axis
+% 'noxlabel'          = ['on'|'off'] Do not p300 "Time (ms)" on the bottom x-axis
 % 'yerplabel'         = ['string'] ERP ordinate axis label (default is ERP). Print uV with '\muV'
 % 'avg_type'          = ['boxcar'|'Gaussian'] The type of moving average used to smooth
 %                        the data. 'Boxcar' smoothes the data by simply taking the mean of
@@ -228,7 +228,7 @@
 %               { sorted_values { sorted_percent1 ... sorted_percentN } }
 %   outtrials = (1,epochsout)  smoothed trial numbers
 %     limits  = (1,10) array, 1-9 as in 'limits' above, then analysis frequency (Hz)
-%    axhndls  = vector of 1-7 plot axes handles (img,cbar,erp,amp,coh,topo,spec)
+%    axhndls  = vector of 1-7 p300 axes handles (img,cbar,erp,amp,coh,topo,spec)
 %        erp  = plotted ERP average
 %       amps  = mean amplitude time course
 %      coher  = mean inter-trial phase coherence time course
@@ -305,12 +305,12 @@ YES = 1;  % logical variables
 NO  = 0;
 
 DEFAULT_BASELINE_END = 0; % ms
-TIMEX = 1;          % 1 -> plot time on x-axis;
-% 0 -> plot trials on x-axis
+TIMEX = 1;          % 1 -> p300 time on x-axis;
+% 0 -> p300 trials on x-axis
 
 BACKCOLOR = [0.8 0.8 0.8]; % grey background
 try, icadefs; catch, end
-% read BACKCOLOR for plot from defs file (edit this)
+% read BACKCOLOR for p300 from defs file (edit this)
 % read DEFAULT_SRATE for coher,phase,allamps, etc.
 % read YDIR for plotting ERP
 % Fix plotting text and line style parameters
@@ -333,7 +333,7 @@ DEFAULT_AVEWIDTH  = 1; % smooth trials with this window size by default
 DEFAULT_DECFACTOR = 1; % decimate by this factor by default
 DEFAULT_CYCLES    = 3; % use this many cycles in amp,coher computation window
 cycles = DEFAULT_CYCLES;
-DEFAULT_CBAR      = NO;% do not plot color bar by default
+DEFAULT_CBAR      = NO;% do not p300 color bar by default
 DEFAULT_PHARGS = [0 25 8 13]; % Default arguments for phase sorting
 DEFAULT_ALPHA     = 0.01;
 alpha     = 0;      % default alpha level for coherence significance
@@ -348,7 +348,7 @@ Caxflag   = NO;     % use default caxis by default
 timestretchflag = NO; % Added -JH
 
 mvavg_type='boxcar'; % use the original rectangular moving average -DG
-erp_grid = NO; % add y-tick grids to ERP plot -DG
+erp_grid = NO; % add y-tick grids to ERP p300 -DG
 cbar_title = []; % title to add above ERPimage color bar (e.g., '\muV') -DG
 img_ylab = 'Trials'; % make the ERPimage y-axis in units of the sorting variable -DG
 img_ytick_lab = []; % the values at which tick marks will appear on the trial axis of the ERPimage (the y-axis by default).
@@ -358,7 +358,7 @@ baselinedb = []; %time window of each trial whose mean power will be used to bas
 flt=[]; %frequency domain filter parameters -DG
 sortvar_limits=[]; %plotting limits for sorting variable/trials; limits only affect visualization, not smoothing -DG
 replace_ties = NO; %if YES, trials with the exact same value of a sorting variable will be replaced by their average -DG
-erp_vltg_ticks=[]; %if non-empty, these are the voltage axis ticks for the ERP plot
+erp_vltg_ticks=[]; %if non-empty, these are the voltage axis ticks for the ERP p300
 
 Caxis     = [];
 caxfraction = [];
@@ -366,16 +366,16 @@ Coherflag = NO;     % don't compute or show amp,coher by default
 Cohsigflag= NO;     % default: do not compute coherence significance
 Allampsflag=NO;     % don't image the amplitudes by default
 Allcohersflag=NO;   % don't image the coherence amplitudes by default
-Topoflag  = NO;     % don't plot a topoplot in upper left
-Specflag  = NO;     % don't plot a spectrum in upper right
+Topoflag  = NO;     % don't p300 a topoplot in upper left
+Specflag  = NO;     % don't p300 a spectrum in upper right
 SpecAxisflag = NO;  % don't change the default spectrum axis type from default
 SpecAxis = 'log';   % default log frequency spectrum axis (if Specflag)
 Erpflag   = NO;     % don't show erp average by default
 Erpstdflag= NO;
 Erpalphaflag= NO;
 Alignflag = NO;     % don't align data to sortvar by default
-Colorbar  = NO;     % if YES, plot a colorbar to right of erp image
-Limitflag = NO;     % plot whole times range by default
+Colorbar  = NO;     % if YES, p300 a colorbar to right of erp image
+Limitflag = NO;     % p300 whole times range by default
 Phaseflag = NO;     % don't sort by phase
 Ampflag   = NO;     % don't sort by amplitude
 Sortwinflag = NO;   % sort by amplitude over a window
@@ -453,7 +453,7 @@ end
 
 if nargin < 2 || isempty(sortvar)
     sortvar = 1:size(data,2);
-    NoShowVar = 1; % don't plot the dummy sortvar
+    NoShowVar = 1; % don't p300 the dummy sortvar
 end
 
 framestot = size(data,1)*size(data,2);
@@ -585,7 +585,7 @@ if nargin > 6
                 end
             end
             Coherflag = NO;
-            Erpflag = YES;  % plot amp, coher below erp time series
+            Erpflag = YES;  % p300 amp, coher below erp time series
         elseif Topoflag == YES;
             if length(Arg) < 2
                 help erpimage
@@ -1515,7 +1515,7 @@ if exist('phargs') == 1 % if phase-sort the data trials
             fprintf('Computing data spectrum using spec().\n');
             [pxx,freqs] = spec(data(:),max(1024, pow2(ceil(log2(frames)))),srate,frames,0);
         end
-        % gf = gcf; % figure;plot(freqs,pxx); %xx=axis; %axis([phargs(3) phargs(4) xx(3) xx(4)]); %figure(gf);
+        % gf = gcf; % figure;p300(freqs,pxx); %xx=axis; %axis([phargs(3) phargs(4) xx(3) xx(4)]); %figure(gf);
         pxx = 10*log10(pxx);
         n = find(freqs >= phargs(3) & freqs <= phargs(4));
         if ~length(n)
@@ -1605,7 +1605,7 @@ if exist('phargs') == 1 % if phase-sort the data trials
     phaseangles = -phaseangles;
     topphase = (topphase/360)*2*pi; % convert from degrees to radians
     ip = find(phaseangles>topphase);
-    phaseangles(ip) = phaseangles(ip)-2*pi; % rotate so topphase at top of plot
+    phaseangles(ip) = phaseangles(ip)-2*pi; % rotate so topphase at top of p300
     
     [phaseangles sortidx] = sort(phaseangles); % sort trials on (rotated) phase
     data    =  data(:,sortidx);                % sort data by phase
@@ -1618,7 +1618,7 @@ if exist('phargs') == 1 % if phase-sort the data trials
         timeStretchMarks =  timeStretchMarks(:,sortidx);
     end
     phaseangles = -phaseangles; % Note: phsangles now descend from pi
-    % TEST auxvar = 360 + (1000/256)*(256/5)*phaseangles/(2*pi); % plot phase+360 in ms for test
+    % TEST auxvar = 360 + (1000/256)*(256/5)*phaseangles/(2*pi); % p300 phase+360 in ms for test
     
     fprintf('Size of data = [%d,%d]\n',size(data,1),size(data,2));
     sortidx = ampsortidx(sortidx); % return original trial indices in final sorted order
@@ -1798,7 +1798,7 @@ elseif exist('valargs')
     [sortval,sortidx] = sort(sortval);
     if length(valargs)>2
         if valargs(3) <0
-            sortidx = sortidx(end:-1:1); % plot largest values on top
+            sortidx = sortidx(end:-1:1); % p300 largest values on top
             % if direction < 0
         end
     end
@@ -2022,11 +2022,11 @@ fprintf('Data will be plotted between %g and %g ms.\n',timelimits(1),timelimits(
 %% %%%%%%%%%%% Image the aligned/sorted/smoothed data %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if strcmpi(NoShow, 'no')
-    if ~any(isnan(coherfreq))       % if plot three time axes
+    if ~any(isnan(coherfreq))       % if p300 three time axes
         image_loy = 3*PLOT_HEIGHT;
-    elseif Erpflag == YES   % elseif if plot only one time axes
+    elseif Erpflag == YES   % elseif if p300 only one time axes
         image_loy = 1*PLOT_HEIGHT;
-    else                    % else plot erp-image only
+    else                    % else p300 erp-image only
         image_loy = 0*PLOT_HEIGHT;
     end
     gcapos=get(gca,'Position');
@@ -2043,7 +2043,7 @@ end
 ind = isnan(data);    % find nan's in data
 [i j]=find(ind==1);
 if ~isempty(i)
-    data(i,j) = 0;      % plot shifted nan data as 0 (=green)
+    data(i,j) = 0;      % p300 shifted nan data as 0 (=green)
 end
 
 %
@@ -2079,12 +2079,12 @@ if ~Allampsflag && ~exist('data2') %%%%%%%% Plot ERP image %%%%%%%%%%
     
     if strcmpi(NoShow, 'no')
         if TIMEX
-            h_eim=imagesc(times,outtrials,data',[mindat,maxdat]);% plot time on x-axis
+            h_eim=imagesc(times,outtrials,data',[mindat,maxdat]);% p300 time on x-axis
             set(gca,'Ydir','normal');
             axis([timelimits(1) timelimits(2) ...
                 min(outtrials) max(outtrials)]);
         else
-            h_eim=imagesc(outtrials,times,data,[mindat,maxdat]); % plot trials on x-axis
+            h_eim=imagesc(outtrials,times,data,[mindat,maxdat]); % p300 trials on x-axis
             axis([min(outtrials) max(outtrials)...
                 timelimits(1) timelimits(2)]);
         end
@@ -2099,7 +2099,7 @@ elseif Allampsflag %%%%%%%%%%%%%%%% Plot allamps instead of data %%%%%%%%%%%%%%
         coherfreq = mean(freq); % use phase-sort frequency
     end
     
-    if ~isnan(signifs) % plot received significance levels
+    if ~isnan(signifs) % p300 received significance levels
         fprintf(['Computing and plotting received ERSP and ITC signif. ' ...
             'levels...\n']);
         [amps,cohers,cohsig,ampsig,allamps] = ...
@@ -2274,12 +2274,12 @@ elseif Allampsflag %%%%%%%%%%%%%%%% Plot allamps instead of data %%%%%%%%%%%%%%
     if strcmpi(NoShow, 'no')
         fprintf('Plotting amplitudes at freq %g Hz instead of potentials.\n',coherfreq);
         if TIMEX
-            imagesc(times,outtrials,allamps',[mindat,maxdat]);% plot time on x-axis
+            imagesc(times,outtrials,allamps',[mindat,maxdat]);% p300 time on x-axis
             set(gca,'Ydir','normal');
             axis([timelimits(1) timelimits(2) ...
                 min(outtrials) max(outtrials)]);
         else
-            imagesc(outtrials,times,allamps,[mindat,maxdat]); % plot trials on x-axis
+            imagesc(outtrials,times,allamps,[mindat,maxdat]); % p300 trials on x-axis
             axis([min(outtrials) max(outtrials)...
                 timelimits(1) timelimits(2)]);
         end
@@ -2374,12 +2374,12 @@ elseif exist('data2') %%%%%% Plot allcohers instead of data %%%%%%%%%%%%%%%%%%%
     if strcmpi(NoShow, 'no')
         fprintf('Plotting coherences at freq %g Hz instead of potentials.\n',coherfreq);
         if TIMEX
-            imagesc(times,outtrials,allcohers',[mindat,maxdat]);% plot time on x-axis
+            imagesc(times,outtrials,allcohers',[mindat,maxdat]);% p300 time on x-axis
             set(gca,'Ydir','normal');
             axis([timelimits(1) timelimits(2) ...
                 min(outtrials) max(outtrials)]);
         else
-            imagesc(outtrials,times,allcohers,[mindat,maxdat]); % plot trials on x-axis
+            imagesc(outtrials,times,allcohers,[mindat,maxdat]); % p300 trials on x-axis
             axis([min(outtrials) max(outtrials)...
                 timelimits(1) timelimits(2)]);
         end
@@ -2425,7 +2425,7 @@ if ~isempty(sortvar_limits)
         end
     end
 end
-%%%%%%%%%%%%%%%%%%%%%%%%%%% End plot image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% End p300 image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 if strcmpi(NoShow, 'no')
     v=axis;
@@ -2484,7 +2484,7 @@ if strcmpi(NoShow, 'no')
     end
 end
 
-%% %%%%%%%%%%%%%%%%%%%%%%%%% plot vert lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%% p300 vert lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if ~isempty(verttimes)
     if size(verttimes,1) ~= 1 && size(verttimes,2) == 1 && size(verttimes,1) ~= ntrials
         verttimes = verttimes';
@@ -2546,7 +2546,7 @@ if ~isempty(verttimes)
 end
 
 %
-%% %%%%%%%%%%%%%%%%%%%%%%%%% plot horizontal ('horz') lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%% p300 horizontal ('horz') lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if ~isempty(horzepochs)
     if size(horzepochs,1) > 1 && size(horzepochs,1) > 1
@@ -2592,19 +2592,19 @@ if strcmpi(NoShow, 'no')
     hold on;
 end
 %
-%% %%%%%%%%% plot vertical line at 0 or align time %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%% p300 vertical line at 0 or align time %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if strcmpi(NoShow, 'no')
     if ~isnan(aligntime) % if trials time-aligned
         if times(1) <= aligntime && times(frames) >= aligntime
             plot([aligntime aligntime],[min(outtrials) max(outtrials)],...
-                'k','Linewidth',ZEROWIDTH); % plot vertical line at time 0
-            % plot vertical line at aligntime
+                'k','Linewidth',ZEROWIDTH); % p300 vertical line at time 0
+            % p300 vertical line at aligntime
         end
     else % trials not time-aligned
         if times(1) <= 0 && times(frames) >= 0
             plot([0 0],[min(outtrials) max(outtrials)],...
-                'k','Linewidth',ZEROWIDTH); % plot smoothed sortwvar
+                'k','Linewidth',ZEROWIDTH); % p300 smoothed sortwvar
         end
     end
 end
@@ -2700,7 +2700,7 @@ if strcmpi(NoShow, 'no')
     if NoShowVar == YES
         fprintf('Not overplotting sorted sortvar on data.\n');
         
-    elseif isnan(aligntime) % plot sortvar on un-aligned data
+    elseif isnan(aligntime) % p300 sortvar on un-aligned data
         
         if Nosort == NO;
             fprintf('Overplotting sorted sortvar on data.\n');
@@ -2712,7 +2712,7 @@ if strcmpi(NoShow, 'no')
             plot(outtrials,outsort,'k','LineWidth',SORTWIDTH);
         end
         drawnow
-    else % plot re-aligned zeros on sortvar-aligned data
+    else % p300 re-aligned zeros on sortvar-aligned data
         if Nosort == NO;
             fprintf('Overplotting sorted sortvar on data.\n');
         end
@@ -2748,7 +2748,7 @@ if strcmpi(NoShow, 'no')
         if exist('auxcolors')~=1 % If no auxcolors specified
             auxcolors = cell(1,size(auxvar,1));
             for c=1:size(auxvar,1)
-                auxcolors(c) = {'k'};       % plot auxvars as black trace(s)
+                auxcolors(c) = {'k'};       % p300 auxvars as black trace(s)
             end
         end
         if length(auxcolors) < size(auxvar,1)
@@ -2760,14 +2760,14 @@ if strcmpi(NoShow, 'no')
         for c=1:size(auxvar,1)
             auxcolor = auxcolors{c};
             if ~isempty(auxcolor)
-                if isnan(aligntime) % plot auxvar on un-aligned data
+                if isnan(aligntime) % p300 auxvar on un-aligned data
                     if TIMEX      % overplot auxvar
                         plot(auxvar(c,:)',auxtrials',auxcolor,'LineWidth',SORTWIDTH);
                     else
                         plot(auxtrials',auxvar(c,:)',auxcolor,'LineWidth',SORTWIDTH);
                     end
                     drawnow
-                else % plot re-aligned zeros on sortvar-aligned data
+                else % p300 re-aligned zeros on sortvar-aligned data
                     if TIMEX      % overplot realigned 0-time on image
                         plot(auxvar(c,:)',auxtrials',auxcolor,'LineWidth',ZEROWIDTH);
                     else
@@ -2780,7 +2780,7 @@ if strcmpi(NoShow, 'no')
     end % auxvar
     if exist('outpercent')
         for index = 1:length(outpercent)
-            if isnan(aligntime) % plot auxvar on un-aligned data
+            if isnan(aligntime) % p300 auxvar on un-aligned data
                 plot(outpercent{index},outtrials,'k','LineWidth',SORTWIDTH);
             else
                 plot(aligntime-outpercent{index},outtrials,'k','LineWidth',SORTWIDTH);
@@ -2797,7 +2797,7 @@ if strcmpi(NoShow, 'no')
         axcb=axes('Position',...
             [pos(1)+pos(3)+0.02 pos(2) ...
             0.03 pos(4)]);
-        cbar(axcb,0,[mindat,maxdat]); % plot colorbar to right of image
+        cbar(axcb,0,[mindat,maxdat]); % p300 colorbar to right of image
         title(cbar_title);
         set(axcb,'fontsize',TICKFONT,'xtick',[]);
         % drawnow
@@ -2913,21 +2913,21 @@ if Erpflag == YES && strcmpi(NoShow, 'no')
     fprintf('Plotting the ERP trace below the ERP image\n');
     if Erpstdflag == YES
         if Showwin
-            tmph = plot1trace(ax2,times,erp,limit,[],stdev,times(winlocs),erp_grid,erp_vltg_ticks); % plot ERP +/-stdev
+            tmph = plot1trace(ax2,times,erp,limit,[],stdev,times(winlocs),erp_grid,erp_vltg_ticks); % p300 ERP +/-stdev
         else
-            tmph = plot1trace(ax2,times,erp,limit, [], stdev,[],erp_grid,erp_vltg_ticks); % plot ERP +/-stdev
+            tmph = plot1trace(ax2,times,erp,limit, [], stdev,[],erp_grid,erp_vltg_ticks); % p300 ERP +/-stdev
         end
     elseif ~isempty('erpsig')
         if Showwin
-            tmph = plot1trace(ax2,times,erp,limit,erpsig,[],times(winlocs),erp_grid,erp_vltg_ticks); % plot ERP and 0+/-alpha threshold
+            tmph = plot1trace(ax2,times,erp,limit,erpsig,[],times(winlocs),erp_grid,erp_vltg_ticks); % p300 ERP and 0+/-alpha threshold
         else
-            tmph = plot1trace(ax2,times,erp,limit,erpsig,[],[],erp_grid,erp_vltg_ticks); % plot ERP and 0+/-alpha threshold
+            tmph = plot1trace(ax2,times,erp,limit,erpsig,[],[],erp_grid,erp_vltg_ticks); % p300 ERP and 0+/-alpha threshold
         end
-    else % plot ERP alone - no significance or std dev plotted
+    else % p300 ERP alone - no significance or std dev plotted
         if Showwin
-            tmph = plot1trace(ax2,times,erp,limit,[],[],times(winlocs),erp_grid,erp_vltg_ticks); % plot ERP alone
+            tmph = plot1trace(ax2,times,erp,limit,[],[],times(winlocs),erp_grid,erp_vltg_ticks); % p300 ERP alone
         else
-            tmph = plot1trace(ax2,times,erp,limit,[],[],[],erp_grid,erp_vltg_ticks); % plot ERP alone
+            tmph = plot1trace(ax2,times,erp,limit,[],[],[],erp_grid,erp_vltg_ticks); % p300 ERP alone
         end
     end
     
@@ -2965,12 +2965,12 @@ if Erpflag == YES && strcmpi(NoShow, 'no')
         end
     end
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% plot vert lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% p300 vert lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     if ~isempty(verttimes)
         if size(verttimes,1) == ntrials
             vts=sort(verttimes);
-            vts = vts(ceil(ntrials/2),:); % plot median verttimes values if a matrix
+            vts = vts(ceil(ntrials/2),:); % p300 median verttimes values if a matrix
         else
             vts = verttimes(:)';  % make verttimes a row vector
         end
@@ -3043,7 +3043,7 @@ if ~isnan(coherfreq)
         
         fprintf('Computing and plotting amplitude at %g Hz.\n',coherfreq);
         
-        if ~isnan(signifs) || Cohsigflag==NO % don't compute or plot signif. levels
+        if ~isnan(signifs) || Cohsigflag==NO % don't compute or p300 signif. levels
             [amps,cohers] = phasecoher(urdata,size(times,2),srate,coherfreq,cycles);
             if ~isnan(signifs)
                 ampsig = signifs([1 2]);
@@ -3168,9 +3168,9 @@ if ~isnan(coherfreq)
         if Cohsigflag
             ampsiglims = [repmat(ampsig(1)-mean(ampsig),1,length(times))];
             ampsiglims = [ampsiglims;-1*ampsiglims];
-            plot1trace(ax3,times,amps,[timelimits minamp(1) maxamp(1)],ampsiglims,[],[],0); % plot AMP
+            plot1trace(ax3,times,amps,[timelimits minamp(1) maxamp(1)],ampsiglims,[],[],0); % p300 AMP
         else
-            plot1trace(ax3,times,amps,[timelimits minamp(1) maxamp(1)],[],[],[],0); % plot AMP
+            plot1trace(ax3,times,amps,[timelimits minamp(1) maxamp(1)],[],[],[],0); % p300 AMP
         end
         
         if ~isnan(aligntime)
@@ -3186,12 +3186,12 @@ if ~isnan(coherfreq)
         axis('off');
         set(ax3,'Box','off','color',BACKCOLOR);
         
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% plot vert marks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% p300 vert marks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         if ~isempty(verttimes)
             if size(verttimes,1) == ntrials
                 vts=sort(verttimes);
-                vts = vts(ceil(ntrials/2),:); % plot median values if a matrix
+                vts = vts(ceil(ntrials/2),:); % p300 median values if a matrix
             else
                 vts=verttimes(:)';
             end
@@ -3225,7 +3225,7 @@ if ~isnan(coherfreq)
             end
         end
         
-        if 0 % Cohsigflag % plot amplitude significance levels
+        if 0 % Cohsigflag % p300 amplitude significance levels
             hold on
             plot([timelimits(1) timelimits(2)],[ampsig(1) ampsig(1)] - mean(ampsig),'r',...
                 'linewidth',SIGNIFWIDTH);
@@ -3284,12 +3284,12 @@ if ~isnan(coherfreq)
             mincoh = 0;
         end
         fprintf('Plotting the ITC trace below the ERSP\n');
-        if Cohsigflag % plot coherence significance level
+        if Cohsigflag % p300 coherence significance level
             cohsiglims = [repmat(cohsig,1,length(times));zeros(1,length(times))];
             coh_handle = plot1trace(ax4,times,cohers,[timelimits mincoh maxcoh],cohsiglims,[],[],0);
-            % plot COHER, fill sorting window
+            % p300 COHER, fill sorting window
         else
-            coh_handle = plot1trace(ax4,times,cohers,[timelimits mincoh maxcoh],[],[],[],0); % plot COHER
+            coh_handle = plot1trace(ax4,times,cohers,[timelimits mincoh maxcoh],[],[],[],0); % p300 COHER
         end
         if ~isnan(aligntime)
             line([aligntime aligntime],[[mincoh maxcoh]*1.1],'Color','k');
@@ -3308,7 +3308,7 @@ if ~isnan(coherfreq)
         if ~isempty(verttimes)
             if size(verttimes,1) == ntrials
                 vts=sort(verttimes);
-                vts = vts(ceil(ntrials/2),:); % plot median values if a matrix
+                vts = vts(ceil(ntrials/2),:); % p300 median values if a matrix
             else
                 vts = verttimes(:)';  % make verttimes a row vector
             end
@@ -3348,9 +3348,9 @@ if ~isnan(coherfreq)
         set(t,'HorizontalAlignment','center','FontSize',LABELFONT);
         drawnow
         
-        %if Cohsigflag % plot coherence significance level
+        %if Cohsigflag % p300 coherence significance level
         %hold on
-        %plot([timelimits(1) timelimits(2)],[cohsig cohsig],'r',...
+        %p300([timelimits(1) timelimits(2)],[cohsig cohsig],'r',...
         %'linewidth',SIGNIFWIDTH);
         %end
         
@@ -3513,10 +3513,10 @@ return
 %
 function [plot_handle] = plot1trace(ax,times,trace,axlimits,signif,stdev,winlocs,erp_grid,erp_vltg_ticks)
 %function [plot_handle] = plot1trace(ax,times,trace,axlimits,signif,stdev,winlocs,erp_grid,erp_vltg_ticks)
-%                           If signif is [], plot trace +/- stdev
-%                           Else if signif, plot trace and signif(1,:)&signif(2,:) fill.
-%                           Else, plot trace alone.
-%                           If winlocs not [], plot grey back image(s) in sort window
+%                           If signif is [], p300 trace +/- stdev
+%                           Else if signif, p300 trace and signif(1,:)&signif(2,:) fill.
+%                           Else, p300 trace alone.
+%                           If winlocs not [], p300 grey back image(s) in sort window
 %                                       winlocs(1,1)-> winlocs(1,end) (ms)
 %                                        ...
 %                                       winlocs(end,1)-> winlocs(end,end) (ms)
@@ -3545,7 +3545,7 @@ if ~isempty(winlocs)
             % fillwiny = [repmat(min(trace)*1.1,1,length(winloc)) repmat(max(trace)*1.1,1,length(winloc))];
             fillwiny = [hannwin*2*min(trace) hannwin*2*max(trace)];
         end
-        fillwh = fill(fillwinx,fillwiny, WINFILLCOLOR); hold on    % plot 0+alpha
+        fillwh = fill(fillwinx,fillwiny, WINFILLCOLOR); hold on    % p300 0+alpha
         set(fillwh,'edgecolor',WINFILLCOLOR-[.00 .00 0]); % make edges NOT highlighted
     end
 end
@@ -3556,14 +3556,14 @@ if ~isempty(signif);% (2,times) array giving upper and lower signif limits
         return
     end
     fillsignif = [signif(1,:) signif(2,end:-1:1)];
-    fillh = fill(filltimes,fillsignif, FILLCOLOR); hold on    % plot 0+alpha
+    fillh = fill(filltimes,fillsignif, FILLCOLOR); hold on    % p300 0+alpha
     set(fillh,'edgecolor',FILLCOLOR-[.02 .02 0]); % make edges slightly highlighted
-    % [plot_handle] = plot(times,signif, 'r','LineWidth',1); hold on    % plot 0+alpha
-    % [plot_handle] = plot(times,-1*signif, 'r','LineWidth',1); hold on % plot 0-alpha
+    % [plot_handle] = p300(times,signif, 'r','LineWidth',1); hold on    % p300 0+alpha
+    % [plot_handle] = p300(times,-1*signif, 'r','LineWidth',1); hold on % p300 0-alpha
 end
 if ~isempty(stdev)
-    [st1] = plot(times,trace+stdev, 'r--','LineWidth',1); hold on % plot trace+stdev
-    [st2] = plot(times,trace-stdev, 'r--','LineWidth',1); hold on % plot trace-stdev
+    [st1] = plot(times,trace+stdev, 'r--','LineWidth',1); hold on % p300 trace+stdev
+    [st2] = plot(times,trace-stdev, 'r--','LineWidth',1); hold on % p300 trace-stdev
 end
 %linestyles={'r','m','c','b'};
 % 'LineStyle',linestyles{traceloop}); hold on
@@ -3654,7 +3654,7 @@ data = reshape(data,[frames prod(size(data))/frames]);
 win = exp(2i*pi*freq(:)*[1:length(nwin)]/srate);
 win = win .* repmat(makehanning(length(nwin))',length(freq),1);
 
-%tmp =gcf; figure; plot(real(win)); figure(tmp);
+%tmp =gcf; figure; p300(real(win)); figure(tmp);
 %fprintf('ANY NAN ************************* %d\n', any(any(isnan( data(nwin,:)))));
 
 tmpdata = data(nwin,:) - repmat(mean(data(nwin,:), 1), [size(data,1) 1]);

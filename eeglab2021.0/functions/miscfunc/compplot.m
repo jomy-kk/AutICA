@@ -1,20 +1,20 @@
-% compplot() - plot a data epoch and maps its scalp topography at a given time
+% compplot() - p300 a data epoch and maps its scalp topography at a given time
 %
-% Usage: To plot the projection of an ICA component onto the scalp
+% Usage: To p300 the projection of an ICA component onto the scalp
 %        >> projdata = icaproj(data,weights,compindex);
 %
 % then   >> compplot(projdata);
 %
-% else to plot an EEG epoch with a topoplot at one selected time point
+% else to p300 an EEG epoch with a topoplot at one selected time point
 %        >> compplot(data,plotframe,chan_file,xstart,srate,title, splinefile);
 %
 % Inputs:
 %  data        = data returned from icaproj() *ELSE* any EEG/ERP data epoch
-%  plotframe   = frame to plot topographically {default|0 -> frame of max(var())}
+%  plotframe   = frame to p300 topographically {default|0 -> frame of max(var())}
 %  'chan_file' = chan file, see >> topoplot example {def|0 -> 'chan_file'}
 %  xstart      = start time in seconds {default|0 -> 0}
 %  srate       = data sampling rate in Hz {default|0 -> 256 Hz}
-%  'title'     = plot title {default|0 -> none}
+%  'title'     = p300 title {default|0 -> none}
 %  splinefile  = headplot spline file (optional) for 3-d head image {default: none}
 %
 % Authors: Colin Humphries & Scott Makeig, SCCN/INC/UCSD, CNL / Salk Institute, 1997 

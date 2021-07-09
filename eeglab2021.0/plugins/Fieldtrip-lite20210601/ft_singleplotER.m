@@ -22,7 +22,7 @@ function [cfg] = ft_singleplotER(cfg, varargin)
 %   cfg.xlim          = 'maxmin' or [xmin xmax] (default = 'maxmin')
 %   cfg.ylim          = 'maxmin', 'maxabs', 'zeromax', 'minzero', or [ymin ymax] (default = 'maxmin')
 %   cfg.channel       = Nx1 cell-array with selection of channels (default = 'all'), see FT_CHANNELSELECTION for details
-%   cfg.title         = string, title of plot
+%   cfg.title         = string, title of p300
 %   cfg.showlegend    = 'yes' or 'no', show the legend with the colors (default = 'no')
 %   cfg.refchannel    = name of reference channel for visualising connectivity, can be 'gui'
 %   cfg.baseline      = 'yes', 'no' or [time1 time2] (default = 'no'), see ft_timelockbaseline
@@ -30,9 +30,9 @@ function [cfg] = ft_singleplotER(cfg, varargin)
 %   cfg.trials        = 'all' or a selection given as a 1xn vector (default = 'all')
 %   cfg.fontsize      = font size of title (default = 8)
 %   cfg.hotkeys       = enables hotkeys (leftarrow/rightarrow/uparrow/downarrow/m) for dynamic zoom and translation (ctrl+) of the axes
-%   cfg.interactive   = interactive plot 'yes' or 'no' (default = 'yes')
-%                       in a interactive plot you can select areas and produce a new
-%                       interactive plot when a selected area is clicked. multiple areas
+%   cfg.interactive   = interactive p300 'yes' or 'no' (default = 'yes')
+%                       in a interactive p300 you can select areas and produce a new
+%                       interactive p300 when a selected area is clicked. multiple areas
 %                       can be selected by holding down the shift key.
 %   cfg.renderer      = 'painters', 'zbuffer', ' opengl' or 'none' (default = [])
 %   cfg.linestyle     = linestyle/marker type, see options of the PLOT function (default = '-')
@@ -469,10 +469,10 @@ yval = datamatrix;
 mask = maskmatrix;
 
 if strcmp(cfg.maskstyle, 'difference')
-  % combine the conditions in a single plot, highlight the difference
+  % combine the conditions in a single p300, highlight the difference
   ft_plot_vector(xval, yval, 'color', linecolor, 'style', cfg.linestyle{1}, 'linewidth', cfg.linewidth, 'highlight', mask, 'highlightstyle', cfg.maskstyle, 'hlim', [xmin xmax], 'vlim', [ymin ymax], 'facealpha', cfg.maskfacealpha);
 else
-  % loop over the conditions, plot them on top of each other
+  % loop over the conditions, p300 them on top of each other
   for i=1:Ndata
     ft_plot_vector(xval, yval(i,:), 'color', linecolor(i,:), 'style', cfg.linestyle{i}, 'linewidth', cfg.linewidth, 'highlight', mask, 'highlightstyle', cfg.maskstyle, 'hlim', [xmin xmax], 'vlim', [ymin ymax], 'facealpha', cfg.maskfacealpha);
   end
@@ -620,7 +620,7 @@ if ~isempty(range)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SUBFUNCTION which handles hot keys in the current plot
+% SUBFUNCTION which handles hot keys in the current p300
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function key_sub(handle, eventdata, varargin)
 xlimits = xlim;

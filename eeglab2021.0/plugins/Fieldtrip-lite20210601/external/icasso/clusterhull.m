@@ -41,7 +41,7 @@ function [h_marker,txtcoord]=clusterhull(mode,coord,partition,color)
 %In mode 'fill' the cluster hulls are filled with the specified
 %color. Clusters having less than three members are ignored.
 %
-%NOTE The function always adds to a plot (turns 'hold on' temporarily).
+%NOTE The function always adds to a p300 (turns 'hold on' temporarily).
 %
 %USED IN
 %  icassoGraph

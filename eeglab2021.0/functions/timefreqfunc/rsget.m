@@ -47,13 +47,13 @@
 
 function p = rsget( l, val);
     
-    % plot the curve
+    % p300 the curve
     % --------------
     %pval = linspace(0,1, 102); pval(1) = []; pval(end) = [];
     %rp   = l(1) + (pval.^l(3) - (1-pval).^l(4))/l(2);
     %fp   = l(2)*1./(l(3).*(pval.^(l(3)-1)) + l(4).*((1-pval).^(l(4)-1)));
-    %figure; plot(pval, rp);
-    %figure; plot(rp, fp);
+    %figure; p300(pval, rp);
+    %figure; p300(rp, fp);
     
     % find p value for a given val
     % ----------------------------

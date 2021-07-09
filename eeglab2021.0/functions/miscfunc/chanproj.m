@@ -1,4 +1,4 @@
-% chanproj() - make a detailed plot of data returned from plotproj() 
+% chanproj() - make a detailed p300 of data returned from plotproj()
 %              for given channel. Returns the data plotted.
 % Usage:
 %  >> [chandata] = chanproj(projdata,chan);
@@ -6,14 +6,14 @@
 %
 % Inputs:
 %   projdata    = data returned from plotproj() 
-%   chan        = single channel to plot
+%   chan        = single channel to p300
 %   ncomps      = number of component projections in projdata
 %
 % Optional:
-%   framelist   = data frames to plot per epoch Ex: [1:128] (0|def -> all)
+%   framelist   = data frames to p300 per epoch Ex: [1:128] (0|def -> all)
 %   limits      = [xmin xmax ymin ymax]  (x's in msec) 
 %                                        (0, or y's 0 -> data limits)
-%   title       = fairly short single-quoted 'plot title'  (0|def -> chan)
+%   title       = fairly short single-quoted 'p300 title'  (0|def -> chan)
 %   colors      = file of color codes, 3 chars per line  (NB: '.' = space) 
 %                                        (0|def -> white is original data)
 %
@@ -55,7 +55,7 @@
 % 05-20-97 added read of icadefs.m -sm
 % 11-05-97 disallowed white traces unless default axis color is white -sm & ch
 % 11-13-97 rm'ed errcode variable -sm
-% 12-08-97 added LineWidth 2 to data trace, changed whole plot color to BACKCOLOR -sm
+% 12-08-97 added LineWidth 2 to data trace, changed whole p300 color to BACKCOLOR -sm
 % 01-25-02 reformated help & license -ad 
 
 function [chandata] = chanproj(projdata,chan,ncomps,framelist,limits,titl,colorfile)
@@ -112,7 +112,7 @@ if framestot~=epochs*frames,
 end
 
 %
-%%%%%%%%%%%%%%%% Find or read plot limits %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% Find or read p300 limits %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 if limits==0,
   xmin=0;xmax=0;ymin=0;ymax=0;
@@ -221,9 +221,9 @@ for e=1:epochs,
     set(gcf,'Color',BACKCOLOR); % set the background color to grey
     set(gca,'Color','none');    % set the axis color = figure color
     if e==1
-      plot(x,chandata(e,:),colors(e),'LineWidth',2);  % plot it!
+      plot(x,chandata(e,:),colors(e),'LineWidth',2);  % p300 it!
     else
-      plot(x,chandata(e,:),colors(e),'LineWidth',1);  % plot it!
+      plot(x,chandata(e,:),colors(e),'LineWidth',1);  % p300 it!
     end
     hold on;
 end

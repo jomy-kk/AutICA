@@ -39,12 +39,12 @@
 % <a href="matlab:helpwin pop_eegfilt">pop_eegfilt</a>   - bandpass filter data (eegfilt())
 % <a href="matlab:helpwin pop_eegplot">pop_eegplot</a>   - scrolling multichannel data viewer (eegplot())
 % <a href="matlab:helpwin pop_eegthresh">pop_eegthresh</a> - simple thresholding method (eegthresh())
-% <a href="matlab:helpwin pop_envtopo">pop_envtopo</a>   - plot ERP data and component contributions (envtopo())
+% <a href="matlab:helpwin pop_envtopo">pop_envtopo</a>   - p300 ERP data and component contributions (envtopo())
 % <a href="matlab:helpwin pop_epoch">pop_epoch</a>     - extract epochs from a continuous dataset (epoch())
-% <a href="matlab:helpwin pop_erpimage">pop_erpimage</a>  - plot single epochs as an image (erpimage())
+% <a href="matlab:helpwin pop_erpimage">pop_erpimage</a>  - p300 single epochs as an image (erpimage())
 % <a href="matlab:helpwin pop_jointprob">pop_jointprob</a> - reject epochs using joint probability (jointprob())
 % <a href="matlab:helpwin pop_loadbva">pop_loadbva</a>   - load Brain Vision Analyser matlab files
-% <a href="matlab:helpwin pop_plotdata">pop_plotdata</a>  - plot data epochs in rectangular array (plotdata())
+% <a href="matlab:helpwin pop_plotdata">pop_plotdata</a>  - p300 data epochs in rectangular array (plotdata())
 % <a href="matlab:helpwin pop_readegi">pop_readegi</a>   - load binary EGI data file (readegi())
 % <a href="matlab:helpwin pop_rejkurt">pop_rejkurt</a>   - compute data kurtosis (rejkurt())
 % <a href="matlab:helpwin pop_rejtrend">pop_rejtrend</a>  - reject EEG epochs showing linear trends  (rejtrend())
@@ -52,23 +52,23 @@
 % <a href="matlab:helpwin pop_rmbase">pop_rmbase</a>    - remove epoch baseline (rmbase())
 % <a href="matlab:helpwin pop_runica">pop_runica</a>    - run infomax ICA decomposition (runica())
 % <a href="matlab:helpwin pop_newtimef">pop_newtimef</a>  - event-related time-frequency (newtimef())
-% <a href="matlab:helpwin pop_timtopo">pop_timtopo</a>   - plot ERP and scalp maps  (timtopo())
-% <a href="matlab:helpwin pop_topoplot">pop_topoplot</a>  - plot scalp maps (topoplot())
+% <a href="matlab:helpwin pop_timtopo">pop_timtopo</a>   - p300 ERP and scalp maps  (timtopo())
+% <a href="matlab:helpwin pop_topoplot">pop_topoplot</a>  - p300 scalp maps (topoplot())
 % <a href="matlab:helpwin pop_snapread">pop_snapread</a>  - read Snapmaster .SMA files (snapread())
 % <a href="matlab:helpwin pop_newcrossf">pop_newcrossf</a> - event-related cross-coherence (newcrossf())
-% <a href="matlab:helpwin pop_spectopo">pop_spectopo</a>  - plot all channel spectra and scalp maps (spectopo())
-% <a href="matlab:helpwin pop_plottopo">pop_plottopo</a>  - plot a data epoch in a topographic array (plottopo())
+% <a href="matlab:helpwin pop_spectopo">pop_spectopo</a>  - p300 all channel spectra and scalp maps (spectopo())
+% <a href="matlab:helpwin pop_plottopo">pop_plottopo</a>  - p300 a data epoch in a topographic array (plottopo())
 % <a href="matlab:helpwin pop_readedf">pop_readedf</a>   - read .EDF EEG data format (readedf())
-% <a href="matlab:helpwin pop_headplot">pop_headplot</a>  - plot a 3-D data scalp map (headplot())
+% <a href="matlab:helpwin pop_headplot">pop_headplot</a>  - p300 a 3-D data scalp map (headplot())
 % <a href="matlab:helpwin pop_reref">pop_reref</a>     - re-reference data (reref())
-% <a href="matlab:helpwin pop_signalstat">pop_signalstat</a> - plot signal or component statistic (signalstat())
+% <a href="matlab:helpwin pop_signalstat">pop_signalstat</a> - p300 signal or component statistic (signalstat())
 %
 % Other GUI functions:
 % -------------------
 % <a href="matlab:helpwin pop_chanevent">pop_chanevent</a>      - import events stored in data channel(s)
 % <a href="matlab:helpwin pop_comments">pop_comments</a>       - edit dataset comment ('about') text
 % <a href="matlab:helpwin pop_compareerps">pop_compareerps</a>    - compare two dataset ERPs using plottopo()
-% <a href="matlab:helpwin pop_prop">pop_prop</a>           - plot channel or component properties (erpimage, spectra, map)
+% <a href="matlab:helpwin pop_prop">pop_prop</a>           - p300 channel or component properties (erpimage, spectra, map)
 % <a href="matlab:helpwin pop_copyset">pop_copyset</a>        - copy dataset
 % <a href="matlab:helpwin pop_dispcomp">pop_dispcomp</a>       - display component scalp maps with reject buttons
 % <a href="matlab:helpwin pop_editeventfield">pop_editeventfield</a> - edit event fields
@@ -102,7 +102,7 @@
 % <a href="matlab:helpwin eeg_eventformat">eeg_eventformat</a>    - convert event array to structure
 % <a href="matlab:helpwin eeg_getepochevent">eeg_getepochevent</a>  - return event values for a subset of event types
 % <a href="matlab:helpwin eeg_global">eeg_global</a>         - global variables
-% <a href="matlab:helpwin eeg_multieegplot">eeg_multieegplot</a>   - plot several rejections (using different colors)
+% <a href="matlab:helpwin eeg_multieegplot">eeg_multieegplot</a>   - p300 several rejections (using different colors)
 % <a href="matlab:helpwin eeg_options">eeg_options</a>        - option file
 % <a href="matlab:helpwin eeg_rejsuperpose">eeg_rejsuperpose</a>   - use by rejmenu to superpose all rejections
 % <a href="matlab:helpwin eeg_rejmacro">eeg_rejmacro</a>       - used by all rejection functions
